@@ -1,0 +1,28 @@
+\input{frontmatter/titlepage.tex}
+
+\input{frontmatter/note_de_confidentialite.tex}
+
+\input{frontmatter/remerciements.tex}
+
+\cleardoublepage
+\thispagestyle{plain}
+
+\input{frontmatter/abstract.tex}
+
+\etocsetnexttocdepth{section}
+\tableofcontents
+\etocminitocstyle
+
+\begin{comment}
+\cleardoublepage
+\phantomsection
+\renewcommand{\listtablename}{Liste des tableaux}
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+\end{comment}
+
+\cleardoublepage
+\phantomsection
+\renewcommand{\listfigurename}{Liste des figures}
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures

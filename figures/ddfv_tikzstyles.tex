@@ -1,0 +1,50 @@
+\tikzset{
+    ddfv/.style={
+        scale=1.5,
+        every path/.style={thick,line join=round, cap=round},
+        ptsq/.style 2 args={
+          rectangle,
+          fill=##1,
+          inner sep=2pt,
+          label={[text=##1]##2}
+        },
+        ptsqbord/.style 2 args={
+          rectangle,
+          draw=##1,
+          inner sep=2pt,
+          label={[text=##1]##2}
+        },
+        ptcl/.style 2 args={
+          circle,
+          fill=##1,
+          inner sep=1.5pt,
+          label={[text=##1]##2}
+        },
+        ptclbord/.style 2 args={
+          circle,
+          draw=##1,
+          inner sep=1.5pt,
+          label={[text=##1]##2}
+        },
+        mailleprimale/.style={
+            myblue,
+            fill=mylightblue
+        },
+        mailledualeint/.style={
+            myred,
+            fill=mylightred
+        },
+        mailledualebord/.style={
+            myred,
+            fill=mylightred!50!white
+        },
+        maillediamantint/.style={
+            mygreen,
+            fill=mylightgreen
+        },
+        maillediamantbord/.style={
+            mygreen,
+            fill=mylightgreen!50!white
+        }
+    }
+}

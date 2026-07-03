@@ -1,0 +1,155 @@
+% Source - https://tex.stackexchange.com/a/629152
+% Posted by Juan Castaño, modified by community. See post 'Timeline' for change history
+% Retrieved 2026-06-03, License - CC BY-SA 4.0
+
+\input{figures/ddfv_tikzstyles.tex}
+
+\makeatletter
+
+\newcommand{\PointXYZ}[4]{%
+    \pgfmathsetmacro{\px}{#2}%
+    \pgfmathsetmacro{\py}{#3}%
+    \pgfmathsetmacro{\pz}{#4}%
+    \coordinate (#1) at (\px,\py,\pz);
+    \expandafter\xdef\csname pt@#1@x\endcsname{\px}%
+    \expandafter\xdef\csname pt@#1@y\endcsname{\py}%
+    \expandafter\xdef\csname pt@#1@z\endcsname{\pz}%
+}
+
+\newcommand{\GetX}[1]{\csname pt@#1@x\endcsname}
+\newcommand{\GetY}[1]{\csname pt@#1@y\endcsname}
+\newcommand{\GetZ}[1]{\csname pt@#1@z\endcsname}
+
+\newcommand{\MidPointXYZ}[3]{%
+    \pgfmathsetmacro{\mx}{0.5*(\GetX{#2}+\GetX{#3})}%
+    \pgfmathsetmacro{\my}{0.5*(\GetY{#2}+\GetY{#3})}%
+    \pgfmathsetmacro{\mz}{0.5*(\GetZ{#2}+\GetZ{#3})}%
+    \PointXYZ{#1}{\mx}{\my}{\mz}%
+}
+
+\newcommand{\LinePlaneIntersection}[6]{%
+    \pgfmathsetmacro{\ux}{\GetX{#5}-\GetX{#4}}%
+    \pgfmathsetmacro{\uy}{\GetY{#5}-\GetY{#4}}%
+    \pgfmathsetmacro{\uz}{\GetZ{#5}-\GetZ{#4}}%
+
+    \pgfmathsetmacro{\vx}{\GetX{#6}-\GetX{#4}}%
+    \pgfmathsetmacro{\vy}{\GetY{#6}-\GetY{#4}}%
+    \pgfmathsetmacro{\vz}{\GetZ{#6}-\GetZ{#4}}%
+
+    \pgfmathsetmacro{\nx}{\uy*\vz-\uz*\vy}%
+    \pgfmathsetmacro{\ny}{\uz*\vx-\ux*\vz}%
+    \pgfmathsetmacro{\nz}{\ux*\vy-\uy*\vx}%
+
+    \pgfmathsetmacro{\dx}{\GetX{#3}-\GetX{#2}}%
+    \pgfmathsetmacro{\dy}{\GetY{#3}-\GetY{#2}}%
+    \pgfmathsetmacro{\dz}{\GetZ{#3}-\GetZ{#2}}%
+
+    \pgfmathsetmacro{\den}{\nx*\dx+\ny*\dy+\nz*\dz}%
+    \pgfmathsetmacro{\num}{\nx*(\GetX{#4}-\GetX{#2})+\ny*(\GetY{#4}-\GetY{#2})+\nz*(\GetZ{#4}-\GetZ{#2})}%
+
+    \pgfmathsetmacro{\tt}{\num/\den}%
+
+    \pgfmathsetmacro{\ix}{\GetX{#2}+\tt*\dx}%
+    \pgfmathsetmacro{\iy}{\GetY{#2}+\tt*\dy}%
+    \pgfmathsetmacro{\iz}{\GetZ{#2}+\tt*\dz}%
+
+    \PointXYZ{#1}{\ix}{\iy}{\iz}%
+}
+
+\makeatother
+
+\tdplotsetmaincoords{85}{190}
+
+\tikzset{my plot/.style={samples=61,smooth}}
+
+\def\R{3}
+\def\xzero{0}
+\def\yzero{0}
+\def\zzero{0}
+
+
+\pgfmathdeclarefunction{f}{2}{%
+  \pgfmathparse{\zzero + sqrt(\R^2-(#1-\xzero)^2-(#2-\yzero)^2)}%
+}
+
+\begin{tikzpicture}[
+    ddfv,
+    font=\sffamily,
+    bluept/.style={circle, fill=myblue, inner sep=1.5pt},
+    redpt/.style={circle, fill=myred, inner sep=1.5pt},
+    tdplot_main_coords]
+
+\def\a{0.2}
+
+    % grids   
+    \foreach \a in {3,3.5,...,7}
+    {
+       \draw[thin,gray] plot[my plot,variable=\b,domain=3:7] ({\a},{\b},0);
+       \draw[thin,gray] plot[my plot,variable=\b,domain=3:7] ({\b},{\a},0);
+       \draw[thin,gray] plot[my plot,variable=\b,domain=3:7] ({\a},{\b},{f(\a,\b)});
+       \draw[thin,gray] plot[my plot,variable=\b,domain=3:7] ({\b},{\a},{f(\b,\a)});
+    }
+    \fill[gray,fill opacity=0.2] plot[my plot,variable=\b,domain=3:7] (3,{\b},{f(3,\b)}) -- 
+                                 plot[my plot,variable=\a,domain=3:7] ({\a},7,{f(\a,7)}) --
+                                 plot[my plot,variable=\b,domain=7:3] (7,{\b},{f(7,\b)}) --
+                                 plot[my plot,variable=\a,domain=7:3] ({\a},3,{f(\a,3)});
+    % Circle on the surface
+    \draw[red,fill=red,fill opacity=0.2] plot[my plot,domain=0:360] ({5+cos(\x)},{5+sin(\x)},{f(5+cos(\x),5+sin(\x))});
+    % Point and other circle
+    \coordinate (x0) at (5,5,0);
+
+    \coordinate (A) at (5,5,0);
+    \coordinate (B) at (4,5,0);
+    \coordinate (C) at (5,4,0);
+
+
+\def\R{1}
+
+\coordinate (O) at (0,0,0);
+
+\coordinate (F1) at ({\R*cos((13*pi/10)r)}, {\R*sin((13*pi/10)r)}, 0);
+\coordinate (F2) at ({\R*cos((17*pi/10)r)}, {\R*sin((17*pi/10)r)}, 0);
+\coordinate (F3) at ({\R*cos((21*pi/10)r)}, {\R*sin((21*pi/10)r)}, 0);
+\coordinate (F4) at ({\R*cos((5*pi/10)r)},  {\R*sin((5*pi/10)r)}, 0);
+\coordinate (F5) at ({\R*cos((9*pi/10)r)},  {\R*sin((9*pi/10)r)}, 0);
+
+
+    \coordinate (Az) at (5,5,{f(5,5)});
+    \coordinate (Bz) at (4,5,{f(4,5)});
+    \coordinate (Cz) at (5,4,{f(5,4)});
+
+    \fill (x0) circle (1pt) node[anchor=north] {\footnotesize $x_0$};
+
+    \draw (Az) -- (Bz) -- (Cz) -- cycle;
+
+    % Triangle ABC sur la surface
+\foreach \u in {0,0.02,...,1}{
+    \draw[blue,opacity=0.6]
+    plot[my plot,variable=\v,domain=0:{1-\u}]
+    (
+        {5-\u},
+        {5-\v},
+        {f(5-\u,5-\v)}
+    );
+}
+
+    \draw[blue,thick]
+    plot[my plot,variable=\t,domain=0:1] ({5-\t},{5},{f(5-\t,5)})
+ -- plot[my plot,variable=\t,domain=0:1] ({4+\t},{5-\t},{f(4+\t,5-\t)})
+ -- plot[my plot,variable=\t,domain=0:1] ({5},{4+\t},{f(5,4+\t)})
+ -- cycle;
+
+ 
+    \fill (Az) circle (1pt) node[anchor=north] {\footnotesize $A$};
+    \fill (Bz) circle (1pt) node[anchor=north] {\footnotesize $B$};
+    \fill (Cz) circle (1pt) node[anchor=north] {\footnotesize $C$};
+
+    \fill (A) circle (1pt);
+    \fill (B) circle (1pt);
+    \fill (C) circle (1pt);
+
+    \draw (A) -- (B) -- (C) -- cycle;
+
+    \draw[densely dashed,red] (x0) circle (1);
+
+\end{tikzpicture}

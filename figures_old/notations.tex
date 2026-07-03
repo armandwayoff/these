@@ -1,0 +1,91 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\tdplotsetmaincoords{60}{0}
+
+%--------------------------------------------------
+% Paramètres
+%--------------------------------------------------
+\def\R{1}
+\def\Ntheta{8}
+\def\Nphi{10}
+
+% Sommets sélectionnés : couples i/j
+\def\SelectedPoints{{4/2}}
+
+%--------------------------------------------------
+% Tests de sélection
+%--------------------------------------------------
+\newif\ifselectedpoint
+\newif\ifselectedtriangle
+
+\newcommand{\testselectedpoint}[2]{%
+  \selectedpointfalse
+  \foreach \si/\sj in \SelectedPoints {%
+    \ifnum#1=\si
+      \ifnum#2=\sj
+        \global\selectedpointtrue
+      \fi
+    \fi
+  }%
+}
+
+\newcommand{\testselectedtriangle}[6]{%
+  \selectedtrianglefalse
+  \testselectedpoint{#1}{#2}%
+  \ifselectedpoint
+    \global\selectedtriangletrue
+  \else
+    \testselectedpoint{#3}{#4}%
+    \ifselectedpoint
+      \global\selectedtriangletrue
+    \else
+      \testselectedpoint{#5}{#6}%
+      \ifselectedpoint
+        \global\selectedtriangletrue
+      \fi
+    \fi
+  \fi
+}
+
+%--------------------------------------------------
+% Dessin d'un triangle plan
+%--------------------------------------------------
+\newcommand{\drawplanartriangle}[9]{%
+  \testselectedtriangle{#1}{#2}{#3}{#4}{#5}{#6}%
+  \ifselectedtriangle
+    \draw[mailleprimale] #7 -- #8 -- #9 -- cycle;
+  \else
+    \draw[black,fill=gray!50!white] #7 -- #8 -- #9 -- cycle;
+  \fi
+}
+
+\newcommand{\drawplanartrianglegraphe}[9]{%
+  \testselectedtriangle{#1}{#2}{#3}{#4}{#5}{#6}%
+  \ifselectedtriangle
+    \draw[mailleprimale, dashed] #7 -- #8 -- #9 -- cycle;
+  \else
+    \draw[gray, dashed] #7 -- #8 -- #9 -- cycle;
+  \fi
+}
+
+\newcommand{\cheegerfig}[2][]{%
+\begin{tikzpicture}[
+  ddfv,
+  scale=1.5,
+  baseline=(current bounding box.center),
+  #1
+]
+  \input{#2}
+\end{tikzpicture}%
+}
+
+\begin{tikzpicture}[
+  node distance=1.2cm,
+  every node/.style={inner sep=0pt}
+]
+
+\node (M) {\cheegerfig[tdplot_main_coords]{figures/notations_plat.tex}};
+
+\node[right=of M] (V) {\cheegerfig[tdplot_main_coords]{figures/notations_courbe.tex}};
+
+\end{tikzpicture}

@@ -1,0 +1,374 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\tdplotsetmaincoords{50}{-20}
+
+\begin{tikzpicture}[
+    ddfv,
+    scale=3,
+    tdplot_main_coords
+]
+
+\def\Ax{0}    
+\def\Ay{0}    
+\def\Az{0}   
+
+\def\Bx{1}    
+\def\By{-0.4} 
+\def\Bz{0.4} 
+
+\def\Cx{2}  
+\def\Cy{0}   
+\def\Cz{0}   
+
+\def\Dx{1}  
+\def\Dy{0.4} 
+\def\Dz{0.4} 
+
+\coordinate (A) at (\Ax,\Ay,\Az);
+\coordinate (B) at (\Bx,\By,\Bz);
+\coordinate (C) at (\Cx,\Cy,\Cz);
+\coordinate (D) at (\Dx,\Dy,\Dz);
+
+% Projections / quadrilatère supérieur
+\def\Apx{\Ax}
+\def\Apy{\Ay}
+\def\Apz{\Bz}
+
+\def\Bpx{\Bx}
+\def\Bpy{\By}
+\def\Bpz{\Bz}
+
+\def\Cpx{\Cx}
+\def\Cpy{\Cy}
+\def\Cpz{\Bz}
+
+\def\Dpx{\Dx}
+\def\Dpy{\Dy}
+\def\Dpz{\Dz}
+
+\coordinate (Ap) at (\Apx,\Apy,\Apz);
+\coordinate (Bp) at (\Bpx,\Bpy,\Bpz);
+\coordinate (Cp) at (\Cpx,\Cpy,\Cpz);
+\coordinate (Dp) at (\Dpx,\Dpy,\Dpz);
+
+% Quadrilatère A-D-Cp-Bp
+\draw[
+    fill=gray,
+    fill opacity=0.25,
+    draw=black,
+    thick
+]
+(Ap) -- (Dp) -- (Cp) -- (Bp) -- cycle;
+
+% Bord de la surface réglée
+\draw[thick] (A) -- (B) -- (C) -- (D) -- cycle;
+
+% Génératrices AB -> DC
+\foreach \s in {0,0.1,...,1}{
+    \coordinate (P) at (
+        {(1-\s)*\Ax + \s*\Bx},
+        {(1-\s)*\Ay + \s*\By},
+        {(1-\s)*\Az + \s*\Bz}
+    );
+
+    \coordinate (Q) at (
+        {(1-\s)*\Dx + \s*\Cx},
+        {(1-\s)*\Dy + \s*\Cy},
+        {(1-\s)*\Dz + \s*\Cz}
+    );
+
+    \draw[thin] (P) -- (Q);
+}
+
+% Génératrices AD -> BC
+\foreach \s in {0,0.1,...,1}{
+    \coordinate (P) at (
+        {(1-\s)*\Ax + \s*\Dx},
+        {(1-\s)*\Ay + \s*\Dy},
+        {(1-\s)*\Az + \s*\Dz}
+    );
+
+    \coordinate (Q) at (
+        {(1-\s)*\Bx + \s*\Cx},
+        {(1-\s)*\By + \s*\Cy},
+        {(1-\s)*\Bz + \s*\Cz}
+    );
+
+    \draw[thin] (P) -- (Q);
+}
+
+% Courbe rouge
+\draw[
+    thick,
+    red,
+    variable=\t,
+    domain=0:1,
+    samples=20
+]
+plot (
+{
+(1-\t)*((1-\t)*\Ax + \t*\Bx)
++
+\t*((1-\t)*\Dx + \t*\Cx)
+},
+{
+(1-\t)*((1-\t)*\Ay + \t*\By)
++
+\t*((1-\t)*\Dy + \t*\Cy)
+},
+{
+(1-\t)*((1-\t)*\Az + \t*\Bz)
++
+\t*((1-\t)*\Dz + \t*\Cz)
+}
+);
+
+% Courbe bleue
+\draw[
+    thick,
+    blue,
+    variable=\t,
+    domain=0:1,
+    samples=20
+]
+plot (
+{
+\t*((1-\t)*\Ax + \t*\Bx)
++
+(1-\t)*((1-\t)*\Dx + \t*\Cx)
+},
+{
+\t*((1-\t)*\Ay + \t*\By)
++
+(1-\t)*((1-\t)*\Dy + \t*\Cy)
+},
+{
+\t*((1-\t)*\Az + \t*\Bz)
++
+(1-\t)*((1-\t)*\Dz + \t*\Cz)
+}
+);
+
+\def\lam{0.3}
+
+% Flèche lambda
+\draw[->, thick]
+(A) -- (
+    {\Bx+\lam*(\Bx-\Ax)},
+    {\By+\lam*(\By-\Ay)},
+    {\Bz+\lam*(\Bz-\Az)}
+)
+node[pos=1,right] {\contour{white}{$\lambda$}};
+
+% Flèche mu
+\draw[->, thick]
+(A) -- (
+    {\Dx+\lam*(\Dx-\Ax)},
+    {\Dy+\lam*(\Dy-\Ay)},
+    {\Dz+\lam*(\Dz-\Az)}
+)
+node[pos=1,right] {$\mu$};
+
+% Labels
+\node[below] at (A) {$X_1$};
+\node[below] at (B) {$B_1$};
+\node[right] at (C) {$X_2$};
+\node[left] at (D) {$B_2$};
+
+% Diagonales
+\draw[<->] (A) -- (C) node[midway] {\contour{white}{$u$}};
+\draw[<->] (B) -- (D) node[midway] {\contour{white}{$v$}};
+
+\end{tikzpicture}
+
+\begin{comment}
+
+\begin{axis}[
+    view={-25}{35},
+    axis equal image,
+    hide axis,
+    scale=3
+]
+
+\def\Ax{0}    
+\def\Ay{0}    
+\def\Az{0}   
+
+\def\Bx{1}    
+\def\By{-0.4} 
+\def\Bz{0.4} 
+
+\def\Cx{2}  
+\def\Cy{0}   
+\def\Cz{0}   
+
+\def\Dx{1}  
+\def\Dy{0.4} 
+\def\Dz{0.4} 
+
+\coordinate (A) at (axis cs:\Ax,\Ay,\Az);
+\coordinate (B) at (axis cs:\Bx,\By,\Bz);
+\coordinate (C) at (axis cs:\Cx,\Cy,\Cz);
+\coordinate (D) at (axis cs:\Dx,\Dy,\Dz);
+
+% Surface réglée
+% S(u,v) = (1-v)((1-u)A + uB) + v((1-u)D + uC)
+
+% Bord
+\addplot3[thick] coordinates {
+    (\Ax,\Ay,\Az)
+    (\Bx,\By,\Bz)
+    (\Cx,\Cy,\Cz)
+    (\Dx,\Dy,\Dz)
+    (\Ax,\Ay,\Az)
+};
+
+% Génératrices AB -> DC
+\pgfplotsinvokeforeach{0,0.1,...,1}{
+    \addplot3[thin] coordinates {
+        ({(1-#1)*\Ax + #1*\Bx},
+         {(1-#1)*\Ay + #1*\By},
+         {(1-#1)*\Az + #1*\Bz})
+        ({(1-#1)*\Dx + #1*\Cx},
+         {(1-#1)*\Dy + #1*\Cy},
+         {(1-#1)*\Dz + #1*\Cz})
+    };
+}
+
+% Génératrices AD -> BC
+\pgfplotsinvokeforeach{0,0.1,...,1}{
+    \addplot3[thin] coordinates {
+        ({(1-#1)*\Ax + #1*\Dx},
+         {(1-#1)*\Ay + #1*\Dy},
+         {(1-#1)*\Az + #1*\Dz})
+        ({(1-#1)*\Bx + #1*\Cx},
+         {(1-#1)*\By + #1*\Cy},
+         {(1-#1)*\Bz + #1*\Cz})
+    };
+}
+
+\addplot3[
+    thick,
+    red,
+    variable=\t,
+    samples=10,
+    samples y=0,
+    domain=0:1,
+]
+(
+{
+(1-\t)*((1-\t)*\Ax + \t*\Bx)
++
+\t*((1-\t)*\Dx + \t*\Cx)
+},
+{
+(1-\t)*((1-\t)*\Ay + \t*\By)
++
+\t*((1-\t)*\Dy + \t*\Cy)
+},
+{
+(1-\t)*((1-\t)*\Az + \t*\Bz)
++
+\t*((1-\t)*\Dz + \t*\Cz)
+}
+);
+
+\addplot3[
+    thick,
+    blue,
+    variable=\t,
+    samples=10,
+    samples y=0,
+    domain=0:1,
+]
+(
+{
+\t*((1-\t)*\Ax + \t*\Bx)
++
+(1-\t)*((1-\t)*\Dx + \t*\Cx)
+},
+{
+\t*((1-\t)*\Ay + \t*\By)
++
+(1-\t)*((1-\t)*\Dy + \t*\Cy)
+},
+{
+\t*((1-\t)*\Az + \t*\Bz)
++
+(1-\t)*((1-\t)*\Dz + \t*\Cz)
+}
+);
+
+\def\lam{0.3}
+
+\addplot3[
+    ->,
+    thick,
+]
+coordinates {
+    (\Ax,\Ay,\Az)
+    ({\Bx+\lam*(\Bx-\Ax)},
+     {\By+\lam*(\By-\Ay)},
+     {\Bz+\lam*(\Bz-\Az)})
+}
+node[pos=1,right] {$\lambda$};
+
+\addplot3[
+    ->,
+    thick,
+]
+coordinates {
+    (\Ax,\Ay,\Az)
+    ({\Dx+\lam*(\Dx-\Ax)},
+     {\Dy+\lam*(\Dy-\Ay)},
+     {\Dz+\lam*(\Dz-\Az)})
+}
+node[pos=1,right] {$\mu$};
+
+
+% Projections de B et C sur le plan z=0
+\def\Apx{\Ax}
+\def\Apy{\Ay}
+\def\Apz{\Bz}
+
+\def\Bpx{\Bx}
+\def\Bpy{\By}
+\def\Bpz{\Bz}
+
+\def\Cpx{\Cx}
+\def\Cpy{\Cy}
+\def\Cpz{\Bz}
+
+\def\Dpx{\Dx}
+\def\Dpy{\Dy}
+\def\Dpz{\Dz}
+
+% Quadrilatère A-D-Cp-Bp
+\addplot3[
+    fill=gray,
+    fill opacity=0.25,
+    draw=black,
+    thick,
+]
+coordinates {
+    (\Apx,\Apy,\Apz)
+    (\Dpx,\Dpy,\Dpz)
+    (\Cpx,\Cpy,\Cpz)
+    (\Bpx,\Bpy,\Bpz)
+    (\Apx,\Apy,\Apz)
+};
+
+
+\end{axis}
+
+\node[below] at (A) {$X_1$};
+\node[below] at (B) {$B_1$};
+\node[right] at (C) {$X_2$};
+\node[left] at (D) {$B_2$};
+
+\draw[<->] (A) -- (C) node[midway] {\contour{white}{$u$}};
+\draw[<->] (B) -- (D) node[midway] {\contour{white}{$v$}};
+
+\end{tikzpicture}
+
+\end{comment}

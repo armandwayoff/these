@@ -1,0 +1,66 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\begin{tikzpicture}[ddfv]
+
+\input{figures/ddfv_coord.tex}
+
+\draw[mailledualeint] (Me1) -- (Me2) -- (Me6) -- (Me11) -- (Me14) -- (Me5) -- cycle;
+\draw[mailledualeint] (Me2) -- (Me3) -- (Me21) -- (Me6) -- cycle;
+\draw[mailledualeint] (Me21) -- (Me13) -- (Me4) -- (Me7) -- (Me12) -- (Me11) -- (Me6) -- cycle;
+\draw[mailledualeint] (Me14) -- (Me11) -- (Me12) -- (Me9) -- (Me8) -- (Me14) -- cycle;
+\draw[mailledualeint] (Me10) -- (Me7) -- (Me12) -- (Me9) -- (Me16) -- cycle;
+\draw[mailledualeint] (Me5) -- (Me14) -- (Me8) -- (Me20) -- (Me17) -- (Me19) -- cycle;
+\draw[mailledualeint] (Me9) -- (Me16) -- (Me18) -- (Me15) -- cycle;
+
+\draw[mailledualebord] (Mb11) -- (Me3) -- (Mb12) -- (M17) -- cycle;
+\draw[mailledualebord] (Mb12) -- (Me3) -- (Me2) -- (Me1) -- (Mb1) -- (M1) -- cycle;
+\draw[mailledualebord] (Mb1) -- (Me1) -- (Me5) -- (Me19) -- (Mb2) -- (M5) -- cycle;
+\draw[mailledualebord] (Mb2) -- (Me19) -- (Me17) -- (Mb3) -- (M19) -- cycle;
+\draw[mailledualebord] (Mb3) -- (Me17) -- (Me20) -- (Mb4) -- (M13) -- cycle;
+\draw[mailledualebord] (Mb4) -- (Me20) -- (Me8) -- (Me9) -- (Me15) -- (Mb5) -- (M14) -- cycle;
+\draw[mailledualebord] (Mb5) -- (Me15) -- (Me18) -- (Mb6) -- (M18) -- cycle;
+\draw[mailledualebord] (Mb6) -- (Me18) -- (Me16) -- (Me10) -- (Mb7) -- (M16) -- cycle;
+\draw[mailledualebord] (Mb7) -- (Me10) -- (Me7) -- (Me4) -- (Mb8) -- (M12) -- cycle;
+\draw[mailledualebord] (Mb8) -- (Me4) -- (Mb9) -- (M8) -- cycle;
+\draw[mailledualebord] (Mb9) -- (Me4) -- (Me13) -- (Mb10) -- (M4) -- cycle;
+\draw[mailledualebord] (Mb10) -- (Me13) -- (Me21) -- (Me3) -- (Mb11) -- (M3) -- cycle;
+
+% \begin{comment}
+\begin{scope}[opacity=0.5]
+\draw[myblue, thin] (M1) -- (M2) -- (M3) -- (M4) -- (M8) -- (M12) -- (M16) -- (M15) -- (M14) -- (M13) -- (M9) -- (M5) -- (M1) -- (M17) -- (M3) -- (M7) -- (M11);
+\draw[myblue, thin] (M1) -- (M6) -- (M9) -- (M14) -- (M10) -- (M11) -- (M15) -- (M18);
+\draw[myblue, thin] (M11) -- (M12) -- (M7) -- (M6)  -- (M10) -- (M9) -- (M19);
+\draw[myblue, thin] (M2) -- (M6) -- (M5) -- (M19) -- (M13);
+\draw[myblue, thin] (M11) -- (M16) -- (M18) -- (M14);
+\draw[myblue, thin] (M10) -- (M7) -- (M2);
+\draw[myblue, thin] (M4) -- (M7);
+\end{scope}
+% \end{comment}
+
+\foreach \i in {2,6,7,9,10,11,15} {
+   % \node[ptsq={myblue}{above:{\i}}] at (M\i) {};
+   \node[ptsq={myblue}{}] at (M\i) {};
+}
+
+\foreach \i in {1,3,4,5,8,12,13,14,16,17,18,19} {
+   % \node[ptsqbord={myblue}{above:{\i}}] at (M\i) {};
+   \node[ptsqbord={myblue}{}] at (M\i) {};
+}
+
+\foreach \i in {1,...,21} {
+    % \node[ptcl={myred}{above:{\i}}] at (Me\i) {};
+    \node[ptcl={myred}{}] at (Me\i) {};
+}
+
+\node[myblue, right] at (M7) {\contour{mylightred}{$x_\dual{K}$}};
+\node[myblue, above] at (M10) {\contour{mylightred}{$x_\dual{L}$}};
+
+\node[myred, shift={(13pt,20pt)}] at (M7) {\contour{mylightred}{$\dual{K}$}};
+\node[myred, shift={(16pt,-10pt)}] at (M10) {\contour{mylightred}{$\dual{L}$}};
+
+\foreach \i in {1,...,12} {
+    % \node[ptcl={myred}{above:{\i}}] at (Mb\i) {};
+    \node[ptclbord={myred}{}] at (Mb\i) {};
+}
+
+\end{tikzpicture}

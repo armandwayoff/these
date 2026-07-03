@@ -1,0 +1,98 @@
+\section{Démonstration}
+
+\begin{lemme}
+    Cf \ref{lemme:projection_dziuk}. 
+    \[
+    \frac{\mesure(\primal{K})}{\mesure(\projvariete \primal{K})} = 1 + \grandO{h^2}.
+    \]
+\end{lemme}
+
+
+\begin{prop}[Une inégalité de graphe]\label{prop:ineg_de_graphe}
+Soit $\fonctionens[u]{V(G)}{\R}$ où $G$ est le graphe associé à un maillage $\ensddfv$ tel que $\reg \ensddfv \cdots$. Alors
+\begin{equation}\label{eq:ineg_de_graphe}
+\sum_{i \sim j} (u_i - u_j)^2 \geqslant \min_c C \, h^2 \sum_i (u_i - c)^2.
+\end{equation}
+\end{prop}
+
+\begin{defi}{Constante isopérimétrique}
+
+\end{defi}
+
+\begin{lemme}
+L'inégalité \ref{eq:ineg_de_graphe} est vraie pour $h = h(G)$.
+\end{lemme}
+
+\begin{demo}
+    
+\end{demo}
+
+\begin{defi}
+Soit $\ensddfv$ un maillage \ddfv. On lui associe un graphe $G = (V, E)$ avec 
+\[
+V \defeq \ens[\big]{x_{\primal{K}} \tq \primal{K} \in \ensprimal}.
+\]
+\end{defi}
+
+On applique la proposition \ref{prop:ineg_de_graphe} à une fonction scalaire primale $u = (u_{\primal{K}})_{\primal{K} \in \ensprimal}$.
+
+\[
+{\color{red}
+U^\top U = \sum_{i \in V} u_i{}^2.
+}
+\]
+
+D'une part, 
+\[
+\norme{u}^2_{\L^2} = \sum_{\primal{K} \in \ensprimal} \mesure(\primal{K}) \, u_{\primal{K}}{}^2 = \sum_{i \in V} \underbrace{\mesure(\primal{K})}_{\sim h^2} \, u_i{}^2 \sim h^2 \, U^\top U
+\]
+D'autre part, pour $i \sim j$,
+\begin{align*}
+    (u_i - u_j)^2 &= \abs{\widetilde{\grad}_{i,j} u \cdot (x_j - x_i)}^2 \\
+    &\lesssim h^2 \abs{\widetilde{\grad}_{i,j} u}^2 \\
+    &\lesssim \int_{D_{i,j}} \abs{\widetilde{\grad}_{i,j} u}^2
+\end{align*}
+\[
+\sum_{i \sim j} (u_i - u_j)^2 \lesssim \int_{D_{i,j}} \abs{\widetilde{\grad}_{i,j} u}^2 = \norme{\grad u}^2_{\L^2}.
+\]
+On veut $\norme{u}^2_{\L^2} \lesssim \norme{\grad u}^2_{\L^2}$. A-t-on $h^2 \, U^\top U \lesssim U^\top L U$ ? ($U$ de moyenne nulle). 
+
+
+\begin{lemme}
+Soit $A \subset \variete{M}$,
+\[
+\inf \frac{\abs{\partial A}}{\abs{A}} \cdots
+\]
+\end{lemme}
+
+\begin{lemme}
+\[
+    \frac{\abs{\partial S}}{\abs{S}} \sim \frac{\abs{\partial A}}{\abs{A}} \, h
+\]
+\end{lemme}
+
+
+\begin{prop}[Relaxation condition de Cheeger]
+    Pour $0 < k < 1$, on définit
+    \[
+    h_k(\variete{M}) \defeq \inf_{\substack{A \subset \variete{M} \\ \abs{A} \leqslant k \, \abs{\variete{M}}}} \frac{\abs{\partial A}}{\abs{A}}.
+    \]
+    Alors
+    \[
+    \begin{cases}
+        h_k(\variete{M}) = h(\variete{M}) &\text{si } \frac{1}{2} \leqslant k < 1 \text{ (relaxation)}, \\
+        h_k(\variete{M}) \geqslant h(\variete{M}) &\text{si } 0 < k < \frac{1}{2} \text{ (restriction)}.
+    \end{cases}
+    \]
+\end{prop}
+\begin{demo}
+On remarque que pour $0 < k \leqslant k' < 1$, alors $h_{k'}(\variete{M}) \leqslant h_k(\variete{M})$ car on minimise sur un ensemble plus grand. 
+
+$h(\variete{M}) = h_{1/2}(\variete{M})$
+\end{demo}
+
+\begin{figure}[H]
+    \centering
+    \input{figures/cheeger_discret_to_continu.tex}
+    \caption{maillage non régulier}
+\end{figure}

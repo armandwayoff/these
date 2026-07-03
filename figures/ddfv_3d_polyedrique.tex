@@ -1,0 +1,249 @@
+\begin{scope}[
+    local bounding box=mainP,
+    tdplot_main_coords
+]
+
+\coordinate (O) at (0,0,0);
+\PointXYZ{fO}{0}{0}{f(0,0)};
+
+\def\Rpenta{1.5}
+
+\foreach \i/\j/\angleA/\angleB in {
+    1/2/13/17,
+    2/3/17/21,
+    3/4/21/5,
+    4/5/5/9,
+    5/1/9/13
+}
+{
+    % Point F_i
+    \pgfmathsetmacro{\xA}{\Rpenta*cos((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\yA}{\Rpenta*sin((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\zA}{f(\xA,\yA)}
+
+    \coordinate (F\i)  at ({\xA},{\yA},0);
+    % \coordinate (fF\i) at ({\xA},{\yA},{\zA});
+    \PointXYZ{fF\i}{\xA}{\yA}{\zA};
+
+    % \node[ptsq={myblue}{}] at (F\i) {};
+    % \node[ptsq={myblue}{}] at (fF\i) {};
+
+    % Point F_j
+    \pgfmathsetmacro{\xB}{\Rpenta*cos((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\yB}{\Rpenta*sin((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\zB}{f(\xB,\yB)}
+
+    \coordinate (F\j)  at ({\xB},{\yB},0);
+    \coordinate (fF\j) at ({\xB},{\yB},{\zB});
+
+    % Barycentre euclidien du triangle fO, fF_i, fF_j
+    \pgfmathsetmacro{\xG}{(\xzero+\xA+\xB)/3}
+    \pgfmathsetmacro{\yG}{(\yzero+\yA+\yB)/3}
+    \pgfmathsetmacro{\zG}{(f(0,0)+f(\xA,\yA)+f(\xB,\yB))/3}
+
+    % Projection radiale sur la sphère de centre (xzero,yzero,zzero)
+    \pgfmathsetmacro{\normG}{
+        sqrt((\xG-\xzero)^2 + (\yG-\yzero)^2 + (\zG-\zzero)^2)
+    }
+
+    \pgfmathsetmacro{\xProjG}{\xzero + \Rayon*(\xG-\xzero)/\normG}
+    \pgfmathsetmacro{\yProjG}{\yzero + \Rayon*(\yG-\yzero)/\normG}
+    \pgfmathsetmacro{\zProjG}{\zzero + \Rayon*(\zG-\zzero)/\normG}
+
+    % \coordinate (fG\i) at ({\xProjG},{\yProjG},{\zProjG});
+    \PointXYZ{fG\i}{\xProjG}{\yProjG}{\zProjG};
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \pgfmathsetmacro{\xG}{(\xA+\xB)/3}
+    \pgfmathsetmacro{\yG}{(\yA+\yB)/3}
+    \pgfmathsetmacro{\zG}{(f(0,0)+f(\xA,\yA)+f(\xB,\yB))/3}
+
+    \coordinate (G\i) at ({\xG},{\yG},{\zG});
+}
+
+\fill[mylightblue,opacity=0.5] (fO) -- (fF2) -- (fF3) -- cycle;
+
+\foreach \i/\j/\angleA/\angleB in {
+    1/2/13/17,
+    2/3/17/21,
+    3/4/21/5,
+    4/5/5/9,
+    5/1/9/13
+}
+{
+     % Point F_i
+    \pgfmathsetmacro{\xA}{\Rpenta*cos((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\yA}{\Rpenta*sin((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\zA}{f(\xA,\yA)}
+
+    % Point F_j
+    \pgfmathsetmacro{\xB}{\Rpenta*cos((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\yB}{\Rpenta*sin((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\zB}{f(\xB,\yB)}
+
+    % Barycentre euclidien du triangle fO, fF_i, fF_j
+    \pgfmathsetmacro{\xG}{(\xzero+\xA+\xB)/3}
+    \pgfmathsetmacro{\yG}{(\yzero+\yA+\yB)/3}
+    \pgfmathsetmacro{\zG}{(f(0,0)+f(\xA,\yA)+f(\xB,\yB))/3}
+
+    % Projection radiale sur la sphère de centre (xzero,yzero,zzero)
+    \pgfmathsetmacro{\normG}{
+        sqrt((\xG-\xzero)^2 + (\yG-\yzero)^2 + (\zG-\zzero)^2)
+    }
+
+    \pgfmathsetmacro{\xProjG}{\xzero + \Rayon*(\xG-\xzero)/\normG}
+    \pgfmathsetmacro{\yProjG}{\yzero + \Rayon*(\yG-\yzero)/\normG}
+    \pgfmathsetmacro{\zProjG}{\zzero + \Rayon*(\zG-\zzero)/\normG}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \pgfmathsetmacro{\xG}{(\xA+\xB)/3}
+    \pgfmathsetmacro{\yG}{(\yA+\yB)/3}
+    \pgfmathsetmacro{\zG}{(f(0,0)+f(\xA,\yA)+f(\xB,\yB))/3}
+
+    \coordinate (G\i) at ({\xG},{\yG},{\zG});
+
+    % \node[ptcl={red}{}] at (G\i) {};
+    \draw[red,dotted] (fG\i) -- (G\i);
+
+    % Normale radiale unitaire en G_i
+    \pgfmathsetmacro{\nx}{(\xProjG-\xzero)/\Rayon}
+    \pgfmathsetmacro{\ny}{(\yProjG-\yzero)/\Rayon}
+    \pgfmathsetmacro{\nz}{(\zProjG-\zzero)/\Rayon}
+
+    % Première direction tangente : e_theta = (-ny,nx,0)
+    \pgfmathsetmacro{\nt}{sqrt(\nx*\nx+\ny*\ny)}
+    \pgfmathsetmacro{\tx}{-\ny/\nt}
+    \pgfmathsetmacro{\ty}{ \nx/\nt}
+    \pgfmathsetmacro{\tz}{0}
+
+    % Deuxième direction tangente : s = n x t
+    \pgfmathsetmacro{\sx}{-\nz*\ty}
+    \pgfmathsetmacro{\sy}{ \nz*\tx}
+    \pgfmathsetmacro{\sz}{ \nx*\ty-\ny*\tx}
+
+
+    % Équerre dans le plan (n,t)
+    \draw[semithick]
+    (G\i)
+    -- ++({\epsperp*\tx},{\epsperp*\ty},{\epsperp*\tz})
+    -- ++({\epsperp*\nx},{\epsperp*\ny},{\epsperp*\nz})
+    -- ++({-\epsperp*\tx},{-\epsperp*\ty},{-\epsperp*\tz})
+    -- cycle;
+
+    % Équerre dans le plan (n,s)
+    \draw[semithick]
+    (G\i)
+    -- ++({\epsperp*\sx},{\epsperp*\sy},{\epsperp*\sz})
+    -- ++({\epsperp*\nx},{\epsperp*\ny},{\epsperp*\nz})
+    -- ++({-\epsperp*\sx},{-\epsperp*\sy},{-\epsperp*\sz})
+    -- cycle;
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    % \draw[myorange] (fO) -- (G\i) -- (fF\i);
+    % \draw[myorange] (G\i) -- (fF\j);
+}
+
+% \ruledsurface{fO}{fG2}{fF3}{fG3}
+    
+\draw[myblue] (fF1) -- (fF2) -- (fF3) -- (fF4) -- (fF5) -- cycle;
+
+\foreach \i in {1,...,5} {
+    \draw[myblue] (fO) -- (fF\i);
+}
+
+\foreach \i/\j in {
+    1/2/,
+    2/3/,
+    3/4/,
+    4/5/,
+    5/1/
+}{
+    \draw[mygreen] (fO) -- (fG\i) -- (fF\i);
+    \draw[mygreen] (fG\i) -- (fF\j);
+}
+
+\pgfmathtruncatemacro{\N}{2*\Rdomaine/\eps}
+
+\foreach \k in {0,...,\N}
+{
+   \pgfmathsetmacro{\a}{-\Rdomaine+\k*\eps}
+   
+   \draw[thin,gray,opacity=0.5]
+   plot[variable=\b,domain={-sqrt(\Rdomaine^2-\a*\a)}:{sqrt(\Rdomaine^2-\a*\a)}]
+   ({\a},{\b},{f(\a,\b)});
+
+   \draw[thin,gray,opacity=0.5]
+   plot[variable=\b,domain={-sqrt(\Rdomaine^2-\a*\a)}:{sqrt(\Rdomaine^2-\a*\a)}]
+   ({\b},{\a},{f(\b,\a)});
+}
+
+
+\node[ptsq={myblue}{}] at (fO) {};
+
+\foreach \i in {1,2,3,4,5}
+{
+    \node[ptsq={myblue}{}] at (fF\i) {};
+}
+
+\node[myblue,above=8pt] at (fG2) {\contour{mylightblue!50!white}{$\primal{K}$}};
+\node[myred, below=6pt] at (fG2) {\contour{mylightblue!50!white}{$x_{\primal{K}}$}};
+\node[myblue, above=6pt] at (fO) {\contour{white}{$x_{\dual{K}}$}};
+\node[myblue] at ($(fO)!0.5!(fF2)$) {\contour{white}{$\sigma$}};
+
+\CrossPointsFrom{fF1}{fF1v}{fF1}{fO}{fG5}{fG1}{1.5}
+\CrossPointsFrom{fO}{fOv}{fF1}{fO}{fG5}{fG1}{1.5}
+\CrossPointsFrom{fG5}{fG5v}{fF1}{fO}{fG5}{fG1}{1.5}
+\CrossPointsFrom{fG1}{fG1v}{fF1}{fO}{fG5}{fG1}{1.5}
+
+\MidPointXYZ{fF1G1}{fF1}{fG1}
+\MidPointXYZ{fOG1}{fO}{fG1}
+\MidPointXYZ{fOG5}{fO}{fG5}
+\MidPointXYZ{fF1G5}{fF1}{fG5}
+
+% \node[ptsq={black}{}] at (fF1G1) {};
+% \node[ptsq={black}{}] at (fOG1) {};
+% \node[ptsq={black}{}] at (fOG5) {};
+% \node[ptsq={black}{}] at (fF1G5) {};
+
+\LinePlaneIntersection{I}{fF1}{fF1v}{fF1G5}{fOG5}{fOG1}
+\LinePlaneIntersection{J}{fO}{fOv}{fF1G5}{fOG5}{fOG1}
+\LinePlaneIntersection{K}{fG5}{fG5v}{fF1G5}{fOG5}{fOG1}
+\LinePlaneIntersection{L}{fG1}{fG1v}{fF1G5}{fOG5}{fOG1}
+
+\draw[maillediamantint, opacity=0.8, thin] (J) -- (K) -- (I) -- (L) -- cycle;
+
+\draw[mygreen] (fOG1) -- (fG1);
+\draw[mygreen] (fF1G1) -- (fG1);
+\draw[mygreen] (fOG5) -- (fG5);
+\draw[mygreen] (fF1G5) -- (fG5);
+
+\node[mygreen] at ($(K)!0.5!(L)$) {\contour{mylightgreen!80!white}{$\diamant{D}$}};
+
+\foreach \i in {1,2,3,4,5}
+{
+    \node[ptcl={red}{}] at (fG\i) {};
+}
+\end{scope}
+
+\begin{scope}[
+    tdplot_main_coords,
+    shift={(-1.5cm,-0.8cm)}
+]
+    \def\laxe{0.5pt}
+
+    \coordinate (Oaxis) at (0,0,0);  
+    
+    % ($(O)+(-1cm,-1cm)$);
+
+    \draw[->] (Oaxis) -- ++(\laxe,0,0);
+    \draw[->] (Oaxis) -- ++(0,\laxe,0);
+    \draw[->] (Oaxis) -- ++(0,0,\laxe);
+
+    \node[right=10pt] at (Oaxis) {$\R^3$};
+\end{scope}
+
+\node at ($(mainP.center)+(-50:1.2)$) {\contour{white}{$\variete{M}$}};
+\node[myblue] at ($(mainP.center)+(135:1.8)$) {$\ensprimal$};

@@ -1,0 +1,54 @@
+\documentclass[
+twoside,
+10pt
+]{book}
+
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+
+\usepackage[book]{aw}
+
+\addbibresource{../biblio/PFE.bib}
+
+\input{notations.tex}
+
+\newcommand{\areprendre}[1]{{\color{gray}#1}}
+
+
+\DeclareFontFamily{OMS}{oldcmsy}{}
+\DeclareFontShape{OMS}{oldcmsy}{m}{n}{<-> cmsyold}{}
+\DeclareMathAlphabet{\oldmathcal}{OMS}{oldcmsy}{m}{n}
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhead{}\fancyfoot{}
+\fancyhead[RE]{\textit{\textbf{\nouppercase{\leftmark}}}}
+\fancyhead[LO]{\textbf{\nouppercase{\rightmark}}}
+\fancyhead[RO]{\thepage}
+\fancyhead[LE]{\thepage}
+
+\fancyfoot[C]{{\color{black}Armand \nompropre{Wayoff} -- Centre Borelli, ENS Paris-Saclay} \\ {\color{myred}\textbf{Rapport non-confidentiel et publiable sur Internet}}}
+\frontmatter
+
+\input{frontmatter/frontmatter.tex}
+
+\mainmatter
+
+% \input{introgenerale.tex}
+
+\part{Introduction}
+
+% \input{chapitres/chapitre1.tex}
+
+\input{chapitres/chapitre2.tex}
+
+% \input{chapitres/chapitre3.tex}
+
+% \input{chapitres/chapitre4.tex}
+
+% \input{chapitres/chapitre5.tex}
+
+\input{backmatter/backmatter.tex}
+
+\end{document}

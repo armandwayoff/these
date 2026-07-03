@@ -1,0 +1,113 @@
+%--------------------------------------------------
+% 1. Projection plane du maillage
+%--------------------------------------------------
+
+% Sommets de la projection polaire
+\foreach \i in {0,...,\Ntheta} {
+  \pgfmathsetmacro{\r}{\i/\Ntheta}
+
+  \foreach \j in {0,...,\numexpr\Nphi-1\relax} {
+    \pgfmathsetmacro{\phi}{360*\j/\Nphi}
+
+    \coordinate (P-\i-\j)
+      at ({\r*cos(\phi)}, {\r*sin(\phi)});
+  }
+}
+
+% Triangles du maillage
+\foreach \i in {0,...,\numexpr\Ntheta-1\relax} {
+  \foreach \j in {0,...,\numexpr\Nphi-1\relax} {
+
+    \pgfmathtruncatemacro{\ip}{\i+1}
+    \pgfmathtruncatemacro{\jp}{mod(\j+1,\Nphi)}
+
+    % Triangle 1
+    \drawplanartrianglegraphe
+      {\i}{\j}
+      {\ip}{\j}
+      {\ip}{\jp}
+      {(P-\i-\j)}
+      {(P-\ip-\j)}
+      {(P-\ip-\jp)}
+
+    % Triangle 2
+    \drawplanartrianglegraphe
+      {\i}{\j}
+      {\ip}{\jp}
+      {\i}{\jp}
+      {(P-\i-\j)}
+      {(P-\ip-\jp)}
+      {(P-\i-\jp)}
+  }
+}
+
+\foreach \j in {0,...,\numexpr\Nphi-1\relax} {
+\foreach \i in {1,...,\numexpr\Ntheta-1\relax} {
+
+    \pgfmathtruncatemacro{\ip}{\i+1}
+    \pgfmathtruncatemacro{\jp}{mod(\j+1,\Nphi)}
+
+    \coordinate (C-\i-\j-a) at ($
+      1/3*(P-\i-\j)
+      + 1/3*(P-\ip-\j)
+      + 1/3*(P-\ip-\jp)
+    $);
+
+    \coordinate (C-\i-\j-b) at ($
+      1/3*(P-\i-\j)
+      + 1/3*(P-\ip-\jp)
+      + 1/3*(P-\i-\jp)
+    $);
+
+    \node[ptcl={myred}{}] at (C-\i-\j-a) {};
+    \node[ptcl={myred}{}] at (C-\i-\j-b) {};
+}
+
+  \pgfmathtruncatemacro{\ip}{1}
+  \pgfmathtruncatemacro{\jp}{mod(\j+1,\Nphi)}
+
+  \coordinate (C-0-\j-a) at ($
+    1/3*(P-0-\j)
+    + 1/3*(P-\ip-\j)
+    + 1/3*(P-\ip-\jp)
+  $);
+
+  \coordinate (C-0-\j-b) at (C-0-\j-a);
+  \node[ptcl={myred}{}] at (C-0-\j-a) {};
+}
+
+\foreach \j in {1,...,\numexpr\Nphi-1\relax} {
+\foreach \i in {0,...,\numexpr\Ntheta-2\relax} {
+
+  \pgfmathtruncatemacro{\ip}{\i+1}
+  \pgfmathtruncatemacro{\jp}{mod(\j-1,\Nphi)}
+
+  \draw[myred] (C-\i-\j-a) -- (C-\i-\j-b);
+  \draw[myred] (C-\i-\j-a) -- (C-\ip-\j-b);
+  \draw[myred] (C-\i-\j-a) -- (C-\i-\jp-b);
+
+}
+}
+
+\foreach \i in {0,...,\numexpr\Ntheta-2\relax} {
+
+  \pgfmathtruncatemacro{\ip}{\i+1}
+  \pgfmathtruncatemacro{\jp}{\Nphi-1}
+
+  \draw[myred] (C-\i-0-a) -- (C-\i-0-b);
+  \draw[myred] (C-\i-0-a) -- (C-\ip-0-b);
+  \draw[myred] (C-\i-0-a) -- (C-\i-\jp-b);
+
+}
+
+
+\foreach \j in {0,...,\numexpr\Nphi-1\relax} {
+
+  \pgfmathtruncatemacro{\ip}{\Ntheta-1}
+  \pgfmathtruncatemacro{\jp}{mod(\j+1,\Nphi)}
+
+  \draw[myred] (C-\ip-\j-a) -- (C-\ip-\j-b);
+  \draw[myred] (C-\ip-\j-b) -- (C-\ip-\jp-a);
+
+  \node[ptcl={myred}{}] at (C-\ip-\j-a) {};
+}

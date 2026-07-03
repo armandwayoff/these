@@ -1,0 +1,92 @@
+%--------------------------------------------------
+% 3. Demi-sphère lisse avec triangles courbes sélectionnés
+%--------------------------------------------------
+
+% Demi-sphère lisse
+\pgfmathsetmacro{\phivec}{0}
+
+\tdplotsetthetaplanecoords{\phivec}
+
+% \draw[dashed, tdplot_rotated_coords] (\R,0,0) arc (0:90:\R);
+% \draw[dashed] (\R,0,0) arc (0:360:\R);
+
+
+\shade[
+  ball color=gray!10!white
+]
+  (-1cm,0)
+  % arc (0:-180:1cm and 5mm)
+  arc (180:0:1cm and 1cm)
+  arc (-180:0:-1cm and 1cm);
+
+
+% Bord équatorial
+% \draw[thick] plot[domain=0:360, samples=120] ({\R*cos(\x)}, {\R*sin(\x)}, 0);
+
+% Triangles courbes sélectionnés
+\foreach \i in {0,...,\numexpr\Ntheta-1\relax} {
+  \foreach \j in {0,...,\numexpr\Nphi-1\relax} {
+
+    \pgfmathtruncatemacro{\ip}{\i+1}
+    \pgfmathtruncatemacro{\jp}{\j+1}
+
+    \pgfmathsetmacro{\thetaA}{180*\i/\Ntheta}
+    \pgfmathsetmacro{\thetaB}{180*\ip/\Ntheta}
+    \pgfmathsetmacro{\phiA}{360*\j/\Nphi}
+    \pgfmathsetmacro{\phiB}{360*\jp/\Nphi}
+
+    %-------------------------------
+    % Triangle courbe 1
+    % Sommets : (i,j), (ip,j), (ip,jp)
+    %-------------------------------
+    \testselectedtriangle{\i}{\j}{\ip}{\j}{\ip}{\jp}
+
+    \ifselectedtriangle
+      \fill[mailleprimale]
+        plot[domain=\thetaA:\thetaB, samples=20]
+          ({\R*sin(\x)*cos(\phiA)},
+           {\R*sin(\x)*sin(\phiA)},
+           {\R*cos(\x)})
+        --
+        plot[domain=\phiA:\phiB, samples=20]
+          ({\R*sin(\thetaB)*cos(\x)},
+           {\R*sin(\thetaB)*sin(\x)},
+           {\R*cos(\thetaB)})
+        --
+        plot[variable=\t, domain=0:1, samples=30]
+          ({\R*sin((1-\t)*\thetaB+\t*\thetaA)
+               *cos((1-\t)*\phiB+\t*\phiA)},
+           {\R*sin((1-\t)*\thetaB+\t*\thetaA)
+               *sin((1-\t)*\phiB+\t*\phiA)},
+           {\R*cos((1-\t)*\thetaB+\t*\thetaA)})
+        -- cycle;
+    \fi
+
+    %-------------------------------
+    % Triangle courbe 2
+    % Sommets : (i,j), (ip,jp), (i,jp)
+    %-------------------------------
+    \testselectedtriangle{\i}{\j}{\ip}{\jp}{\i}{\jp}
+
+    \ifselectedtriangle
+      \fill[mailleprimale]
+        plot[variable=\t, domain=0:1, samples=30]
+          ({\R*sin((1-\t)*\thetaA+\t*\thetaB)
+               *cos((1-\t)*\phiA+\t*\phiB)},
+           {\R*sin((1-\t)*\thetaA+\t*\thetaB)
+               *sin((1-\t)*\phiA+\t*\phiB)},
+           {\R*cos((1-\t)*\thetaA+\t*\thetaB)})
+        --
+        plot[domain=\thetaB:\thetaA, samples=20]
+          ({\R*sin(\x)*cos(\phiB)},
+           {\R*sin(\x)*sin(\phiB)},
+           {\R*cos(\x)})
+        --
+        plot[domain=\phiB:\phiA, samples=20]
+          ({\R*sin(\thetaA)*cos(\x)},
+           {\R*sin(\thetaA)*sin(\x)},
+           {\R*cos(\thetaA)})
+        -- cycle;
+    \fi
+  }
+}

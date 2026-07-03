@@ -1,0 +1,118 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\newcommand{\legendicon}[1]{%
+  \tikz[baseline=-0.1cm]{
+    \draw[#1] (-0.3,-0.2) rectangle (0.3,0.2);
+  }%
+}
+
+\newcommand{\mailleprimalebord}{
+\tikz{
+    \coordinate (M1) at (0,0);
+    \coordinate (M2) at (0.8,0);
+    \coordinate (Mb1) at ($(M1)!0.5!(M2)$);
+
+    \def\eps{1pt}
+    \def\lon{2pt}
+
+    \coordinate (Mq11) at ($(M1)!0.25!(M2) + (-\eps,-\lon)$);
+    \coordinate (Mq12) at ($(M1)!0.25!(M2) + (\eps,\lon)$);
+
+    \coordinate (Mq21) at ($(M1)!0.75!(M2) + (-\eps,-\lon)$);
+    \coordinate (Mq22) at ($(M1)!0.75!(M2) + (\eps,\lon)$);
+
+    \draw[myblue] (M1)--(M2);
+    \node[ptsqbord={myblue}{}] at (M1) {};
+    \node[ptsqbord={myblue}{}] at (M2) {};
+    \node[ptclbord={myred}{}] at (Mb1) {};
+
+    \draw[thin] (Mq11) -- (Mq12);
+    \draw[thin] (Mq21) -- (Mq22);
+}
+}
+
+\begin{tikzpicture}[ddfv]
+
+\node {
+\begin{tblr}{
+    colspec = {Q[c,m] Q[l,m] c l},
+    rowsep = 0pt,
+    colsep = 2pt,
+    % hlines,
+    % vlines,
+    column{2} = {rightsep=10pt},
+}
+
+\legendicon{mailleprimale}
+&
+\textcolor{myblue}{$\ensprimal$}
+&
+\tikz{
+    \node[ptcl={myred}{}] at (0,0) {};
+}
+&
+Sommet $x_\primal{K}$ intérieur
+\\
+
+\mailleprimalebord
+&
+\textcolor{myblue}{$\ensprimalbord$}
+&
+\tikz{
+    \node[ptclbord={myred}{}] at (0,0) {};
+}
+&
+Sommet $x_\primal{K}$ sur le bord 
+\\
+
+\legendicon{mailledualeint}
+&
+\textcolor{myred}{$\ensdual$}
+&
+\tikz{
+    \node[ptsq={myblue}{}] at (0,0) {};
+}
+&
+Sommet $x_\dual{K}$ intérieur
+\\
+
+
+\legendicon{mailledualebord} 
+&
+\textcolor{myred}{$\ensdualbord$}
+&
+\tikz{
+    \node[ptsqbord={myblue}{}] at (0,0) {};
+}
+&
+Sommet $x_\dual{K}$ sur le bord
+\\
+
+\legendicon{maillediamantint} 
+& 
+\textcolor{mygreen}{$\ensdiamant$} 
+& 
+\phantom{
+\tikz{
+    \node[ptclbord={myred}{}] at (0,0) {};
+}
+}
+& 
+\\
+
+\legendicon{maillediamantbord} 
+& 
+\textcolor{mygreen}{$\ensdiamantbord$} 
+& 
+\phantom{
+\tikz{
+    \node[ptclbord={myred}{}] at (0,0) {};
+}
+}
+&
+\\
+
+\end{tblr}
+};
+
+\end{tikzpicture}

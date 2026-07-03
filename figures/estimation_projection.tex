@@ -1,0 +1,73 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\begin{tikzpicture}[
+  ddfv,
+  scale=6
+]
+
+\def\largeur{3}
+\def\xL{1}
+
+\def\f(#1){0.2*sin(pi*#1 r)}
+\def\fp(#1){0.2*pi*cos(pi*#1 r)}
+
+% \def\f(#1){0.2*sin(pi*#1^3 r)}
+% \def\fp(#1){0.2*3*pi*#1^2*cos(pi*#1^3 r)}
+
+\draw[myblue] (0.5,0.2) -- (0.5,{\f(\xL)+0.2}) node[midway, above] {$\projvariete \primal{K}$};
+\draw[myblue] (0,0) -- (\xL,{\f(\xL)}) node[midway, below] {$\primal{K}$};
+
+\draw plot[domain=-0.1:{\xL+0.1},samples=20,smooth] ({\x},{\f(\x)}) node[above right] {$\variete{M}$};
+
+\node[ptsq={myblue}{}] at (0,0) {};
+\node[ptsq={myblue}{}] at (\xL,{\f(\xL)}) {};
+
+\foreach \ta in {0.1,0.2,...,0.9}
+{
+\pgfmathsetmacro{\ya}{\f(\ta)}
+\pgfmathsetmacro{\slopea}{\fp(\ta)}
+\pgfmathsetmacro{\txa}{1/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\tya}{\slopea/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\nxa}{-\slopea/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\nya}{1/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\xx}{\ta-\ya*\nxa/\nya}
+
+\coordinate (P) at (\ta,\ya);
+
+\draw[semithick] (P) -- (\xx, 0);
+
+\def\eps{0.01}
+
+\draw[semithick]
+  (P)
+  --
+  ($(P)!\eps cm!({\ta+\txa},{\ya+\tya})$)
+  --
+  ($($(P)!\eps cm!({\ta+\txa},{\ya+\tya})$)!\eps cm!90:(P)$)
+  --
+  ($(P)!\eps cm!-90:({\ta+\txa},{\ya+\tya})$)
+  --
+  cycle;
+}
+
+
+\def\ta{0.3}
+
+\pgfmathsetmacro{\ya}{\f(\ta)}
+\pgfmathsetmacro{\slopea}{\fp(\ta)}
+\pgfmathsetmacro{\txa}{1/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\tya}{\slopea/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\nxa}{-\slopea/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\nya}{1/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\xx}{\ta-\ya*\nxa/\nya}
+
+\coordinate (P) at (\ta,\ya);
+
+\draw[myblue] plot[domain=0:\xL,samples=20,smooth] ({\x},{\f(\x)});
+
+\draw[myred] (P) -- (\xx, 0);
+\node[ptcl={myred}{above:{$\projvariete(x)$}}] at (P) {};
+\node[ptcl={myred}{below:{$x$}}] at (\xx, 0) {};
+
+
+\end{tikzpicture}

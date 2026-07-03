@@ -1,0 +1,37 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        axis equal image,
+        scale=2,
+        view={70}{22},
+    ]
+
+    \addplot3[
+        patch,
+        patch type=triangle,
+        opacity=1,
+        fill=white,
+        faceted color=blue,
+        line width=0.6pt,
+    ] table[x, y, z] {data/faces3D_tore_complet.dat};
+
+
+    \addplot3[
+        no markers,
+        thick,
+        myred
+    ] table[x index=0, y index=1, z index=2] {figures/maillage_tore_dual_polyedrique_avant.dat};
+
+    \addplot3[
+        no markers,
+        thick,
+        myred
+    ] table[x index=0, y index=1, z index=2] {figures/maillage_tore_dual_polyedrique_avant.dat};
+
+    % \addplot3[
+    %     no markers,
+    %     thick,
+    %     black
+    % ] table[x index=0, y index=1, z index=2] {figures/maillage_tore_arcs_avant.dat};
+
+    \end{axis}
+\end{tikzpicture}

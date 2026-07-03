@@ -1,0 +1,43 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\begin{tikzpicture}[ddfv]
+
+\input{figures/ddfv_coord.tex}
+
+\draw[mailleprimale] (M1) -- (M5) -- (M19) -- (M13) -- (M14) -- (M18) -- (M16) -- (M12) -- (M8) -- (M4) -- (M3) -- (M17) -- cycle;
+
+\foreach \i in {2,6,7,9,10,11,15} {
+   % \node[ptsq={myblue}{above:{\i}}] at (M\i) {};
+   \node[ptsq={myblue}{}] at (M\i) {};
+}
+
+\foreach \i in {1,3,4,5,8,12,13,14,16,17,18,19} {
+   % \node[ptsqbord={myblue}{above:{\i}}] at (M\i) {};
+   \node[ptsqbord={myblue}{}] at (M\i) {};
+}
+
+\foreach \i in {1,...,21} {
+    % \node[ptcl={myred}{above:{\i}}] at (Me\i) {};
+    \node[ptcl={myred}{}] at (Me\i) {};
+}
+
+\node[myred, below] at (Me12) {$x_\primal{K}$};
+\node[myred, above] at (Me9) {$x_\primal{L}$};
+
+\node[myblue, shift={(0pt,13pt)}] at (Me12) {$\primal{K}$};
+\node[myblue, shift={(13pt,-5pt)}] at (Me9) {$\primal{L}$};
+
+\draw[myblue] (M1) -- (M2) -- (M3) -- (M4) -- (M8) -- (M12) -- (M16) -- (M15) -- (M14) -- (M13) -- (M9) -- (M5) -- (M1) -- (M17) -- (M3) -- (M7) -- (M11);
+\draw[myblue] (M1) -- (M6) -- (M9) -- (M14) -- (M10) -- (M11) -- (M15) -- (M18);
+\draw[myblue] (M11) -- (M12) -- (M7) -- (M6)  -- (M10) -- (M9) -- (M19);
+\draw[myblue] (M2) -- (M6) -- (M5) -- (M19) -- (M13);
+\draw[myblue] (M11) -- (M16) -- (M18) -- (M14);
+\draw[myblue] (M10) -- (M7) -- (M2);
+\draw[myblue] (M4) -- (M7);
+
+\foreach \i in {1,...,12} {
+    % \node[ptcl={myred}{above:{\i}}] at (Mb\i) {};
+    \node[ptclbord={myred}{}] at (Mb\i) {};
+}
+
+\end{tikzpicture}

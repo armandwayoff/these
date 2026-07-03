@@ -1,0 +1,88 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\begin{tikzpicture}[
+  ddfv,
+  scale=3,
+]
+
+\def\a{0.2}
+
+\coordinate (xke) at (0,0.5);
+\coordinate (xle) at (0,-0.5);
+\coordinate (xk) at (-0.35,-0.25);
+\coordinate (xl) at (0.35,0.05);
+
+\draw[myblue] (xke) -- ++(\a,0);
+\draw[myblue] (xke) -- ++(-\a,0);
+\draw[myblue] (xke) -- ++(0,\a);
+\draw[myblue] (xke) -- ++(45:\a);
+\draw[myblue] (xke) -- ++(-135:\a);
+
+\draw[myblue] (xle) -- ++(\a,0);
+\draw[myblue] (xle) -- ++(-\a,0);
+\draw[myblue] (xle) -- ++(0,-\a);
+\draw[myblue] (xle) -- ++(45:\a);
+\draw[myblue] (xle) -- ++(-135:\a);
+
+\draw[myred] (xk) -- ++({deg(atan(3/7))}:\a);
+\draw[myred] (xk) -- ++(135:\a);
+
+\draw[myred] (xl) -- ++({deg(atan(3/7)+pi)}:\a);
+\draw[myred] (xl) -- ++(-45:\a);
+
+\fill[white, opacity=0.8] (-0.5,{-0.51-\a}) rectangle (0.5,{0.51+\a});
+
+\draw[maillediamantint] (xke) -- (xk) -- (xle) -- (xl) -- cycle;
+
+\node[ptsq={myblue}{above:{\contour{white}{$x_{\dual{K}}$}}}] at (xke) {};
+
+\node[ptsq={myblue}{below:{\contour{white}{$x_{\dual{L}}$}}}] at (xle) {};
+
+\node[ptcl={myred}{left:{$x_{\primal{K}}$}}] at (xk) {};
+\node[ptcl={myred}{right:{$x_{\primal{L}}$}}] at (xl) {};
+
+\node[left, mygreen] at ($(xk)!0.5!(xke)$) {$\diamant{D}_{\sigma,\dual{\sigma}}$};
+
+\path[name path=sigma] (xle) -- (xke);
+\path[name path=sigmae] (xk) -- (xl);
+
+\path[name intersections={of=sigma and sigmae, by=I}];
+
+\def\rayonangle{0.08}
+
+\path let
+    \p0 = (I),
+    \p1 = (xke),
+    \p2 = (xl)
+in
+    \pgfextra{
+        \pgfmathsetmacro{\angA}{atan2(-\y1+\y0,\x1-\x0)}
+        \pgfmathsetmacro{\angB}{atan2(\y2-\y0,\x2-\x0)}
+        \global\let\angA\angA
+        \global\let\angB\angB
+    };
+
+\draw[black] ($(I)+(\angA:\rayonangle)$) arc[start angle=\angA,end angle=\angB,radius=\rayonangle];
+% \fill[opacity=0.5] (I) -- ($(I)+(\angA:\rayonangle)$) arc[start angle=\angA,end angle=\angB,radius=\rayonangle] -- cycle;
+
+\node[right] at ($(I)+({0.5*(\angA+\angB)}:\rayonangle)$) {$\alpha_{\diamant{D}}$};
+
+\draw[myblue]
+    (xle) -- (xke)
+    node[pos=0.2, right] {$\sigma$};
+
+\draw[myred]
+    (xk) -- (xl)
+    node[pos=0.7, above] {$\dual{\sigma}$};
+
+\draw[ultra thick, ->] ($(xke)!0.2!(xle)$) -- ++(0,-4pt) node[right] {$\vect{\tau}$};
+\draw[ultra thick, ->] ($(xke)!0.2!(xle)$) -- ++(4pt,0) node[above] {$\vect{\nu}$};
+\draw ($(xke)!0.2!(xle)$) rectangle ++(1pt,-1pt);
+
+\draw[ultra thick, ->] ($(xk)!0.2!(xl)$) -- ($(xk)!0.2!(xl)!4pt!(xl)$) node[above] {$\dual{\vect{\tau}}$};
+\draw[ultra thick, ->] ($(xk)!0.2!(xl)$) -- ($(xk)!0.2!(xl)!4pt!-90:(xl)$) node[right] {$\dual{\vect{\nu}}$};
+
+\coordinate (P) at ($(xk)!0.2!(xl)$);
+\draw (P) -- ($(P)!1pt!(xl)$) -- ($(P)!1pt!(xl)!1pt!-90:(xl)$) -- ($(P)!1pt!-90:(xl)$) -- cycle;
+
+\end{tikzpicture}

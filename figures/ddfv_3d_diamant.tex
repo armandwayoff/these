@@ -1,0 +1,176 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\makeatletter
+
+\newcommand{\PointXYZ}[4]{%
+    \pgfmathsetmacro{\px}{#2}%
+    \pgfmathsetmacro{\py}{#3}%
+    \pgfmathsetmacro{\pz}{#4}%
+    \coordinate (#1) at (\px,\py,\pz);
+    \expandafter\xdef\csname pt@#1@x\endcsname{\px}%
+    \expandafter\xdef\csname pt@#1@y\endcsname{\py}%
+    \expandafter\xdef\csname pt@#1@z\endcsname{\pz}%
+}
+
+\newcommand{\GetX}[1]{\csname pt@#1@x\endcsname}
+\newcommand{\GetY}[1]{\csname pt@#1@y\endcsname}
+\newcommand{\GetZ}[1]{\csname pt@#1@z\endcsname}
+
+\newcommand{\MidPointXYZ}[3]{%
+    \pgfmathsetmacro{\mx}{0.5*(\GetX{#2}+\GetX{#3})}%
+    \pgfmathsetmacro{\my}{0.5*(\GetY{#2}+\GetY{#3})}%
+    \pgfmathsetmacro{\mz}{0.5*(\GetZ{#2}+\GetZ{#3})}%
+    \PointXYZ{#1}{\mx}{\my}{\mz}%
+}
+
+\newcommand{\LinePlaneIntersection}[6]{%
+    \pgfmathsetmacro{\ux}{\GetX{#5}-\GetX{#4}}%
+    \pgfmathsetmacro{\uy}{\GetY{#5}-\GetY{#4}}%
+    \pgfmathsetmacro{\uz}{\GetZ{#5}-\GetZ{#4}}%
+
+    \pgfmathsetmacro{\vx}{\GetX{#6}-\GetX{#4}}%
+    \pgfmathsetmacro{\vy}{\GetY{#6}-\GetY{#4}}%
+    \pgfmathsetmacro{\vz}{\GetZ{#6}-\GetZ{#4}}%
+
+    \pgfmathsetmacro{\nx}{\uy*\vz-\uz*\vy}%
+    \pgfmathsetmacro{\ny}{\uz*\vx-\ux*\vz}%
+    \pgfmathsetmacro{\nz}{\ux*\vy-\uy*\vx}%
+
+    \pgfmathsetmacro{\dx}{\GetX{#3}-\GetX{#2}}%
+    \pgfmathsetmacro{\dy}{\GetY{#3}-\GetY{#2}}%
+    \pgfmathsetmacro{\dz}{\GetZ{#3}-\GetZ{#2}}%
+
+    \pgfmathsetmacro{\den}{\nx*\dx+\ny*\dy+\nz*\dz}%
+    \pgfmathsetmacro{\num}{\nx*(\GetX{#4}-\GetX{#2})+\ny*(\GetY{#4}-\GetY{#2})+\nz*(\GetZ{#4}-\GetZ{#2})}%
+
+    \pgfmathsetmacro{\tt}{\num/\den}%
+
+    \pgfmathsetmacro{\ix}{\GetX{#2}+\tt*\dx}%
+    \pgfmathsetmacro{\iy}{\GetY{#2}+\tt*\dy}%
+    \pgfmathsetmacro{\iz}{\GetZ{#2}+\tt*\dz}%
+
+    \PointXYZ{#1}{\ix}{\iy}{\iz}%
+}
+
+\makeatother
+
+\tdplotsetmaincoords{40}{-105} % élévation, azimut
+
+\begin{tikzpicture}[
+    ddfv,
+    tdplot_main_coords,
+    scale=3.5,
+]
+
+\def\a{0.2}
+
+\PointXYZ{xke}{0}{0.5}{0}
+\PointXYZ{xle}{0}{-0.5}{0}
+\PointXYZ{xk}{-0.25}{0}{0}
+\PointXYZ{xl}{0.25}{0}{0}
+
+\PointXYZ{xkez}{0}{0.5}{0.5} % 0.5
+\PointXYZ{xlez}{0}{-0.5}{0.5} % 1.3
+\PointXYZ{xkz}{-0.25}{0}{1.2} % 1.2
+\PointXYZ{xlz}{0.25}{0}{1.2} % 1.3
+
+\MidPointXYZ{xlezxkz}{xlez}{xkz}
+\MidPointXYZ{xlezxlz}{xlez}{xlz}
+\MidPointXYZ{xkezxkz}{xkez}{xkz}
+\MidPointXYZ{xkezxlz}{xkez}{xlz}
+
+\LinePlaneIntersection{I}{xle}{xlez}{xlezxkz}{xlezxlz}{xkezxlz}
+\LinePlaneIntersection{J}{xl}{xlz}{xlezxkz}{xlezxlz}{xkezxlz}
+\LinePlaneIntersection{K}{xke}{xkez}{xlezxkz}{xlezxlz}{xkezxlz}
+\LinePlaneIntersection{L}{xk}{xkz}{xlezxkz}{xlezxlz}{xkezxlz}
+
+\draw[myblue] (xlez) -- (xkez) node[midway, below] {$\sigma$};
+
+\draw[mygreen] (xlezxkz) -- (xlez);
+\draw[mygreen] (xkezxlz) -- (xkez);
+\draw[mygreen] (xkezxkz) -- (xkez);
+\draw[mygreen] (xlezxlz) -- (xlez);
+
+\draw[dash pattern=on 3pt off 2pt, dash phase=0pt] (xlez) -- (I);
+\draw[dash pattern=on 3pt off 2pt, dash phase=0pt, ->] (I) --++(0,10pt) node[above] {${\color{myblue} \sigma} \times {\color{myred} \dual{\sigma}}$};
+
+\draw[dash pattern=on 3pt off 2pt, dash phase=0pt] (xkez) -- (K);
+
+\draw[maillediamantint, opacity=0.8, ultra thick] (xlezxkz) -- (I) -- (xlezxlz) -- (J) -- (xkezxlz) -- (K) -- (xkezxkz) -- (L) -- cycle;
+
+\draw[dash pattern=on 3pt off 2pt, dash phase=0pt] (J) -- (xlz);
+\draw[dash pattern=on 3pt off 2pt, dash phase=0pt] (L) -- (xkz);
+
+\draw[myblue, dashed] (I) -- (K);
+\draw[myred, dashed] (J) -- (L);
+
+\draw[mygreen] (xlezxkz) -- (xkz);
+\draw[mygreen] (xkezxlz) -- (xlz);
+\draw[mygreen] (xkezxkz) -- (xkz);
+\draw[mygreen] (xlezxlz) -- (xlz);
+
+\draw[dotted] (xlezxkz) -- (xlezxlz) -- (xkezxlz) -- (xkezxkz) -- cycle;
+
+\draw[myred] (xlz) -- (xkz) node[midway, right] {$\dual{\sigma}$};
+
+
+\node[ptsq={black}{}] at (xlezxkz) {};
+\node[ptsq={black}{}] at (xlezxlz) {};
+\node[ptsq={black}{}] at (xkezxkz) {};
+\node[ptsq={black}{}] at (xkezxlz) {};
+
+% \node[ptsq={black}{right:{\contour{white}{$\displaystyle \frac{x_\primal{L}+x_\dual{K}}{2}$}}}] at (xlezxkz) {};
+% \node[ptsq={black}{above:{\contour{white}{$\displaystyle \frac{x_\primal{K}+x_\dual{K}}{2}$}}}] at (xlezxlz) {};
+% \node[ptsq={black}{below:{\contour{white}{$\displaystyle\hspace*{4pt}\frac{x_\primal{L}+x_\dual{L}}{2}$}}}] at (xkezxkz) {};
+% \node[ptsq={black}{left:{\contour{white}{$\displaystyle \frac{x_\primal{K}+x_\dual{L}}{2}$}}}] at (xkezxlz) {};
+
+\node[ptsq={myblue}{right:{\contour{white}{$x_{\dual{K}}$}}}] at (xlez) {};
+\node[ptsq={myblue}{left:{\contour{white}{$x_{\dual{L}}$}}}] at (xkez) {};
+\node[ptcl={myred}{above:{\contour{white}{$x_{\primal{K}}$}}}] at (xlz) {};
+\node[ptcl={myred}{below right:{\contour{mylightgreen!80!white}{$x_{\primal{L}}$}}}] at (xkz) {};
+
+% \node[ptcl={black}{}] at (I) {};
+% \node[ptcl={black}{}] at (J) {};
+% \node[ptcl={black}{}] at (K) {};
+% \node[ptcl={black}{}] at (L) {};
+
+\MidPointXYZ{proj}{J}{L}
+% \node[green] at (proj) {$\diamant{D}_{\sigma,\dual{\sigma}}$};
+\node[above left, mygreen] at (xkezxlz) {$\diamant{D}_{\sigma,\dual{\sigma}}$};
+
+
+\def\eqw{0.8pt}
+
+\coordinate (eqA) at ($(I)!\eqw!(L)$);
+\coordinate (eqB) at ($(I)!-\eqw!(xlez)$);
+\coordinate (eqC) at ($(eqA)+(eqB)-(I)$);
+\coordinate (eqD) at ($(I)!\eqw!(J)$);
+\coordinate (eqE) at ($(eqD)+(eqB)-(I)$);
+
+\draw[semithick] (I) -- (eqA) -- (eqC) -- (eqB) -- cycle;
+\draw[semithick] (I) -- (eqD) -- (eqE) -- (eqB) -- cycle;
+
+\begin{scope}
+    
+\def\eps{-0.5pt}
+\def\lon{0.3pt}
+
+\coordinate (Mq11) at ($(xkez)!0.5!(xkezxkz) + (-\eps,-\lon)$);
+\coordinate (Mq12) at ($(xkez)!0.5!(xkezxkz) + (\eps,\lon)$);
+
+\coordinate (Mq21) at ($(xkezxkz)!0.5!(xkz) + (-\eps,-\lon)$);
+\coordinate (Mq22) at ($(xkezxkz)!0.5!(xkz) + (\eps,\lon)$);
+
+\begin{scope}[transform canvas={yshift=0.05cm}]
+    \draw (Mq11) -- (Mq12);
+    \draw (Mq21) -- (Mq22);
+\end{scope}
+
+\begin{scope}[transform canvas={yshift=-0.05cm}]
+    \draw (Mq11) -- (Mq12);
+    \draw (Mq21) -- (Mq22);
+\end{scope}
+
+\end{scope}
+
+\end{tikzpicture}

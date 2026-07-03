@@ -1,0 +1,75 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\begin{tikzpicture}[
+  ddfv
+]
+
+\def\largeur{3}
+\def\ta{2.4}
+
+% Courbe centrale
+\def\f(#1){0.35*sin(1.0*#1 r)-0.15*#1}
+\def\fp(#1){0.35*cos(1.0*#1 r)-0.15}
+
+\draw[
+  line width=\largeur cm,
+  line cap=butt,
+  line join=round,
+  draw=mylightblue
+]
+plot[domain=0:6,samples=20,smooth] ({\x},{\f(\x)});
+
+\draw plot[domain=0:6,samples=20,smooth] ({\x},{\f(\x)});
+
+% Point a(x)
+\pgfmathsetmacro{\ya}{\f(\ta)}
+\pgfmathsetmacro{\slopea}{\fp(\ta)}
+\pgfmathsetmacro{\nxa}{-\slopea/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\nya}{1/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\txa}{1/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\tya}{\slopea/sqrt(1+\slopea^2)}
+
+\pgfmathsetmacro{\dist}{0.6}
+\pgfmathsetmacro{\xx}{\ta+\dist*\nxa}
+\pgfmathsetmacro{\yx}{\ya+\dist*\nya}
+
+\coordinate (P) at (\ta,\ya);
+
+\draw[->, semithick] (P) -- ({\ta+1.2*\nxa},{\ya+1.2*\nya}) node[right] {$\nu(\projvariete(x))$};
+
+\def\eps{0.1}
+\draw[semithick]
+  (P)
+  --
+  ($(P)!-\eps cm!({\ta+\txa},{\ya+\tya})$)
+  --
+  ($($(P)!-\eps cm!({\ta+\txa},{\ya+\tya})$)!\eps cm!90:(P)$)
+  --
+  ($(P)!\eps cm!90:({\ta+\txa},{\ya+\tya})$)
+  --
+  cycle;
+
+\node[ptcl={black}{below:$\projvariete(x)$}] at (P) {};
+\node[ptcl={black}{left:$x$}] at (\xx,\yx) {};
+
+\draw[myred, thick, <->] (P) -- (\xx,\yx) node[midway, right] {$d(x)$};
+
+\pgfmathsetmacro{\yO}{\f(0)}
+\pgfmathsetmacro{\slopeO}{\fp(0)}
+\pgfmathsetmacro{\nxO}{-\slopeO/sqrt(1+\slopeO^2)}
+\pgfmathsetmacro{\nyO}{1/sqrt(1+\slopeO^2)}
+
+\pgfmathsetmacro{\distd}{\largeur/3}
+
+\pgfmathsetmacro{\xd}{\distd*\nxO}
+\pgfmathsetmacro{\yd}{\yO+\distd*\nyO}
+\pgfmathsetmacro{\xdb}{-\distd*\nxO}
+\pgfmathsetmacro{\ydb}{\yO-\distd*\nyO}
+
+\draw[<->, semithick] (0,\yO) -- (\xd,\yd) node[midway, left] {$\delta$};
+\draw[<->, semithick] (0,\yO) -- (\xdb,\ydb) node[midway, left] {$\delta$};
+
+\node[myblue, above=10pt] at (1,{\f(1)}) {$U_\delta$};
+\node[below] at (5.5,{\f(5.5)}) {$\variete{M}$};
+
+\end{tikzpicture}

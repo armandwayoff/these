@@ -1,0 +1,459 @@
+\section{Generalization of the \ddfv method to 2D surfaces in $\R^3$ {\cite{tomek_discrete_2016, tomek_discrete_2019} \cite[Sec. 2.1]{andreianov_discrete_2007}}}
+
+\begin{envide}[Construction maillages]
+\begin{enumerate}
+    \item Soit une surface $\variete{M}$
+    \item On place des points sur la surface $\variete{M}$
+    \item On en déduit un complexe sur la variété
+    \item Ce complexe définit le maillage primal, courbe et polyédrique
+    \item On calcule les barycentres des mailles primales plates
+    \item On projette ces barycentres sur la surface $\variete{M}$
+    \item Construction des mailles duales (barycentriques):
+    \item Projection du milieu des arêtes primales sur $\variete{M}$
+    \item Arcs passant par les milieux projetés
+    \item Les mailles duales sont approchées par $2m$ facettes
+\end{enumerate}    
+\end{envide}
+
+\noindent Let $\fonctionens[\varphi]{M}{\R^3}$ be a smooth embedding of a $2$-dimensional compact (boundaryless) manifold $M$ in Euclidean space. 
+
+\subsection{Primal mesh}
+
+The construction of a mesh for \ddfv method is based on the triangular mesh used in cotangent scheme \cite{meyer_discrete_2003}. It considers a triangulation $\complexe{M}$ of the manifold $M$, which is a simplical complex homeomorphic to $M$. Corresponding homeomorphism $\fonctionens[\rho]{\complexe{M}}{M}$ induces a triangular structure on $M$ consisting of vertices $\chi = \rho(\complexe{x})$, edges $\varsigma$ and triangles $K$, where $\complexe{x}$ are the vertices of the triangulation $\complexe{M}$. The surface $\variete{M} \defeq \varphi(M)$ is also endowed with a triangular structure induced by the map $\varphi \circ \rho$ (\ref{fig:ddfv_3d}, bottom right).
+
+\begin{figure}[p]
+    \centering
+    \input{figures/ddfv_3d.tex}
+    \caption{Triangulated surface from the point of view of the differential geometry}
+    \label{fig:ddfv_3d}
+\end{figure}
+
+An approximation of $\variete{M}$ is defined using a new embedding $\fonctionens[\overline{\varphi}]{M}{\R^3}$ which is linear on each triangle $K \in M$. The surface $\variete{M}_h \defeq \overline{\varphi}(M)$ is a polyhedral approximation of $\variete{M}$ (\ref{fig:ddfv_3d}, bottom left) with vertices $x \defeq \varphi(\chi) = \overline{\varphi}(\chi)$, edges $\sigma = \overline{\varphi}(\varsigma)$ and triangular faces $\primal{K} = \overline{\varphi}(K)$. The \defini{primal mesh} $\ensprimal$ is the set of disjoint polygonal control volumes $\primal{K}$. 
+
+We create a representative point $x_{\primal{K}}$  of each triangle $\primal{K} \in \ensprimal$ (\ref{fig:ddfv_3d}, bottom left). The point $x_{\primal{K}}$ does not need to lie in the triangle, only its projection to the hyperplane containing the triangle $\primal{K}$ does. We call $\enssomprim$ this family of points and let $\enssomdual$ denote the set of vertices of the mesh $\ensprimal$. For all adjacent control volumes $\primal{K}$ and $\primal{L}$, we assume that $\partial \primal{K} \cap \partial \primal{L}$ is a segment that we call \defini{an edge of the mesh} $\ensprimal$ and that we denote by $\sigma = \arete{\primal{K}}{\primal{L}}$. Let $\ensareteprim$ be the set of such edges. For all adjacent control volumes $\primal{K}$ and $\primal{L}$, we denote by $\dual{\sigma} = \segment{x_{\primal{K}}}{x_{\primal{L}}}$ the segment joining their representative points. Let $\ensaretedual$ be the set of such segments. 
+
+\subsection{Diamond set}
+
+Next, we construct a diamond set as follows. We consider a couple $(\sigma, \dual{\sigma}) \in \ensareteprim \times \ensaretedual$ such that $\sigma = \arete{\primal{K}}{\primal{L}}$ and $\dual{\sigma} = \segment{x_{\primal{K}}}{x_{\primal{L}}}$. We denote by $x_{\dual{K}}$ and $x_{\dual{L}}$ the endpoints of the edge $\sigma$. We consider the plane $P_{\sigma, \dual{\sigma}}$ passing through the midpoints of the segments $\segment{x_{\primal{K}}}{x_{\dual{K}}}$, $\segment{x_{\primal{K}}}{x_{\dual{L}}}$, $\segment{x_{\primal{L}}}{x_{\dual{L}}}$ and $\segment{x_{\primal{L}}}{x_{\dual{K}}}$ (\ref{fig:ddfv_3d_diamant} sketched in black). We then define the quadrilateral diamond cell $\diamant{D}_{\sigma, \dual{\sigma}}$ whose vertices are the projections of the points $x_{\primal{K}}$, $x_{\primal{L}}$, $x_{\dual{K}}$ and $x_{\dual{L}}$ onto the plane $P_{\sigma, \dual{\sigma}}$ in the direction of the vector $\sigma \times \dual{\sigma}$ (\ref{fig:ddfv_3d_diamant}). By abuse of notation, we still denote by $\sigma$ and $\dual{\sigma}$ the diagonals of the diamond cell $\diamant{D}_{\sigma, \dual{\sigma}}$, as shown on \ref{fig:diamant_int}. A diamond is also illustrated on \ref{fig:ddfv_3d}, bottom left. Notice that the diamond cells are the union of two disjoint triangles and can be non convex. The set of diamond cells is denoted by $\ensdiamant$. Our diamond set is a generalization of 2D planar diamond set used in \ddfv method developed in \cite{domelevo_finite_2005} to 2D surfaces in $\R^3$. 
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[c]{.5\textwidth}
+    \centering
+    \input{figures/ddfv_3d_diamant.tex}
+    \caption{Construction of a diamond}
+    \label{fig:ddfv_3d_diamant}
+\end{subfigure}%
+\begin{subfigure}[c]{.5\textwidth}
+    \centering
+    \input{figures/diamant_int.tex}
+    \caption{A diamond and its notations}
+    \label{fig:diamant_int}
+\end{subfigure}
+\caption{Diamond}
+\end{figure}
+
+\begin{remarque}
+    The plane $P_{\sigma, \dual{\sigma}}$ approximates the tangent plane to the surface $\variete{M}$ at \textbf{?}.
+\end{remarque}
+
+\begin{remarque}
+    As shown on \ref{fig:diamants_voisins}, the set of diamond cells $\ensdiamant$ does not constitute a mesh of the polyhedral surface $\variete{M}_h$.
+\end{remarque}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/diamants_voisins.png}
+    \caption{Adjacent diamonds}
+    \label{fig:diamants_voisins}
+\end{figure}
+
+\begin{prop}
+\[
+\mesure(\diamant{D}) = \frac{1}{2} \norme{\sigma \times \dual{\sigma}}.
+\]
+\[
+\mesure(\diamant{D}) = \frac{1}{2} \, \mesure(\sigma) \, \mesure(\dual{\sigma}) \sin(\alpha_{\diamant{D}})
+\]
+\end{prop}
+
+\subsubsection{Bented diamond}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/diamants_plies.png}
+    \caption{A bented diamond}
+\end{figure}
+
+\cite{krell_schemas_2010} À chaque diamant $\diamant{D} \in \ensdiamant$, on associe des demi-diamants de la manière suivante : $\widetilde{\diamant{D}}_p \defeq \diamant{D} \cap p$ tel que $p \cap \diamant{D} \not= \varnothing$ pour $p \in \{ \primal{K}, \primal{L} \}$. On a $\diamant{D} = \widetilde{\diamant{D}}_{\primal{K}} \cup \widetilde{\diamant{D}}_{\primal{L}}$. L'ensemble des demi-diamants est noté $\ensdemidiamant$. Pour chaque diamant $\diamant{D} \in \ensdiamant$, on définit un sous-ensemble de demi-diamant de $\diamant{D}$ : $\ensdemidiamant_{\diamant{D}} = \ens[\big]{\widetilde{\diamant{D}} \in \ensdemidiamant \tq \widetilde{\diamant{D}} \subset \diamant{D}}$. 
+
+\begin{defi}[Pseudo-indicatrice sur les diamants] \label{defi:pseudo_indicatrice_sur_les_diamants}
+    Soit $\diamant{D} \in \ensdiamant$. Soit $\mathbb{P}$ la projection de $\ensdemidiamant_{\diamant{D}}$ sur $\variete{M}_h$. On définit la fonction
+    \[
+    \fonction[\bm{\chi}_{\diamant{D}}]{\ensdiamant}{\{0,1\}}{x}{\indicatrice_{\mathbb{P} \ensdemidiamant_{\diamant{D}}}(\mathbb{P}x)}.
+    \]
+\end{defi}
+
+\subsection{Dual mesh}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/dual_3D.png}
+    \caption{Dual cell}
+\end{figure}
+
+\areprendre{
+The vertices $x_{\dual{K}}$ and $x_{\primal{K}}$ will be referred to as $\ensprimal$-vertices and $\ensdual$-vertices respectively.
+The set $\ensdual$ is a family of \chevron{dual} control volumes defined as follows. To any point $x_{\dual{K}} \in \enssomdual$, we associate the polygon $\dual{K} \in \ensdual$ whose vertices are $\ens[\big]{x_{\primal{K}} \in \enssomprim \tq x_{\dual{K}} \in \overline{\primal{K}}, \primal{K} \in \ensprimal}$ sorted with respect to the clockwise order of the corresponding primal control volumes.
+
+The corresponding notations $\dual{\sigma} = \arete{\dual{K}}{\dual{L}}$ and $\ensaretedual$ refer to the dual mesh $\ensdual$.
+
+The finite volume mesh is constructed by the barycentric subdivision of $\variete{M}$. The finite volume (or covolume) {\color{red}$V_i$} $\dual{K} \in \ensdual$ around a vertex {\color{red}$X_i$} $x_{\dual{K}}$ is a region bounded by the piecewise linear curve joining the barycenters of the neighbouring triangles and the midpoints of the edges leading to the neighbouring vertices $X_{i,p}$, $p \in \intervalleentier{1}{m}$ where $m$ is the number of neighbours.
+}
+
+\subsection{\ddfv mesh}
+
+We call $\ensddfv$ a double $(\ensprimal, \ensdual)$ of meshes on the polyhedral surface $\variete{M}_h$, where $\ensprimal$ is the \defini{primal mesh} and $\ensdual$ is the \defini{dual mesh}. Even though more general situations can be handled, we concentrate in this paper to meshes satisfying the following assumption.
+\begin{envide}[Main assumption]
+We assume either that all the primal control volumes $\primal{K} \in \ensprimal$ are star-shaped with respect to $x_{\primal{K}}$ either that all the dual control volumes $\dual{K} \in \ensdual$ are star-shaped with respect to $x_{\dual{K}}$. 
+\end{envide}
+
+\areprendre{
+\begin{remarque}
+This hypothesis is not so restrictive and is fulfilled for instance in the case of a primal Voronoï mesh associated to the vertices $x_{\dual{K}}$, or in the dual case of a Delaunay conformal triangulation of the domain.
+\end{remarque}
+}
+
+\begin{figure}[p]
+\centering
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \input{figures/maillage_sphere_polyedrique_primal.tex}
+    \caption{Primal polyédrique}
+\end{subfigure}%
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \input{figures/maillage_sphere_lisse_primal.tex}
+    \caption{Primal lisse}
+\end{subfigure} \\
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \input{figures/maillage_sphere_polyedrique_dual.tex}
+    \caption{Dual polyédrique}
+\end{subfigure}%
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \input{figures/maillage_sphere_lisse_dual.tex}
+    \caption{Dual lisse}
+\end{subfigure}
+\caption{}
+\end{figure}
+
+\begin{figure}[p]
+    \centering
+    \input{figures/maillage_tore_polyedrique.tex}
+    \caption{Polyédrique}
+\end{figure}
+
+\subsection{Notations}
+
+\noindent For any control volume $\primal{K} \in \ensprimal$, we define
+\begin{itemize}
+    \item $\mesure(\primal{K})$, the measure of $\primal{K}$;
+    \item $\ensareteprim_{\primal{K}}$, the set of edges of $\primal{K}$;
+    \item $\ensdiamant_{\primal{K}} = \ens[\big]{\diamant{D}_{\sigma, \dual{\sigma}} \in \ensdiamant \tq \sigma \in \ensareteprim_{\primal{K}}}$;
+    \item $\vect{\nu}_{\primal{K}}$, the outward unit normal vector to $\partial \primal{K}$;
+    \item $\diam{\primal{K}}$, the diameter of $\primal{K}$.
+\end{itemize}
+In the same way, for a dual control volume $\dual{K} \in \ensdual$, we set
+\areprendre{
+\begin{itemize}
+    \item $\mesure(\dual{K})$, the measure of $\dual{K}$;
+    \item $\ensareteprim_{\dual{K}}$, the set of edges of $\dual{K}$;
+    \item $\ensdiamant_{\dual{K}} = \ens[\big]{\diamant{D}_{\sigma, \dual{\sigma}} \in \ensdiamant \tq \dual{\sigma} \in \ensareteprim_{\dual{K}}}$;
+    \item $\vect{\nu}_{\dual{K}}$, the outward unit normal vector to $\partial \dual{K}$;
+    \item $\diam{\dual{K}}$, the diameter of $\dual{K}$. 
+\end{itemize}
+}
+\noindent For a diamond cell $\diamant{D}_{\sigma, \dual{\sigma}}$, recall that $(x_{\primal{K}}, x_{\dual{K}}, x_{\primal{L}}, x_{\dual{L}})$ are the vertices of $\diamant{D}_{\sigma, \dual{\sigma}}$ and note (\ref{fig:diamant_int})
+\begin{itemize}
+    \item $\mesure(\sigma)$, the length of $\sigma$, $\mesure(\dual{\sigma})$ the length of $\dual{\sigma}$ and $\mesure(\diamant{D})$ the measure of the diamond cell;
+    \item $\vect{\tau}$, the unit vector parallel to $\sigma$, oriented from $x_{\dual{K}}$ to $x_{\dual{L}}$;
+    \item $\vect{\nu}$, the unit vector normal to $\sigma$, oriented from $x_{\primal{K}}$ to $x_{\primal{L}}$;
+    \item $\dual{\vect{\tau}}$, the unit vector parallel to $\dual{\sigma}$, oriented from $x_{\primal{K}}$ to $x_{\primal{L}}$;
+    \item $\dual{\vect{\nu}}$, the unit vector normal to $\dual{\sigma}$, oriented from $x_{\dual{K}}$ to $x_{\dual{L}}$;
+    \item $\alpha_{\diamant{D}}$, the angle between $\vect{\tau}$ and $\dual{\vect{\tau}}$;
+    \item $\diam{\diamant{D}}$, the diameter of $\diamant{D}_{\sigma, \dual{\sigma}}$.
+\end{itemize}
+It can happen that the point $x_{\primal{K}}$ does not belong to $\primal{K}$ (if $\primal{K}$ is a triangle and $x_{\primal{K}}$ its circumcenter for instance). As usual in that case (see \cite{eymard_finite_2000}) it is necessary to assume that $\vect{\nu}_{\primal{K}}$ points from $x_{\primal{K}}$ towards $x_{\primal{L}}$, that is $\vect{\nu}_{\primal{K}} = \vect{\nu}$ with the notations above. Similarly we assume that $\vect{\nu}_{\dual{K}} = \dual{\vect{\nu}}$. In the case of a triangular mesh $\ensprimal$ in which $x_{\primal{K}}$ is the circumcenter of $\primal{K}$, this assumption is known as the Delaunay condition. 
+
+\subsection{Unknowns}
+
+The finite volume method associates to all primal control volumes $\primal{K} \in \ensprimal$, an unknown value $u_{\primal{K}}$ and to all dual control volumes $\dual{K} \in \ensdual$, an unknown value $u_{\dual{K}}$. We denote the approximate solution on the mesh $\ensddfv$ by
+\begin{equation} \label{eq:ddfv_unknown}
+u^\ensddfv = \big( (u_{\primal{K}})_{\primal{K} \in \ensprimal}, (u_{\dual{K}})_{\dual{K} \in \ensdual} \big).
+\end{equation}
+The space of all discrete functions $u^\ensddfv$ in the sense of definition \ref{eq:ddfv_unknown} is denoted by $\R^\ensddfv$. Whenever it is convenient, we associate to the discrete function $u^\ensddfv = \big( (u_{\primal{K}})_{\primal{K} \in \ensprimal}, (u_{\dual{K}})_{\dual{K} \in \ensdual} \big)$ the piecewise constant function
+\[
+u^\ensddfv \sim \frac{1}{2} \big( u^\ensprimal + u^\ensdual \big),
+\]
+where $u^\ensprimal \defeq \sum\limits_{\primal{K} \in \ensprimal} \indicatrice_{\primal{K}} \, u_{\primal{K}}$ and $u^\ensdual \defeq \sum\limits_{\dual{K} \in \ensdual} \indicatrice_{\dual{K}} \, u_{\dual{K}}$. As a consequence, one can define for any $r \in \intervalleff{1}{+\infty}$ the $\L^r$ norm of $u^\ensprimal$, $u^\ensdual$, $u^\ensddfv$. We denote by $\prodscalddfv{}{}$ the inner product on $\R^\ensddfv$ given by
+\[
+\prodscalddfv{u^\ensddfv}{v^\ensddfv} = \frac{1}{2} \sum_{\primal{K} \in \ensprimal} \mesure(\primal{K}) \, u_{\primal{K}} \, v_{\primal{K}} + \frac{1}{2} \sum_{\dual{K} \in \ensdual} \mesure(\dual{K}) \, u_{\dual{K}} \, v_{\dual{K}},
+\]
+which stands for a discrete $\L^2$ inner product. Whereas the usual Euclidean inner product on $\R^\ensddfv$ is denoted by $\prodscal{}{}$:
+\[
+\prodscal{u^\ensddfv}{v^\ensddfv} = \sum_{\primal{K} \in \ensprimal} u_{\primal{K}} \,  v_{\primal{K}} + \sum_{\dual{K} \in \ensdual} u_{\dual{K}} \, v_{\dual{K}}.
+\]
+
+\[
+\forall \xi^\ensdiamant, \phi^\ensdiamant \in (\R^2)^\ensdiamant, \quad
+\prodscal{\xi^\ensdiamant}{\phi^\ensdiamant}_\ensdiamant = \sum_{\diamant{D} \in \ensdiamant} \mesure(\diamant{D}) \, \xi^{\diamant{D}} \cdot \phi^{\diamant{D}}.
+\]
+\[
+\norme{u^\ensddfv}_2 \defeq \prodscalddfv{u^\ensddfv}{u^\ensddfv}^{1/2}, \quad \forall u^\ensddfv \in \R^\ensddfv
+\]
+\[
+\norme{\xi^\ensdiamant}_2 \defeq \prodscal{\xi^\ensdiamant}{\xi^\ensdiamant}^{1/2}_\ensdiamant, \quad \forall \xi^\ensdiamant \in (\R^2)^\ensdiamant
+\]
+
+\subsection{Discrete gradient {\cite{andreianov_discrete_2007,krell_schemas_2010}}}
+
+We consider the discrete gradient introduced by Coudière and \emph{al.} in \cite{coudiere_convergence_1999} and applied by Hermeline \cite{hermeline_finite_2000} and Domelevo and Omnès \cite{domelevo_finite_2005} in the framework of \ddfv schemes described above.
+
+\begin{defi}[Discrete gradient]
+    The \defini{discrete gradient operator} $\fonctionens[\grad^\ensdiamant]{\R^\ensddfv}{(\R^2)^\ensdiamant}$ can be defined as follows: 
+    for any $u^\ensddfv \in \R^\ensddfv$, $\grad^\ensdiamant u^\ensddfv = (\grad^{\diamant{D}} u^\ensddfv)_{\diamant{D} \in \ensdiamant}$ is the function, constant on each diamond cell $\diamant{D}_{\sigma, \dual{\sigma}}$, given by
+    \[
+    \grad^\ensdiamant u^\ensddfv = \sum_{\diamant{D} \in \ensdiamant} \grad^{\diamant{D}} u^\ensddfv \bm{\chi}_{\diamant{D}},
+    \]
+    with
+    \[
+    \prodscal{\grad^{\diamant{D}} u^\ensddfv}{\vect{\tau}} = \frac{u_{\dual{L}} - u_{\dual{K}}}{\mesure(\sigma)}, \quad
+    \prodscal{\grad^{\diamant{D}} u^\ensddfv}{\dual{\vect{\tau}}} = \frac{u_{\primal{L}} - u_{\primal{K}}}{\mesure(\dual{\sigma})},
+    \]
+    where $\diamant{D}_{\sigma, \dual{\sigma}}$ is noted $\diamant{D}$ when no confusion can arise and $\bm{\chi}_{\diamant{D}}$ is defined by \ref{defi:pseudo_indicatrice_sur_les_diamants}.
+\end{defi}
+Remark that $\grad^{\diamant{D}} u^\ensddfv$ can be expressed in the $(\vect{\nu}, \dual{\vect{\nu}})$ basis in the following way:
+\[
+\grad^{\diamant{D}} u^\ensddfv = \frac{1}{\sin \alpha_{\diamant{D}}} \mathopen{}\left( \frac{u_{\primal{L}} - u_{\primal{K}}}{\mesure(\dual{\sigma})} \, \vect{\nu} + \frac{u_{\dual{L}} - u_{\dual{K}}}{\mesure(\sigma)} \, \dual{\vect{\nu}} \right)
+\]
+thanks to the following lemma.
+
+\begin{lemme}
+Using the notations and orientation conventions of {\color{red}à compléter}, for any vector $\xi \in \R^2$ we have
+\[
+(\sin \alpha_{\diamant{D}}) \, \xi = \prodscal{\xi}{\vect{\tau}} \, \dual{\vect{\nu}} + \prodscal{\xi}{\dual{\vect{\tau}}} \, \vect{\nu}.
+\]
+\end{lemme}
+L'aire $\mesure(\diamant{D})$ d'un diamant $\diamant{D}$ est la suivante : $\mesure(\diamant{D}) = \frac{1}{2} \, \mesure(\sigma) \, \mesure(\dual{\sigma}) \, \sin(\alpha_{\diamant{D}})$, on peut alors réécrire le gradient discret:
+\[
+\grad^{\diamant{D}} u^\ensddfv = \frac{1}{2\mesure(\diamant{D})} \Big[ (u_{\primal{L}} - u_{\primal{K}}) \, \mesure(\sigma) \, \vect{\nu} + (u_{\dual{L}} - u_{\dual{K}}) \, \mesure(\dual{\sigma}) \, \dual{\vect{\nu}} \Big].
+\]
+\begin{figure}[H]
+    \centering
+    \input{figures/ddfv_projection_diamant.tex}
+    \caption{Projection \ddfv}
+\end{figure}
+
+\subsection{Discrete vector curl operator}
+
+\begin{defi}[Discrete vector curl operator]
+The \defini{siscrete vector curl operator} $\fonctionens[\rot^\ensdiamant]{\R^\ensddfv}{(\R^2)^\ensdiamant}$ can be defined as follows: for any $u^\ensddfv \in \R^\ensddfv$, $\rot^\ensdiamant u^\ensddfv = (\rot^{\diamant{D}} u^\ensddfv)_{\diamant{D} \in \ensdiamant}$ is the function, constant on each diamond cell $\diamant{D}_{\sigma,\dual{\sigma}}$, given by
+\[
+\rot^{\diamant{D}} u^\ensddfv = - \frac{1}{2 \mesure(\diamant{D})} \Big[ (u_{\primal{L}} - u_{\primal{K}}) \, \mesure(\sigma) \, \vect{\tau} + (u_{\dual{L}} - u_{\dual{K}}) \, \mesure(\dual{\sigma}) \, \dual{\vect{\tau}} \Big].
+\]
+\end{defi}
+
+\subsection{Discrete divergence}
+
+\begin{defi}[Discrete divergence]
+L'opérateur de divergence discrète est défini de la manière suivante: $\fonctionens[\div^\ensddfv]{(\R^2)^\ensdiamant}{\R^\ensddfv}$. Soit $\xi^\ensdiamant \in (\R^2)^\ensdiamant$, on pose
+\[
+\div^\ensddfv \xi^\ensdiamant = \mathopen{}\big( 
+\div^\ensprimal \xi^\ensdiamant,
+\div^\ensdual \xi^\ensdiamant    
+\big),
+\]
+avec $\div^\ensprimal \xi^\ensdiamant = \mathopen{}\big(\div^{\primal{K}} \xi^\ensdiamant \big)_{\primal{K} \in \ensprimal}$, $\div^\ensdual \xi^\ensdiamant = \mathopen{}\big( \div^{\dual{K}} \xi^\ensdiamant \big)_{\dual{K} \in \ensdual}$:
+\begin{align*}
+    \forall \primal{K} \in \ensprimal, \quad \div^{\primal{K}} \xi^\ensdiamant &= \frac{1}{\mesure(\primal{K})} \sum_{\diamant{D}_{\sigma, \dual{\sigma}} \in \ensdiamant_{\primal{K}}} \mesure(\sigma) \, \xi^{\diamant{D}} \cdot \vect{\nu}, \\
+    \forall \dual{K} \in \ensdual, \quad \div^{\dual{K}} \xi^\ensdiamant &= \frac{1}{\mesure(\dual{K})} \sum_{\diamant{D}_{\sigma, \dual{\sigma}} \in \ensdiamant_{\dual{K}}} \mesure(\dual{\sigma}) \, \xi^{\diamant{D}} \cdot \dual{\vect{\nu}}.
+\end{align*}    
+\end{defi}
+
+\subsection{Discrete scalar curl operator}
+
+\begin{defi}[Discrete scalar curl operator]
+$\fonctionens[\scarot^\ensddfv]{(\R^2)^\ensdiamant}{\R^\ensddfv}$. $\xi^\ensdiamant \in (\R^2)^\ensdiamant$
+\[
+\scarot^\ensddfv \xi^\ensdiamant = \mathopen{}\big( 
+\scarot^\ensprimal \xi^\ensdiamant,
+\scarot^\ensdual \xi^\ensdiamant    
+\big),
+\]
+with $\scarot^\ensprimal \xi^\ensdiamant = \mathopen{}\big(\scarot^{\primal{K}} \xi^\ensdiamant \big)_{\primal{K} \in \ensprimal}$, $\scarot^\ensdual \xi^\ensdiamant = \mathopen{}\big( \scarot^{\dual{K}} \xi^\ensdiamant \big)_{\dual{K} \in \ensdual}$:
+\begin{align*}
+    \forall \primal{K} \in \ensprimal, \quad \scarot^{\primal{K}} \xi^\ensdiamant &= \frac{1}{\mesure(\primal{K})} \sum_{\diamant{D}_{\sigma, \dual{\sigma}} \in \ensdiamant_{\primal{K}}} \mesure(\sigma) \, \xi^{\diamant{D}} \cdot \vect{\tau}, \\
+    \forall \dual{K} \in \ensdual, \quad \scarot^{\dual{K}} \xi^\ensdiamant &= \frac{1}{\mesure(\dual{K})} \sum_{\diamant{D}_{\sigma, \dual{\sigma}} \in \ensdiamant_{\dual{K}}} \mesure(\dual{\sigma}) \, \xi^{\diamant{D}} \cdot \dual{\vect{\tau}}.
+\end{align*}   
+\end{defi}
+
+
+\subsection{Discrete Green formulae}
+
+Here, we check that the discrete operators verify some discrete duality principles.
+
+\begin{theo}[Green formula]
+Pour tout $\xi^\ensdiamant, u^\ensddfv \in (\R^2)^\ensdiamant \times \R^\ensddfv$, on a
+\[
+\prodscalddfv{\div^\ensddfv \xi^\ensdiamant}{u^\ensddfv} = - \prodscal{\xi^\ensdiamant}{\grad^\ensdiamant u^\ensddfv}_\ensdiamant,
+\]
+\[
+\prodscalddfv{\scarot^\ensddfv \xi^\ensdiamant}{u^\ensddfv} = \prodscal{\xi^\ensdiamant}{\rot^\ensdiamant u^\ensddfv}_\ensdiamant.
+\]
+\end{theo}
+\begin{demo}
+    
+\end{demo}
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \input{figures/duality_div_grad.tex}
+    \caption{}
+\end{subfigure}%
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \input{figures/duality_scarot_rot.tex}
+    \caption{}
+\end{subfigure}
+\caption{}
+\end{figure}
+
+\subsection{Regularity of meshes}
+
+\begin{itemize}
+
+    \item On note $\sigma_{\primal{K}} \defeq \boule(x_{\primal{K}}, \rho_{\primal{K}})$ et $\sigma_{\dual{K}} \defeq \boule(x_{\dual{K}}, \rho_{\dual{K}})$ and $\rho_{\primal{K}}$ and $\rho_{\dual{K}}$ are positive numbers associated to the mesh $\ensddfv$ and such that
+    \[
+    \sigma_{\primal{K}} \subset \overline{\primal{K}}, \quad \sigma_{\dual{K}} \subset \partial \dual{K}.
+    \]
+    Finally, introduce numbers $\rho_{\primal{K}}$ and $\rho_{\dual{K}}$ for any $\primal{K} \in \ensprimal$ (resp. $\dual{K} \in \ensdual$) such that
+    \[
+    \boule_{\primal{K}} \defeq \boule(x_{\primal{K}}, \rho_{\primal{K}}) \subset {\color{red}\Omega}, \quad
+    \boule_{\dual{K}} \defeq \boule(x_{\dual{K}}, \rho_{\dual{K}}) \subset {\color{red}\Omega}.
+    \]
+    These balls are only introduced in order to prove the convergence of the scheme. 
+\end{itemize}
+
+We note $\size(\ensddfv)$ the maximum of the diameters of the diamond cells in $\ensdiamant$:
+\[
+\size(\ensddfv) \defeq \max_{\diamant{D} \in \ensdiamant} \diam{\diamant{D}}.
+\]
+The following bounds follow:
+\[
+\mesure(\sigma) \leqslant \size(\ensddfv), \quad \forall \sigma \in \ensareteprim; \quad
+\mesure(\dual{\sigma}) \leqslant \size(\ensddfv), \quad \forall \dual{\sigma} \in \ensaretedual;
+\]
+\[
+\mesure(\primal{K}) \leqslant \pi \size(\ensddfv)^2, \quad \forall \primal{K} \in \ensprimal; \quad
+\mesure(\dual{K}) \leqslant \pi \size(\ensddfv)^2, \quad \forall \dual{K} \in \ensdual; \quad
+\mesure(\diamant{D}) \leqslant \frac{1}{2} \size(\ensddfv)^2, \quad \forall \diamant{D} \in \ensdiamant.
+\]
+We introduce now a positive number that quantifies the regularity of a given mesh and is useful to perform the convergence analysis of the finite volume schemes. We first define $\alpha_\ensddfv$ to be the unique real number in $\intervalleof{0}{\frac{\pi}{2}}$ such that
+\[
+\sin \alpha_\ensddfv \defeq \min_{\diamant{D} \in \ensdiamant} \abs{\sin \alpha_{\diamant{D}}},
+\]
+that is the minimal angle between the diagonals of the diamond cells in the mesh. 
+
+Let us introduce the number
+\begin{multline*}
+\mathcal{N}_\ensddfv \defeq
+\sup_{x \in \Omega} \#\ens[\Big]{\dual{K} \tq x \in \widehat{\dual{K} \cup \boule_{\dual{K}}}} +
+\sup_{x \in \Omega} \#\ens[\Big]{\primal{K} \tq x \in \widehat{\primal{K} \cup \boule_{\primal{K}}}} \\
++ \sup_{x \in \Omega} \#\ens[\Big]{\diamant{D} \tq x \in \widehat{\diamant{D} \cup \boule_{\primal{K}}}, \diamant{D} \in \ensdiamant_{\primal{K}}, \primal{K} \in \ensprimal} \\
++ \sup_{x \in \Omega} \#\ens[\Big]{\diamant{D} \tq x \in \widehat{\diamant{D} \cup \boule_{\dual{K}}}, \diamant{D} \in \ensdiamant_{\dual{K}}, \dual{K} \in \ensdual},
+\end{multline*}
+where $\widehat{E}$ denotes the convex hull of any set $E \subset \R^2$. In the usal case where the primal control volumes, the dual control volumes and the diamond cells are \textbf{convex} and where $\boule_{\primal{K}} \subset \primal{K}$, $\boule_{\dual{K}} \subset \dual{K}$ then $\mathcal{N}_\ensddfv$ can be bounded by a function of the maximal number of edges per primal and dual control volumes. Since we do not impose any convexity assumption on the meshes, we need to control this number $\mathcal{N}_\ensddfv$ in the convergence analysis. We can now introduce
+\begin{multline*}
+\reg \ensddfv \defeq
+\max\mathopen{}\Bigg\{
+\frac{1}{\alpha_\ensddfv},
+\mathcal{N}_\ensddfv,
+\max_{\diamant{D} \in \ensdiamant} \frac{\diam{\diamant{D}}}{\sqrt{\mesure(\diamant{D})}},
+\max_{\primal{K} \in \ensprimal} \frac{\diam{\primal{K}}}{\sqrt{\mesure(\primal{K})}},
+\max_{\dual{K} \in \ensdual} \frac{\diam{\dual{K}}}{\sqrt{\mesure(\dual{K})}}, \\
+\max_{\primal{K} \in \ensprimal}\mathopen{}\left( \frac{\diam{\primal{K}}}{\rayon{\primal{K}}} + \frac{\rayon{\primal{K}}}{\diam{\primal{K}}} \right),
+\max_{\dual{K} \in \ensdual}\mathopen{}\left( \frac{\diam{\dual{K}}}{\rayon{\dual{K}}} + \frac{\rayon{\dual{K}}}{\diam{\dual{K}}} \right),
+\max_{\substack{\primal{K} \in \ensprimal \\ \diamant{D} \in \ensdiamant_{\primal{K}}}} \frac{\diam{\primal{K}}}{\diam{\diamant{D}}},
+\max_{\substack{\dual{K} \in \ensdual \\ \diamant{D} \in \ensdiamant_{\dual{K}}}} \frac{\diam{\dual{K}}}{\diam{\diamant{D}}} \Bigg\}.
+\end{multline*}
+Let us point out that $\reg(\ensddfv)$ essentially measures:
+\begin{itemize}
+    \item how flat the diamond cells are;
+    \item how large is the difference between the size of a primal control volume (resp. a dual control volume) and the size of a diamond cell as soon as they intersect. 
+\end{itemize}
+
+\begin{envide}[Convention]
+    In any estimate given, the dependence of the constants in $\reg(\ensddfv)$ is implicitly assumed to be non-decreasing. Futhermore, the dependence of the constants on the domain is often omitted. 
+\end{envide}
+
+\begin{remarque}
+    For conformal finite volume meshes, it is assumed that $\alpha_{\diamant{D}} = \frac{\pi}{2}$ for any diamond $\diamant{D} \in \ensdiamant$, so that $\alpha_\ensddfv = \frac{\pi}{2}$. In our case, not only this orthogonality condition is relaxed but also $\ensprimal$ can present atypical edges, non convex dual control volumes and non convex diamond cells {\color{red} figure}.
+\end{remarque}
+
+\begin{remarque}
+    The boundedness of $\reg(\ensddfv)$ imposes only local restriction on the mesh. It is easy to construct a family of locally refined mesh such that $\reg(\ensddfv)$ is bounded independently on the level of the refinement. 
+\end{remarque}
+
+\subsection{Régularité du maillage {\cite[p. 36]{krell_schemas_2010}}}
+
+Soit $\size(\ensddfv)$ le maximum des diamètres des diamants. Pour mesurer l'applatissement des diamants, on note $\alpha_\ensddfv$ l'unique réel dans $\intervalleof{0}{\frac{\pi}{2}}$ tel que $\sin(\alpha_\ensddfv) \defeq \min_{\diamant{D} \in \ensdiamant} \abs{\sin(\alpha_{\diamant{D}})}$ si la maillage dual est \textbf{direct} et $\sin(\alpha_\ensddfv) \defeq \min_{\diamant{D} \in \ensdiamant} \big( \abs{\sin(\alpha_{\primal{K}})}, \abs{\sin(\alpha_{\primal{L}})} \big)$ si le maillage dual est \textbf{barycentrique}. On introduit un nombre positif $\reg(\ensddfv)$ qui mesure la régularité d'un maillage donné et qui est utilisé pour réaliser la convergence des schémas:
+\[
+\mathcal{N}_\ensddfv = \sup_{x \in \Omega} \# \ens[\Big]{\diamant{D} \tq x \in \widehat{\diamant{D} \cup \primal{K}}, \diamant{D} \in \ensdiamant_{\primal{K}}, \primal{K} \in \ensprimal} +
+\sup_{x \in \Omega} \# \ens[\Big]{\diamant{D} \tq x \in \widehat{\diamant{D} \cup \dual{K}}, \diamant{D} \in \ensdiamant_{\dual{K}}, \dual{K} \in \ensprimal},
+\]
+\begin{multline*}
+\reg(\ensddfv) = \max\mathopen{}\Bigg\{
+    \frac{1}{\sin(\alpha_\ensddfv)},
+    \mathcal{N}, 
+    \dual{\mathcal{N}},
+    \mathcal{N}_\ensddfv,
+    \max_{\diamant{D} \in \ensdiamant} \max_{\quart{Q} \in \ensquart_{\diamant{D}}} \frac{\diam{\diamant{D}}}{\min\limits_{\sigma \in \partial \quart{Q}} \mesure(\sigma)},
+    \max_{\primal{K} \in \ensprimal} \frac{\diam{\primal{K}}}{\sqrt{\mesure(\primal{K})}},
+    \max_{\dual{K} \in \ensdual} \frac{\diam{\dual{K}}}{\sqrt{\mesure(\dual{K})}}, \\
+    \max_{\primal{K} \in \ensprimal} \max_{\diamant{D} \in \ensdiamant_{\primal{K}}} \frac{\diam{\primal{K}}}{\diam{\diamant{D}}},
+    \max_{\dual{K} \in \ensdual} \max_{\diamant{D} \in \ensdiamant_{\dual{K}}} \frac{\diam{\dual{K}}}{\diam{\diamant{D}}}
+     \Bigg\},
+\end{multline*}
+où $\widehat{P}$ désigne l'enveloppe convexe d'un ensemble $P$, $\mathcal{N}$, $\dual{\mathcal{N}}$ sont le nombre maximum d'arêtes d'une maille primale et le nombre maximum d'arêtes incidentes d'un sommet du maillage primal. Ce nombre $\reg(\ensddfv)$ mesure essentiellement l'applatissement des diamants et le rapport entre le taille des mailles primales (resp. duales) et la taille des diamants et il doit être uniformément borné quand $\size(\ensddfv) \to 0$ pour avoir la convergence. Par exemple, ce nombre $\reg(\ensddfv)$ implique les résultats géométriques suivants: il existe une constante $C > 0$, dépendant uniquement de $\reg(\ensddfv)$ telle que
+\[
+\frac{\diam{\diamant{D}}}{\sqrt{\mesure(\diamant{D})}} \leqslant C, \forall \diamant{D} \in \ensdiamant, \quad
+\frac{\diam{\quart{Q}}}{\sqrt{\mesure(\quart{Q})}} \leqslant C, \forall \quart{Q} \in \ensquart \quad
+\text{et} \quad
+\diam{\diamant{D}} \leqslant C \min(\mesure(\sigma), \mesure(\dual{\sigma})), \forall \diamant{D}_{\sigma, \dual{\sigma}} \in \ensdiamant.
+\]
+\begin{envide}[Hypothèses]
+    On suppose que toute maille primale $\primal{K} \in \ensprimal$ est étoilée par rapport à $x_{\primal{K}}$.
+
+    On suppose que toute maille duale $\dual{K} \in \ensdual$ est étoilée par rapport à $x_{\dual{K}}$.
+\end{envide}
+
+\begin{remarque} \label{remarque:I5}
+    On a que toute maille diamant $\diamant{D}$ est étoilée par rapport à $x_{\diamant{D}}$. 
+\end{remarque}
+
+\begin{remarque}
+    Grâce aux hypothèses ci-dessus, on a également:
+    \[
+    \mathrm{diam}(\widehat{K}) \leqslant 2 \, \diam{\primal{K}}, \forall \primal{K} \in \ensprimal
+    \quad \text{et} \quad
+    \mathrm{diam}(\widehat{\dual{K}}) \leqslant 2 \, \diam{\dual{K}}, \forall \dual{K} \in \ensdual,
+    \]
+    de plus la remarque \ref{remarque:I5} implique:
+    \[
+    \mathrm{diam}(\widehat{\diamant{D}}) \leqslant 2 \, \diam{\diamant{D}}, \forall \diamant{D} \in \ensdiamant.
+    \]
+\end{remarque}

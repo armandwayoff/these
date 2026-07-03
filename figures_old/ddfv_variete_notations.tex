@@ -1,0 +1,91 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\newcommand{\ruledsurface}[5][0.1]{%
+    % #1 = pas, par défaut 0.1
+    % #2,#3,#4,#5 = A,B,C,D
+    \foreach \t in {0,#1,...,1}{%
+        % Génératrices AB -> DC
+        \draw[thin] ($(#2)!\t!(#3)$) -- ($(#5)!\t!(#4)$);
+
+        % Génératrices AD -> BC
+        \draw[thin] ($(#2)!\t!(#5)$) -- ($(#3)!\t!(#4)$);
+    }%
+}
+
+% \tdplotsetmaincoords{0}{0}
+\tdplotsetmaincoords{60}{30}
+
+\begin{tikzpicture}[
+    ddfv,
+    tdplot_main_coords,
+    scale=2,
+]
+
+\def\eps{0.03}
+
+\def\R{1}
+
+\coordinate (O) at (0,0,0);
+
+\coordinate (F1) at ({\R*cos((13*pi/10)r)}, {\R*sin((13*pi/10)r)}, 0);
+\coordinate (F2) at ({\R*cos((17*pi/10)r)}, {\R*sin((17*pi/10)r)}, 0);
+\coordinate (F3) at ({\R*cos((21*pi/10)r)}, {\R*sin((21*pi/10)r)}, 0);
+\coordinate (F4) at ({\R*cos((5*pi/10)r)},  {\R*sin((5*pi/10)r)}, 0);
+\coordinate (F5) at ({\R*cos((9*pi/10)r)},  {\R*sin((9*pi/10)r)}, 0);
+
+\def\alp{1/5}
+
+\coordinate (T1) at ($\alp*(O) + \alp*(F1) + \alp*(F2)$);
+\coordinate (T2) at ($\alp*(O) + \alp*(F2) + \alp*(F3)$);
+\coordinate (T3) at ($\alp*(O) + \alp*(F3) + \alp*(F4)$);
+\coordinate (T4) at ($\alp*(O) + \alp*(F4) + \alp*(F5)$);
+\coordinate (T5) at ($\alp*(O) + \alp*(F5) + \alp*(F1)$);
+
+\foreach \i in {1,...,5} {
+    \coordinate (T\i z) at ($(T\i)+(0,0,0.3)$);
+}
+
+\draw[myblue] (F1) -- (F2) -- (F3) -- (F4) -- (F5) -- cycle;
+\foreach \i in {1,...,5} {
+    \draw[myblue] (O) -- (F\i);
+    \coordinate (S\i) at ($(O)!0.5!(F\i)$);
+}
+
+
+\draw[mailleprimale] (O) -- (F1) -- (F2) -- cycle;
+\node[myblue,below=20pt] at (T1) {$\mathcal{T}_{i,p}$};
+
+\draw[myorange, fill=mylightorange, opacity=0.8] (S1) -- (T1) -- (S2) -- (T2) -- (S3) -- (T3) -- (S4) -- (T4) -- (S5) -- (T5) -- cycle;
+\foreach \i in {1,...,5} {
+    \draw[myorange, dashed] (O) -- (S\i);
+}
+
+
+\draw[mygreen] (O) -- (T1z) -- (F2) -- (T2z) -- cycle;
+% \ruledsurface[0.08]{O}{T1z}{F2}{T2z}
+
+\draw[mygreen] (O) -- (T2z) -- (F3) -- (T3z) -- cycle;
+% \ruledsurface{O}{T2z}{F3}{T3z}
+
+\draw[mygreen] (O) -- (T3z) -- (F4) -- (T4z) -- cycle;
+% \ruledsurface{O}{T3z}{F4}{T4z}
+
+\draw[mygreen] (O) -- (T4z) -- (F5) -- (T5z) -- cycle;
+% \ruledsurface{O}{T4z}{F5}{T5z}
+
+\draw[mygreen] (O) -- (T5z) -- (F1) -- (T1z) -- cycle;
+% \ruledsurface{O}{T5z}{F1}{T1z}
+
+
+\node[ptsq={myblue}{above:{\contour{mylightorange!80}{$F_{i}$}}}] at (O) {};
+\node[ptsq={myblue}{below:{\contour{white}{$F_{i,p}$}}}] at (F1) {};
+\node[ptsq={myblue}{below:{\contour{white}{$F_{i,p+1}$}}}] at (F2) {};
+
+\node[ptcl={myred}{below:{\contour{mylightblue}{$T_{i,p}$}}}] at (T1z) {};
+\node[ptcl={myred}{left:{\contour{white}{$T_{i,p-1}$}}}] at (T5z) {};
+\node[ptcl={myred}{right:{\contour{white}{$T_{i,p+1}$}}}] at (T2z) {};
+
+\node[ptsq={orange}{left:{\contour{white}{$S_{i,p}$}}}] at (S1) {};
+\node[ptsq={orange}{right:{\contour{white}{$S_{i,p+1}$}}}] at (S2) {};
+
+\end{tikzpicture}

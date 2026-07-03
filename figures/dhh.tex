@@ -1,0 +1,18 @@
+\def\imgw{0.18\textwidth}
+\def\sep{2.1cm}
+\def\buf{1.5cm}
+
+\begin{tikzpicture}
+\node at (0*\sep,0) {\includegraphics[width=\imgw]{img/input.pdf}};
+\node at (1*\sep,0) {\Large $=$};
+\node at (2*\sep,0) {\includegraphics[width=\imgw]{img/grad.pdf}};
+\node at (3*\sep,0) {\Large $+$};
+\node at (4*\sep,0) {\includegraphics[width=\imgw]{img/rot.pdf}};
+\node at (5*\sep,0) {\Large $+$};
+\node at (6*\sep,0) {\includegraphics[width=\imgw]{img/harmo.pdf}};
+
+\node at (0*\sep,\buf) {$\vec{u}$};
+\node at (2*\sep,\buf) {$\grad \varphi$};
+\node at (4*\sep,\buf) {$\grad^\perp \psi$};
+\node at (6*\sep,\buf) {$\vec{r}$};
+\end{tikzpicture}

@@ -1,0 +1,32 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        axis equal image,
+        scale=2,
+        view={70}{22},
+    ]
+
+    \addplot3[
+        patch,
+        patch type=triangle,
+        opacity=1,
+        fill=white,
+        faceted color=blue,
+        line width=0.6pt,
+    ] table[x, y, z] {data/faces3D_sphere.dat};
+
+    \addplot3[
+        only marks,
+        mark=*,
+        mark size=0.7pt,
+        red
+    ] table[x index=0, y index=1, z index=2] {figures/maillage_sphere_barycentres_avant.dat};
+
+    \addplot3[
+        only marks,
+        mark=*,
+        mark size=0.7pt,
+        black
+    ] table[x index=0, y index=1, z index=2] {figures/maillage_sphere_milieux_avant.dat};
+
+    \end{axis}
+\end{tikzpicture}

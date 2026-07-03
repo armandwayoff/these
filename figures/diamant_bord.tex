@@ -1,0 +1,73 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\begin{tikzpicture}[
+  ddfv,
+  scale=3,
+]
+
+\def\a{0.2}
+
+\coordinate (xke) at (0,0.5);
+\coordinate (xle) at (0,-0.5);
+\coordinate (xk) at (-0.35,-0.15);
+\coordinate (xl) at (0,0);
+
+\draw[myblue] (xke) -- ++(-\a,0);
+\draw[myblue] (xke) -- ++(0,\a);
+\draw[myblue] (xke) -- ++(-135:\a);
+
+\draw[myblue] (xle) -- ++(-\a,0);
+\draw[myblue] (xle) -- ++(0,-\a);
+\draw[myblue] (xle) -- ++(-135:\a);
+
+\draw[myred] (xk) -- ++({deg(atan(3/7))}:\a);
+\draw[myred] (xk) -- ++(135:\a);
+
+\fill[white, opacity=0.8] (-0.5,{-0.51-\a}) rectangle (0.01,{0.51+\a});
+
+% \foreach \i in {-0.5,-0.45,...,0.55} {
+%     \draw (0,\i) -- (0.08,{\i+0.03});
+% }
+
+\draw[maillediamantbord] (xke) -- (xk) -- (xle) -- (xl) -- cycle;
+
+\node[ptsqbord={myblue}{above:{\contour{white}{$x_\dual{K}$}}}] at (xke) {};
+\node[ptsqbord={myblue}{below:{\contour{white}{$x_\dual{L}$}}}] at (xle) {};
+
+\node[ptcl={myred}{left:{$x_\primal{K}$}}] at (xk) {};
+
+\node[left, mygreen] at ($(xk)!0.5!(xke)$) {$\diamant{D}_{\sigma,\dual{\sigma}}$};
+
+\draw[myblue, thick]
+    (xle) -- (xke)
+    node[pos=0.15, right] {\contour{white}{$\sigma$}};
+
+\draw[myred, thick] 
+    (xk) -- (xl)
+    node[pos=0.6, above] {$\dual{\sigma}$};
+
+% \node[ptcl={myred}{right:{$x_{\mathcal{L}}$}}] at (xl) {};
+\node[
+    ptclbord={myred}{right:{\contour{white}{$x_\primal{L}$}}} % xshift=3pt
+] at (xl) {};
+
+\def\eps{0.5pt}
+\def\lon{0.5pt}
+
+\coordinate (Mq11) at ($(xke)!0.5!(xl) + (-\eps,-\lon)$);
+\coordinate (Mq12) at ($(xke)!0.5!(xl) + (\eps,\lon)$);
+
+\coordinate (Mq21) at ($(xle)!0.5!(xl) + (-\eps,-\lon)$);
+\coordinate (Mq22) at ($(xle)!0.5!(xl) + (\eps,\lon)$);
+
+\begin{scope}[transform canvas={yshift=0.05cm}]
+    \draw (Mq11) -- (Mq12);
+    \draw (Mq21) -- (Mq22);
+\end{scope}
+
+\begin{scope}[transform canvas={yshift=-0.05cm}]
+    \draw (Mq11) -- (Mq12);
+    \draw (Mq21) -- (Mq22);
+\end{scope}
+
+\end{tikzpicture}

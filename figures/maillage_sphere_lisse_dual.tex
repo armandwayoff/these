@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        axis equal image,
+        scale=2,
+        view={70}{22},
+    ]
+    
+    \addplot3[
+        no markers,
+        thick,
+        red
+    ] table[x index=0, y index=1, z index=2] {figures/maillage_sphere_dual_avant.dat};
+
+    \end{axis}
+\end{tikzpicture}

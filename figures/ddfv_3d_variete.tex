@@ -1,0 +1,73 @@
+\tdplotsetmaincoords{0}{0}
+
+\begin{scope}[
+    local bounding box=mainC,
+    tdplot_main_coords,
+    scale=0.5
+]
+
+\coordinate (O) at (0,0,0);
+\coordinate (fO) at (0,0,{f(0,0)});
+
+\def\Rpenta{1.5}
+
+\foreach \i/\j/\angleA/\angleB in {
+    1/2/13/17,
+    2/3/17/21,
+    3/4/21/5,
+    4/5/5/9,
+    5/1/9/13
+}
+{
+    % Point F_i
+    \pgfmathsetmacro{\xA}{\Rpenta*cos((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\yA}{\Rpenta*sin((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\zA}{f(\xA,\yA)}
+
+    \coordinate (F\i)  at ({\xA},{\yA},0);
+    \coordinate (fF\i) at ({\xA},{\yA},{\zA});
+
+    % \node[ptsq={myblue}{}] at (F\i) {};
+
+    % Point F_j
+    \pgfmathsetmacro{\xB}{\Rpenta*cos((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\yB}{\Rpenta*sin((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\zB}{f(\xB,\yB)}
+
+    \coordinate (F\j)  at ({\xB},{\yB},0);
+    \coordinate (fF\j) at ({\xB},{\yB},{\zB});
+
+    \pgfmathsetmacro{\xG}{(\xA+\xB)/3}
+    \pgfmathsetmacro{\yG}{(\yA+\yB)/3}
+    \pgfmathsetmacro{\zG}{(f(0,0)+f(\xA,\yA)+f(\xB,\yB))/3}
+
+    \coordinate (G\i) at ({\xG},{\yG},{\zG});
+}
+
+\fill[mylightblue,opacity=0.5] (fO) -- (fF2) -- (fF3) -- cycle;
+\node[myblue] at (G2) {$K$};
+
+\node[ptsq={myblue}{}] at (fO) {};
+
+\draw[myblue] (fF1) -- (fF2) -- (fF3) -- (fF4) -- (fF5) -- cycle;
+
+\foreach \i in {1,...,5} {
+    \node[ptsq={myblue}{}] at (fF\i) {};
+    \draw[myblue] (fO) -- (fF\i) -- ++($(fO)!10pt!(fF\i)$);
+}
+
+\node[myblue,above=6pt] at (fO) {\contour{white}{$\chi$}};
+\node[myblue] at ($(fO)!0.5!(fF1)$) {\contour{white}{$\varsigma$}};
+
+\def\L{2.4}
+
+\foreach \k in {0,...,7} {
+    \coordinate (X\k) at (\k*45+22.5:\L);
+}
+\draw plot[smooth cycle] coordinates {(X0) (X1) (X2) (X3) (X4) (X5) (X6) (X7)};
+
+\node at ($(mainC.center)+(150:2.7)$) {$M$};
+
+\end{scope}
+
+

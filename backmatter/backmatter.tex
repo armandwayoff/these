@@ -1,0 +1,25 @@
+\appendix
+
+\part{Appendices}
+
+\input{backmatter/appendix/simplicial_complexes.tex}
+
+\backmatter
+
+\printbibliography
+
+\cleardoublepage
+\phantomsection
+
+\renewcommand{\contentsname}{Table des matières détaillée}
+
+\addcontentsline{toc}{chapter}{\contentsname}
+\etocsetnexttocdepth{subsection}
+
+\renewcommand\cftsecfont{\normalfont}
+\renewcommand\cftsecpagefont{\normalfont}
+
+\etocsettocstyle
+  {\chapter*{\contentsname}\markboth{\contentsname}{\contentsname}}
+  {}
+\etoctableofcontents

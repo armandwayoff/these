@@ -1,0 +1,85 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+
+\newcommand{\ruledsurface}[5][0.1]{%
+    % #1 = pas, par défaut 0.1
+    % #2,#3,#4,#5 = A,B,C,D
+    \foreach \t in {0,#1,...,1}{%
+        % Génératrices AB -> DC
+        \draw[gray, thin, opacity=0.5] ($(#2)!\t!(#3)$) -- ($(#5)!\t!(#4)$);
+
+        % Génératrices AD -> BC
+        \draw[gray, thin, opacity=0.5] ($(#2)!\t!(#5)$) -- ($(#3)!\t!(#4)$);
+    }%
+}
+
+\tdplotsetmaincoords{60}{30}
+
+\begin{tikzpicture}[
+    ddfv,
+    tdplot_main_coords,
+    scale=2.5,
+]
+
+\def\eps{0.03}
+
+\def\R{1}
+
+\coordinate (O) at (0,0,0);
+
+\coordinate (F1) at ({\R*cos((13*pi/10)r)}, {\R*sin((13*pi/10)r)}, 0);
+\coordinate (F2) at ({\R*cos((17*pi/10)r)}, {\R*sin((17*pi/10)r)}, 0);
+\coordinate (F3) at ({\R*cos((21*pi/10)r)}, {\R*sin((21*pi/10)r)}, 0);
+\coordinate (F4) at ({\R*cos((5*pi/10)r)},  {\R*sin((5*pi/10)r)}, 0);
+\coordinate (F5) at ({\R*cos((9*pi/10)r)},  {\R*sin((9*pi/10)r)}, 0);
+
+\coordinate (T1) at ($1/3*(O) + 1/3*(F1) + 1/3*(F2)$);
+\coordinate (T2) at ($1/3*(O) + 1/3*(F2) + 1/3*(F3)$);
+\coordinate (T3) at ($1/3*(O) + 1/3*(F3) + 1/3*(F4)$);
+\coordinate (T4) at ($1/3*(O) + 1/3*(F4) + 1/3*(F5)$);
+\coordinate (T5) at ($1/3*(O) + 1/3*(F5) + 1/3*(F1)$);
+
+\foreach \i in {1,...,5} {
+    \coordinate (T\i z) at ($(T\i)+(0,0,0.3)$);
+}
+
+\draw[myblue] (F1) -- (F2) -- (F3) -- (F4) -- (F5) -- cycle;
+\foreach \i in {1,...,5} {
+    \draw[myblue] (O) -- (F\i);
+}
+
+\draw[mailleprimale] (O) -- (F1) -- (F2) -- cycle;
+
+\node[myblue,left=15pt] at (T1) {$\primal{K}$};
+
+\draw[mygreen] (O) -- (T1z) -- (F2) -- (T2z) -- cycle;
+\ruledsurface[0.08]{O}{T1z}{F2}{T2z}
+
+\draw[mygreen] (O) -- (T2z) -- (F3) -- (T3z) -- cycle;
+\ruledsurface{O}{T2z}{F3}{T3z}
+
+\draw[mygreen] (O) -- (T3z) -- (F4) -- (T4z) -- cycle;
+\ruledsurface{O}{T3z}{F4}{T4z}
+
+\draw[mygreen] (O) -- (T4z) -- (F5) -- (T5z) -- cycle;
+\ruledsurface{O}{T4z}{F5}{T5z}
+
+\draw[mygreen] (O) -- (T5z) -- (F1) -- (T1z) -- cycle;
+\ruledsurface{O}{T5z}{F1}{T1z}
+
+
+% \node[ptsq={myblue}{above:{\contour{white}{$F_{i}$}}}] at (O) {};
+% \node[ptsq={myblue}{below:{\contour{white}{$F_{i,p}$}}}] at (F1) {};
+% \node[ptsq={myblue}{below:{\contour{white}{$F_{i,p+1}$}}}] at (F2) {};
+
+\node[ptcl={myred}{above:{\contour{white}{$x_\primal{K}$}}}] at (T1z) {};
+% \node[ptcl={myred}{above:{\contour{white}{$T_{i,p-1}$}}}] at (T5z) {};
+% \node[ptcl={myred}{above:{\contour{white}{$T_{i,p+1}$}}}] at (T2z) {};
+
+\foreach \i in {1} { % {1,2,5} {
+    \draw[myred, dotted] (T\i) -- (T\i z);
+    \draw (T\i) -- ($(T\i)+(\eps,0,0)$) -- ($(T\i)+(\eps,0,\eps)$) -- ($(T\i)+(0,0,\eps)$) -- cycle;
+    \draw (T\i) -- ($(T\i)+(0,-\eps,0)$) -- ($(T\i)+(0,-\eps,\eps)$) -- ($(T\i)+(0,0,\eps)$) -- cycle;
+}
+
+\end{tikzpicture}

@@ -1,0 +1,123 @@
+\chapter*{Introduction générale}
+\addcontentsline{toc}{chapter}{Introduction générale} 
+
+\section{Contexte de la thèse}
+
+\begin{itemize}
+    \item Diffraction électromagnétique par un objet
+    \begin{figure}
+        \centering
+        \input{figures/diffraction.tex}
+        \caption{Diffraction d'une onde électromagnétique par un obstacle}
+    \end{figure}
+    \item Équations de Maxwell en régime harmonique
+    \item Méthode des équations intégrales : \emph{Electric Field Integral Equation} (EFIE) sur {\color{mydarkgreen}$\Sigma$}
+    \[
+    \gamma^\mathrm{tan} \mathopen{}\left( \mathrm{i} \, \omega \mu_0 G \vec{J} + \frac{\mathrm{i}}{\omega \varepsilon_0} \grad G \, \mathrm{div} \vec{J} \right) = E^\mathrm{tan}_\mathrm{inc}
+    % \gamma^\text{tan} T = \gamma^\text{tan} \left( \mathrm{i}\, \omega \mu_0 G + \frac{\mathrm{i}}{\omega \varepsilon_0} \grad G\, \text{div} \right)
+    \]
+    \item Matrices \textbf{pleines} et très \textbf{mal conditionnées} % $\implies$ méthodes très lentes
+\end{itemize}
+
+\begin{center}
+Méthode de \textbf{préconditionnement} : \\
+identité de Calder\'on + $\text{div} (n \times \grad \varphi) = 0$ 
+\end{center}
+
+\begin{envide}[Conditionnement]
+Pour la norme $2$ et $A$ SDP, $\kappa_2(A) = \frac{\lambda_\mathrm{max}(A)}{\lambda_\mathrm{min}(A)}$.
+\[
+\kappa(A) = \norme{A} \norme{A^{-1}}.
+\]
+$\div(n \times \grad \varphi) = 0$ ($\varphi$ fonction scalaire sur $\Sigma$) + Calder\'on $\implies$ $\boxed{(n \times T)^2 \approx I + \text{compact}}$
+\begin{itemize}
+    \item $n \times T$ est bien conditionné
+    \item peut servir de préconditionneur
+\end{itemize}
+\end{envide}
+
+\begin{envide}[\ddfv]
+    \begin{itemize}
+        \item Conservation des propriétés des opérateurs au niveau discret $\implies$ conserver $\div(n \times \grad \varphi) = 0$ en discret
+        \item Permet d'envisager l'inversibilité de la version discrète de l'opérateur $\psi \mapsto n \times \psi$
+    \end{itemize}
+\end{envide}
+
+
+\section{Problématique}
+
+\begin{itemize}
+    \item L'identité de Calder\'on fournit un moyen élégant de trouver un préconditionneur 
+    % une paramétrix de 
+    l'opérateur intégral de l'EFIE.
+    \item Malheureusement, cette identité ne passe pas bien au niveau discret.
+\end{itemize}
+
+\begin{envide}[Enjeu principal]
+Proposer une méthodologie plus efficace et naturelle via la méthode DDFV
+\end{envide}
+
+\begin{envide}[État de l'art]
+\begin{itemize}
+    \item DDFV pour des domaines à bord dans $\R^2$ (P. Omnes \emph{et al.})
+    \item Convergence numérique de la méthode DDFV sur la sphère
+    \item Éléments de Whitney sur les surfaces : sans identité de Calder\'on
+    \item Éléments finis de Buffa--Christiansen : difficiles à mettre en \oe uvre
+\end{itemize}
+\end{envide}
+
+\section{Méthode \emph{Discrete Duality Finite Volume} (DDFV)}
+\subsection{Classe des méthodes Volumes Finis à \textbf{grilles décalées}}
+
+Discrétisation des gradients dans \textbf{toutes les directions}
+Conservation des propriétés des opérateurs au \textbf{niveau discret}
+
+\section{Décomposition de Helmholtz--Hodge}
+\subsection{Cas plus simple pour commencer}
+
+\begin{figure}[H]
+    \centering
+    \input{figures/dhh.tex}
+    \caption{Exemple sur une surface fermée sans bord de $\R^3$ (crédit Keenan Crane)}
+\end{figure}
+
+\begin{remarque}
+Un maillage \ddfv est défini de manière unique à partir de $\mathfrak{M} \cup \ens[\big]{x_\mathcal{K} \tq \mathcal{K} \in \mathfrak{M}}$
+\end{remarque}
+
+\section{Objectifs de la thèse}
+
+\begin{envide}[Résultats attendus]
+\begin{itemize}
+    \item Une théorie de l'approximation des champs de vecteurs sur les surfaces de $\R^3$ en DDFV
+    \item Une nouvelle méthode de preconditionnement \chevron{à la Calder\'on} de l'EFIE
+\end{itemize}
+\end{envide}
+
+\begin{envide}[Thèmes mathématiques]
+\begin{itemize}
+    \item Discrétisation par volumes finis
+    \item Équations intégrales
+    \item Décomposition de Helmholtz--Hodge
+    \item Implémentation numérique et preuve de convergence
+\end{itemize}
+\end{envide}
+
+\begin{envide}[Techniques de preuve]
+\begin{itemize}
+    \item Adaptation des schémas de preuves classiques au cadre des variétés différentielles 
+    \item Résultats de compacité
+    \item Inégalités discrètes de type Poincaré adaptées à la géométrie
+    \item Lien avec l'homologie
+\end{itemize}
+\end{envide}
+
+
+\begin{envide}[Stage de fin d'études]
+\begin{itemize}
+    \item Familiarisation avec la méthode DDFV
+    \item Généralisation rigoureuse aux surfaces triangulées de $\R^3$
+    \item Discrétisation de la décomposition de Helmholtz--Hodge
+    \item Démonstration de la convergence lorsque $h \to 0$
+\end{itemize}
+\end{envide}

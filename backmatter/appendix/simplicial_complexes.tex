@@ -1,0 +1,43 @@
+\chapter{Simplicial Complexes}
+\url{https://team.inria.fr/geometrica/files/2015/11/1-simplicial-complexes.pdf}
+
+\section{Geometric simplices}
+
+\begin{defi}
+    A \defini{$k$-simplex} $\sigma$ is the convex hull of $k+1$ points of $\R^d$ that are affinely independent. 
+\end{defi}
+
+\[
+\sigma = \mathrm{conv}(p_0, \dots, p_k) = \ens[\bigg]{x \in \R^d, x = \sum_{i=0}^k \lambda_i \, p_i, \lambda_i \in \intervalleff{0}{1}, \sum_{i=0}^k \lambda_i = 1}
+\]
+$k = \dim(\mathrm{aff}(\sigma))$ is called the dimension of $\sigma$.
+
+$1$-simple = line segment, $2$-simplex = triangle, $3$-simplex = tetrahedron
+
+$V(\sigma)$ = set of vertices of a $k$-simplex $\sigma$
+
+$\forall V' \subset V(\sigma)$, $\mathrm{conv}(V')$ is a face of $\sigma$.
+
+\subsection{Geometric simplicial complexes}
+
+A finite collection of simplices $K$ called the faces of $K$ such that
+\begin{itemize}
+    \item $\forall \sigma \in K$, $\sigma$ is a simplex
+    \item $\sigma \in K$, $\tau \subset \sigma \implies \tau \in K$
+    \item $\forall \sigma, \tau \in K$, either $\sigma \cap \tau = \varnothing$ or $\sigma \cap \tau$ is a common face of both
+\end{itemize}
+
+The dimension of a simplicial complex $K$ is the max dimension of its simplices.
+
+The underlying space $\abs{K} \subset \R^d$ of $K$ is the union of the simplices of $K$. 
+
+\subsection{Triangulation of a finite point set of $\R^d$}
+
+\begin{itemize}
+    \item A simplicial $d$-complex $K$ is pure if every simplex in $K$ is the face of a $d$-simplex.
+    \item A triangulation of a finite point set $P \in \R^d$ is a pure geometric simplicial complex $K$ s.t. $\mathrm{vert}(K) = P$ and $\abs{K} = \mathrm{conv}(P)$
+\end{itemize}
+
+\subsection{Triangulation of a polygonal domain of $\R^2$}
+
+A triangulation of a polygonal domain $\Omega \in \R^2$ is a pure geometric simplicial complex $K$ s.t. $\mathrm{vert}(K) = \mathrm{vert}(\Omega)$ and $\abs{K} = \Omega$
