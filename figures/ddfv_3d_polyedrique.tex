@@ -188,9 +188,9 @@
     \node[ptsq={myblue}{}] at (fF\i) {};
 }
 
-\node[myblue,above=8pt] at (fG2) {\contour{mylightblue!50!white}{$\primal{K}$}};
-\node[myred, below=6pt] at (fG2) {\contour{mylightblue!50!white}{$x_{\primal{K}}$}};
-\node[myblue, above=6pt] at (fO) {\contour{white}{$x_{\dual{K}}$}};
+\node[myblue,above=8pt] at (fG2) {\contour{mylightblue!50!white}{$\primalplat{K}$}};
+\node[myred, below=6pt] at (fG2) {\contour{mylightblue!50!white}{$x_{\primalplat{K}}$}};
+\node[myblue, above=6pt] at (fO) {\contour{white}{$x_{\mailleduale{K}}$}};
 \node[myblue] at ($(fO)!0.5!(fF2)$) {\contour{white}{$\sigma$}};
 
 \CrossPointsFrom{fF1}{fF1v}{fF1}{fO}{fG5}{fG1}{1.5}
@@ -220,7 +220,7 @@
 \draw[mygreen] (fOG5) -- (fG5);
 \draw[mygreen] (fF1G5) -- (fG5);
 
-\node[mygreen] at ($(K)!0.5!(L)$) {\contour{mylightgreen!80!white}{$\diamant{D}$}};
+\node[mygreen] at ($(K)!0.5!(L)$) {\contour{mylightgreen!80!white}{$\diamantplat{D}$}};
 
 \foreach \i in {1,2,3,4,5}
 {
@@ -245,5 +245,5 @@
     \node[right=10pt] at (Oaxis) {$\R^3$};
 \end{scope}
 
-\node at ($(mainP.center)+(-50:1.2)$) {\contour{white}{$\variete{M}$}};
-\node[myblue] at ($(mainP.center)+(135:1.8)$) {$\ensprimal$};
+\node at ($(mainP.center)+(-50:1.2)$) {\contour{white}{$\surfpoly$}};
+\node[myblue] at ($(mainP.center)+(135:1.8)$) {$\ensprimalplat$};

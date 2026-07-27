@@ -78,130 +78,6 @@
       \verb https://onlinelibrary.wiley.com/doi/10.1002/num.20170
       \endverb
     \endentry
-    \entry{benson_cheeger_2016}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=433f75b9ee31542a3b29dd849822fce2}{%
-           family={Benson},
-           familyi={B\bibinitperiod},
-           given={Brian},
-           giveni={B\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {arXiv}%
-      }
-      \strng{namehash}{433f75b9ee31542a3b29dd849822fce2}
-      \strng{fullhash}{433f75b9ee31542a3b29dd849822fce2}
-      \strng{bibnamehash}{433f75b9ee31542a3b29dd849822fce2}
-      \strng{authorbibnamehash}{433f75b9ee31542a3b29dd849822fce2}
-      \strng{authornamehash}{433f75b9ee31542a3b29dd849822fce2}
-      \strng{authorfullhash}{433f75b9ee31542a3b29dd849822fce2}
-      \field{labelalpha}{Ben16}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{We give a brief literature review of the isoperimetric problem and discuss its relationship with the Cheeger constant of Riemannian n-manifolds. For some noncompact, ﬁnite area 2-manifolds, we prove the existence and regularity of subsets whose isoperimetric ratio is equal to the Cheeger constant. To do this, we use results of {HassMorgan} for the isoperimetric problem of these manifolds. We also give an example of a ﬁnite area 2-manifold where no such subset exists. Using work of Adams-Morgan, we classify all such subsets of geometrically ﬁnite, ﬁnite area hyperbolic surfaces where such subsets always exist. From this, we provide an algorithm for ﬁnding these sets given information about the topology, length spectrum, and distances between the simple closed geodesics of the surface. Finding such a subset allows one to directly compute the Cheeger constant of the surface. As an application of this work suggested by Agol, we give a test for Selberg’s eigenvalue conjecture. We do this by comparing a quantitative improvement of Buser’s inequality resulting from works of both Agol and the author to an upper bound on the Cheeger constant of these surfaces, the latter given by {BrooksZuk}. As expected, our test does not contradict Selberg’s conjecture.}
-      \field{day}{6}
-      \field{eprinttype}{arxiv}
-      \field{langid}{english}
-      \field{month}{1}
-      \field{number}{{arXiv}:1509.08993}
-      \field{title}{The Cheeger Constant, Isoperimetric Problems, and Hyperbolic Surfaces}
-      \field{urlday}{16}
-      \field{urlmonth}{6}
-      \field{urlyear}{2026}
-      \field{year}{2016}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
-      \verb{doi}
-      \verb 10.48550/arXiv.1509.08993
-      \endverb
-      \verb{eprint}
-      \verb 1509.08993 [math.DG]
-      \endverb
-      \verb{file}
-      \verb PDF:/home/wayoff/Zotero/storage/EYFQJ36R/Benson - 2016 - The Cheeger Constant, Isoperimetric Problems, and Hyperbolic Surfaces.pdf:application/pdf
-      \endverb
-      \verb{urlraw}
-      \verb http://arxiv.org/abs/1509.08993
-      \endverb
-      \verb{url}
-      \verb http://arxiv.org/abs/1509.08993
-      \endverb
-      \keyw{Mathematics - Differential Geometry,Mathematics - Spectral Theory,Mathematics - Geometric Topology}
-    \endentry
-    \entry{buser_note_1982}{article}{}
-      \name{author}{1}{}{%
-        {{hash=2e5945fba963875d724cb521f0694b8a}{%
-           family={Buser},
-           familyi={B\bibinitperiod},
-           given={Peter},
-           giveni={P\bibinitperiod}}}%
-      }
-      \strng{namehash}{2e5945fba963875d724cb521f0694b8a}
-      \strng{fullhash}{2e5945fba963875d724cb521f0694b8a}
-      \strng{bibnamehash}{2e5945fba963875d724cb521f0694b8a}
-      \strng{authorbibnamehash}{2e5945fba963875d724cb521f0694b8a}
-      \strng{authornamehash}{2e5945fba963875d724cb521f0694b8a}
-      \strng{authorfullhash}{2e5945fba963875d724cb521f0694b8a}
-      \field{labelalpha}{Bus82}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{issn}{0012-9593, 1873-2151}
-      \field{journaltitle}{Annales scientifiques de l'École normale supérieure}
-      \field{langid}{english}
-      \field{number}{2}
-      \field{shortjournal}{Ann. Sci. École Norm. Sup.}
-      \field{title}{A note on the isoperimetric constant}
-      \field{urlday}{16}
-      \field{urlmonth}{6}
-      \field{urlyear}{2026}
-      \field{volume}{15}
-      \field{year}{1982}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
-      \field{pages}{213\bibrangedash 230}
-      \range{pages}{18}
-      \verb{doi}
-      \verb 10.24033/asens.1426
-      \endverb
-      \verb{file}
-      \verb PDF:/home/wayoff/Zotero/storage/YAUE9YBN/Buser - 1982 - A note on the isoperimetric constant.pdf:application/pdf
-      \endverb
-      \verb{urlraw}
-      \verb http://www.numdam.org/item?id=ASENS_1982_4_15_2_213_0
-      \endverb
-      \verb{url}
-      \verb http://www.numdam.org/item?id=ASENS_1982_4_15_2_213_0
-      \endverb
-    \endentry
-    \entry{chung_lectures_nodate}{article}{}
-      \name{author}{1}{}{%
-        {{hash=ce1756c17f1256e62cd8740ce5e05805}{%
-           family={Chung},
-           familyi={C\bibinitperiod},
-           given={Fan\bibnamedelimb R\bibnamedelima K},
-           giveni={F\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
-      }
-      \strng{namehash}{ce1756c17f1256e62cd8740ce5e05805}
-      \strng{fullhash}{ce1756c17f1256e62cd8740ce5e05805}
-      \strng{bibnamehash}{ce1756c17f1256e62cd8740ce5e05805}
-      \strng{authorbibnamehash}{ce1756c17f1256e62cd8740ce5e05805}
-      \strng{authornamehash}{ce1756c17f1256e62cd8740ce5e05805}
-      \strng{authorfullhash}{ce1756c17f1256e62cd8740ce5e05805}
-      \field{labelalpha}{Chu}
-      \field{sortinit}{C}
-      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{langid}{english}
-      \field{title}{Lectures on Spectral Graph Theory}
-      \verb{file}
-      \verb PDF:/home/wayoff/Zotero/storage/7QT5HFPY/Chung - Lectures on Spectral Graph Theory.pdf:application/pdf
-      \endverb
-    \endentry
     \entry{coudiere_convergence_1999}{article}{}
       \name{author}{3}{}{%
         {{hash=2e744b07925aca66726db5946dbd6180}{%
@@ -260,6 +136,110 @@
       \verb{url}
       \verb http://www.esaim-m2an.org/10.1051/m2an:1999149
       \endverb
+    \endentry
+    \entry{delcourte_discrete-duality_2005}{incollection}{}
+      \name{author}{3}{}{%
+        {{hash=73be8615d67486655044d08732b75579}{%
+           family={Delcourte},
+           familyi={D\bibinitperiod},
+           given={Sarah},
+           giveni={S\bibinitperiod}}}%
+        {{hash=3bf757ce5310973b33388ede082c2a5e}{%
+           family={Domelevo},
+           familyi={D\bibinitperiod},
+           given={Komla},
+           giveni={K\bibinitperiod}}}%
+        {{hash=f8c8e61e359308f533647ff7bd34b0ca}{%
+           family={Omnes},
+           familyi={O\bibinitperiod},
+           given={Pascal},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{5c7a0d6e029ca1aa4792e459ec7c2a5f}
+      \strng{fullhash}{5c7a0d6e029ca1aa4792e459ec7c2a5f}
+      \strng{bibnamehash}{5c7a0d6e029ca1aa4792e459ec7c2a5f}
+      \strng{authorbibnamehash}{5c7a0d6e029ca1aa4792e459ec7c2a5f}
+      \strng{authornamehash}{5c7a0d6e029ca1aa4792e459ec7c2a5f}
+      \strng{authorfullhash}{5c7a0d6e029ca1aa4792e459ec7c2a5f}
+      \field{extraname}{1}
+      \field{labelalpha}{DDO05}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper deals with applications of the "Discrete-Duality Finite Volume" approach to a variety of elliptic problems. This is a new finite volume method, based on the derivation of discrete operators obeying a Discrete-Duality principle. An appropriate choice of the degrees of freedom allows one to use arbitrary meshes. We show that the method is naturally related to finite and mixed finite element methods.}
+      \field{day}{22}
+      \field{isbn}{978-1-905209-48-4}
+      \field{month}{7}
+      \field{title}{Discrete-Duality Finite Volume Method for Second Order Elliptic Problems}
+      \field{year}{2005}
+      \field{dateera}{ce}
+      \field{pages}{447\bibrangedash 458}
+      \range{pages}{12}
+      \verb{file}
+      \verb Full Text PDF:/home/wayoff/Zotero/storage/RRZFSZVB/Delcourte et al. - 2005 - Discrete-Duality Finite Volume Method for Second Order Elliptic Problems.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{delcourte_discrete_2007}{article}{}
+      \name{author}{3}{}{%
+        {{hash=73be8615d67486655044d08732b75579}{%
+           family={Delcourte},
+           familyi={D\bibinitperiod},
+           given={Sarah},
+           giveni={S\bibinitperiod}}}%
+        {{hash=3bf757ce5310973b33388ede082c2a5e}{%
+           family={Domelevo},
+           familyi={D\bibinitperiod},
+           given={Komla},
+           giveni={K\bibinitperiod}}}%
+        {{hash=f8c8e61e359308f533647ff7bd34b0ca}{%
+           family={Omnes},
+           familyi={O\bibinitperiod},
+           given={Pascal},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{5c7a0d6e029ca1aa4792e459ec7c2a5f}
+      \strng{fullhash}{5c7a0d6e029ca1aa4792e459ec7c2a5f}
+      \strng{bibnamehash}{5c7a0d6e029ca1aa4792e459ec7c2a5f}
+      \strng{authorbibnamehash}{5c7a0d6e029ca1aa4792e459ec7c2a5f}
+      \strng{authornamehash}{5c7a0d6e029ca1aa4792e459ec7c2a5f}
+      \strng{authorfullhash}{5c7a0d6e029ca1aa4792e459ec7c2a5f}
+      \field{extraname}{2}
+      \field{labelalpha}{DDO07}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We deﬁne discrete diﬀerential operators such as grad, div and curl, on general two-dimensional non-orthogonal meshes. These discrete operators verify discrete analogues of usual continuous theorems: discrete Green formulae, discrete Hodge decomposition of vector ﬁelds, vector curls have a vanishing divergence and gradients have a vanishing curl. We apply these ideas to discretize div-curl systems. We give error estimates based on the reformulation of these systems into equivalent equations for the potentials. Numerical results illustrate the use of the method on several types of meshes, among which degenerating triangular meshes and non-conforming locally reﬁned meshes.}
+      \field{issn}{0036-1429, 1095-7170}
+      \field{journaltitle}{{SIAM} Journal on Numerical Analysis}
+      \field{langid}{english}
+      \field{month}{1}
+      \field{number}{3}
+      \field{shortjournal}{{SIAM} J. Numer. Anal.}
+      \field{title}{A Discrete Duality Finite Volume Approach to Hodge Decomposition and div‐curl Problems on Almost Arbitrary Two‐Dimensional Meshes}
+      \field{urlday}{25}
+      \field{urlmonth}{4}
+      \field{urlyear}{2026}
+      \field{volume}{45}
+      \field{year}{2007}
+      \field{dateera}{ce}
+      \field{urldateera}{ce}
+      \field{pages}{1142\bibrangedash 1174}
+      \range{pages}{33}
+      \verb{doi}
+      \verb 10.1137/060655031
+      \endverb
+      \verb{file}
+      \verb PDF:/home/wayoff/Zotero/storage/8J4IJJY3/Delcourte et al. - 2007 - A Discrete Duality Finite Volume Approach to Hodge Decomposition and div‐curl Problems on Almost Arb.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://epubs.siam.org/doi/10.1137/060655031
+      \endverb
+      \verb{url}
+      \verb http://epubs.siam.org/doi/10.1137/060655031
+      \endverb
+      \keyw{ddfv}
     \endentry
     \entry{dziuk_finite_2013}{article}{}
       \name{author}{2}{}{%
@@ -410,6 +390,45 @@
       \verb PDF:/home/wayoff/Zotero/storage/8IAK6AFG/Eymard et al. - 2000 - Finite Volume Methods.pdf:application/pdf
       \endverb
     \endentry
+    \entry{gregoire_decomposition_2025}{report}{}
+      \name{author}{3}{}{%
+        {{hash=e82c1422aecefc1e00061de5d187eb8d}{%
+           family={Grégoire},
+           familyi={G\bibinitperiod},
+           given={Renart},
+           giveni={R\bibinitperiod}}}%
+        {{hash=e86c4332c52a3228bde1750b42d49848}{%
+           family={Marmier},
+           familyi={M\bibinitperiod},
+           given={Carl},
+           giveni={C\bibinitperiod}}}%
+        {{hash=446056fbcc52655038ce8600f1e3c973}{%
+           family={Duvezin},
+           familyi={D\bibinitperiod},
+           given={Romain},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Centre Borelli - {ENS} Paris-Saclay}%
+      }
+      \strng{namehash}{20749d36e04c7be1c5b7f10a024e75cc}
+      \strng{fullhash}{20749d36e04c7be1c5b7f10a024e75cc}
+      \strng{bibnamehash}{20749d36e04c7be1c5b7f10a024e75cc}
+      \strng{authorbibnamehash}{20749d36e04c7be1c5b7f10a024e75cc}
+      \strng{authornamehash}{20749d36e04c7be1c5b7f10a024e75cc}
+      \strng{authorfullhash}{20749d36e04c7be1c5b7f10a024e75cc}
+      \field{labelalpha}{GMD25}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Décomposition de Helmholtz-Hodge sur une surface fermée}
+      \field{year}{2025}
+      \field{dateera}{ce}
+      \verb{file}
+      \verb PDF:/home/wayoff/Zotero/storage/PLFF4R53/Grégoire et al. - 2025 - Décomposition de Helmholtz-Hodge sur une surface fermée.pdf:application/pdf
+      \endverb
+    \endentry
     \entry{hermeline_finite_2000}{article}{}
       \name{author}{1}{}{%
         {{hash=fc475c1b289e7ec365626fedd8f3539b}{%
@@ -456,73 +475,6 @@
       \endverb
       \verb{url}
       \verb https://linkinghub.elsevier.com/retrieve/pii/S0021999100964660
-      \endverb
-    \endentry
-    \entry{ji_fourth_2010}{collection}{}
-      \name{editor}{4}{}{%
-        {{hash=03ec295a2def32200fa423cac79c9156}{%
-           family={Ji},
-           familyi={J\bibinitperiod},
-           given={Lizhen},
-           giveni={L\bibinitperiod}}}%
-        {{hash=2f1c2ebb3891f3563e1cc29b7372ee81}{%
-           family={Liu},
-           familyi={L\bibinitperiod},
-           given={Kefeng},
-           giveni={K\bibinitperiod}}}%
-        {{hash=42fa9c5226c80e419e29b9145bc04e88}{%
-           family={Yang},
-           familyi={Y\bibinitperiod},
-           given={Lo},
-           giveni={L\bibinitperiod}}}%
-        {{hash=2238b78e6ce727843bf0d4139b9542d3}{%
-           family={Yau},
-           familyi={Y\bibinitperiod},
-           given={Shing-Tung},
-           giveni={S\bibinithyphendelim T\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {Providence, Rhode Island}%
-      }
-      \list{publisher}{1}{%
-        {American Mathematical Society}%
-      }
-      \strng{namehash}{c39d198e335350c8473a13447e2a0673}
-      \strng{fullhash}{86c81a3d91a314fb04f0e564106aaa9e}
-      \strng{bibnamehash}{c39d198e335350c8473a13447e2a0673}
-      \strng{editorbibnamehash}{c39d198e335350c8473a13447e2a0673}
-      \strng{editornamehash}{c39d198e335350c8473a13447e2a0673}
-      \strng{editorfullhash}{86c81a3d91a314fb04f0e564106aaa9e}
-      \field{labelalpha}{Ji+10}
-      \field{sortinit}{J}
-      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
-      \field{labelnamesource}{editor}
-      \field{labeltitlesource}{title}
-      \field{abstract}{We will give four proofs of the Cheeger inequality which relates the eigenvalues of a graph with various isoperimetric variations of the Cheeger constant. The ﬁrst is a simpliﬁed proof of the classical Cheeger inequality using eigenvectors. The second is based on a rapid mixing result for random walks by Lova´sz and Simonovits. The third uses {PageRank}, a quantitative ranking of the vertices introduced by Brin and Page. The fourth proof is by an improved notion of the heat kernel pagerank. The four proofs lead to further improvements of graph partition algorithms and in particular the local partition algorithms with cost proportional to its output instead of in terms of the total size of the graph.}
-      \field{day}{27}
-      \field{isbn}{978-0-8218-5021-3 978-0-8218-8851-3 978-1-4704-1751-2}
-      \field{langid}{english}
-      \field{month}{8}
-      \field{series}{{AMS}/{IP} Studies in Advanced Mathematics}
-      \field{title}{Fourth International Congress of Chinese Mathematicians}
-      \field{urlday}{10}
-      \field{urlmonth}{6}
-      \field{urlyear}{2026}
-      \field{volume}{48}
-      \field{year}{2010}
-      \field{dateera}{ce}
-      \field{urldateera}{ce}
-      \verb{doi}
-      \verb 10.1090/amsip/048
-      \endverb
-      \verb{file}
-      \verb PDF:/home/wayoff/Zotero/storage/2574AQFY/Ji et al. - 2010 - Fourth International Congress of Chinese Mathematicians.pdf:application/pdf
-      \endverb
-      \verb{urlraw}
-      \verb https://www.ams.org/amsip/048
-      \endverb
-      \verb{url}
-      \verb https://www.ams.org/amsip/048
       \endverb
     \endentry
     \entry{krell_schemas_2010}{thesis}{}
@@ -593,111 +545,6 @@
       \field{dateera}{ce}
       \verb{file}
       \verb leeriemm.pdf:/home/wayoff/Zotero/storage/GTXNIIAF/Lee - 1997 - Riemannian manifolds an introduction to curvature.pdf:application/pdf
-      \endverb
-    \endentry
-    \entry{meyer_discrete_2003}{inproceedings}{}
-      \name{author}{4}{}{%
-        {{hash=ad0e4e2a367bbe936ddc6e7be5e11312}{%
-           family={Meyer},
-           familyi={M\bibinitperiod},
-           given={Mark},
-           giveni={M\bibinitperiod}}}%
-        {{hash=9e47369dae07290555d7bd0a8b0bfd22}{%
-           family={Desbrun},
-           familyi={D\bibinitperiod},
-           given={Mathieu},
-           giveni={M\bibinitperiod}}}%
-        {{hash=aff2d50d22a268c0b1b9ab454f36b729}{%
-           family={Schröder},
-           familyi={S\bibinitperiod},
-           given={Peter},
-           giveni={P\bibinitperiod}}}%
-        {{hash=273cac178fe6e7e13b4f6079436d8657}{%
-           family={Barr},
-           familyi={B\bibinitperiod},
-           given={Alan\bibnamedelima H.},
-           giveni={A\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
-      }
-      \name{editor}{2}{}{%
-        {{hash=d37ecf3c5fe8ff48dcb557a67a19a594}{%
-           family={Hege},
-           familyi={H\bibinitperiod},
-           given={Hans-Christian},
-           giveni={H\bibinithyphendelim C\bibinitperiod}}}%
-        {{hash=6381fa6ee5871c31f568ee8dd01932fe}{%
-           family={Polthier},
-           familyi={P\bibinitperiod},
-           given={Konrad},
-           giveni={K\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {Berlin, Heidelberg}%
-      }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{572e9ffd82c1b1d7ad4d329dfdbb86a4}
-      \strng{fullhash}{2a17532a867f413b61159bab09eb629c}
-      \strng{bibnamehash}{572e9ffd82c1b1d7ad4d329dfdbb86a4}
-      \strng{authorbibnamehash}{572e9ffd82c1b1d7ad4d329dfdbb86a4}
-      \strng{authornamehash}{572e9ffd82c1b1d7ad4d329dfdbb86a4}
-      \strng{authorfullhash}{2a17532a867f413b61159bab09eb629c}
-      \strng{editorbibnamehash}{2542cf3676fd4e6e809b83411b55dd8d}
-      \strng{editornamehash}{2542cf3676fd4e6e809b83411b55dd8d}
-      \strng{editorfullhash}{2542cf3676fd4e6e809b83411b55dd8d}
-      \field{labelalpha}{Mey+03}
-      \field{sortinit}{M}
-      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{This paper proposes a unified and consistent set of flexible tools to approximate important geometric attributes, including normal vectors and curvatures on arbitrary triangle meshes. We present a consistent derivation of these first and second order differential properties using averaging Voronoi cells and the mixed Finite-Element/Finite-Volume method, and compare them to existing formulations. Building upon previous work in discrete geometry, these operators are closely related to the continuous case, guaranteeing an appropriate extension from the continuous to the discrete setting: they respect most intrinsic properties of the continuous differential operators. We show that these estimates are optimal in accuracy under mild smoothness conditions, and demonstrate their numerical quality. We also present applications of these operators, such as mesh smoothing, enhancement, and quality checking, and show results of denoising in higher dimensions, such as for tensor images.}
-      \field{booktitle}{Visualization and Mathematics {III}}
-      \field{isbn}{978-3-662-05105-4}
-      \field{langid}{english}
-      \field{title}{Discrete Differential-Geometry Operators for Triangulated 2-Manifolds}
-      \field{year}{2003}
-      \field{dateera}{ce}
-      \field{pages}{35\bibrangedash 57}
-      \range{pages}{23}
-      \verb{doi}
-      \verb 10.1007/978-3-662-05105-4_2
-      \endverb
-      \verb{file}
-      \verb Full Text PDF:/home/wayoff/Zotero/storage/7NSJU2TF/Meyer et al. - 2003 - Discrete Differential-Geometry Operators for Triangulated 2-Manifolds.pdf:application/pdf
-      \endverb
-      \keyw{Discrete Operator,Gaussian Curvature,Triangle Mesh,Voronoi Cell,Voronoi Region}
-    \endentry
-    \entry{ros_isoperimetric_2005}{article}{}
-      \name{author}{1}{}{%
-        {{hash=99ec486a960ab4749b65614416eb53ec}{%
-           family={Ros},
-           familyi={R\bibinitperiod},
-           given={Antonio},
-           giveni={A\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Clay Mathematics Institute}%
-      }
-      \strng{namehash}{99ec486a960ab4749b65614416eb53ec}
-      \strng{fullhash}{99ec486a960ab4749b65614416eb53ec}
-      \strng{bibnamehash}{99ec486a960ab4749b65614416eb53ec}
-      \strng{authorbibnamehash}{99ec486a960ab4749b65614416eb53ec}
-      \strng{authornamehash}{99ec486a960ab4749b65614416eb53ec}
-      \strng{authorfullhash}{99ec486a960ab4749b65614416eb53ec}
-      \field{labelalpha}{Ros05}
-      \field{sortinit}{R}
-      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{series}{Global theory of minimal surfaces}
-      \field{title}{The isoperimetric problem}
-      \field{volume}{2}
-      \field{year}{2005}
-      \field{dateera}{ce}
-      \field{pages}{175\bibrangedash 209}
-      \range{pages}{35}
-      \verb{file}
-      \verb PDF:/home/wayoff/Zotero/storage/3XJ8REZT/Ros - 2005 - The isoperimetric problem.pdf:application/pdf
       \endverb
     \endentry
     \entry{tomek_discrete_2019}{article}{}

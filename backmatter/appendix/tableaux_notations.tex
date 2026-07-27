@@ -1,0 +1,160 @@
+\chapter{Notations}
+
+\begin{table}[H]
+    \centering
+    \small
+    \begin{tblr}{
+        abovesep=1pt,
+        belowsep=1pt,
+        row{1}={font=\bfseries},
+        colspec={clc|clc},
+        hline{1,Z} = {1pt},
+        hline{2} = {solid},  
+        row{2} = {abovesep+=5pt}
+        }
+    \SetCell[c=3]{c} Lisse & & & \SetCell[c=3]{c} Polyédrique & & \\
+    $\surflisse$ & Surface fermée de $\R^3$ & --- & $\surfpoly$ & Approximation polyédrique de $\surflisse$ de pas $h$ & --- \\
+    \SetCell[c=3]{r} $\fonctionens[\projvariete]{\surfpoly}{\surflisse}$ & & & \SetCell[c=3]{l} Projection & & \\
+    \hline
+    \SetCell[c=6]{c} \textbf{Primal} & & & & & \\
+    $\ensprimal$ & Maillage primal & --- & $\ensprimalplat$ & Maillage primal de $\surfpoly$& --- \\
+    $\primal{K}$, $\primal{L}$ & Mailles primales & --- & $\primalplat{K}$, $\primalplat{L}$ & Mailles primales plates & --- \\
+    $\mesure(\primal{K})$ & Mesure de la maille $\primal{K}$ & --- & $\mesure(\primalplat{K})$ & Mesure de la maille plate $\primalplat{K}$ & --- \\
+    $\diam{\primal{K}}$ & Diamètre de $\primal{K}$ & --- & $\diam{\primalplat{K}}$ & Diamètre de $\primalplat{K}$ & --- \\
+    $\rayon{\primal{K}}$ & Rayon de $\primal{K}$ & --- & $\rayon{\primalplat{K}}$ & Rayon de $\primalplat{K}$ & --- \\
+    \SetCell[c=3]{r} $\enssomprim = \ens[\big]{x_{\mailleduale{K}} \tq \mailleduale{K} \in \ensdual}$ & & & \SetCell[c=3]{l} Ensemble des sommets de $\ensprimal$ et de $\ensprimalplat$ & & \\
+    $\sigmaplat$ & & --- & $\sigma$ & Arête primale & --- \\
+    $\mesure(\sigma)$ & Longueur de l'arête $\sigma$ & --- & & & --- \\
+    $\ensareteprim$ & Ensemble des arêtes primales & --- & $\ensareteprimplat$ & & --- \\
+    $\ensareteprim_{\primal{K}}$ & Ensemble des arêtes de $\primal{K}$ & --- & & & --- \\
+    & & & $h_\ensprimalplat$ & & \ref{eq:hensprimalplat_rensprimalplat} \\
+    \hline
+    \SetCell[c=6]{c} \textbf{Dual} & & & & & \\
+    $\ensdual$ & Maillage dual & --- & & & --- \\
+    $\mailleduale{K}$, $\mailleduale{L}$ & Mailles duales & --- & $\mailledualeplate{K}$, $\mailledualeplate{L}$ & Mailles duales plates & --- \\
+    $\mesure(\mailleduale{K})$ & Mesure de la maille $\mailleduale{K}$ & --- & & & --- \\
+    $\diam{\mailleduale{K}}$ & Diamètre de $\mailleduale{K}$ & --- & & & --- \\
+    $\enssomdual$ & Ensemble des sommets de $\ensdual$ & --- & $\ens[\big]{x_{\primal{K}} \tq \primal{K} \in \ensprimal}$ & & --- \\
+    $\dual{\sigma} = \segment{x_{\primal{K}}}{x_{\primal{L}}}$ & Arête duale & --- & & & --- \\
+    $\mesure(\dual{\sigma})$ & Longueur de l'arête $\dual{\sigma}$ & --- & & & --- \\
+    $\ensaretedual$ & Ensemble des arêtes duales & --- & & & --- \\
+    $\ensaretedual_{\mailleduale{K}}$ & Ensemble des arêtes de $\mailleduale{K}$ & --- & & & --- \\
+    \hline
+    \SetCell[c=6]{c} \textbf{Diamant} & & & & & \\
+    $\diamant{D} = \diamant{D}_{\sigma, \dual{\sigma}}$ & Diamant & \ref{subsec:diamond_set} & $\diamantplat{D}$ &  & --- \\
+    $\ensdiamant$ & Maillage diamant & \ref{subsec:diamond_set} & & & --- \\
+    $\ensdiamant_{\primal{K}}$ & $\ens[\big]{\diamant{D}_{\sigma,\dual{\sigma}} \in \ensdiamant \tq \sigma \in \ensareteprim_{\primal{K}}}$ & \ref{subsec:diamond_set} & & & --- \\
+    $\ensdiamant_{\mailleduale{K}}$ & $\ens[\big]{\diamant{D}_{\sigma,\dual{\sigma}} \in \ensdiamant \tq \dual{\sigma} \in \ensaretedual_{\mailleduale{K}}}$ & \ref{subsec:diamond_set} & & & --- \\
+    $\vect{\nu}_{\sigma \primal{K}}$ & Normale unitaire à $\sigma$ sortante de $\primal{K}$ & \ref{fig:ddfv_3d_diamant} & & & --- \\
+    $\vect{\tau}_{\mailleduale{K},\mailleduale{L}}$ & Tangente unitaire à $\sigma$ orientée de $\mailleduale{K}$ à $\mailleduale{L}$ & \ref{fig:ddfv_3d_diamant} & & & --- \\
+    $\vect{\nu}_{\dual{\sigma} \mailleduale{K}}$ & Normale unitaire à $\dual{\sigma}$ sortante de $\mailleduale{K}$ & \ref{fig:ddfv_3d_diamant} & & & --- \\
+    $\vect{\tau}_{\primal{K},\primal{L}}$ & Tangente unitaire à $\dual{\sigma}$ orientée de $\primal{K}$ à $\primal{L}$ & \ref{fig:ddfv_3d_diamant} & & & --- \\
+    $\angle{\diamant{D}}$ & Angle entre $\sigma$ et $\dual{\sigma}$ & \ref{fig:ddfv_3d_diamant} & & & --- \\
+    \end{tblr}
+    \caption{Notations générales des maillages \ddfv}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tblr}{
+        row{1}={font=\bfseries},
+        colspec={clc},
+        hline{1,Z} = {1pt},
+        hline{2} = {solid},
+        row{2} = {abovesep+=5pt}
+        }
+    \SetCell[c=2]{c} Titre & & \\
+    $\ensddfv = (\ensprimal, \ensdual)$ & Maillage \ddfv & \\
+    $\size(\ensddfv)$ & & \\
+    $\reg(\ensddfv)$ & Régularité géométrique d'un maillage $\ensddfv$ & \\
+    \hline
+    $u_{\primal{K}}$ & Inconnue sur la maille primale $\primal{K}$ & \\
+    $u_{\mailleduale{K}}$ & Inconnue sur la maille duale $\mailleduale{K}$ & \\
+    $u^\ensprimal$ & $(u_{\primal{K}})_{\primal{K} \in \ensprimal}$ & \\
+    $u^\ensdual$ & $(u_{\mailleduale{K}})_{\mailleduale{K} \in \ensdual}$ & \\
+    $u^\ensddfv$ & {
+        Inconnues $u_{\primal{K}}$ pour tout $\primal{K} \in \ensprimal$ et $u_{\mailleduale{K}}$ pour tout $\mailleduale{K} \in \ensdual$ 
+        \\ 
+        $u^\ensddfv = \big( u^\ensprimal, u^\ensdual \big)$
+    }
+    & \ref{eq:ddfv_unknown}
+    \\
+    $\R^\ensprimal$ & Ensemble des inconnues $u^\ensprimal$ & \\
+    $\R^\ensdual$ & Ensemble des inconnues $u^\ensdual$ & \\
+    $\R^\ensddfv$ & Ensemble des inconnues $u^\ensddfv$ & \\
+    $(\R^2)^\ensdiamant$ & Ensemble des vecteurs de $\R^2$ définis par diamant $\diamant{D}$ & \\
+    $\xi^\ensdiamant$, $\phi^\ensdiamant$ & Inconnues de $(\R^2)^\ensdiamant$ & \\
+    \hline
+    $\prodscalddfv{u^\ensddfv}{v^\ensddfv}$ &  & \ref{eq:prodscalddfv} \\
+    $\prodscalD{\xi^\ensdiamant}{\phi^\ensdiamant}$ & & \ref{eq:prodscalD} \\
+    $\poids{\primal{K}}$, $\poids{\mailleduale{K}}$ & Poids pour $\prodscalddfv{}{}$ & \\
+    $\poids{\diamant{D}}$ & Poids pour $\prodscalD{}{}$ & \\
+    $\Rddfvmn$ & & \\
+    $\normeddfvT{u^\ensddfv}$ & $\prodscalddfv{u^\ensddfv}{u^\ensddfv}^{1/2}$ pour tout $u^\ensddfv \in \R^\ensddfv$ & \\
+    $\normeddfvT[p]{u^\ensddfv}$ & & \ref{eq:normeddfvTp} \\
+    $\normeddfvD{\xi^\ensdiamant}$ & $\prodscalD{\xi^\ensdiamant}{\xi^\ensdiamant}^{1/2}$ pour tout $\xi^\ensdiamant \in (\R^2)^\ensdiamant$ & \\
+    \hline
+    $\projddfvvar$ & $\fonctionens[\projddfvvar]{\R^\ensddfv}{\L^2(\surflisse)}$ & \ref{eq:projddfvvar} \\
+    $\projdiamantvar$ & $\fonctionens[\projdiamantvar]{(\R^2)^\ensdiamant}{\L^2(\surflisse)}$ & \ref{eq:projdiamantvar} \\
+    \end{tblr}
+    \caption{Notations}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tblr}{
+        % width=0.8\linewidth,
+        row{1}={font=\bfseries},
+        % colspec={X[c]X[l]X[c]},
+        colspec={clc},
+        hline{1,Z} = {1pt},
+        hline{2} = {solid},  
+        row{2} = {abovesep+=5pt}
+        }
+    \SetCell[c=3]{c} Opérateurs &  & \\
+    $\grad^\ensdiamant$ & Opérateur gradient discret de $\R^\ensddfv \rightarrow (\R^2)^\ensdiamant$ & \ref{defi:discrete_gradient} \\
+    $\grad^{\diamant{D}} u^\ensddfv$ & Gradient discret de $u^\ensddfv$ sur le diamant $\diamant{D}$ & \ref{eq:discrete_gradient} \\
+    $\rot^\ensdiamant$ & Opérateur rotationnel vectoriel discret de $\R^\ensddfv \rightarrow (\R^2)^\ensdiamant$ & \ref{defi:discrete_vector_curl_operator} \\
+    $\div^\ensddfv$ & Opérateur divergence discrète de $(\R^2)^\ensdiamant \rightarrow \R^\ensddfv$ & \\
+    $\scarot^\ensddfv$ & Opérateur rotationnel scalaire discret de $(\R^2)^\ensdiamant \rightarrow \R^\ensddfv$ & \\
+    \end{tblr}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tblr}{
+        % width=0.8\linewidth,
+        row{1}={font=\bfseries},
+        % colspec={X[c]X[l]X[c]},
+        colspec={clc},
+        hline{1,Z} = {1pt},
+        hline{2} = {solid},  
+        row{2} = {abovesep+=5pt}
+        }
+    \SetCell[c=3]{c} Matrices &  & \\
+    $\gradmat_\ensdiamant$ & Matrice du gradient & \\
+    $\divmat_\ensddfv$ & Matrice de la divergence & \\
+    $\rotmat_\ensdiamant$ &  & \\
+    $\masse_\ensdiamant$ & Poids & \\
+    $\masse_\ensddfv$ & Poids & \\
+    \end{tblr}
+\end{table}
+
+
+
+\begin{table}[H]
+    \centering
+    \begin{tblr}{
+        row{1}={font=\bfseries},
+        colspec={clc},
+        hline{1,Z} = {1pt},
+        hline{2} = {solid},  
+        row{2} = {abovesep+=5pt}
+        }
+    \SetCell[c=3]{c} Graphes &  & \\
+    $\graphe^\ensprimal$ & Graphe associé au maillage $\ensprimal$ & $(\enssomdual, \ensaretedual)$  \\
+    $\graphe^\ensdual$ & Graphe associé au maillage $\ensdual$ & $(\enssomprim, \ensareteprim)$  \\
+    $\degr v$ & Degré du sommet $v$ & --- \\
+    $\vol S$ & Volume d'un ensemble de sommets $S$ & --- \\
+    \end{tblr}
+\end{table}

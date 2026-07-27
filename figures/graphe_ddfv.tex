@@ -1,0 +1,76 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\begin{tikzpicture}[ddfv]
+
+\input{figures/graphe_ddfv_coord.tex}
+
+% \draw[mailleprimale] (M1) -- (M5) -- (M19) -- (M13) -- (M14) -- (M18) -- (M16) -- (M12) -- (M8) -- (M4) -- (M3) -- (M17) -- cycle;
+
+% \draw (-0.4,-0.3) rectangle (M16);
+
+\foreach \i in {2,6,7,9,10,11,15} {
+   % \node[ptsq={myblue}{above:{\i}}] at (M\i) {};
+   \node[ptsq={myblue}{}] at (M\i) {};
+}
+
+\foreach \i in {1,3,4,5,8,12,13,14,16,17,18,19} {
+   % \node[ptsqbord={myblue}{above:{\i}}] at (M\i) {};
+   % \node[ptsq={myblue}{}] at (M\i) {};
+}
+
+\foreach \i in {1,...,21} {
+   % \node[ptcl={myred}{above:{\i}}] at (Me\i) {};
+   \node[ptcl={myred}{}] at (Me\i) {};
+}
+
+\draw[myblue] (M16) -- (M15) -- (M14t);
+\draw[myblue] (M1b) -- (M6) -- (M9) -- (M14b);
+\draw[myblue] (M14) -- (M10) -- (M11) -- (M15) -- (M18);
+\draw[myblue] (M11) -- (M12b);
+\draw[myblue] (M12) -- (M7) -- (M6)  -- (M10) -- (M9) -- (M19);
+\draw[myblue] (M2) -- (M6) -- (M5); % -- (M19) -- (M13);
+\draw[myblue] (M11) -- (M16b);
+\draw[myblue] (M10) -- (M7) -- (M2);
+\draw[myblue] (M4) -- (M7);
+\draw[myblue] (M5b) -- (M9) -- (M13);
+\draw[myblue] (M1) -- (M2) -- (M3);
+\draw[myblue] (M11) -- (M7) -- (M3b);
+
+
+% \foreach \i in {1,...,12} {
+%     % \node[ptcl={myred}{above:{\i}}] at (Mb\i) {};
+%     \node[ptclbord={myred}{}] at (Mb\i) {};
+% }
+
+
+\draw[myred] (Me1) -- (Me2) -- (Me6) -- (Me11) -- (Me14);
+\draw[myred] (Me2) -- (Me3) -- (Me21);
+\draw[myred] (Me21) -- (Me13) -- (Me4) -- (Me7) -- (Me12) -- (Me11) -- (Me6) -- cycle;
+\draw[myred] (Me14) -- (Me11) -- (Me12) -- (Me9) -- (Me8);
+\draw[myred] (Me10) -- (Me7) -- (Me12) -- (Me9);
+\draw[myred] (Me5) -- (Me14) -- (Me8) -- (Me20) -- (Me17);
+\draw[myred] (Me9) -- (Me16) -- (Me18);
+
+\draw[myred] (Mb11) -- (Me3) -- (Mb12);
+\draw[myred] (Mb12) -- (Me3) -- (Me2) -- (Me1) -- (Mb1);
+\draw[myred] (Mb1) -- (Me1) -- (Me5) -- (Me19) -- (Mb2);
+\draw[myred] (Mb2) -- (Me19) -- (Me17) -- (Mb3);
+\draw[myred] (Mb3) -- (Me17) -- (Me20) -- (Mb4);
+\draw[myred] (Mb4) -- (Me20) -- (Me8) -- (Me9) -- (Me15) -- (Mb5);
+\draw[myred] (Mb5) -- (Me15) -- (Me18) -- (Mb6);
+\draw[myred] (Mb6) -- (Me18) -- (Me16) -- (Me10) -- (Mb7);
+\draw[myred] (Mb7) -- (Me10) -- (Me7) -- (Me4) -- (Mb8);
+\draw[myred] (Mb8) -- (Me4) -- (Mb9);
+\draw[myred] (Mb9) -- (Me4) -- (Me13) -- (Mb10);
+\draw[myred] (Mb10) -- (Me13) -- (Me21) -- (Me3) -- (Mb11);
+
+\node[myred, below=5pt] at (Me12) {\contour{white}{$x_{\primal{K}}$}};
+\node[myred, above=5pt] at (Me9) {\contour{white}{$x_{\primal{L}}$}};
+
+\node[myred] at ($(Me12)!0.5!(Me9)$) {\contour{white}{$\dual{\sigma}$}};
+
+\node[myblue, shift={(2pt,15pt)}] at (Me12) {\contour{white}{$\primal{K}$}};
+\node[myblue, shift={(17pt,-5pt)}] at (Me9) {\contour{white}{$\primal{L}$}};
+
+
+\end{tikzpicture}

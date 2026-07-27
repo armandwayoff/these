@@ -1,0 +1,122 @@
+\section{Properties of the operators}
+
+\subsection{Discrete Green formulae}
+
+Here, we check that the discrete operators verify some discrete duality principles. Les opérateurs discrets introduits sont en dualité. En effet, grâce aux produits scalaires ci-dessus (ref), on peut écrire une formule de Green. C'est cette propriété de dualité qui a donné le nom à la méthode.
+
+\begin{theo}[Discrete Green formulae] \label{theo:discrete_green_formulae}
+Pour tout $\xi^\ensdiamant, u^\ensddfv \in (\R^2)^\ensdiamant \times \R^\ensddfv$, on a
+\[
+\prodscalddfv{\div^\ensddfv \xi^\ensdiamant}{u^\ensddfv} = - \prodscal{\xi^\ensdiamant}{\grad^\ensdiamant u^\ensddfv}_\ensdiamant,
+\]
+\[
+\prodscalddfv{\scarot^\ensddfv \xi^\ensdiamant}{u^\ensddfv} = \prodscal{\xi^\ensdiamant}{\rot^\ensdiamant u^\ensddfv}_\ensdiamant.
+\]
+\end{theo}
+\begin{demo}[{\cite[Prop. 2.3]{domelevo_finite_2005}}]
+Let $\xi^\ensdiamant$ be a discrete vector field and $\grad^\ensdiamant u^\ensddfv$ the discrete gradient of a function $u^\ensddfv$, respectively defined by the values $\xi^{\diamant{D}}$ and formula \ref{eq:gradient_discret} on each of diamond-cells $\diamant{D} \in \ensdiamant$. There holds:
+\begin{equation}
+    \prodscalD{\xi^\ensdiamant}{\grad^\ensdiamant u^\ensddfv} = \sum_{\diamant{D} \in \ensdiamant} \mesure(\diamant{D}) \, \xi^{\diamant{D}} \cdot \grad^{\diamant{D}} u^\ensddfv = 
+    \sum_{\diamant{D} \in \ensdiamant} \frac{1}{2} \, \xi^{\diamant{D}} \cdot \mathopen{}\Big[ (u_{\primal{L}} - u_{\primal{K}}) \mesure(\sigma) \, \vect{\nu} + (u_{\mailleduale{L}} - u_{\mailleduale{K}}) \mesure(\dual{\sigma}) \, \dual{\vect{\nu}} \Big].
+\end{equation}
+\begin{equation}
+    \prodscalD{\xi^\ensdiamant}{\grad^\ensdiamant u^\ensddfv} = - \frac{1}{2} \sum_{\primal{K} \in \ensprimal} u_{\primal{K}} \mathopen{}\left( \sum_{\diamant{D}_{\sigma,\dual{\sigma}} \in \ensdiamant_{\primal{K}}} \mesure(\sigma) \, \xi^{\diamant{D}} \cdot \vect{\nu} \right)
+    - \frac{1}{2} \sum_{\mailleduale{K} \in \ensdual} u_{\mailleduale{K}} \mathopen{}\left( \sum_{\diamant{D}_{\sigma,\dual{\sigma}} \in \ensdiamant_{\mailleduale{K}}} \mesure(\dual{\sigma}) \, \xi^{\diamant{D}} \cdot \dual{\vect{\nu}} \right).
+\end{equation}
+\end{demo}
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \input{figures/duality_div_grad.tex}
+    \caption{}
+\end{subfigure}%
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \input{figures/duality_scarot_rot.tex}
+    \caption{}
+\end{subfigure}
+\caption{}
+\end{figure}
+
+\subsection{Compositions of the discrete operators \cite[Sec. 4.2]{delcourte_discrete_2007}}
+
+The aim of this section is to {\color{red}verify} a discrete analogue of the following continuous identities: $\div \rot = 0$, $\scarot \grad = 0$ and $\scarot \rot = - \div \grad$\ .
+
+\begin{prop}
+Given any $u^\ensddfv \in \R^\ensddfv$, there holds
+\begin{align}
+    \div^\ensddfv (\rot^\ensdiamant u^\ensddfv) &= 0 \\
+    \scarot^\ensddfv (\grad^\ensdiamant u^\ensddfv) &= 0. 
+\end{align}
+\end{prop}
+
+\begin{prop}
+The following equality holds
+\[
+\scarot^\ensddfv \rot^\ensdiamant u^\ensddfv = - \div^\ensddfv \grad^\ensdiamant u^\ensddfv.
+\]
+\end{prop}
+
+\subsection{Hodge's decomposition}
+
+\cite[Sec. 4.3]{delcourte_discrete_2007} In the continuous case, the Hodge decomposition for non simply connected domains reads:
+\begin{equation} \label{eq:413}
+(\L^2)^2 = \grad V \oplusperp \rot W,
+\end{equation}
+with $V = \ens[\big]{\phi \in \H^1 \tq \int_\Omega \phi = 0}$ and $W = \ens[\big]{\psi \in \H^1 \tq \cdot}$. To prove an analogous property in the discrete case, we rely on the following result:
+
+\begin{lemme}[Euler's formula]
+For a non simply connected \dots
+\[
+\chi = \dots
+\]
+\end{lemme}
+
+We may now state the following discrete Hodge decomposition:
+
+\begin{theo}
+Let $\xi^\ensdiamant \in (\R^2)^\ensdiamant$ be a discrete vector field defined by its values on the diamond-cells $\diamant{D}$. There exist unique $\phi^\ensddfv \in \R^\ensddfv, \psi^\ensddfv \in \R^\ensddfv$ such that:
+\begin{equation} \label{eq:415}
+    \xi^\ensddfv = \grad^\ensdiamant \phi^\ensddfv + \rot^\ensdiamant \psi^\ensddfv,
+\end{equation}
+\begin{equation} \label{eq:416}
+    \sum_{\primal{K} \in \ensprimal} \alpha_{\primal{K}} \, \phi_{\primal{K}} = 
+    \sum_{\mailleduale{K} \in \ensdual} \alpha_{\mailleduale{K}} \, \phi_{\mailleduale{K}} = 0.
+\end{equation}
+Moreover, the decomposition \ref{eq:415} is orthogonal. 
+\end{theo}
+
+\begin{demo}
+    
+\end{demo}
+
+\begin{remarque}
+Formulae \ref{eq:416} are discrete analogues (respectively stated on the primal mesh and on the dual mesh) of the condition $\int_\Omega \phi = 0$ that appears in the definition of the space $V$ in \ref{eq:413}. 
+\end{remarque}
+
+\cite[Sec. 3.2.5]{gregoire_decomposition_2025} Nous allons aussi définir la divergence et la divergence perp. Pour cela, nous allons utiliser la dualité grâce à la formule d'intégration par parties
+\[
+\prodscalddfv{\div^\ensddfv \xi^\ensdiamant}{u^\ensddfv} = - \prodscal{\xi^\ensdiamant}{\grad^\ensdiamant u^\ensddfv}_\ensdiamant.
+\]
+L'objectif est de résoudre
+\begin{equation} \label{eq:DHH}
+\xi^\ensdiamant = \grad^\ensdiamant \varphi^\ensddfv + \rot^\ensdiamant \psi^\ensddfv + r^\ensdiamant.
+\end{equation}
+En prenant la divergence, on obtient
+\[
+\div^\ensddfv \xi^\ensdiamant = \laplacien \varphi^\ensddfv.
+\]
+On ne va jamais calculer explicitement la divergence et la divergence perp, mais on sera amener à résoudre l'équation
+\[
+\forall v^\ensddfv \in \R^\ensddfv, \quad
+\prodscalD{\xi^\ensdiamant}{\grad^\ensdiamant v^\ensddfv} = \prodscalD{\grad^\ensdiamant \varphi^\ensddfv}{\grad^\ensdiamant v^\ensddfv}.
+\]
+Pour obtenir l'équation en $\psi^\ensddfv$, on applique $\scarot^\ensddfv$ à l'équation \ref{eq:DHH}:
+\[
+\cdots
+\]
+\begin{remarque}
+La matrice $\rotmat^\top_\ensdiamant \masse_\ensdiamant$ est symétrique positive mais pas définie. Néanmoins, cela n'est pas grave car la méthode converge à un vecteur du noyau de $\gradmat_\ensdiamant$ près. Or le noyau de $\gradmat_\ensdiamant$ contient l'homologie ainsi que des modes hyper-oscillants. De plus, la composante dans le noyau de $\gradmat$ est préservée dans toutes les étapes du gradient conjugué. En prenant comme solution initiale un vecteur nul, cela nous assure de n'obtenir aucun de ces modes tout en convergeant. 
+\end{remarque}

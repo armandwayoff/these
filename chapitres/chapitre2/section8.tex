@@ -1,62 +1,161 @@
-\section{Démonstration}
+\newpage
+\section{Main theorem}
+
+\subsection{Notations \& Énoncé}
 
 \begin{lemme}
-    Cf \ref{lemme:projection_dziuk}. 
-    \[
-    \frac{\mesure(\primal{K})}{\mesure(\projvariete \primal{K})} = 1 + \grandO{h^2}.
-    \]
+Il existe $\underline{C}^\ensddfv$, $\overline{C}^\ensddfv$, $\underline{C}^\ensdiamant$ et $\overline{C}^\ensdiamant$ indépendantes de $h$ et dépendantes de $\reg \ensddfv$ (refaire la démo de \cite{dziuk_finite_2013} pour bien comprendre de quoi dépendent ces constantes) telles que
+\[
+\forall \primal{K} \in \ensprimal,
+\quad
+2 \, \underline{C}^\ensddfv \, \poids{\primal{K}} \leqslant \mesure(\primal{K}) \leqslant 2 \, \overline{C}^\ensddfv \, \poids{\primal{K}},
+\]
+\[
+\forall \mailleduale{K} \in \ensdual,
+\quad
+2 \, \underline{C}^\ensddfv \, \poids{\mailleduale{K}} \leqslant \mesure(\mailleduale{K}) \leqslant 2 \, \overline{C}^\ensddfv \, \poids{\mailleduale{K}},
+\]
+\[
+\forall \diamant{D} \in \ensdiamant,
+\quad
+\underline{C}^\ensdiamant \, \poids{\diamant{D}} \leqslant \mesure(\diamant{D}) \leqslant \overline{C}^\ensdiamant \, \poids{\diamant{D}}.
+\]
 \end{lemme}
 
+\begin{prop}
+\[
+\normeddfvD{} \sim \norme{}_{\L^2(\variete{M})}   
+\]
+\end{prop}
 
-\begin{prop}[Une inégalité de graphe]\label{prop:ineg_de_graphe}
-Soit $\fonctionens[u]{V(G)}{\R}$ où $G$ est le graphe associé à un maillage $\ensddfv$ tel que $\reg \ensddfv \cdots$. Alors
-\begin{equation}\label{eq:ineg_de_graphe}
-\sum_{i \sim j} (u_i - u_j)^2 \geqslant \min_c C \, h^2 \sum_i (u_i - c)^2.
+\begin{prop}
+\begin{equation}
+\underline{C}^\ensddfv \leqslant \norme{\projddfvvar}_{\L^2} \leqslant \overline{C}^\ensddfv,
+\quad
+\underline{C}^\ensdiamant \leqslant \norme{\projdiamantvar}_{\L^2} \leqslant \overline{C}^\ensdiamant.
 \end{equation}
 \end{prop}
+
+\begin{demo}
+\[
+\norme{\projddfvvar}_{\L^2} = \sup_{u^\ensddfv \in \R^\ensddfv} \frac{\norme{\projddfvvar u^\ensddfv}_{\L^2(\variete{M})}}{\normeddfvT{u^\ensddfv}}
+\]
+\end{demo}
+
+Nous sommes maintenant en mesure d'énoncer le résultat principal de ce chapitre, à savoir une inégalité de Poincaré \ddfv sur une surface fermée sans bord de $\R^3$.
+\begin{theo}[Main]
+    Soit $\ensddfv$ un maillage \ddfv de $\variete{M}$. Il existe une constante $C$, ne dépendant que de la régularité du maillage $\reg(\ensddfv)$, telle que pour tout $u^\ensddfv \in \R^\ensddfv$, on a
+    \[
+    \normeddfvT{u^\ensddfv} \leqslant C \normeddfvD{\grad^\ensdiamant u^\ensddfv}.
+    \]
+    De manière équivalente ?, on a
+    \[
+    \norme{\projddfvvar u^\ensddfv}_{\L^2(\variete{M})} \leqslant C \, \frac{\overline{C}^\ensdiamant}{\underline{C}^\ensddfv} \norme{\projdiamantvar \grad^\ensdiamant u^\ensddfv}_{\L^2(\variete{M})}.
+    \]
+\end{theo}
+
+\subsection{Une inégalité de graphe}
+
+\begin{defi}
+Soit $\ensddfv= (\ensprimal, \ensdual)$ un maillage \ddfv. On lui associe deux graphes:
+\begin{itemize}
+    \item le \defini{graphe du maillage primal} $\graphe^\ensprimal = (\enssomdual, \ensaretedual)$ où $\enssomdual$ est l'ensemble des sommets de $\ensdual$ et $\ensaretedual$ est l'ensemble des arêtes de $\ensdual$;
+    \item le \defini{graphe du maillage dual} $\graphe^\ensdual = (\enssomprim, \ensareteprim)$ où $\enssomprim$ est l'ensemble des sommets de $\ensprimal$ et $\ensareteprim$ est l'ensemble des arêtes de $\ensprimal$.
+\end{itemize}
+\end{defi}
+
+\begin{figure}[H]
+    \centering
+    \input{figures/graphe_ddfv.tex}
+    \caption{Maillage primal et graphe associé}
+\end{figure}
+
+\begin{prop}[Une inégalité de graphe]\label{prop:ineg_de_graphe}
+Soit $u^\ensprimal \in \R^\ensprimal$. On considère cette fonction comme une fonction sur la graphe $\graphe^\ensprimal$ dans le sens où pour $x_{\primal{K}} \in \enssomdual$, on note $u_{\primal{K}} = u^\ensprimal(x_{\primal{K}})$. Sous la condition que $\poids{\primal{K}} = \degr(x_{\primal{K}})$ pour tout $\primal{K} \in \ensprimal$ et que $u^\ensprimal \in \Rddfvmn$, il existe une constante $h_{\graphe^\ensprimal} > 0$ indépendante de la fonction $u^\ensprimal$ telle que,
+\begin{equation}\label{eq:ineg_de_graphe}
+\sum_{\primal{K} \sim \primal{L}} ( u_{\primal{K}} - u_{\primal{L}} )^2
+\geqslant 
+\frac{h_{\graphe^\ensprimal}{}^2}{2} 
+\normeddfvT{u^\ensprimal}^2.
+\end{equation}
+\end{prop}
+
+\begin{demo}[de \ref{prop:ineg_de_graphe}]
+Soient $u^\ensprimal \in \R^\ensprimal$. D'après le théorème \ref{theo:cheeger_inequality}, établissant l'inégalité de Cheeger, appliqué au graphe $\graphe^\ensprimal$, on a
+\[
+\lambda_{\graphe^\ensprimal} = \inf_{u^\ensprimal \in \R^\ensprimal}
+\frac{\displaystyle
+\sum_{\primal{K} \sim \primal{L}} ( u_{\primal{K}} - u_{\primal{L}} )^2
+}{\displaystyle
+\sum_{\primal{K} \in \ensprimal} \big( u_{\primal{K}} - \overline{u^\ensprimal} \big)^2 \degr(x_{\primal{K}})
+}
+\geqslant 
+\frac{h_{\graphe^\ensprimal}{}^2}{2} 
+> 0
+\quad
+\text{avec}
+\quad
+\overline{u^\ensprimal} = \frac{\displaystyle
+\sum_{\primal{K} \in \ensprimal} u_{\primal{K}} \degr(x_{\primal{K}})
+}{\displaystyle
+\sum_{\primal{K} \in \ensprimal} \degr(x_{\primal{K}})
+}.
+\]
+On rappelle que $\lambda_{\graphe^\ensprimal}$ is the least nonzero eigenvalue of $\mathcal{L}$ (the spectral gap) and $h_{\graphe^\ensprimal}$ is Cheeger's constant. Ainsi, pour tout $u^\ensprimal \in \R^\ensprimal$,
+\[
+\sum_{\primal{K} \sim \primal{L}} ( u_{\primal{K}} - u_{\primal{L}} )^2
+\geqslant 
+\frac{h_{\graphe^\ensprimal}{}^2}{2} 
+\sum_{\primal{K} \in \ensprimal} \big( u_{\primal{K}} - \overline{u^\ensprimal} \big)^2 \degr(x_{\primal{K}}).
+\]
+On pose $\boxed{\poids{\primal{K}} = \degr(x_{\primal{K}})}$ pour tout $\primal{K} \in \ensprimal$ de sorte que $\overline{u^\ensprimal} = 0$ d'après la condition \ref{eq:moyenne_nulle} d'orthogonalité. \cite[p. 7]{ji_fourth_2010} Ainsi, comme $\sum\limits_{\primal{K} \in \ensprimal} u_{\primal{K}} \, \degr(x_{\primal{K}}) = 0$, $\sum\limits_{\primal{K} \in \ensprimal} u_{\primal{K}}{}^2 \, \degr(x_{\primal{K}}) = \min\limits_c \sum\limits_{\primal{K} \in \ensprimal} ( u_{\primal{K}} - c )^2 \, \degr(x_{\primal{K}})$.
+On obtient alors le résultat : 
+\[
+\sum_{\primal{K} \sim \primal{L}} ( u_{\primal{K}} - u_{\primal{L}} )^2
+\geqslant 
+\frac{h_{\graphe^\ensprimal}{}^2}{2} 
+\sum_{\primal{K} \in \ensprimal} u_{\primal{K}}{}^2 \degr(x_{\primal{K}})
+= 
+\frac{h_{\graphe^\ensprimal}{}^2}{2} 
+\normeddfvT{u^\ensprimal}^2.
+\]
+\end{demo}
+
+\begin{prop}
+Pour tout $u^\ensprimal \in \R^\ensprimal$,
+\[
+\sum_{\primal{K} \sim \primal{L}} (u_{\primal{L}} - u_{\primal{K}})^2 
+\leqslant
+\normeddfvD{\grad^\ensdiamant u^\ensprimal}^2.
+\]
+\end{prop}
+
+\begin{demo}
+Soient deux mailles primales voisines $\primal{K} \sim \primal{L}$. Par définition du gradient \ref{defi:discrete_gradient} sur le diamant $\diamant{D} = \diamant{D}_{\sigma, \dual{\sigma}}$ avec $\sigma = \arete{\primal{K}}{\primal{L}}$, on a
+\begin{equation*}
+    (u_{\primal{L}} - u_{\primal{K}})^2 
+    = \mesure(\dual{\sigma})^2 \abs{\prodscal{\grad^{\diamant{D}} u^\ensprimal}{\vect{\tau}_{\primal{K},\primal{L}}}}^2
+    \leqslant \mesure(\dual{\sigma})^2 \abs{\grad^{\diamant{D}} u^\ensprimal}^2.
+\end{equation*}
+À quelle condition a-t-on $\mesure(\dual{\sigma})^2 \leqslant \poids{\diamant{D}} = \sin(\angle{\diamant{D}}) \mesure(\sigma) \mesure(\dual{\sigma})$ ?
+$\displaystyle \boxed{\implies \frac{\mesure(\sigma)}{\mesure(\dual{\sigma})} \leqslant \sin \alpha_{\diamant{D}}}$. 
+\end{demo}
+
+\begin{lemme}
+\[
+\norme{\Pi^\variete{M}_\ensddfv u^\ensprimal}^2_{\L^2(\variete{M})} \sim h^2 \sum_{\primal{K} \in \ensprimal} u_{\primal{K}}{}^2
+\]
+\end{lemme}
+
+\subsection{Passage du discret au continu}
 
 \begin{defi}{Constante isopérimétrique}
 
 \end{defi}
 
 \begin{lemme}
-L'inégalité \ref{eq:ineg_de_graphe} est vraie pour $h = h(G)$.
+L'inégalité \ref{eq:ineg_de_graphe} est vraie pour $h = h(\graphe)$.
 \end{lemme}
-
-\begin{demo}
-    
-\end{demo}
-
-\begin{defi}
-Soit $\ensddfv$ un maillage \ddfv. On lui associe un graphe $G = (V, E)$ avec 
-\[
-V \defeq \ens[\big]{x_{\primal{K}} \tq \primal{K} \in \ensprimal}.
-\]
-\end{defi}
-
-On applique la proposition \ref{prop:ineg_de_graphe} à une fonction scalaire primale $u = (u_{\primal{K}})_{\primal{K} \in \ensprimal}$.
-
-\[
-{\color{red}
-U^\top U = \sum_{i \in V} u_i{}^2.
-}
-\]
-
-D'une part, 
-\[
-\norme{u}^2_{\L^2} = \sum_{\primal{K} \in \ensprimal} \mesure(\primal{K}) \, u_{\primal{K}}{}^2 = \sum_{i \in V} \underbrace{\mesure(\primal{K})}_{\sim h^2} \, u_i{}^2 \sim h^2 \, U^\top U
-\]
-D'autre part, pour $i \sim j$,
-\begin{align*}
-    (u_i - u_j)^2 &= \abs{\widetilde{\grad}_{i,j} u \cdot (x_j - x_i)}^2 \\
-    &\lesssim h^2 \abs{\widetilde{\grad}_{i,j} u}^2 \\
-    &\lesssim \int_{D_{i,j}} \abs{\widetilde{\grad}_{i,j} u}^2
-\end{align*}
-\[
-\sum_{i \sim j} (u_i - u_j)^2 \lesssim \int_{D_{i,j}} \abs{\widetilde{\grad}_{i,j} u}^2 = \norme{\grad u}^2_{\L^2}.
-\]
-On veut $\norme{u}^2_{\L^2} \lesssim \norme{\grad u}^2_{\L^2}$. A-t-on $h^2 \, U^\top U \lesssim U^\top L U$ ? ($U$ de moyenne nulle). 
-
 
 \begin{lemme}
 Soit $A \subset \variete{M}$,
@@ -71,13 +170,12 @@ Soit $A \subset \variete{M}$,
 \]
 \end{lemme}
 
-
 \begin{prop}[Relaxation condition de Cheeger]
     Pour $0 < k < 1$, on définit
     \[
-    h_k(\variete{M}) \defeq \inf_{\substack{A \subset \variete{M} \\ \abs{A} \leqslant k \, \abs{\variete{M}}}} \frac{\abs{\partial A}}{\abs{A}}.
+    h_k(\variete{M}) \defeq \inf_{\substack{A \subset \variete{M} \\ \abs{A} \leqslant k \, \abs{\variete{M}}}} \frac{\abs{\partial A}}{\abs{A}},
     \]
-    Alors
+    de sorte que $h(\variete{M}) = h_{1/2}(\variete{M})$. Alors
     \[
     \begin{cases}
         h_k(\variete{M}) = h(\variete{M}) &\text{si } \frac{1}{2} \leqslant k < 1 \text{ (relaxation)}, \\
@@ -96,3 +194,48 @@ $h(\variete{M}) = h_{1/2}(\variete{M})$
     \input{figures/cheeger_discret_to_continu.tex}
     \caption{maillage non régulier}
 \end{figure}
+
+
+
+\begin{envide}[Sketch of the proof]
+{\color{blue}
+\begin{itemize}
+    \item La courbure de la surface est minorée et donc dès que $h$ est suffisament petit, tous les triangles sont dans un voisinage tubulaire de la surface qui est tel qu'on peut toujours projeter de manière unique dessus (de tout point du maillage, on peut projeter). On peut projeter les maillages sur la surface et on peut le faire de sorte que les volumes restent en $h^2$ des triangles et les longueurs des arêtes restent en $h$ et peut être que les angles soient minorés par une constante uniforme indépendamment de $h$ (on peut l'avoir avec la contrainte sur la régularité du maillage).
+    \item Les diamants doivent aussi être proches de la surface (il faudra projeter les diamants et estimer)
+    \item Le $u$ est de deux sortes: $P^0$ du maillage duale. 
+    \item On veut une inégalité comme:
+    \[
+    \norme{\widetilde{\grad} u}_{\L^2} \geqslant C \norme{u}_{\L^2}
+    \]
+    \item Tout le but de l'opération est de montrer que
+    \begin{equation}\label{eq:inegdegraphe}
+    \boxed{
+    \sum_{i \sim j} (u_i - u_j)^2 \geqslant C \, h^2 \sum (u_i - c)^2
+    }
+    \end{equation}
+    Il faut minimiser sur $c$, prendre la meilleure constante, la projection de $u$ sur les constantes.
+    \item \ref{eq:inegdegraphe} est une inégalité de graphe, c'est le laplacien sur les graphe qui relie le membre de gauche au membre de droite avec une constante qui est la plus petite valeur propre du laplacien sur le graphe. \textbf{Il faut estimer cette constante}. 
+    \item Ceci est vrai avec $h = h(G)$ (Cheeger) avec
+    \[
+    h(G) \defeq \inf_{\abs{S} \leqslant \frac{\abs{T_h}}{2}} \frac{\abs{\partial S}}{\abs{S}}
+    \]
+    \item Il y a autant d'arêtes qui relient $S$ aux autres que d'arêtes de bord qui contiennent les points de $S$.
+    \item Tout les boulot est de montrer que 
+    \[
+    h(G) \geqslant h \, c
+    \] 
+    \item Soit $S$. On considère l'ensemble de tous les triangles qui sont de centre un point de $S$ et on projette ces triangles sur la surfaces. 
+    \item On considère le sous-ensemble de la surface qui est le projeté des triangles du maillage pour lesquels il y a un point de $S$ qui est dedans. On appelle $A \subset \variete{M}$ cet ensemble. 
+    \[
+    A = \bigcup_{i \in S} \Delta^\variete{M}_i.
+    \]
+    \item D'après les lemmes de projection et les hypothèses : $\abs{\partial S} \sim \frac{\abs{\partial A}}{h}$ et $\abs{S} \sim \frac{\abs{A}}{h^2}$ et donc
+    \[
+    \frac{\abs{\partial S}}{\abs{S}} \sim \frac{\abs{\partial A}}{\abs{A}} \, h
+    \]
+    \item $\frac{\abs{\partial A}}{\abs{A}}$ : on est sur la surface, c'est la constante d'isopérimétrie de la variété et c'est minoré par quelque chose de strictement positif avec la condition $\boxed{\abs{A} \leqslant \frac{\abs{\variete{M}}}{2}}$.
+\end{itemize}
+}
+\end{envide}
+
+\subsection{État de l'art}

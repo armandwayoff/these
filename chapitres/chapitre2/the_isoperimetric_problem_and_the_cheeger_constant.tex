@@ -1,5 +1,9 @@
 
-\section{The Isoperimetric Problem and the Cheeger Constant {\cite[Sec. 3]{benson_cheeger_2016}}}
+\section{The Isoperimetric Problem and the Cheeger Constant \texorpdfstring{{\cite[Sec. 3]{benson_cheeger_2016}}}{[Ben16, Sec. 3]}}
+
+\begin{remarque}
+    The following results are given in dimension $n \geqslant 1$ but will then by applied for $n = 2$ which our setting. 
+\end{remarque}
 
 Let $\variete{M}$ be an $n$-dimensional, Riemannian manifold with $\vol_n(\variete{M}) < \infty$. For a positive $n$-Hausdorff measure subset $A \subseteq \variete{M}$ having $(n-1)$-Hausdorff measurable boundary $\partial A$, the \textbf{isoperimetric ratio} of $A$ is given by
 \begin{equation}
@@ -7,7 +11,7 @@ Let $\variete{M}$ be an $n$-dimensional, Riemannian manifold with $\vol_n(\varie
 \end{equation}
 The isoperimetric ratio is well-defined when $A$ is a smooth submanifold with boundary of $\variete{M}$ or, more generally, when $A$ is an integral current. We also define the \textbf{isoperimetric constant} of a subset $A \subseteq \variete{M}$ to be 
 \begin{equation}
-\overline{h}(A) = \inf_{D \subseteq A} \frac{\vol_{n-1}(\partial D)}{\vol_n(D)},
+\overline{h}(A) = \inf_{D \subseteq A} \frac{\vol_{n-1}(\partial D)}{\vol_n(D)} = \inf_{D \subseteq A} h^\ast(D),
 \end{equation}
 where $D$ ranges over all subsets of $A$ which have smooth boundary. 
 
@@ -35,3 +39,7 @@ h(\variete{M}) = \lim_{k \to \infty} \frac{\vol_{n-1}(\partial A_k)}{\vol_n(A_k)
 \end{lemme}
 
 Combining \ref{theo:fundamental_existence_and_regularity} and \ref{lemme:buser}, we can immediately conclude that \textbf{Cheeger minimizers exists for all compact manifolds}.
+
+\begin{envide}[Interprétation]
+    \chevron{On ne peut pas trouver d'ensembles de périmètres qui tendent vers $0$ et de volumes non nuls}.
+\end{envide}

@@ -2,7 +2,7 @@
 
 \begin{tikzpicture}[
   ddfv,
-  scale=3,
+  scale=5,
 ]
 
 \def\a{0.2}
@@ -34,14 +34,14 @@
 
 \draw[maillediamantint] (xke) -- (xk) -- (xle) -- (xl) -- cycle;
 
-\node[ptsq={myblue}{above:{\contour{white}{$x_{\dual{K}}$}}}] at (xke) {};
+\node[ptsq={myblue}{above:{\contour{white}{$x_{\mailleduale{K}}$}}}] at (xke) {};
 
-\node[ptsq={myblue}{below:{\contour{white}{$x_{\dual{L}}$}}}] at (xle) {};
+\node[ptsq={myblue}{below:{\contour{white}{$x_{\mailleduale{L}}$}}}] at (xle) {};
 
 \node[ptcl={myred}{left:{$x_{\primal{K}}$}}] at (xk) {};
 \node[ptcl={myred}{right:{$x_{\primal{L}}$}}] at (xl) {};
 
-\node[left, mygreen] at ($(xk)!0.5!(xke)$) {$\diamant{D}_{\sigma,\dual{\sigma}}$};
+% \node[left, mygreen] at ($(xk)!0.5!(xke)$) {$\diamant{D}_{\sigma,\dual{\sigma}}$};
 
 \path[name path=sigma] (xle) -- (xke);
 \path[name path=sigmae] (xk) -- (xl);
@@ -75,12 +75,12 @@ in
     (xk) -- (xl)
     node[pos=0.7, above] {$\dual{\sigma}$};
 
-\draw[ultra thick, ->] ($(xke)!0.2!(xle)$) -- ++(0,-4pt) node[right] {$\vect{\tau}$};
-\draw[ultra thick, ->] ($(xke)!0.2!(xle)$) -- ++(4pt,0) node[above] {$\vect{\nu}$};
+\draw[ultra thick, ->] ($(xke)!0.2!(xle)$) -- ++(0,-4pt) node[right] {$\vect{\tau}_{\mailleduale{K},\mailleduale{L}}$};
+\draw[ultra thick, ->] ($(xke)!0.2!(xle)$) -- ++(4pt,0) node[above] {$\vect{\nu}_{\sigma \primal{K}}$};
 \draw ($(xke)!0.2!(xle)$) rectangle ++(1pt,-1pt);
 
-\draw[ultra thick, ->] ($(xk)!0.2!(xl)$) -- ($(xk)!0.2!(xl)!4pt!(xl)$) node[above] {$\dual{\vect{\tau}}$};
-\draw[ultra thick, ->] ($(xk)!0.2!(xl)$) -- ($(xk)!0.2!(xl)!4pt!-90:(xl)$) node[right] {$\dual{\vect{\nu}}$};
+\draw[ultra thick, ->] ($(xk)!0.2!(xl)$) -- ($(xk)!0.2!(xl)!4pt!(xl)$) node[above] {$\vect{\tau}_{\primal{K},\primal{L}}$};
+\draw[ultra thick, ->] ($(xk)!0.2!(xl)$) -- ($(xk)!0.2!(xl)!4pt!-90:(xl)$) node[right] {$\vect{\nu}_{\dual{\sigma} \mailleduale{K}}$};
 
 \coordinate (P) at ($(xk)!0.2!(xl)$);
 \draw (P) -- ($(P)!1pt!(xl)$) -- ($(P)!1pt!(xl)!1pt!-90:(xl)$) -- ($(P)!1pt!-90:(xl)$) -- cycle;

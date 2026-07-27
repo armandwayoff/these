@@ -65,7 +65,7 @@
 
 \draw[myblue] plot[domain=0:\xL,samples=20,smooth] ({\x},{\f(\x)});
 
-\draw[myred] (P) -- (\xx, 0);
+\draw[myred] (P) -- (\xx, 0) node[midway, right] {$d(x)$};
 \node[ptcl={myred}{above:{$\projvariete(x)$}}] at (P) {};
 \node[ptcl={myred}{below:{$x$}}] at (\xx, 0) {};
 

@@ -1,23 +1,47 @@
+\DeclareFontFamily{OMS}{oldcmsy}{}
+\DeclareFontShape{OMS}{oldcmsy}{m}{n}{<-> cmsyold}{}
+\DeclareMathAlphabet{\oldmathcal}{OMS}{oldcmsy}{m}{n}
 
 \newcommand{\ddfv}{\textsc{ddfv}\xspace}
 \newcommand{\W}{\mathrm{W}}
 \newcommand{\indicatrice}{\mathbf{1}}
 \newcommand{\variete}[1]{\mathcal{#1}}
+\newcommand{\surflisse}{\variete{S}}
+\newcommand{\surfpoly}{\mathrm{S}}
 
 \DeclareMathOperator{\vol}{vol}
 \DeclareMathOperator{\mesure}{m}
-% \DeclareMathOperator{\mesurevar}{m^\variete{M}}
+% \DeclareMathOperator{\mesurevar}{m^\surflisse}
 \newcommand{\diam}[1]{\d_{#1}}
 \newcommand{\rayon}[1]{\rho_{#1}}
-\DeclareMathOperator{\projvariete}{\Pi^\variete{M}}
+
+\renewcommand{\angle}[1]{\theta_{#1}}
+\newcommand{\poids}[1]{\mu_{#1}}
+
+\DeclareMathOperator{\projvariete}{\Pi^\surflisse}
+\DeclareMathOperator{\projddfvvar}{\Pi^{\surflisse}_\ensddfv}
+\DeclareMathOperator{\projdiamantvar}{\Pi^{\surflisse}_\ensdiamant}
 
 \newcommand{\boule}{\mathrm{B}}
 
-\newcommand{\complexe}[1]{\mathsf{#1}}
-\newcommand{\segment}[2]{(#1 \,, #2)}
+\newcommand{\areprendre}[1]{{\color{gray}#1}}
 
-\newcommand{\intervalleddfv}[2]{#1 \mathclose{}\mathpunct{}, #2}
-\DeclarePairedDelimiterX{\prodscalddfv}[2]{\llbracket}{\rrbracket_\ensddfv}{\intervalleddfv{\argordot{#1}}{\argordot{#2}}}
+\newcommand{\complexe}[1]{\mathsf{#1}}
+\newcommand{\segment}[2]{[#1 \,, #2]}
+
+\newcommand{\oplusperp}{\overset{\perp}{\oplus}}
+
+\newcommand{\graphe}{\mathcal{G}}
+\DeclareMathOperator{\degr}{deg}
+
+\newcommand{\normeddfvT}[2][2]{\norme{#2}_{#1,\ensddfv}}
+\newcommand{\normeddfvD}[2][2]{\norme{#2}_{#1,\ensdiamant}}
+
+
+% \newcommand{\intervalleddfv}[2]{#1 \mathclose{}\mathpunct{}, #2}
+% \DeclarePairedDelimiterX{\prodscalddfv}[2]{\llbracket}{\rrbracket_\ensddfv}{\intervalleddfv{\argordot{#1}}{\argordot{#2}}}
+\newcommand{\prodscalddfv}[2]{\prodscal{#1}{#2}_\ensddfv}
+\newcommand{\prodscalD}[2]{\prodscal{#1}{#2}_\ensdiamant}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -27,15 +51,33 @@
     {\scalebox{0.8}{$\mathcal{#1}$}}% displaystyle
     {\scalebox{0.8}{$\mathcal{#1}$}}% textstyle
     {\scalebox{0.8}{$\scriptstyle\mathcal{#1}$}}% scriptstyle
-    {\scalebox{0.8}{$\scriptstyle\mathcal{#1}$}}% scriptscriptstyle
+    {\scalebox{0.6}{$\scriptstyle\mathcal{#1}$}}% scriptscriptstyle
 }
 
-\newcommand{\dual}[1]{%
+\newcommand{\primalplat}[1]{%
   \mathchoice
-    {\scalebox{0.8}{$\mathcal{#1}^\ast$}}% displaystyle
-    {\scalebox{0.8}{$\mathcal{#1}^\ast$}}% textstyle
-    {\scalebox{0.8}{$\scriptstyle\mathcal{#1}^\ast$}}% scriptstyle
-    {\scalebox{0.8}{$\scriptstyle\mathcal{#1}^\ast$}}% scriptscriptstyle
+    {\scalebox{0.8}{$\mathrm{#1}$}}% displaystyle
+    {\scalebox{0.8}{$\mathrm{#1}$}}% textstyle
+    {\scalebox{0.8}{$\scriptstyle\mathrm{#1}$}}% scriptstyle
+    {\scalebox{0.6}{$\scriptstyle\mathrm{#1}$}}% scriptscriptstyle
+}
+
+\newcommand{\dual}[1]{{#1^\ast}}
+
+\newcommand{\mailleduale}[1]{%
+  \mathchoice
+    {\scalebox{0.8}{$\dual{\mathcal{#1}}$}}% displaystyle
+    {\scalebox{0.8}{$\dual{\mathcal{#1}}$}}% textstyle
+    {\scalebox{0.8}{$\dual{\scriptstyle\mathcal{#1}}$}}% scriptstyle
+    {\scalebox{0.6}{$\dual{\scriptstyle\mathcal{#1}}$}}% scriptscriptstyle
+}
+
+\newcommand{\mailledualeplate}[1]{%
+  \mathchoice
+    {\scalebox{0.8}{$\dual{\mathrm{#1}}$}}% displaystyle
+    {\scalebox{0.8}{$\dual{\mathrm{#1}}$}}% textstyle
+    {\scalebox{0.8}{$\dual{\scriptstyle\mathrm{#1}}$}}% scriptstyle
+    {\scalebox{0.6}{$\dual{\scriptstyle\mathrm{#1}}$}}% scriptscriptstyle
 }
 
 \newcommand{\diamant}[1]{%
@@ -43,29 +85,36 @@
     {\scalebox{0.8}{$\mathcal{#1}$}}% displaystyle
     {\scalebox{0.8}{$\mathcal{#1}$}}% textstyle
     {\scalebox{0.8}{$\scriptstyle\mathcal{#1}$}}% scriptstyle
-    {\scalebox{0.8}{$\scriptstyle\mathcal{#1}$}}% scriptscriptstyle
+    {\scalebox{0.6}{$\scriptstyle\mathcal{#1}$}}% scriptscriptstyle
 }
 
-% \newcommand{\primal}[1]{{\mathcal{#1}}} % maille primale
-% \newcommand{\dual}[1]{{\mathcal{#1}^\ast}} % objet dual
-% \newcommand{\diamant}[1]{{\mathcal{#1}}} % maille diamant
+
+\newcommand{\diamantplat}[1]{%
+  \mathchoice
+    {\scalebox{0.8}{$\mathrm{#1}$}}% displaystyle
+    {\scalebox{0.8}{$\mathrm{#1}$}}% textstyle
+    {\scalebox{0.8}{$\scriptstyle\mathrm{#1}$}}% scriptstyle
+    {\scalebox{0.6}{$\scriptstyle\mathrm{#1}$}}% scriptscriptstyle
+}
+
 
 \newcommand{\ensddfv}{\oldmathcal{T}} % ensemble mailles ddfv
+\newcommand{\Rddfvmn}{\widetilde{\R}^\ensddfv} % fonction ddfv scalaires a moyenne nulle
 
 \newcommand{\ensprimal}{\mathfrak{M}} % ensemble mailles primales
-% \newcommand{\ensprimal}{\mathscr{M}} % ensemble mailles primales
 \newcommand{\ensprimalbord}{\partial \ensprimal} % ensemble mailles primales du bord
-\newcommand{\enssomprim}{\mathfrak{B}} % ensemble des sommets du maillage primal
-% \newcommand{\enssomprim}{\mathcal{B}} % ensemble des sommets du maillage primal
+\newcommand{\enssomprim}{\dual{\mathfrak{B}}} % ensemble des sommets du maillage primal
 
-\newcommand{\ensdual}{{\mathfrak{M}^\ast}} % ensemble mailles duales
-% \newcommand{\ensdual}{{\mathscr{M}^\ast}} % ensemble mailles duales
+% À SUPPRIMER
+\newcommand{\enssomprimplat}{\mathbf{B}}
+
+\newcommand{\ensprimalplat}{\mathbf{M}}
+
+\newcommand{\ensdual}{{\dual{\mathfrak{M}}}} % ensemble mailles duales
 \newcommand{\ensdualbord}{\partial \ensdual} % ensemble mailles duales du bord
-\newcommand{\enssomdual}{\dual{\mathfrak{B}}} % ensemble des sommets du maillage dual
-% \newcommand{\enssomdual}{\dual{\mathcal{B}}} % ensemble des sommets du maillage dual
+\newcommand{\enssomdual}{\mathfrak{B}} % ensemble des sommets du maillage dual
 
 \newcommand{\ensdiamant}{\mathfrak{D}} % ensemble mailles diamants
-% \newcommand{\ensdiamant}{\mathscr{D}} % ensemble mailles diamants
 \newcommand{\ensdiamantbord}{\partial \ensdiamant} % ensemble mailles diamants du bord
 
 \newcommand{\ensdemidiamant}{\widetilde{\mathfrak{D}}} % ensemble demi-diamants
@@ -74,8 +123,17 @@
 \newcommand{\quart}[1]{{\mathcal{#1}}}
 
 \newcommand{\ensareteprim}{\mathfrak{E}}
+\newcommand{\ensareteprimplat}{\mathbf{E}}
 \newcommand{\ensaretedual}{\dual{\mathfrak{E}}}
 \newcommand{\arete}[2]{#1 \mid #2}
+
+\newcommand{\sigmaplat}{\varsigma}
+
+\DeclareMathOperator{\gradmat}{\bm{\mathsf{G}}}
+\DeclareMathOperator{\divmat}{\bm{\mathsf{D}}}
+\DeclareMathOperator{\rotmat}{\bm{\mathsf{R}}}
+
+\DeclareMathOperator{\masse}{M}
 
 \DeclareMathOperator{\reg}{reg}
 \DeclareMathOperator{\size}{size}

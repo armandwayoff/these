@@ -1,23 +1,21 @@
 \documentclass[
 twoside,
+openany,
 10pt
 ]{book}
 
 \newcommand\hmmax{0}
 \newcommand\bmmax{0}
 
-\usepackage[book]{aw}
+\usepackage[book,english]{aw}
 
 \addbibresource{../biblio/PFE.bib}
 
 \input{notations.tex}
 
-\newcommand{\areprendre}[1]{{\color{gray}#1}}
+\SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n} % https://tex.stackexchange.com/questions/106714/stmaryrd-and-boldsymbol-avoid-warnings
 
-
-\DeclareFontFamily{OMS}{oldcmsy}{}
-\DeclareFontShape{OMS}{oldcmsy}{m}{n}{<-> cmsyold}{}
-\DeclareMathAlphabet{\oldmathcal}{OMS}{oldcmsy}{m}{n}
+\usepackage{tikz-cd}
 
 \begin{document}
 
@@ -28,7 +26,7 @@ twoside,
 \fancyhead[RO]{\thepage}
 \fancyhead[LE]{\thepage}
 
-\fancyfoot[C]{{\color{black}Armand \nompropre{Wayoff} -- Centre Borelli, ENS Paris-Saclay} \\ {\color{myred}\textbf{Rapport non-confidentiel et publiable sur Internet}}}
+\fancyfoot[C]{{\color{black}Armand \nompropre{Wayoff} -- Centre Borelli, ENS Paris-Saclay} \\ {\footnotesize\color{myred}Rapport non-confidentiel et publiable sur Internet}}
 \frontmatter
 
 \input{frontmatter/frontmatter.tex}
@@ -37,11 +35,13 @@ twoside,
 
 % \input{introgenerale.tex}
 
-\part{Introduction}
+Intro : seuls deux papiers généralisent en 3D, le formalisme et la technique de preuve sont nouveaux. 
 
-% \input{chapitres/chapitre1.tex}
+\part{Convergence analysis of the \ddfv method on surfaces in \texorpdfstring{$\R^3$}{R3}}
 
-\input{chapitres/chapitre2.tex}
+\input{chapitres/chapitre1.tex}
+
+% \input{chapitres/chapitre2.tex}
 
 % \input{chapitres/chapitre3.tex}
 
@@ -49,6 +49,35 @@ twoside,
 
 % \input{chapitres/chapitre5.tex}
 
-\input{backmatter/backmatter.tex}
+% \input{backmatter/backmatter.tex}
+
+\appendix
+
+\part{Appendices}
+
+\input{backmatter/appendix/simplicial_complexes.tex}
+\input{backmatter/appendix/tableaux_notations.tex}
+
+\backmatter
+
+\printbibliography
+
+\begin{comment}
+\cleardoublepage
+\phantomsection
+
+\renewcommand{\contentsname}{Table des matières détaillée}
+
+\addcontentsline{toc}{chapter}{\contentsname}
+\etocsetnexttocdepth{subsection}
+
+\renewcommand\cftsecfont{\normalfont}
+\renewcommand\cftsecpagefont{\normalfont}
+
+\etocsettocstyle
+  {\chapter*{\contentsname}\markboth{\contentsname}{\contentsname}}
+  {}
+\etoctableofcontents
+\end{comment}
 
 \end{document}

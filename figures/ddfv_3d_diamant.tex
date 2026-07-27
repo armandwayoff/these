@@ -54,25 +54,43 @@
 
 \makeatother
 
-\tdplotsetmaincoords{40}{-105} % élévation, azimut
+% \tdplotsetmaincoords{0}{0}
+
+\def\ViewTheta{60}
+\def\ViewPhi{35}
+
+\tdplotsetmaincoords{\ViewTheta}{\ViewPhi}
+
+\def\FigureScale{5}
+\pgfmathsetlengthmacro{\SyncedThickWidth}{2*0.8pt/\FigureScale}
+
+\tikzset{
+    synced thick arrow/.style={
+        line width=\SyncedThickWidth,
+        -{>[scale={1.8/\FigureScale}]}
+    }
+}
 
 \begin{tikzpicture}[
     ddfv,
     tdplot_main_coords,
-    scale=3.5,
+    scale=\FigureScale
 ]
 
 \def\a{0.2}
+\def\lengthbasis{4pt}
+\def\lengthsq{1pt}
+
 
 \PointXYZ{xke}{0}{0.5}{0}
 \PointXYZ{xle}{0}{-0.5}{0}
-\PointXYZ{xk}{-0.25}{0}{0}
-\PointXYZ{xl}{0.25}{0}{0}
+\PointXYZ{xk}{-0.4}{-0.2}{0}
+\PointXYZ{xl}{0.4}{0.2}{0}
 
-\PointXYZ{xkez}{0}{0.5}{0.5} % 0.5
-\PointXYZ{xlez}{0}{-0.5}{0.5} % 1.3
-\PointXYZ{xkz}{-0.25}{0}{1.2} % 1.2
-\PointXYZ{xlz}{0.25}{0}{1.2} % 1.3
+\PointXYZ{xkez}{\GetX{xke}}{\GetY{xke}}{0.5} 
+\PointXYZ{xlez}{\GetX{xle}}{\GetY{xle}}{0.5} 
+\PointXYZ{xkz}{\GetX{xk}}{\GetY{xk}}{1.2}
+\PointXYZ{xlz}{\GetX{xl}}{\GetY{xl}}{1.2}
 
 \MidPointXYZ{xlezxkz}{xlez}{xkz}
 \MidPointXYZ{xlezxlz}{xlez}{xlz}
@@ -86,90 +104,121 @@
 
 \draw[myblue] (xlez) -- (xkez) node[midway, below] {$\sigma$};
 
-\draw[mygreen] (xlezxkz) -- (xlez);
-\draw[mygreen] (xkezxlz) -- (xkez);
-\draw[mygreen] (xkezxkz) -- (xkez);
-\draw[mygreen] (xlezxlz) -- (xlez);
+\draw[semithick, gray] (xlezxkz) -- (xlez);
+\draw[semithick, gray] (xkezxlz) -- (xkez);
+\draw[semithick, gray] (xkezxkz) -- (xkez);
+\draw[semithick, gray] (xlezxlz) -- (xlez);
 
-\draw[dash pattern=on 3pt off 2pt, dash phase=0pt] (xlez) -- (I);
-\draw[dash pattern=on 3pt off 2pt, dash phase=0pt, ->] (I) --++(0,10pt) node[above] {${\color{myblue} \sigma} \times {\color{myred} \dual{\sigma}}$};
+\draw[semithick, gray] (xkezxlz) -- (xlz);
+\draw[semithick, gray] (xkezxkz) -- (xkz);
 
-\draw[dash pattern=on 3pt off 2pt, dash phase=0pt] (xkez) -- (K);
+\draw[myred] (xlz) -- (xkz) node[midway, above] {$\dual{\sigma}$};
 
-\draw[maillediamantint, opacity=0.8, ultra thick] (xlezxkz) -- (I) -- (xlezxlz) -- (J) -- (xkezxlz) -- (K) -- (xkezxkz) -- (L) -- cycle;
+\node[ptsq={myblue}{below:{\contour{white}{$x_{\mailleduale{L}}$}}}] at (xlez) {};
+\node[ptsq={myblue}{right:{\contour{white}{$x_{\mailleduale{K}}$}}}] at (xkez) {};
 
-\draw[dash pattern=on 3pt off 2pt, dash phase=0pt] (J) -- (xlz);
-\draw[dash pattern=on 3pt off 2pt, dash phase=0pt] (L) -- (xkz);
+\MidPointXYZ{Mid}{I}{K}
+
+\pgfmathsetmacro{\Zplane}{\GetZ{Mid}}
+
+\begin{scope}[
+    canvas is xy plane at z=\Zplane,
+    % every path/.style={}
+]
+
+\coordinate (xle2D) at (\GetX{xle},\GetY{xle});
+\coordinate (xke2D) at (\GetX{xke},\GetY{xke});
+\coordinate (xk2D)  at (\GetX{xk}, \GetY{xk});
+\coordinate (xl2D)  at (\GetX{xl}, \GetY{xl});
+
+\fill[mylightgreen,opacity=0.8] (xle2D) -- (xk2D) -- (xke2D) -- (xl2D) -- cycle;
+
+\path[name path=sigma]  (xle2D) -- (xke2D);
+\path[name path=sigmae] (xk2D) -- (xl2D);
+
+\path[name intersections={of=sigma and sigmae, by=Inter}];
+
+\def\rayonangle{0.08}
+
+\path let
+    \p0 = (Inter),
+    \p1 = (xke2D),
+    \p2 = (xl2D)
+in
+    \pgfextra{
+        \pgfmathsetmacro{\angA}{atan2(-\y1+\y0,\x1-\x0)}
+        \pgfmathsetmacro{\angB}{atan2(\y2-\y0,\x2-\x0)}
+        \global\let\angA\angA
+        \global\let\angB\angB
+    };
+
+\draw[black]
+    ($(Inter)+(\angA:\rayonangle)$)
+    arc[
+        start angle=\angA,
+        end angle=\angB,
+        radius=\rayonangle
+    ];
+
+\node[below] at ($(Inter)+({0.5*(\angA+\angB)}:\rayonangle)$) {$\angle{\diamant{D}}$};
+
+\draw ($(xke2D)!0.2!(xle2D)$) rectangle ++(\lengthsq,-\lengthsq);
+\coordinate (P) at ($(xk2D)!0.2!(xl2D)$);
+\draw
+    (P)
+    -- ($(P)!\lengthsq!(xl2D)$)
+    -- ($(P)!\lengthsq!(xl2D)!\lengthsq!-90:(xl2D)$)
+    -- ($(P)!\lengthsq!-90:(xl2D)$)
+    -- cycle;
+
+
+\coordinate (Pbase) at ($(xke2D)!0.2!(xle2D)$);
+\coordinate (Pbasedual) at ($(xk2D)!0.2!(xl2D)$);
+
+\node[myblue, above left] at ($(Pbase)+(0,{-\lengthbasis})$) {$\vect{\tau}_{\mailleduale{K},\mailleduale{L}}$};
+\node[myblue, right] at ($(Pbase)+({\lengthbasis},0)$) {$\vect{\nu}_{\sigma \primal{K}}$};
+    
+\node[myred, above] at ($(Pbasedual)!\lengthbasis!(xl2D)$) {$\vect{\tau}_{\primal{K},\primal{L}}$};
+\node[myred, below] at ($(Pbasedual)!\lengthbasis!-90:(xl2D)$) {$\vect{\nu}_{\dual{\sigma}\mailleduale{K}}$};
+
+\end{scope}
+
 
 \draw[myblue, dashed] (I) -- (K);
 \draw[myred, dashed] (J) -- (L);
 
-\draw[mygreen] (xlezxkz) -- (xkz);
-\draw[mygreen] (xkezxlz) -- (xlz);
-\draw[mygreen] (xkezxkz) -- (xkz);
-\draw[mygreen] (xlezxlz) -- (xlz);
+\draw[semithick, gray] (xlezxlz) -- (xlz);
+\draw[semithick, gray] (xlezxkz) -- (xkz);
 
-\draw[dotted] (xlezxkz) -- (xlezxlz) -- (xkezxlz) -- (xkezxkz) -- cycle;
+\node[mydarkgreen, left] at (xlezxkz) {$\diamantplat{D}_{\sigma, \dual{\sigma}}$};
 
-\draw[myred] (xlz) -- (xkz) node[midway, right] {$\dual{\sigma}$};
-
-
-\node[ptsq={black}{}] at (xlezxkz) {};
-\node[ptsq={black}{}] at (xlezxlz) {};
-\node[ptsq={black}{}] at (xkezxkz) {};
-\node[ptsq={black}{}] at (xkezxlz) {};
-
-% \node[ptsq={black}{right:{\contour{white}{$\displaystyle \frac{x_\primal{L}+x_\dual{K}}{2}$}}}] at (xlezxkz) {};
-% \node[ptsq={black}{above:{\contour{white}{$\displaystyle \frac{x_\primal{K}+x_\dual{K}}{2}$}}}] at (xlezxlz) {};
-% \node[ptsq={black}{below:{\contour{white}{$\displaystyle\hspace*{4pt}\frac{x_\primal{L}+x_\dual{L}}{2}$}}}] at (xkezxkz) {};
-% \node[ptsq={black}{left:{\contour{white}{$\displaystyle \frac{x_\primal{K}+x_\dual{L}}{2}$}}}] at (xkezxlz) {};
-
-\node[ptsq={myblue}{right:{\contour{white}{$x_{\dual{K}}$}}}] at (xlez) {};
-\node[ptsq={myblue}{left:{\contour{white}{$x_{\dual{L}}$}}}] at (xkez) {};
-\node[ptcl={myred}{above:{\contour{white}{$x_{\primal{K}}$}}}] at (xlz) {};
-\node[ptcl={myred}{below right:{\contour{mylightgreen!80!white}{$x_{\primal{L}}$}}}] at (xkz) {};
-
-% \node[ptcl={black}{}] at (I) {};
-% \node[ptcl={black}{}] at (J) {};
-% \node[ptcl={black}{}] at (K) {};
-% \node[ptcl={black}{}] at (L) {};
-
-\MidPointXYZ{proj}{J}{L}
-% \node[green] at (proj) {$\diamant{D}_{\sigma,\dual{\sigma}}$};
-\node[above left, mygreen] at (xkezxlz) {$\diamant{D}_{\sigma,\dual{\sigma}}$};
+\node[ptcl={myred}{above:{\contour{white}{$x_{\primal{K}}$}}}] at (xkz) {};
+\node[ptcl={myred}{above:{\contour{white}{$x_{\primal{L}}$}}}] at (xlz) {};
 
 
-\def\eqw{0.8pt}
+% \begin{scope}[canvas is xz plane at y=0]
+% \path  (0,1) node[anchor=south]{$z$}; 
+% \pgflowlevelsynccm
+% \draw[thick,-latex] (0,0) -- (0,1); 
+% \end{scope}
 
-\coordinate (eqA) at ($(I)!\eqw!(L)$);
-\coordinate (eqB) at ($(I)!-\eqw!(xlez)$);
-\coordinate (eqC) at ($(eqA)+(eqB)-(I)$);
-\coordinate (eqD) at ($(I)!\eqw!(J)$);
-\coordinate (eqE) at ($(eqD)+(eqB)-(I)$);
+\begin{scope}[canvas is xy plane at z=\Zplane]
+    \pgflowlevelsynccm
 
-\draw[semithick] (I) -- (eqA) -- (eqC) -- (eqB) -- cycle;
-\draw[semithick] (I) -- (eqD) -- (eqE) -- (eqB) -- cycle;
+    \coordinate (xkeZero) at (\GetX{xke},\GetY{xke});
+    \coordinate (xleZero) at (\GetX{xle},\GetY{xle});
 
-\begin{scope}
-    
-\def\eps{-0.5pt}
-\def\lon{0.3pt}
+    \coordinate (xkZero) at (\GetX{xk},\GetY{xk});
+    \coordinate (xlZero) at (\GetX{xl},\GetY{xl});
 
-\coordinate (Mq11) at ($(xkez)!0.5!(xkezxkz) + (-\eps,-\lon)$);
-\coordinate (Mq12) at ($(xkez)!0.5!(xkezxkz) + (\eps,\lon)$);
+    \coordinate (Pbase) at ($(xkeZero)!0.2!(xleZero)$);
+    \coordinate (Pbasedual) at ($(xkZero)!0.2!(xlZero)$);
 
-\coordinate (Mq21) at ($(xkezxkz)!0.5!(xkz) + (-\eps,-\lon)$);
-\coordinate (Mq22) at ($(xkezxkz)!0.5!(xkz) + (\eps,\lon)$);
+    \draw[myblue, synced thick arrow] (Pbase) -- ++(0,-\lengthbasis); % node[above=5pt] {$\vect{\tau}_{\mailleduale{K},\mailleduale{L}}$};
+    \draw[myblue, synced thick arrow] (Pbase) -- ++(\lengthbasis,0); % node[above] {$\vect{\nu}_{\sigma \primal{K}}$};
 
-\begin{scope}[transform canvas={yshift=0.05cm}]
-    \draw (Mq11) -- (Mq12);
-    \draw (Mq21) -- (Mq22);
-\end{scope}
-
-\begin{scope}[transform canvas={yshift=-0.05cm}]
-    \draw (Mq11) -- (Mq12);
-    \draw (Mq21) -- (Mq22);
-\end{scope}
+    \draw[myred, synced thick arrow] (Pbasedual) -- ($(Pbasedual)!\lengthbasis!(xlZero)$);
+    \draw[myred, synced thick arrow] (Pbasedual) -- ($(Pbasedual)!\lengthbasis!-90:(xlZero)$); % node[below] {$\vect{\nu}_{\dual{\sigma}\mailleduale{K}}$};
 
 \end{scope}
 

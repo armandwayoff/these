@@ -1,0 +1,33 @@
+\section{Unknowns / Espaces d’approximation sur les maillages \ddfv} \label{sec:unknowns}
+
+The finite volume method associates to all primal control volumes $\primal{K} \in \ensprimal$, an unknown value $u_{\primal{K}}$ and to all dual control volumes $\mailleduale{K} \in \ensdual$, an unknown value $u_{\mailleduale{K}}$. We denote the approximate solution on the mesh $\ensddfv$ by
+\begin{equation} \label{eq:ddfv_unknown}
+u^\ensddfv = \big( u^\ensprimal, u^\ensdual \big) 
+\quad
+\text{with}
+\quad
+u^\ensprimal = (u_{\primal{K}})_{\primal{K} \in \ensprimal},
+\quad
+u^\ensdual = (u_{\mailleduale{K}})_{\mailleduale{K} \in \ensdual}.
+\end{equation}
+On a environ deux fois plus d'inconnues que dans la méthode VF4 mais cela permet de définir une approximation complète du gradient et pas uniquement dans la direction normale, ceci rend la méthode beaucoup plus robuste. \\
+The approximation spaces of all discrete functions $u^\ensprimal$, $u^\ensdual$ and $u^\ensddfv$ respectively in the sense of definition \ref{eq:ddfv_unknown} is denoted by $\R^\ensprimal$, $\R^\ensdual$ and $\R^\ensddfv$ respectively. By introducing the projector
+\begin{equation} \label{eq:projddfvvar}
+\fonction[\projddfvvar]{\R^\ensddfv}{\L^2(\surflisse)}{u^\ensddfv}{\frac{1}{2} \sum_{\primal{K} \in \ensprimal} \indicatrice_{\primal{K}} \, u_{\primal{K}} + \frac{1}{2} \sum_{\mailleduale{K} \in \ensdual} \indicatrice_{\mailleduale{K}} \, u_{\mailleduale{K}}},
+\end{equation}
+we associate to the discrete function $u^\ensddfv$ the piecewise constant function $\projddfvvar u^\ensddfv$. \url{https://theses.hal.science/tel-03265697/file/HDR_VersionImprimee.pdf} Avec cette définition, nous utilisons simultanément les valeurs sur le maillage primal et les valeurs sur le maillage dual. En effet, nous avons $u_h = \frac{1}{2} \, (u_{h,\ensprimal} + u_{h,\ensdual})$, où $u_{h,\ensprimal}$ et $u_{h,\ensdual}$ sont deux reconstructions différentes basées soit sur les valeurs primales soit sur les valeurs duales. L'espace des solutions approchées est dénoté par $\H_\ensddfv$:
+\[
+\H_\ensddfv = \ens[\Big]{u_h \in \L^1(\surflisse) \tq \exists u^\ensddfv \in \R^\ensddfv \text{ tel que } u_h = \projddfvvar u^\ensddfv}.
+\]
+As a consequence, one can define for any $r \in \intervalleff{1}{+\infty}$ the $\L^r$ norm of $\projddfvvar u^\ensddfv$. 
+
+\begin{figure}[H]
+    \centering
+    \caption{Fonction constante par mailles primales et duales}
+\end{figure}
+
+On définit également $\xi^\ensdiamant \in (\R^2)^\ensdiamant$ par $\xi^\ensdiamant = (\xi^{\diamant{D}})_{\diamant{D} \in \ensdiamant}$, avec $\xi^{\diamant{D}} \in \R^2$. In the same way as above, by introducing the projector
+\begin{equation} \label{eq:projdiamantvar}
+\fonction[\projdiamantvar]{(\R^2)^\ensdiamant}{\L^2(\variete{M})^2}{\xi^\ensdiamant}{\sum_{\diamant{D} \in \ensdiamant} \indicatrice_{\diamant{D}} \, \xi^{\diamant{D}}},
+\end{equation}
+we associate to the discrete function $\xi^\ensdiamant$ the piecewise constant function $\projdiamantvar \xi^\ensdiamant$. 
