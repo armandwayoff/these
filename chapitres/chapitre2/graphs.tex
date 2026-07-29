@@ -63,7 +63,7 @@ The above formulation for $\lambda_G$ corresponds in a natural way to the eigenv
 We remark that the corresponding measure here for each edge is $1$. The measure for each vertex is the degree of the vertex.
 
 We note that \ref{eq:lambdaG} also has the formulation
-\[
+\begin{equation} \label{eq:spectral_gap}
 \boxed{
 \lambda_G = \lambda_1 = \inf_f \frac{\sum\limits_{u \sim v} \big( f(u) - f(v) \big)^2}{\sum\limits_v \big( f(v) - \overline{f} \big)^2 \, d_v},
 \quad
@@ -71,7 +71,7 @@ We note that \ref{eq:lambdaG} also has the formulation
 \quad
 \overline{f} = \frac{\sum_v f(v) \, d_v}{\vol G}
 },
-\]
+\end{equation}
 and $\vol G$ denotes the volume of the graph $G$, given by $\vol G = \sum\limits_v d_v$. More generally, for a set $S$, the volume of $S$, denoted by $\vol(S)$ is defined to be $\vol(S) \defeq \sum_{v \in S} d_v$.
 
 \subsection{Cheeger inequality on graphs \texorpdfstring{{\cite[Sec. 2]{ji_fourth_2010}}}{[Ji+10, Sec. 2]}}
@@ -81,9 +81,9 @@ For a set $S$, the \defini{Cheeger ratio} of $S$ is defined to be
 h_S \defeq \frac{\abs{\partial S}}{\min\{ \vol(S), \vol(G) - \vol(S) \}},
 \]
 where the boundary of $S$ is denoted $\partial S \defeq \ens[\big]{ \{u, v\} \in E \tq u \in S \text{ and } v \not\in S }$.  Let $\overline{S}$ denote the complement of $S$. Then $h_S = h_{\overline{S}}$. The \defini{Cheeger constant} of $G$ is denoted by
-\[
+\begin{equation} \label{eq:cheeger_constant}
 h_G \defeq \min_S h_S.
-\] 
+\end{equation}
 
 \begin{figure}[H]
     \centering

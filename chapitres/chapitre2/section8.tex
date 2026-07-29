@@ -45,9 +45,9 @@ Il existe $\underline{C}^\ensddfv$, $\overline{C}^\ensddfv$, $\underline{C}^\ens
 Nous sommes maintenant en mesure d'énoncer le résultat principal de ce chapitre, à savoir une inégalité de Poincaré \ddfv sur une surface fermée sans bord de $\R^3$.
 \begin{theo}[Main]
     Soit $\ensddfv$ un maillage \ddfv de $\variete{M}$. Il existe une constante $C$, ne dépendant que de la régularité du maillage $\reg(\ensddfv)$, telle que pour tout $u^\ensddfv \in \R^\ensddfv$, on a
-    \[
+    \begin{equation} \label{eq:main_ddfv}
     \normeddfvT{u^\ensddfv} \leqslant C \normeddfvD{\grad^\ensdiamant u^\ensddfv}.
-    \]
+    \end{equation}
     De manière équivalente ?, on a
     \[
     \norme{\projddfvvar u^\ensddfv}_{\L^2(\variete{M})} \leqslant C \, \frac{\overline{C}^\ensdiamant}{\underline{C}^\ensddfv} \norme{\projdiamantvar \grad^\ensdiamant u^\ensddfv}_{\L^2(\variete{M})}.
@@ -56,7 +56,7 @@ Nous sommes maintenant en mesure d'énoncer le résultat principal de ce chapitr
 
 \subsection{Une inégalité de graphe}
 
-\begin{defi}
+\begin{defi} \label{defi:graphe_ddfv}
 Soit $\ensddfv= (\ensprimal, \ensdual)$ un maillage \ddfv. On lui associe deux graphes:
 \begin{itemize}
     \item le \defini{graphe du maillage primal} $\graphe^\ensprimal = (\enssomdual, \ensaretedual)$ où $\enssomdual$ est l'ensemble des sommets de $\ensdual$ et $\ensaretedual$ est l'ensemble des arêtes de $\ensdual$;
@@ -64,88 +64,366 @@ Soit $\ensddfv= (\ensprimal, \ensdual)$ un maillage \ddfv. On lui associe deux g
 \end{itemize}
 \end{defi}
 
+\begin{envide}[Notations]
+On note $\vertices(\graphe)$ l'ensemble des sommets d'un graphe $\graphe$ et $\edges(\graphe)$ l'ensemble de ses arêtes. On pourra également utiliser la notation $\vertices$ et $\edges$ lorsqu'il n'y a pas d'ambiguïté sur le graphe. 
+
+Soit $u^\ensddfv = \big( u^\ensprimal, u^\ensdual \big) \in \R^\ensddfv$. On considère la fonction $u^\ensprimal$ comme une fonction sur la graphe $\graphe^\ensprimal$ dans le sens où pour $x_{\primal{K}} \in \enssomdual$, on note $u_{\primal{K}} = u^\ensprimal(x_{\primal{K}})$ et on considère la fonction $u^\ensdual$ comme une fonction sur la graphe $\graphe^\ensdual$ dans le sens où pour $x_{\mailleduale{K}} \in \enssomprim$, on note $u_{\mailleduale{K}} = u^\ensdual(x_{\mailleduale{K}})$.
+\end{envide}
+
 \begin{figure}[H]
     \centering
     \input{figures/graphe_ddfv.tex}
     \caption{Maillage primal et graphe associé}
 \end{figure}
 
-\begin{prop}[Une inégalité de graphe]\label{prop:ineg_de_graphe}
-Soit $u^\ensprimal \in \R^\ensprimal$. On considère cette fonction comme une fonction sur la graphe $\graphe^\ensprimal$ dans le sens où pour $x_{\primal{K}} \in \enssomdual$, on note $u_{\primal{K}} = u^\ensprimal(x_{\primal{K}})$. Sous la condition que $\poids{\primal{K}} = \degr(x_{\primal{K}})$ pour tout $\primal{K} \in \ensprimal$ et que $u^\ensprimal \in \Rddfvmn$, il existe une constante $h_{\graphe^\ensprimal} > 0$ indépendante de la fonction $u^\ensprimal$ telle que,
-\begin{equation}\label{eq:ineg_de_graphe}
+\noindent Pour tout $u^\ensddfv \in \R^\ensddfv$, on pose
+\[
+\mathcal{E}(u^\ensddfv) \defeq 
 \sum_{\primal{K} \sim \primal{L}} ( u_{\primal{K}} - u_{\primal{L}} )^2
-\geqslant 
-\frac{h_{\graphe^\ensprimal}{}^2}{2} 
-\normeddfvT{u^\ensprimal}^2.
-\end{equation}
-\end{prop}
++
+\sum_{\mailleduale{K} \sim \mailleduale{L}} ( u_{\mailleduale{K}} - u_{\mailleduale{L}} )^2.
+\]
+Pour obtenir \Cref{eq:main_ddfv}, l'objectif va être d'obtenir d'une part $\mathcal{E}(u^\ensddfv) \gtrsim \normeddfvT{u^\ensddfv}^2$ et d'autre part $\mathcal{E}(u^\ensddfv) \lesssim \normeddfvD{\grad^\ensdiamant u^\ensddfv}^2$. 
 
-\begin{demo}[de \ref{prop:ineg_de_graphe}]
-Soient $u^\ensprimal \in \R^\ensprimal$. D'après le théorème \ref{theo:cheeger_inequality}, établissant l'inégalité de Cheeger, appliqué au graphe $\graphe^\ensprimal$, on a
+\begin{lemme}[Une inégalité de graphe] \label{lemme:ineg_de_graphe}
+Pour tout $u^\ensddfv \in \R^\ensddfv$,
 \[
-\lambda_{\graphe^\ensprimal} = \inf_{u^\ensprimal \in \R^\ensprimal}
-\frac{\displaystyle
-\sum_{\primal{K} \sim \primal{L}} ( u_{\primal{K}} - u_{\primal{L}} )^2
-}{\displaystyle
-\sum_{\primal{K} \in \ensprimal} \big( u_{\primal{K}} - \overline{u^\ensprimal} \big)^2 \degr(x_{\primal{K}})
-}
-\geqslant 
-\frac{h_{\graphe^\ensprimal}{}^2}{2} 
-> 0
+\mathcal{E}(u^\ensddfv) \geqslant
+\frac{h_{\graphe^\ensddfv}{}^2}{2} \mathopen{}\left(
+    \sum_{\primal{K} \in \ensprimal} \big( u_{\primal{K}} - c^\ensprimal \big)^2 \degr(x_{\primal{K}})
+    +
+    \sum_{\mailleduale{K} \in \ensdual} \big( u_{\mailleduale{K}} - c^\ensdual \big)^2 \degr(x_{\mailleduale{K}})
+\right),
+\]
+où
+\[
+c^\ensprimal = \frac{
+    \sum\limits_{\primal{K} \in \ensprimal} u_{\primal{K}} \degr(x_{\primal{K}})
+}{
+    \sum\limits_{\primal{K} \in \ensprimal} \degr(x_{\primal{K}})
+},
 \quad
-\text{avec}
+c^\ensdual = \frac{
+    \sum\limits_{\mailleduale{K} \in \ensdual} u_{\mailleduale{K}} \degr(x_{\mailleduale{K}})
+}{
+    \sum\limits_{\mailleduale{K} \in \ensdual} \degr(x_{\mailleduale{K}})
+},
 \quad
-\overline{u^\ensprimal} = \frac{\displaystyle
-\sum_{\primal{K} \in \ensprimal} u_{\primal{K}} \degr(x_{\primal{K}})
-}{\displaystyle
-\sum_{\primal{K} \in \ensprimal} \degr(x_{\primal{K}})
-}.
+\text{et}
+\quad
+h_{\graphe^\ensddfv} = \min\mathopen{}\big\{ h_{\graphe^\ensprimal}, h_{\graphe^\ensdual}\big\}.
 \]
-On rappelle que $\lambda_{\graphe^\ensprimal}$ is the least nonzero eigenvalue of $\mathcal{L}$ (the spectral gap) and $h_{\graphe^\ensprimal}$ is Cheeger's constant. Ainsi, pour tout $u^\ensprimal \in \R^\ensprimal$,
-\[
+La constante $h_{\graphe^\ensprimal}$ (resp. $h_{\graphe^\ensdual}$) est la constante de Cheeger du graphe $\graphe^\ensprimal$ (resp. $\graphe^\ensdual$) définie par \Cref{eq:cheeger_constant}.
+\end{lemme}
+
+\begin{demo}
+Soit $u^\ensddfv \in \R^\ensddfv$. On considère cette fonction comme une fonction sur les graphes $\graphe^\ensprimal$ et $\graphe^\ensdual$ comme expliqué dans la \Cref{defi:graphe_ddfv}. Il suffit alors d'appliquer le \Cref{theo:cheeger_inequality}, établissant l'inégalité de Cheeger, d'une part au graphe $\graphe^\ensprimal$ : 
+\begin{equation} \label{eq:ineg_de_graphe_primal}
 \sum_{\primal{K} \sim \primal{L}} ( u_{\primal{K}} - u_{\primal{L}} )^2
 \geqslant 
-\frac{h_{\graphe^\ensprimal}{}^2}{2} 
-\sum_{\primal{K} \in \ensprimal} \big( u_{\primal{K}} - \overline{u^\ensprimal} \big)^2 \degr(x_{\primal{K}}).
-\]
-On pose $\boxed{\poids{\primal{K}} = \degr(x_{\primal{K}})}$ pour tout $\primal{K} \in \ensprimal$ de sorte que $\overline{u^\ensprimal} = 0$ d'après la condition \ref{eq:moyenne_nulle} d'orthogonalité. \cite[p. 7]{ji_fourth_2010} Ainsi, comme $\sum\limits_{\primal{K} \in \ensprimal} u_{\primal{K}} \, \degr(x_{\primal{K}}) = 0$, $\sum\limits_{\primal{K} \in \ensprimal} u_{\primal{K}}{}^2 \, \degr(x_{\primal{K}}) = \min\limits_c \sum\limits_{\primal{K} \in \ensprimal} ( u_{\primal{K}} - c )^2 \, \degr(x_{\primal{K}})$.
-On obtient alors le résultat : 
-\[
-\sum_{\primal{K} \sim \primal{L}} ( u_{\primal{K}} - u_{\primal{L}} )^2
+\frac{h_{\graphe^\ensprimal}{}^2}{2}
+\sum_{\primal{K} \in \ensprimal} \big( u_{\primal{K}} - c^\ensprimal \big)^2 \degr(x_{\primal{K}}),
+\end{equation}
+et d'autre part au graphe $\graphe^\ensdual$:
+\begin{equation} \label{eq:ineg_de_graphe_dual}
+\sum_{\mailleduale{K} \sim \mailleduale{L}} ( u_{\mailleduale{K}} - u_{\mailleduale{L}} )^2
 \geqslant 
-\frac{h_{\graphe^\ensprimal}{}^2}{2} 
-\sum_{\primal{K} \in \ensprimal} u_{\primal{K}}{}^2 \degr(x_{\primal{K}})
-= 
-\frac{h_{\graphe^\ensprimal}{}^2}{2} 
-\normeddfvT{u^\ensprimal}^2.
-\]
+\frac{h_{\graphe^\ensdual}{}^2}{2}
+\sum_{\mailleduale{K} \in \ensdual} \big( u_{\mailleduale{K}} - c^\ensdual \big)^2 \degr(x_{\mailleduale{K}}),
+\end{equation}
+où on a utilisé l'expression \Cref{eq:spectral_gap} pour les \emph{spectal gaps}. La somme des inégalités \ref{eq:ineg_de_graphe_primal} et \ref{eq:ineg_de_graphe_dual} donne le résultat. 
 \end{demo}
 
-\begin{prop}
-Pour tout $u^\ensprimal \in \R^\ensprimal$,
+\begin{lemme} \label{lemme:minoration_degre}
+Soient $\primal{K} \in \ensprimal$ et $\mailleduale{K} \in \ensdual$. Alors
 \[
-\sum_{\primal{K} \sim \primal{L}} (u_{\primal{L}} - u_{\primal{K}})^2 
+\degr(x_{\primal{K}}) \geqslant \frac{2 \mesure(\primalplat{K})}{\reg(\ensddfv)^2 \size(\ensddfv)^2},
+\quad
+\degr(x_{\mailleduale{K}}) \geqslant \frac{2 \mesure(\mailledualeplate{K})}{\reg(\ensddfv)^2 \size(\ensddfv)^2}.
+\]
+\end{lemme}
+
+\begin{demo}
+On raisonne sur une maille primale plate $\primalplat{K}$. Posons $n_{\primal{K}} \defeq \degr(x_{\primal{K}})$. Chaque arête de $\primalplat{K}$ correspond à une maille primale voisine donc $n_{\primal{K}}$ est le nombre d'arêtes de $\primalplat{K}$. Puisque la maille est \textbf{étoilée} par rapport à $x_{\primal{K}}$, on peut la découper en $n_{\primal{K}}$ triangles d'intérieurs disjoints : 
+\[
+\primalplat{K}
+=
+\bigcup_{i = 1}^{n_{\primal{K}}}
+\Delta(x_{\primal{K}}, s_i, s_{i+1}),
+\]
+où $(s_i)_{1 \leqslant i \leqslant n_{\primal{K}}}$ sont les sommets de la maille, ordonnés cycliquement avec la convention $s_{n_{\primal{K}} + 1} = s_1$. Si on note $\angle{i}$ l'angle $\widehat{s_i \, x_{\primal{K}} \, s_{i+1}}$, alors
+\[
+\mesure(\primalplat{K})
+= 
+\frac{1}{2} \sum_{i=1}^{n_{\primal{K}}}
+\underbrace{\norme{s_i - x_{\primal{K}}}}_{\leqslant \diam{\primalplat{K}}} \underbrace{\norme{s_{i+1} - x_{\primal{K}}}}_{\leqslant \diam{\primalplat{K}}} \abs{\sin \angle{i}}
 \leqslant
-\normeddfvD{\grad^\ensdiamant u^\ensprimal}^2.
+\frac{1}{2} \, n_{\primal{K}} \diam{\primalplat{K}}{}^2.
+\] 
+On obtient alors 
+\begin{equation} \label{eq:estim}
+\degr(x_{\primal{K}}) \geqslant \frac{2 \mesure(\primalplat{K})}{\diam{\primalplat{K}}{}^2}
+\end{equation}
+et le même raisonnement s'applique aux mailles duales plates : 
+\[
+\degr(x_{\mailleduale{K}}) \geqslant \frac{2 \mesure(\mailledualeplate{K})}{\diam{\mailledualeplate{K}}{}^2}.
+\]
+Dans la régularité $\reg(\ensddfv)$, le terme
+\[
+\max_{\primal{K} \in \ensprimal} \max_{\diamant{D} \in \ensdiamant_{\primal{K}}} \frac{\diam{\primalplat{K}}}{\diam{\diamant{D}}}
+\]
+permet d'avoir l'estimation
+\begin{equation} \label{eq:estim_bis}
+\diam{\primalplat{K}} \leqslant \reg(\ensddfv) \diam{\diamant{D}} {\color{red} \diam{\diamantplat{D}}} \leqslant \reg(\ensddfv) \size(\ensddfv)
+\end{equation}
+pour tout diamant incident à $\primalplat{K}$. La même propriété vaut pour les mailles duales. La combinaison de \Cref{eq:estim,eq:estim_bis} donne le résultat.
+\end{demo}
+
+\begin{remarque}
+Avec les poids $\poids{\primal{K}} = \displaystyle\frac{\mesure(\primalplat{K})}{2}$ et $\poids{\mailleduale{K}} = \displaystyle\frac{\mesure(\mailledualeplate{K})}{2}$, les minorations deviennent
+\[
+\degr(x_{\primal{K}}) \geqslant \frac{4}{\reg(\ensddfv)^2 \size(\ensddfv)^2} \, \poids{\primal{K}},
+\quad
+\degr(x_{\mailleduale{K}}) \geqslant \frac{4}{\reg(\ensddfv)^2 \size(\ensddfv)^2} \, \poids{\mailleduale{K}}.
+\]
+\end{remarque}
+Les \Cref{lemme:ineg_de_graphe,lemme:minoration_degre} vont nous permettre de montrer le résultat suivant. 
+
+\begin{prop} \label{prop:minoration_energie}
+Pour tout $u^\ensddfv \in \Rddfvmn$,
+\[
+\mathcal{E}(u^\ensddfv) \geqslant \frac{2 \, h_{\graphe^\ensddfv}{}^2}{\reg(\ensddfv)^2 \size(\ensddfv)^2} \normeddfvT{u^\ensddfv}^2.
+\]
+L'ensemble $\Rddfvmn$ défini par \Cref{eq:moyenne_nulle} est l'ensemble des fonctions scalaires \ddfv à moyenne nulle. 
+\end{prop}
+
+\begin{demo}
+Soit $u^\ensddfv \in \Rddfvmn$. Par définition, la moyenne géométrique $\sum\limits_{\primal{K} \in \ensprimal} \poids{\primal{K}} \, u_{\primal{K}}$ est nulle. De plus, elle minimise la fonction $c \mapsto \sum\limits_{\primal{K} \in \ensprimal} \poids{\primal{K}} \, (u_{\primal{K}} - c)^2$. Par conséquent,
+\[
+\sum_{\primal{K} \in \ensprimal} \poids{\primal{K}} \big( u_{\primal{K}} - c^\ensprimal)^ 2
+\geqslant
+\sum_{\primal{K} \in \ensprimal} \poids{\primal{K}} \, u_{\primal{K}}{}^2,
+\]
+et en utilisant les estimations du \Cref{lemme:minoration_degre} on trouve
+\begin{equation} \label{eq:ineg1}
+\sum_{\primal{K} \in \ensprimal} \big(u_{\primal{K}} - c^\ensprimal \big)^2 \degr(x_{\primal{K}})
+\geqslant
+\frac{4}{\reg(\ensddfv)^2 \size(\ensddfv)^2}
+\sum_{\primal{K} \in \ensprimal} \poids{\primal{K}} \, u_{\primal{K}}{}^2.
+\end{equation}
+Le même raisonnement sur le maillage dual donne
+\begin{equation} \label{eq:ineg2}
+\sum_{\mailleduale{K} \in \ensdual} \big(u_{\mailleduale{K}} - c^\ensdual \big)^2 \degr(x_{\mailleduale{K}})
+\geqslant
+\frac{4}{\reg(\ensddfv)^2 \size(\ensddfv)^2}
+\sum_{\mailleduale{K} \in \ensdual} \poids{\mailleduale{K}} \, u_{\mailleduale{K}}{}^2.
+\end{equation}
+On somme les inégalités \ref{eq:ineg1} et \ref{eq:ineg2} puis le \Cref{lemme:ineg_de_graphe} et la définition de la norme $\normeddfvT{}$ donnent le résultat. 
+\end{demo}
+
+\noindent Intéressons-nous maintenant à la majoration de $\mathcal{E}$.
+
+\begin{prop} \label{prop:majoration_energie}
+Pour tout $u^\ensddfv \in \R^\ensddfv$,
+\[
+\mathcal{E}(u^\ensddfv)
+\leqslant
+4 \reg(\ensddfv)^2 \normeddfvD{\grad^\ensdiamant u^\ensddfv}^2.
 \]
 \end{prop}
 
 \begin{demo}
-Soient deux mailles primales voisines $\primal{K} \sim \primal{L}$. Par définition du gradient \ref{defi:discrete_gradient} sur le diamant $\diamant{D} = \diamant{D}_{\sigma, \dual{\sigma}}$ avec $\sigma = \arete{\primal{K}}{\primal{L}}$, on a
+Soient deux mailles primales voisines $\primal{K} \sim \primal{L}$ définissant le diamant $\diamant{D} = \diamant{D}_{\sigma', \dual{\sigma}}$. Par définition du gradient \ref{defi:discrete_gradient} sur $\diamant{D}$, on a
 \begin{equation*}
     (u_{\primal{L}} - u_{\primal{K}})^2 
-    = \mesure(\dual{\sigma})^2 \abs{\prodscal{\grad^{\diamant{D}} u^\ensprimal}{\vect{\tau}_{\primal{K},\primal{L}}}}^2
-    \leqslant \mesure(\dual{\sigma})^2 \abs{\grad^{\diamant{D}} u^\ensprimal}^2.
+    = \mesure(\dual{\sigma})^2 \abs{\prodscal{\grad^{\diamant{D}} u^\ensddfv}{\vect{\tau}_{\primal{K},\primal{L}}}}^2
+    \leqslant \mesure(\dual{\sigma})^2 \abs{\grad^{\diamant{D}} u^\ensddfv}^2.
 \end{equation*}
-À quelle condition a-t-on $\mesure(\dual{\sigma})^2 \leqslant \poids{\diamant{D}} = \sin(\angle{\diamant{D}}) \mesure(\sigma) \mesure(\dual{\sigma})$ ?
-$\displaystyle \boxed{\implies \frac{\mesure(\sigma)}{\mesure(\dual{\sigma})} \leqslant \sin \alpha_{\diamant{D}}}$. 
+De même, pour deux mailles duales voisines $\mailleduale{K} \sim \mailleduale{L}$ définissant le diamant $\diamant{D} = \diamant{D}_{\sigma,\dual{\sigma}'}$, on a
+\begin{equation*}
+    (u_{\mailleduale{L}} - u_{\mailleduale{K}})^2 
+    = \mesure(\sigma)^2 \abs{\prodscal{\grad^{\diamant{D}} u^\ensddfv}{\vect{\tau}_{\mailleduale{K},\mailleduale{L}}}}^2
+    \leqslant \mesure(\sigma)^2 \abs{\grad^{\diamant{D}} u^\ensddfv}^2.
+\end{equation*}
+Les ensembles $\ensareteprim$ et $\ensaretedual$ sont en bijection avec l'ensemble $\ensdiamant$. Ainsi
+\begin{equation} \label{eq:inter}
+\mathcal{E}(u^\ensddfv)
+\leqslant
+\sum_{\diamant{D} \in \ensdiamant} \big[\mesure(\sigma)^2 + \mesure(\dual{\sigma})^2\big] \abs{\grad^{\diamant{D}} u^\ensddfv}^2.
+\end{equation}
+On souhaite avoir $\mesure(\sigma)^2 + \mesure(\dual{\sigma})^2 \leqslant C \, \poids{\diamant{D}}$ avec $C > 0$ indépendante de $\size(\ensddfv)$. Comme 
+\begin{equation} \label{eq:rapport}
+\frac{
+    \mesure(\sigma)^2 + \mesure(\dual{\sigma})^2 
+}{
+    \poids{\diamant{D}}
+}
+=
+\frac{2}{\sin \angle{\diamant{D}}}
+\left(
+    \frac{\mesure(\sigma)}{\mesure(\dual{\sigma})}
+    +
+    \frac{\mesure(\dual{\sigma})}{\mesure(\sigma)}
+\right),
+\end{equation}
+on met dans la régularité
+\[
+\max_{\diamant{D}_{\sigma, \dual{\sigma}} \in \ensdiamant}\mathopen{}\left\{
+    \frac{\mesure(\sigma)}{\mesure(\dual{\sigma})},
+    \frac{\mesure(\dual{\sigma})}{\mesure(\sigma)}
+\right\}
+\quad
+\text{et}
+\quad
+\frac{1}{\sin \angle{\ensddfv}}.
+\]
+Autrement dit, il faut imposer que l'angle entre deux diagonales ne tende ni vers $0$ ni vers $\pi$ et que le rapport des longueurs des deux diagonales reste uniformément borné. 
+
+\begin{remarque}
+Ceci est contrôlé par
+\[
+    \max_{\diamant{D}\in\ensdiamant}
+    \max_{\quart{Q}\in\ensquart_{\diamant{D}}}
+    \frac{\diam{\diamant{D}}}
+    {\min\limits_{\eta\in\partial\quart{Q}}\mesure(\eta)}.
+\]
+\end{remarque}
+Ainsi, d'après \Cref{eq:rapport}, 
+\begin{align*}
+\mesure(\sigma)^2 + \mesure(\dual{\sigma})^2 
+\leqslant
+4 \reg(\ensddfv)^2 \poids{\diamant{D}}
+\end{align*}
+ce qui, avec \ref{eq:inter}, fournit le résultat.
+\end{demo}
+
+\noindent Les \Cref{prop:minoration_energie,prop:majoration_energie} aboutissent à l'inégalité
+\[
+\boxed{
+\forall u^\ensddfv \in \Rddfvmn, 
+\quad
+\frac{1}{\sqrt{2} \reg(\ensddfv)^2} \, \frac{h_{\graphe^\ensddfv}}{\size(\ensddfv)} \normeddfvT{u^\ensddfv} \leqslant \normeddfvD{\grad^\ensdiamant u^\ensddfv}
+}.
+\]
+Pour l'instant, la régularité $\reg(\ensddfv)$ contrôle la géométrie locale des mailles. Elle autorise cependant les raffinements locaux. Elle ne contrôle donc pas le rapport entre la plus grande et la plus petite taille de maille.
+
+Dans la suite, nous allons démontrer que sous des hypothèses géométriques appropriées, il existe une constante $c > 0$ indépendante de $\size(\ensddfv)$ telle que
+\[
+ h_{\graphe^\ensddfv} \geqslant c \size(\ensddfv).
+\]
+Pour cela, nous allons ajouter une condition de quasi-uniformité globale du type
+\[
+\vartheta \size(\ensddfv) \leqslant \diam{\diamant{D}} \quad \forall \diamant{D} \in \ensdiamant.
+\]
+
+\begin{prop}
+On suppose qu'il existe $N, c_A, C_\sigma > 0$ indépendantes de $\size(\ensddfv)$ telles que
+\[
+\degr(x_{\primal{K}}) \leqslant N,
+\quad
+\mesure(\primal{K}) \geqslant c_A \, \size(\ensddfv)^2,
+\quad
+\mesure(\sigma) \leqslant C_\sigma \, \size(\ensddfv).
+\] 
+Alors, pour tout $W \subset \vertices(\graphe^\ensprimal)$, on a
+\[
+\min\{ \vol(W), \vol(W^c) \} \leqslant \frac{N}{c_A \size(\ensddfv)^2} \min\{ \mesure(A_W), \mesure(\surflisse \setminus A_W) \},
+\]
+où
+\[
+A_W = \bigcup_{x_{\primal{K}} \in W} \primal{K} \subset \surflisse.
+\]
+\end{prop}
+\begin{demo}
+Puisque les mailles forment une partition,
+\[
+\mesure(A_W) = \sum_{x_{\primal{K}} \in W} \mesure(\primal{K}).
+\]
+Le volume combinatoire vaut
+\[
+\vol(W) = \sum_{x_{\primal{K}} \in W} \degr(x_{\primal{K}}).
+\]
+Or, pour chaque maille, 
+\[
+\degr(x_{\primal{K}}) \leqslant N \leqslant \frac{N}{c_A \size(\ensddfv)^2} \, \mesure(\primal{K}).
+\]
+En sommant, 
+\[
+\vol(W) \leqslant \frac{N}{c_A \size(\ensddfv)^2} \, \mesure(A_W).
+\]
+De même,
+\[
+\vol(W^c) \leqslant \frac{N}{c_A \size(\ensddfv)^2} \, \mesure(\surflisse \setminus A_W).
+\]
+On en déduit
+\[
+\min\{ \vol(W), \vol(W^c) \} \leqslant \frac{N}{c_A \size(\ensddfv)^2} \min\{ \mesure(A_W), \mesure(\surflisse \setminus A_W) \}.
+\]
+Pour obtenir $\mesure(\primal{K}) \geqslant c_A \size(\ensddfv)^2$, on peut combiner
+\[
+\frac{\diam{\primal{K}}}{\sqrt{\mesure(\primal{K})}} \leqslant \reg(\ensddfv)
+\]
+avec une quasi-uniformité globale
+\[
+\diam{\primal{K}} \geqslant \vartheta \size(\ensddfv).
+\]
+\begin{comment}
+Une arête du bord de $A_S$ est une interface $\sigma = \arete{\primalplat{K}}{\primalplat{L}}$ telle que $x_{\primalplat{K}} \in S$ et $x_{\primalplat{L}} \not\in S$. 
+\[
+\partial A_S = \bigcup_{\segment{x_{\primalplat{K}}}{x_{\primalplat{L}}} \in \partial S} \sigma_{\primalplat{K} \primalplat{L}}.
+\]
+\end{comment}
 \end{demo}
 
 \begin{lemme}
 \[
-\norme{\Pi^\variete{M}_\ensddfv u^\ensprimal}^2_{\L^2(\variete{M})} \sim h^2 \sum_{\primal{K} \in \ensprimal} u_{\primal{K}}{}^2
+\abs{\partial W} \geqslant \frac{c}{\size(\ensddfv)} \mesure(\partial A_W).
 \]
 \end{lemme}
+\begin{comment}
+\begin{demo}
+\[
+\diam{\primal{K}} \geqslant \vartheta \size(\ensddfv).
+\]
+Une arête du bord de $A_S$ est une interface $\sigma = \arete{\primalplat{K}}{\primalplat{L}}$ telle que $x_{\primalplat{K}} \in S$ et $x_{\primalplat{L}} \not\in S$. 
+\[
+\partial A_S = \bigcup_{\segment{x_{\primalplat{K}}}{x_{\primalplat{L}}} \in \partial S} \sigma_{\primalplat{K} \primalplat{L}}.
+\]
+\end{demo}
+\end{comment}
+
+\begin{envide}[Stratégie]
+Il faut alors établir deux comparaisons uniformes:
+\[
+\min\{ \vol(W), \vol(W^c) \} \leqslant \frac{C}{\size(\ensddfv)^2} \min\{ \mesure(A_W), \mesure(\surflisse \setminus A_W) \},
+\]
+et
+\[
+\abs{\partial W} \geqslant \frac{c}{\size(\ensddfv)} \mesure(\partial A_W).
+\]
+Elles donnent
+\[
+\frac{\abs{\partial W}}{\min\{ \vol(W), \vol(W^c) \}} \geqslant c \size(\ensddfv) \frac{\mesure(\partial A_W)}{\min\{ \mesure(A_W), \mesure(\surflisse \setminus A_W) \}} \geqslant c \size(\ensddfv) \, h(\surflisse).
+\]
+En prenant l'inf sur $W$, on obtient
+\[
+\boxed{
+h_{\graphe^\ensprimal} \geqslant c \size(\ensddfv) \, h(\surflisse).
+}
+\]
+Comme $\surflisse$ est une surface compacte connexe fixée, $h(\surflisse) > 0$, donc
+\[
+h_{\graphe^\ensprimal} \geqslant c_0 \size(\ensddfv).
+\]
+\end{envide}
+
+\newpage
+
+\begin{prop}
+\[
+\norme{\Pi^\variete{M}_\ensddfv u^\ensddfv}^2_{\L^2(\variete{M})} \sim h^2 \sum_{\primal{K} \in \ensprimal} u_{\primal{K}}{}^2
+\]
+\end{prop} 
 
 \subsection{Passage du discret au continu}
 

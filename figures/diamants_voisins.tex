@@ -7,13 +7,13 @@
 
 \def\a{0.2}
 
-\coordinate (xke) at (0,0.5);
-\coordinate (xle) at (-0.35,-0.35);
+\coordinate (xke) at (0,0.3);
+\coordinate (xle) at (-0.4,-0.2);
 \coordinate (xk) at (-0.6,0.05);
 \coordinate (xl) at (0,0);
 
 \coordinate (xkb) at (0.6,0.05);
-\coordinate (xkeb) at (0.35,-0.35);
+\coordinate (xkeb) at (0.4,-0.2);
 
 \node[ptsq={myblue}{above:{\contour{white}{$x_{\mailleduale{K}}$}}}] at (xke) {};
 \node[ptsq={myblue}{below:{\contour{white}{$x_{\mailleduale{K}_1}$}}}] at (xle) {};
@@ -38,20 +38,19 @@
     \p2 = (xl)
 in
     \pgfextra{
-        \pgfmathsetmacro{\angA}{atan2(-\y1+\y0,\x1-\x0)}
+        \pgfmathsetmacro{\angA}{atan2(-\y1+\y0,-\x1+\x0)}
         \pgfmathsetmacro{\angB}{atan2(\y2-\y0,\x2-\x0)}
         \global\let\angA\angA
         \global\let\angB\angB
     };
 
 \draw[black] ($(I)+(\angA:\rayonangle)$) arc[start angle=\angA,end angle=\angB,radius=\rayonangle];
-\fill[opacity=0.5] (I) -- ($(I)+(\angA:\rayonangle)$) arc[start angle=\angA,end angle=\angB,radius=\rayonangle] -- cycle;
+% \fill[opacity=0.5] (I) -- ($(I)+(\angA:\rayonangle)$) arc[start angle=\angA,end angle=\angB,radius=\rayonangle] -- cycle;
 
-\node[right] at ($(I)+({0.5*(\angA+\angB)}:\rayonangle)$) {$\alpha_{\diamant{D}_1}$};
+\node at ($(I)+({0.5*(\angA+\angB)}:{1.5*\rayonangle})$) {$\angle{\diamant{D}_1}$};
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \path[name path=sigma] (xkeb) -- (xke);
 \path[name path=sigmae] (xkb) -- (xl);
@@ -66,16 +65,16 @@ in
     \p2 = (xke)
 in
     \pgfextra{
-        \pgfmathsetmacro{\angA}{atan2(-\y1+\y0,\x1-\x0)}
-        \pgfmathsetmacro{\angB}{atan2(\y2-\y0,\x2-\x0)}
+        \pgfmathsetmacro{\angA}{atan2(-\y1+\y0,-\x1+\x0)}
+        \pgfmathsetmacro{\angB}{atan2(-\y2+\y0,-\x2+\x0)}
         \global\let\angA\angA
         \global\let\angB\angB
     };
 
 \draw[black] ($(I)+(\angA:\rayonangle)$) arc[start angle=\angA,end angle=\angB,radius=\rayonangle];
-\fill[opacity=0.5] (I) -- ($(I)+(\angA:\rayonangle)$) arc[start angle=\angA,end angle=\angB,radius=\rayonangle] -- cycle;
+% \fill[opacity=0.5] (I) -- ($(I)+(\angA:\rayonangle)$) arc[start angle=\angA,end angle=\angB,radius=\rayonangle] -- cycle;
 
-\node[right] at ($(I)+({0.5*(\angA+\angB)}:\rayonangle)$) {$\alpha_{\diamant{D}_2}$};
+\node at ($(I)+({0.5*(\angA+\angB)}:{1.5*\rayonangle})$) {$\angle{\diamant{D}_2}$};
 
 
 
@@ -90,11 +89,11 @@ in
 
 \draw[myred]
     (xl) -- (xk)
-    node[pos=0.4, above] {$\dual{\sigma}_1$};
+    node[pos=0.2, above] {$\dual{\sigma}_1$};
 
 \draw[myred]
     (xl) -- (xkb)
-    node[pos=0.4, above] {$\dual{\sigma}_2$};
+    node[pos=0.2, above] {$\dual{\sigma}_2$};
 
 
 \def\lengthbasis{2pt}
@@ -114,7 +113,7 @@ in
 \coordinate (P) at ($(xk)!\position!(xl)$);
 \draw (P) -- ($(P)!\lengthsq!(xl)$) -- ($(P)!\lengthsq!(xl)!\lengthsq!-90:(xl)$) -- ($(P)!\lengthsq!-90:(xl)$) -- cycle;
 
-\draw[myred, ultra thick, ->] ($(xk)!\position!(xl)$) -- ($(xk)!\position!(xl)!\lengthbasis!(xl)$) node[above] {$\vect{\tau}_{\primal{K}_1,\primal{K}}$};
+\draw[myred, ultra thick, ->] ($(xk)!\position!(xl)$) -- ($(xk)!\position!(xl)!\lengthbasis!(xl)$) node[above=3pt] {$\vect{\tau}_{\primal{K}_1,\primal{K}}$};
 \draw[myred, ultra thick, ->] ($(xk)!\position!(xl)$) -- ($(xk)!\position!(xl)!\lengthbasis!-90:(xl)$) node[below] {$\vect{\nu}_{\dual{\sigma}_1 \mailleduale{K}}$};
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -133,7 +132,7 @@ in
 \coordinate (P) at ($(xkb)!\position!(xl)$);
 \draw (P) -- ($(P)!\lengthsq!(xl)$) -- ($(P)!\lengthsq!(xl)!\lengthsq!90:(xl)$) -- ($(P)!\lengthsq!90:(xl)$) -- cycle;
 
-\draw[myred, ultra thick, ->] ($(xkb)!\position!(xl)$) -- ($(xkb)!\position!(xl)!\lengthbasis!(xl)$) node[above] {$\vect{\tau}_{\primal{K}_2,\primal{K}}$};
+\draw[myred, ultra thick, ->] ($(xkb)!\position!(xl)$) -- ($(xkb)!\position!(xl)!\lengthbasis!(xl)$) node[above=3pt] {$\vect{\tau}_{\primal{K}_2,\primal{K}}$};
 \draw[myred, ultra thick, ->] ($(xkb)!\position!(xl)$) -- ($(xkb)!\position!(xl)!\lengthbasis!90:(xl)$) node[below] {$\vect{\nu}_{\dual{\sigma}_2 \mailleduale{K}}$};
 
 \end{tikzpicture}

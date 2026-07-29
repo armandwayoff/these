@@ -45,9 +45,9 @@ We consider the discrete gradient introduced by Coudière and \emph{al.} in \cit
 Comme il y a une correspondance univoque entre un diamant courbe $\diamant{D}$ et un diamant plat $\diamantplat{D}$, on aurait également pu utiliser la notation $\grad^{\diamantplat{D}}$. Le gradient d'une fonction n'est calculé qu'à partir des longueurs des arêtes et des valeurs de la fonction à leurs extrémités. Computing the discrete gradient only requires the values of $u^\ensddfv$ at the nodes of the primal and dual meshes.
 \end{remarque}
 Remark that $\grad^{\diamant{D}} u^\ensddfv$ can be expressed in the $(\vect{\nu}_{\sigma \primal{K}}, \vect{\nu}_{\dual{\sigma} \mailleduale{K}})$ basis in the following way:
-\[
+\begin{equation} \label{eq:discrete_gradient_bis}
 \grad^{\diamant{D}} u^\ensddfv = \frac{1}{\sin \angle{\diamant{D}}} \mathopen{}\left( \frac{u_{\primal{L}} - u_{\primal{K}}}{\mesure(\dual{\sigma})} \, \vect{\nu}_{\sigma \primal{K}} + \frac{u_{\mailleduale{L}} - u_{\mailleduale{K}}}{\mesure(\sigma)} \, \vect{\nu}_{\dual{\sigma} \mailleduale{K}} \right)
-\]
+\end{equation}
 thanks to the following lemma.
 
 \begin{lemme}
@@ -58,7 +58,7 @@ Using the notations and orientation conventions, for any vector $\xi \in \R^2$ w
 \end{lemme}
 
 \begin{remarque}
-En 2D, l'aire $\mesure(\diamantplat{D})$ d'un diamant $\diamantplat{D}$ est la suivante : $\mesure(\diamantplat{D}) = \frac{1}{2} \mesure(\sigma) \mesure(\dual{\sigma}) \, \sin(\angle{\diamant{D}})$, on peut alors réécrire le gradient discret:
+En 2D, d'après la \Cref{prop:mesure_d_un_diamant_plat}, on peut réécrire le gradient discret sous la forme
 \begin{equation} \label{eq:gradient_discret_2D}
 \grad^{\diamantplat{D}} u^\ensddfv = \frac{1}{2\mesure(\diamantplat{D})} \Big[ (u_{\primal{L}} - u_{\primal{K}}) \mesure(\sigma) \, \vect{\nu} + (u_{\mailleduale{L}} - u_{\mailleduale{K}}) \mesure(\dual{\sigma}) \, \dual{\vect{\nu}} \Big].
 \end{equation}
@@ -82,17 +82,17 @@ In the same way, we may approach the vector curl operator $\rot \bullet = \displ
 
 \begin{defi}[Discrete vector curl operator] \label{defi:discrete_vector_curl_operator}
 The \defini{discrete vector curl operator} $\fonctionens[\rot^\ensdiamant]{\R^\ensddfv}{(\R^2)^\ensdiamant}$ can be defined as follows: for any $u^\ensddfv \in \R^\ensddfv$, $\rot^\ensdiamant u^\ensddfv = (\rot^{\diamant{D}} u^\ensddfv)_{\diamant{D} \in \ensdiamant}$ is the function, constant on each diamond cell $\diamant{D}_{\sigma,\dual{\sigma}}$, given by
-\[
+\begin{equation} \label{eq:discrete_vector_curl}
 \prodscal{\rot^{\diamant{D}} u^\ensddfv}{\vect{\nu}_{\dual{\sigma} \mailleduale{K}}} = -\frac{u_{\primal{L}} - u_{\primal{K}}}{\mesure(\dual{\sigma})},
 \quad
 \prodscal{\rot^{\diamant{D}} u^\ensddfv}{\vect{\nu}_{\sigma \primal{K}}} = -\frac{u_{\mailleduale{L}} - u_{\mailleduale{K}}}{\mesure(\sigma)}
-\]
+\end{equation}
 {\color{red}where the unit vectors $\vect{\tau}$ and $\dual{\vect{\tau}}$ are such that $(\vect{\nu},\vect{\tau})$ and $(\dual{\vect{\nu}},\dual{\vect{\tau}})$ are orthonormal positively oriented bases of $\R^2$}. 
 \end{defi}
 Remark that $\rot^{\diamant{D}} u^\ensddfv$ can be expressed in the $(\vect{\tau}_{\mailleduale{K}, \mailleduale{L}}, \vect{\tau}_{\primal{K}, \primal{L}})$ basis in the following way:
-\[
+\begin{equation} \label{eq:discrete_vector_curl_bis}
 \rot^{\diamant{D}} u^\ensddfv = -\frac{1}{\sin \angle{\diamant{D}}} \mathopen{}\left( \frac{u_{\primal{L}} - u_{\primal{K}}}{\mesure(\dual{\sigma})} \, \vect{\tau}_{\mailleduale{K}, \mailleduale{L}} + \frac{u_{\mailleduale{L}} - u_{\mailleduale{K}}}{\mesure(\sigma)} \, \vect{\tau}_{\primal{K}, \primal{L}} \right).
-\]
+\end{equation}
 
 \begin{figure}[H]
     \centering
@@ -170,68 +170,46 @@ où $(\poids{\diamant{D}})_{\diamant{D} \in \ensdiamant}$ sont des poids à dét
 \quad
 \int_\surflisse \grad u \cdot \grad^\perp v \d s = 0.
 \]
-Le but de cette section est d'obtenir l'analogue discret de cette formule. 
-
-Calculons alors les poids $(\poids{\diamant{D}})_{\diamant{D} \in \ensdiamant}$ de telle sorte que pour tout $u^\ensddfv, v^\ensddfv \in \R^\ensddfv$, on ait $\prodscalD{\rot^\ensdiamant u^\ensddfv}{\grad^\ensdiamant v^\ensddfv} = 0$.
-
+Le but de cette partie est d'obtenir l'analogue discret de cette formule. Calculons alors les poids $(\poids{\diamant{D}})_{\diamant{D} \in \ensdiamant}$ de telle sorte que pour tout $u^\ensddfv, v^\ensddfv \in \R^\ensddfv$, on ait $\prodscalD{\rot^\ensdiamant u^\ensddfv}{\grad^\ensdiamant v^\ensddfv} = 0$. D'après les expressions \Cref{eq:discrete_gradient_bis,eq:discrete_vector_curl_bis} et la \Cref{prop:bases_nu_tau}, on a
 \[
--\sum_{\diamant{D} \in \ensdiamant}
-\poids{\diamant{D}} \, 
-\frac{1}{\sin \angle{\diamant{D}}} \mathopen{}\left( \frac{u_{\primal{L}} - u_{\primal{K}}}{\mesure(\dual{\sigma})} \, \vect{\tau}_{\mailleduale{K}, \mailleduale{L}} + \frac{u_{\mailleduale{L}} - u_{\mailleduale{K}}}{\mesure(\sigma)} \, \vect{\tau}_{\primal{K}, \primal{L}} \right) 
-\cdot
-\frac{1}{\sin \angle{\diamant{D}}} \mathopen{}\left( \frac{v_{\primal{L}} - v_{\primal{K}}}{\mesure(\dual{\sigma})} \, \vect{\nu}_{\sigma \primal{K}} + \frac{v_{\mailleduale{L}} - v_{\mailleduale{K}}}{\mesure(\sigma)} \, \vect{\nu}_{\dual{\sigma} \mailleduale{K}} \right)
-\]
-\[
--\sum_{\diamant{D} \in \ensdiamant} 
-\frac{\poids{\diamant{D}}}{\sin(\angle{\diamant{D}})^2 \mesure(\sigma) \mesure(\dual{\sigma})} 
-\mathopen{}\bigg[
-\big(u_{\primal{L}} - u_{\primal{K}} \big) \big(v_{\mailleduale{L}} - v_{\mailleduale{K}} \big) \,
-\underbrace{\vect{\tau}_{\mailleduale{K}, \mailleduale{L}} \cdot \vect{\nu}_{\dual{\sigma} \mailleduale{K}}}_{= \sin \angle{\diamant{D}}}
-+
-\big(u_{\mailleduale{L}} - u_{\mailleduale{K}} \big) \big(v_{\primal{L}} - v_{\primal{K}} \big) \, 
-\underbrace{\vect{\tau}_{\primal{K}, \primal{L}} \cdot \vect{\nu}_{\sigma \primal{K}}}_{= \sin \angle{\diamant{D}}}
-\bigg]
-\]
-
-On pose $\psi_{\diamant{D}}(u^\ensddfv, v^\ensddfv) \defeq \big(u_{\primal{L}} - u_{\primal{K}} \big) \big(v_{\mailleduale{L}} - v_{\mailleduale{K}} \big) + \big(u_{\mailleduale{L}} - u_{\mailleduale{K}} \big) \big(v_{\primal{L}} - v_{\primal{K}} \big)$.
-
-\[
-\sum_{\diamant{D} \in \ensdiamant} \poids{\diamant{D}} \rot^{\diamant{D}} u^\ensddfv \cdot \grad^{\diamant{D}} v^\ensddfv 
+\prodscalD{\rot^\ensdiamant u^\ensddfv}{\grad^\ensdiamant v^\ensddfv}
 =
 - \sum_{\diamant{D} \in \ensdiamant} \frac{\poids{\diamant{D}}}{\sin(\angle{\diamant{D}}) \mesure(\sigma) \mesure(\dual{\sigma})} \, \psi_{\diamant{D}}(u^\ensddfv, v^\ensddfv)
 \]
+avec $\psi_{\diamant{D}}(u^\ensddfv, v^\ensddfv) = \big(u_{\primal{L}} - u_{\primal{K}} \big) \big(v_{\mailleduale{L}} - v_{\mailleduale{K}} \big) + \big(u_{\mailleduale{L}} - u_{\mailleduale{K}} \big) \big(v_{\primal{L}} - v_{\primal{K}} \big)$.
 
-\begin{envide}[Analyse]
-    Pour tout $u^\ensddfv \in \R^\ensddfv$, on peut l'écrire sous la forme $u^\ensddfv = \sum_{\primal{K} \in \ensprimal} \indicatrice^\ensddfv(\primal{K}) \, u_{\primal{K}} + \sum_{\mailleduale{K} \in \ensdual} \indicatrice^\ensddfv(\dual{K}) \, u_{\dual{K}}$. \\
-    Il y a donc quatre cas à traiter; $(u^\ensddfv, v^\ensddfv) = (\indicatrice^\ensddfv(\primal{K}), \indicatrice^\ensddfv(\primal{K}))$, $(u^\ensddfv, v^\ensddfv) = (\indicatrice^\ensddfv(\mailleduale{K}), \indicatrice^\ensddfv(\mailleduale{K}))$, $(u^\ensddfv, v^\ensddfv) = (\indicatrice^\ensddfv(\primal{K}), \indicatrice^\ensddfv(\mailleduale{K}))$ et $(u^\ensddfv, v^\ensddfv) = (\indicatrice^\ensddfv(\mailleduale{K}), \indicatrice^\ensddfv(\primal{K}))$.
-\begin{enumerate}[label=(\roman*)]
-    \item Dans les deux premiers cas, $\psi_{\diamant{D}}(u^\ensddfv, v^\ensddfv) = 0$. 
-    \item Soient $\primal{K} \in \ensprimal$ et $\mailleduale{K} \in \ensdual$. On pose $u^\ensddfv = \indicatrice^\ensddfv(\primal{K})$ et $v^\ensddfv = \indicatrice^\ensddfv(\mailleduale{K})$. Si $\ensdiamant_{\primal{K}} \cap \ensdiamant_{\mailleduale{K}} = \varnothing$, alors $\psi_{\diamant{D}}(u^\ensddfv, v^\ensddfv) = 0$. Sinon, les mailles $\primal{K}$ et $\mailleduale{K}$ ont exactement deux diamants en commun et on note $\ensdiamant_{\primal{K}} \cap \ensdiamant_{\mailleduale{K}} = \{ \diamant{D}_1, \diamant{D}_2 \}$. 
+Toute fonction $u^\ensddfv \in \R^\ensddfv$, peut s'écrire sous la forme $u^\ensddfv = \sum_{\primal{K} \in \ensprimal} \indicatrice^\ensddfv(\primal{K}) \, u_{\primal{K}} + \sum_{\mailleduale{K} \in \ensdual} \indicatrice^\ensddfv(\mailleduale{K}) \, u_{\mailleduale{K}}$. Il y a donc quatre cas à traiter; $(u^\ensddfv, v^\ensddfv) = \big(\indicatrice^\ensddfv(\primal{K}), \indicatrice^\ensddfv(\primal{K})\big)$, $(u^\ensddfv, v^\ensddfv) = \big(\indicatrice^\ensddfv(\mailleduale{K}), \indicatrice^\ensddfv(\mailleduale{K})\big)$, $(u^\ensddfv, v^\ensddfv) = \big(\indicatrice^\ensddfv(\primal{K}), \indicatrice^\ensddfv(\mailleduale{K})\big)$ et $(u^\ensddfv, v^\ensddfv) = \big(\indicatrice^\ensddfv(\mailleduale{K}), \indicatrice^\ensddfv(\primal{K})\big)$. Dans les deux premiers cas, $\psi_{\diamant{D}}(u^\ensddfv, v^\ensddfv) = 0$. Étudions les deux derniers cas pour deux mailles $\primal{K} \in \ensprimal$ et $\mailleduale{K} \in \ensdual$ quelconques. On pose $u^\ensddfv = \indicatrice^\ensddfv(\primal{K})$ et $v^\ensddfv = \indicatrice^\ensddfv(\mailleduale{K})$. Si $\ensdiamant_{\primal{K}} \cap \ensdiamant_{\mailleduale{K}} = \varnothing$, alors $\psi_{\diamant{D}}(u^\ensddfv, v^\ensddfv) = 0$. Sinon, les mailles $\primal{K}$ et $\mailleduale{K}$ ont exactement deux diamants en commun et on note $\ensdiamant_{\primal{K}} \cap \ensdiamant_{\mailleduale{K}} = \{ \diamant{D}_1, \diamant{D}_2 \}$. On les représente sur la \Cref{fig:diamants_voisins}. À nouveau, d'après les expressions \Cref{eq:discrete_gradient_bis,eq:discrete_vector_curl_bis}, on a
 \begin{align}
-    \rot^{\diamant{D}_1} u^\ensddfv &= \frac{1}{\sin \angle{\diamant{D}_1}} \frac{-1}{\mesure(\dual{\sigma}_1)} \, \vect{\tau}_{\mailleduale{K}, \mailleduale{K}_1} \\
-    \rot^{\diamant{D}_2} u^\ensddfv &= \frac{1}{\sin \angle{\diamant{D}_2}} \frac{1}{\mesure(\dual{\sigma}_2)} \, \vect{\tau}_{\mailleduale{K}, \mailleduale{K}_2}
+    \rot^{\diamant{D}_1} u^\ensddfv = \frac{1}{\sin \angle{\diamant{D}_1}} \frac{-1}{\mesure(\dual{\sigma}_1)} \, \vect{\tau}_{\mailleduale{K}, \mailleduale{K}_1},
+    \quad
+    \rot^{\diamant{D}_2} u^\ensddfv = \frac{1}{\sin \angle{\diamant{D}_2}} \frac{1}{\mesure(\dual{\sigma}_2)} \, \vect{\tau}_{\mailleduale{K}, \mailleduale{K}_2}
 \end{align}
+et
 \begin{align}
-    \grad^{\diamant{D}_1} v^\ensddfv &= \frac{1}{\sin \angle{\diamant{D}_1}} \frac{-1}{\mesure(\sigma_1)} \, \vect{\nu}_{\dual{\sigma}_1 \mailleduale{K}} \\
-    \grad^{\diamant{D}_2} v^\ensddfv &= \frac{1}{\sin \angle{\diamant{D}_2}} \frac{-1}{\mesure(\sigma_2)} \, \vect{\nu}_{\dual{\sigma}_2 \mailleduale{K}}
+    \grad^{\diamant{D}_1} v^\ensddfv = \frac{1}{\sin \angle{\diamant{D}_1}} \frac{-1}{\mesure(\sigma_1)} \, \vect{\nu}_{\dual{\sigma}_1 \mailleduale{K}}, \quad
+    \grad^{\diamant{D}_2} v^\ensddfv = \frac{1}{\sin \angle{\diamant{D}_2}} \frac{-1}{\mesure(\sigma_2)} \, \vect{\nu}_{\dual{\sigma}_2 \mailleduale{K}}
+    .
 \end{align}
-\end{enumerate}
+Ainsi,
 \[
-\boxed{
-\forall \diamant{D} \in \ensdiamant, \quad \poids{\diamant{D}} = \sin(\angle{\diamant{D}}) \mesure(\sigma) \mesure(\dual{\sigma})
-}
+\prodscalD{\rot^\ensdiamant u^\ensddfv}{\grad^\ensdiamant v^\ensddfv}
+= 
+\frac{\poids{\diamant{D}_1}}{\sin(\angle{\diamant{D}_1}) \mesure(\sigma_1) \mesure(\dual{\sigma}_1)}
+-
+\frac{\poids{\diamant{D}_2}}{\sin(\angle{\diamant{D}_2}) \mesure(\sigma_2) \mesure(\dual{\sigma}_2)}
 \]
-On décide de multiplier l'expression par $\frac{1}{2}$ de sorte à avoir
+ce qui impose que pour tout $i \in \{1, 2\}$, $\poids{\diamant{D}_i} = \sin(\angle{\diamant{D}_i}) \mesure(\sigma_i) \mesure(\dual{\sigma}_i)$. Le calcul pour le cas $(u^\ensddfv, v^\ensddfv) = \big(\indicatrice^\ensddfv(\mailleduale{K}), \indicatrice^\ensddfv(\primal{K})\big)$ donne le même résultat et on décide de multiplier l'expression par $\frac{1}{2}$ de sorte à avoir
 \begin{equation} \label{eq:poidsdiamant}
-\forall \diamant{D} \in \ensdiamant, \quad \poids{\diamant{D}} = \mesure(\diamantplat{D}).    
+\boxed{
+\forall \diamant{D} \in \ensdiamant, \quad \poids{\diamant{D}} = \mesure(\diamantplat{D}).  
+}  
 \end{equation}
-
-\end{envide}
 
 \begin{figure}[H]
     \centering
     \input{figures/diamants_voisins.tex}
-    \caption{}
+    \caption{Diamants voisins}
+    \label{fig:diamants_voisins}
 \end{figure}
 
 \begin{theo} \label{theo:rotperpgrad}
@@ -242,17 +220,17 @@ On décide de multiplier l'expression par $\frac{1}{2}$ de sorte à avoir
 \]
 \end{theo}
 
-On définit alors $\div$ (resp. $\scarot$) comme l'adjoint de $\grad$ (resp. $\rot$). On a également $\div \rot = 0$ et $\scarot \grad = 0$.
-
 \begin{prop} \label{prop:normes}
-Soient $u^\ensddfv \in \R^\ensddfv$ et $\xi^\ensdiamant \in (\R^2)^\ensdiamant$. Normes discrètes :
+Soient $u^\ensddfv \in \R^\ensddfv$ et $\xi^\ensdiamant \in (\R^2)^\ensdiamant$. 
+\begin{itemize}
+    \item Normes discrètes :
 \begin{align*}
 \normeddfvT{u^\ensddfv}^2 &= \alpha \sum_{\primal{K} \in \ensprimal} \mesure(\primalplat{K}) \, u_{\primal{K}}{}^2
 + 
 (1 - \alpha) \sum_{\mailleduale{K} \in \ensdual} \mesure(\mailledualeplate{K}) \, u_{\mailleduale{K}}{}^2 \\
 \normeddfvD{\xi^\ensdiamant}^2 &= \sum_{\diamant{D} \in \ensdiamant} \mesure(\diamantplat{D}) \, \abs{\xi^{\diamant{D}}}^2
 \end{align*}
-Normes sur la surface lisse $\surflisse$ :
+    \item Normes sur la surface lisse $\surflisse$ :
 \begin{align*}
 \norme{\projddfvvar u^\ensddfv}^2_{\L^2(\surflisse)} &=
 \frac{1}{2} \sum_{\primal{K} \in \ensprimal} \mesure(\primal{K}) \, u_{\primal{K}}{}^2
@@ -261,34 +239,36 @@ Normes sur la surface lisse $\surflisse$ :
 \norme{\projdiamantvar \xi^\ensdiamant}^2_{\L^2(\surflisse)^2} 
 &= \sum_{\diamant{D} \in \ensdiamant} \mesure(\diamant{D}) \abs{\xi^{\diamant{D}}}^2,
 \end{align*}
+\end{itemize}
 \end{prop}
 
 \begin{remarque}
-Nous venons de montrer que les expressions des poids $\poids{\primal{K}}$, $\poids{\mailleduale{K}}$ et $\poids{\diamant{D}}$ \Cref{eq:poidsprimaldual,eq:poidsdiamant} sont proportionnelles à la mesure de leur analogue plat. Aussi, d'un point de vue de l'implémentation numérique, calculer la mesure des mailles plates est préférable à calculer la mesure des mailles courbes. Comme le montre la \Cref{prop:normes}, les poids associés aux normes discrètes $\normeddfvT{}$ et $\normeddfvD{}$ sont les mesures des mailles plates et les poids associés aux normes sur la surface lisse $\norme{\projddfvvar u^\ensddfv}^2_{\L^2(\surflisse)}$ et $\norme{\projdiamantvar \xi^\ensdiamant}^2_{\L^2(\surflisse)^2}$ sont les mesures des mailles courbes.
+Nous venons de montrer que les expressions des poids $\poids{\primal{K}}$, $\poids{\mailleduale{K}}$ et $\poids{\diamant{D}}$ (\Cref{eq:poidsprimaldual,eq:poidsdiamant}) sont proportionnelles à la mesure de leur analogue plat. Aussi, d'un point de vue de l'implémentation numérique, calculer la mesure des mailles plates est préférable à calculer la mesure des mailles courbes. Comme le montre la \Cref{prop:normes}, les poids associés aux normes discrètes $\normeddfvT{}$ et $\normeddfvD{}$ sont les mesures des mailles plates et les poids associés aux normes sur la surface lisse $\norme{\projddfvvar \,\cdot\,}^2_{\L^2(\surflisse)}$ et $\norme{\projdiamantvar \,\cdot\,}^2_{\L^2(\surflisse)^2}$ sont les mesures des mailles courbes.
 \end{remarque}
 
 \subsection{Écriture des produits scalaires sous forme matricielle}
 
 \begin{envide}[Conventions]
-Soient $u^\ensddfv \in \R^\ensddfv$ et $\xi^\ensdiamant \in (\R^2)^\ensdiamant$. On note $m = \# \ensprimal$, $\dual{m} = \# \ensdual$ et $d = \# \ensdiamant$. Par abus de notation on note
+Soient $u^\ensddfv \in \R^\ensddfv$ et $\xi^\ensdiamant \in (\R^2)^\ensdiamant$. On note $m = \# \ensprimal$, $\dual{m} = \# \ensdual$ et $d = \# \ensdiamant$. On désigne par
 \[
-u^\ensddfv = \big( u_{\primal{K}_1} \quad \cdots \quad u_{\primal{K}_m} \quad u_{\mailleduale{K}_1} \quad \cdots \quad u_{\mailleduale{K}_{\dual{m}}} \big)
+U^\ensddfv \defeq \big( u_{\primal{K}_1} \quad \cdots \quad u_{\primal{K}_m} \quad u_{\mailleduale{K}_1} \quad \cdots \quad u_{\mailleduale{K}_{\dual{m}}} \big)
 \quad
 \text{et}
 \quad
-\xi^\ensdiamant = \big( \xi^{\diamant{D}_1} \quad \cdots \quad \xi^{\diamant{D}_d} \big).
+\Xi^\ensdiamant \defeq \big( \xi^{\diamant{D}_1} \quad \cdots \quad \xi^{\diamant{D}_d} \big)
 \]
+l'écriture vectorielle de $u^\ensddfv$ et de $\xi^\ensdiamant$. 
 \end{envide}
 
-Le produit scalaire entre deux approximations scalaires $u^\ensddfv$ et $v^\ensddfv$ peut s'écrire sous forme matricielle
+Le produit scalaire entre deux approximations scalaires $u^\ensddfv$ et $v^\ensddfv$ peut s'écrire sous forme matricielle:
 \[
-\prodscalddfv{u^\ensddfv}{v^\ensddfv} = (u^\ensddfv)^\top \masse_\ensddfv v^\ensddfv
+\prodscalddfv{u^\ensddfv}{v^\ensddfv} = (U^\ensddfv)^\top \masse_\ensddfv V^\ensddfv
 \]
-où $\masse_\ensddfv$ est la matrice diagonale $\masse_\ensddfv = \mathrm{diag}\mathopen{}\big[ (\poids{\primal{K}})_{\primal{K} \in \ensprimal}, (\poids{\mailleduale{K}})_{\mailleduale{K} \in \ensdual} \big]$.
+où $\masse_\ensddfv$ est la matrice diagonale inversible $\masse_\ensddfv = \mathrm{diag}\mathopen{}\big[ (\poids{\primal{K}})_{\primal{K} \in \ensprimal}, (\poids{\mailleduale{K}})_{\mailleduale{K} \in \ensdual} \big]$.
 
-Le produit scalaire entre deux approximations vectorielles $\xi^\ensdiamant$ et $\phi^\ensdiamant$ peut s'écrire sous forme matricielle. On note $\Sigma$ la base $(\sigma, \dual{\sigma})$ et $\xi^{\diamant{D}}_\Sigma$ (resp. $\phi^{\diamant{D}}_\Sigma$) l'écriture du vecteur $\xi^{\diamant{D}}$ (resp. $\phi^{\diamant{D}}$) dans la base $\Sigma$. Par un abus de notation, on écrit $\xi^\ensdiamant_\Sigma = (\xi^{\diamant{D}}_\Sigma)_{\diamant{D} \in \ensdiamant}$ et de même pour $\phi^\ensdiamant_\Sigma$. On peut alors écrire
+Le produit scalaire entre deux approximations vectorielles $\xi^\ensdiamant$ et $\phi^\ensdiamant$ peut s'écrire sous forme matricielle également. On note $\Sigma$ la base $(\sigma, \dual{\sigma})$ et $\Xi^{\diamant{D}}_\Sigma$ (resp. $\Phi^{\diamant{D}}_\Sigma$) l'écriture du vecteur $\xi^{\diamant{D}}$ (resp. $\phi^{\diamant{D}}$) dans la base $\Sigma$. Par un abus de notation, on écrit $\Xi^\ensdiamant_\Sigma = (\Xi^{\diamant{D}}_\Sigma)_{\diamant{D} \in \ensdiamant}$ et de même pour $\Phi^\ensdiamant_\Sigma$. On peut alors écrire
 \[
-\prodscalD{\xi^\ensdiamant}{\phi^\ensdiamant} = \sum_{\diamant{D} \in \ensdiamant} (\xi^{\diamant{D}}_\Sigma)^\top \masse^{\diamant{D}}_\Sigma \phi^{\diamant{D}}_\Sigma
+\prodscalD{\xi^\ensdiamant}{\phi^\ensdiamant} = \sum_{\diamant{D} \in \ensdiamant} (\Xi^{\diamant{D}}_\Sigma)^\top \masse^{\diamant{D}}_\Sigma \Phi^{\diamant{D}}_\Sigma
 \]
 où
 \[
@@ -329,15 +309,13 @@ Pour $u^\ensddfv \in \R^\ensddfv$ et $\diamant{D} \in \ensdiamant$, nous défini
 
 Finalement, en introduisant la matrice symétrique diagonale par blocs $\masse^\ensdiamant_\Sigma \defeq \mathrm{diag}\mathopen{}\big[ (\masse^{\diamant{D}}_\Sigma)_{\diamant{D} \in \ensdiamant} \big]$, on peut écrire le produit scalaire vectoriel sous la forme
 \begin{align} \label{eq:masseensdiamantSigma}
-\prodscalD{\xi^\ensdiamant}{\phi^\ensdiamant} &= (\xi^\ensdiamant_\Sigma)^\top \masse^\ensdiamant_\Sigma \phi^\ensdiamant_\Sigma.
+\prodscalD{\xi^\ensdiamant}{\phi^\ensdiamant} &= (\Xi^\ensdiamant_\Sigma)^\top \masse^\ensdiamant_\Sigma \Phi^\ensdiamant_\Sigma.
 \end{align}
-Dans la suite, nous noterons simplement $\masse_\ensdiamant = \masse^\ensdiamant_\Sigma$.
-
-Par exemple, le \Cref{theo:rotperpgrad} se réécrit sous la forme
+Dans la suite, nous noterons simplement $\masse_\ensdiamant = \masse^\ensdiamant_\Sigma$. Par exemple, le \Cref{theo:rotperpgrad} se réécrit sous la forme
 \[
 \forall u^\ensddfv, v^\ensddfv \in \R^\ensddfv, 
 \quad
-U^\top \, (\rotmat_\ensdiamant)^\top \masse_\ensdiamant \gradmat_\ensdiamant V = 0.
+(U^\ensddfv)^\top \, (\rotmat_\ensdiamant)^\top \masse_\ensdiamant \gradmat_\ensdiamant V^\ensddfv = 0.
 \]
 
 \subsection{Construction of the discrete divergence and scalar curl operators on the primal and dual meshes}
@@ -347,15 +325,33 @@ Next, we choose to define the discrete divergence of a vector field $\xi^\ensdia
 \dots
 \]
 
+On définit alors $\div$ (resp. $\scarot$) comme l'adjoint de $\grad$ (resp. $\rot$). On a également $\div \rot = 0$ et $\scarot \grad = 0$.
+
+\begin{figure}
+\[
+\begin{tikzcd}
+\mathrm{scal.} & \mathrm{vect.} & \mathrm{scal.} \\
+\Lambda^0 
+\arrow[r,rightarrow, yshift=0.4ex, "\grad"] \arrow[r,leftarrow, yshift=-0.4ex, "\div"'] 
+& 
+\Lambda^1
+\arrow[r,rightarrow, yshift=0.4ex, "\rot"] \arrow[r,leftarrow, yshift=-0.4ex, "\grad^\perp"']
+&
+\Lambda^2
+\end{tikzcd}
+\]
+\caption{}
+\end{figure}
+
 \subsubsection{Discrete divergence}
 
 \begin{defi}[Discrete divergence]
 L'opérateur de divergence discrète est défini de la manière suivante:
 \[
-\prodscal{\masse_\ensddfv U}{\divmat_\ensddfv \Xi} = - \prodscal{\masse_\ensdiamant \gradmat_\ensdiamant U }{\Xi}
+\prodscal{\masse_\ensddfv U^\ensddfv}{\divmat_\ensddfv \Xi^\ensdiamant} = - \prodscal{\masse_\ensdiamant \gradmat_\ensdiamant U^\ensddfv}{\Xi^\ensdiamant}
 \]
 \[
-\divmat_\ensddfv = - \masse^{-1}_\ensddfv \gradmat^\top_\ensdiamant \masse_\ensdiamant
+\divmat_\ensddfv \defeq - \masse^{-1}_\ensddfv \gradmat^\top_\ensdiamant \masse_\ensdiamant
 \]
 \end{defi}
 
@@ -383,7 +379,14 @@ avec $\div^\ensprimal \xi^\ensdiamant = \mathopen{}\big(\div^{\primal{K}} \xi^\e
 In the same way, we may approach the scalar curl operator $\scarot \bullet = \displaystyle \pdv{\bullet_y}{x} - \pdv{\bullet_x}{y}$ by a discrete scalar curl operator:
 
 \begin{defi}[Discrete scalar curl operator]
-$\fonctionens[\scarot^\ensddfv]{(\R^2)^\ensdiamant}{\R^\ensddfv}$. $\xi^\ensdiamant \in (\R^2)^\ensdiamant$
+L'opérateur discrete scalar curl est défini de la manière suivante:
+\[
+\scarotmat_\ensddfv \defeq \masse^{-1}_\ensddfv \rotmat^\top_\ensdiamant \masse_\ensdiamant
+\]
+\end{defi}
+
+\begin{prop}
+$\fonctionens[\scarot^\ensddfv]{(\R^2)^\ensdiamant}{\R^\ensddfv}$. Soit $\xi^\ensdiamant \in (\R^2)^\ensdiamant$, on pose
 \[
 \scarot^\ensddfv \xi^\ensdiamant = \mathopen{}\big( 
 \scarot^\ensprimal \xi^\ensdiamant,
@@ -395,27 +398,4 @@ with $\scarot^\ensprimal \xi^\ensdiamant = \mathopen{}\big(\scarot^{\primal{K}} 
     \forall \primal{K} \in \ensprimal, \quad \scarot^{\primal{K}} \xi^\ensdiamant &= \frac{1}{\mesure(\primal{K})} \sum_{\diamant{D}_{\sigma, \dual{\sigma}} \in \ensdiamant_{\primal{K}}} \mesure(\sigma) \, \xi^{\diamant{D}} \cdot \vect{\tau}, \\
     \forall \mailleduale{K} \in \ensdual, \quad \scarot^{\mailleduale{K}} \xi^\ensdiamant &= \frac{1}{\mesure(\mailleduale{K})} \sum_{\diamant{D}_{\sigma, \dual{\sigma}} \in \ensdiamant_{\mailleduale{K}}} \mesure(\dual{\sigma}) \, \xi^{\diamant{D}} \cdot \dual{\vect{\tau}}.
 \end{align*}   
-\end{defi}
-
-\subsubsection{Gradient tourné}
-
-On pose $\vect{n} = \vect{\tau}_{\mailleduale{K},\mailleduale{L}} \times \vect{\tau}_{\primal{K},\primal{L}}$. Alors,
-\[
-\forall \diamant{D} \in \ensdiamant, \quad \vect{n} \times \rot^\ensdiamant u^\ensddfv = - \grad^\ensdiamant u^\ensddfv. 
-\]
-Ajouter la définition du rot. 
-
-Ces relations permettent de décrire entièrement la matrice $\rotmat$.
-
-\[
-\begin{tikzcd}
-\mathrm{scal.} & \mathrm{vect.} & \mathrm{scal.} \\
-\Lambda^0 
-\arrow[r,rightarrow, yshift=0.4ex, "\grad"] \arrow[r,leftarrow, yshift=-0.4ex, "\div"'] 
-& 
-\Lambda^1
-\arrow[r,rightarrow, yshift=0.4ex, "\rot"] \arrow[r,leftarrow, yshift=-0.4ex, "\grad^\perp"']
-&
-\Lambda^2
-\end{tikzcd}
-\]
+\end{prop}
