@@ -3,6 +3,7 @@
 \DeclareMathAlphabet{\oldmathcal}{OMS}{oldcmsy}{m}{n}
 
 \newcommand{\ddfv}{\textsc{ddfv}\xspace}
+\newcommand{\efie}{\textsc{efie}\xspace}
 \newcommand{\W}{\mathrm{W}}
 \newcommand{\indicatrice}{\mathbf{1}}
 \newcommand{\variete}[1]{\mathcal{#1}}
@@ -18,13 +19,15 @@
 \renewcommand{\angle}[1]{\theta_{#1}}
 \newcommand{\poids}[1]{\mu_{#1}}
 
+\newcommand{\comp}[1]{#1^{\mathsf{c}}}
+
 \DeclareMathOperator{\projvariete}{\Pi^\surflisse}
 \DeclareMathOperator{\projddfvvar}{\Pi^{\surflisse}_\ensddfv}
 \DeclareMathOperator{\projdiamantvar}{\Pi^{\surflisse}_\ensdiamant}
 
 \newcommand{\boule}{\mathrm{B}}
 
-\newcommand{\areprendre}[1]{{\color{gray}#1}}
+\newcommand{\areprendre}[1]{{\color{red}#1}}
 
 \newcommand{\complexe}[1]{\mathsf{#1}}
 \newcommand{\segment}[2]{[#1 \,, #2]}
@@ -36,13 +39,13 @@
 \newcommand{\vertices}{\mathrm{V}}
 \newcommand{\edges}{\mathrm{E}}
 
-\newcommand{\normeddfvT}[2][2]{\norme{#2}_{#1,\ensddfv}}
+\newcommand{\normeddfvT}[2][2]{\norme{#2}_{#1,\ensddfvplat}}
 \newcommand{\normeddfvD}[2][2]{\norme{#2}_{#1,\ensdiamant}}
 
 
 % \newcommand{\intervalleddfv}[2]{#1 \mathclose{}\mathpunct{}, #2}
 % \DeclarePairedDelimiterX{\prodscalddfv}[2]{\llbracket}{\rrbracket_\ensddfv}{\intervalleddfv{\argordot{#1}}{\argordot{#2}}}
-\newcommand{\prodscalddfv}[2]{\prodscal{#1}{#2}_\ensddfv}
+\newcommand{\prodscalddfv}[2]{\prodscal{#1}{#2}_\ensddfvplat}
 \newcommand{\prodscalD}[2]{\prodscal{#1}{#2}_\ensdiamant}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -100,24 +103,29 @@
 }
 
 
-\newcommand{\ensddfv}{\oldmathcal{T}} % ensemble mailles ddfv
+\newcommand{\ensddfv}{{\bm{\mathfrak{T}}}} % ensemble mailles ddfv
+% \newcommand{\ensddfv}{\oldmathcal{T}} % ensemble mailles ddfv
+\newcommand{\ensddfvplat}{\mathbf{T}}
 \newcommand{\Rddfvmn}{\widetilde{\R}^\ensddfv} % fonction ddfv scalaires a moyenne nulle
 
-\newcommand{\ensprimal}{\mathfrak{M}} % ensemble mailles primales
+\newcommand{\ensprimal}{{\bm{\mathfrak{M}}}} % ensemble mailles primales
+\newcommand{\ensprimalplat}{\mathbf{M}}
 \newcommand{\ensprimalbord}{\partial \ensprimal} % ensemble mailles primales du bord
 \newcommand{\enssomprim}{\dual{\mathfrak{B}}} % ensemble des sommets du maillage primal
+\newcommand{\enssomprimplat}{\dual{\mathbf{B}}}
 
-% À SUPPRIMER
-\newcommand{\enssomprimplat}{\mathbf{B}}
 
-\newcommand{\ensprimalplat}{\mathbf{M}}
-
-\newcommand{\ensdual}{{\dual{\mathfrak{M}}}} % ensemble mailles duales
+\newcommand{\ensdual}{{\dual{\bm{\mathfrak{M}}}}} % ensemble mailles duales
+\newcommand{\ensdualplat}{\dual{\mathbf{M}}}
 \newcommand{\ensdualbord}{\partial \ensdual} % ensemble mailles duales du bord
 \newcommand{\enssomdual}{\mathfrak{B}} % ensemble des sommets du maillage dual
+\newcommand{\enssomdualplat}{\mathbf{B}}
 
-\newcommand{\ensdiamant}{\mathfrak{D}} % ensemble mailles diamants
+\newcommand{\ensdiamant}{{\bm{\mathfrak{D}}}} % ensemble mailles diamants
 \newcommand{\ensdiamantbord}{\partial \ensdiamant} % ensemble mailles diamants du bord
+\newcommand{\ensdiamantplat}{\mathbf{D}}
+\newcommand{\side}{\mathrm{s}}
+\newcommand{\sidecourbe}{\mathfrak{s}}
 
 \newcommand{\ensdemidiamant}{\widetilde{\mathfrak{D}}} % ensemble demi-diamants
 
@@ -127,14 +135,16 @@
 \newcommand{\ensareteprim}{\mathfrak{E}}
 \newcommand{\ensareteprimplat}{\mathbf{E}}
 \newcommand{\ensaretedual}{\dual{\mathfrak{E}}}
+\newcommand{\ensaretedualplat}{\dual{\mathbf{E}}}
 \newcommand{\arete}[2]{#1 \mid #2}
 
-\newcommand{\sigmaplat}{\varsigma}
+\newcommand{\sigmacourbe}{\sigma_{\surflisse}}
+\newcommand{\sigmaecourbe}{\dual{\sigma_{\surflisse}}}
 
-\DeclareMathOperator{\gradmat}{\bm{\mathsf{G}}}
-\DeclareMathOperator{\divmat}{\bm{\mathsf{D}}}
-\DeclareMathOperator{\rotmat}{\bm{\mathsf{R}}}
-\DeclareMathOperator{\scarotmat}{\bm{\mathsf{R}}}
+\DeclareMathOperator{\gradmat}{\bm{\mathrm{G}}}
+\DeclareMathOperator{\divmat}{D}
+\DeclareMathOperator{\rotmat}{\bm{\mathrm{R}}}
+\DeclareMathOperator{\scarotmat}{R}
 
 \DeclareMathOperator{\masse}{M}
 

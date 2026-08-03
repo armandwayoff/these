@@ -13,6 +13,9 @@ openany,
 
 \input{notations.tex}
 
+\usetikzlibrary{angles}
+\usetikzlibrary{folding}
+
 \SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n} % https://tex.stackexchange.com/questions/106714/stmaryrd-and-boldsymbol-avoid-warnings
 
 \usepackage{tikz-cd}
@@ -33,15 +36,20 @@ openany,
 
 \mainmatter
 
-% \input{introgenerale.tex}
-
-Intro : seuls deux papiers généralisent en 3D, le formalisme et la technique de preuve sont nouveaux. 
+\input{introgenerale.tex}
 
 \part{Convergence analysis of the \ddfv method on surfaces in \texorpdfstring{$\R^3$}{R3}}
 
 \input{chapitres/chapitre1.tex}
 
 \input{chapitres/chapitre2.tex}
+
+% \begin{figure}[p]
+%     \centering
+    % \input{figures/maillage_tore_polyedrique.tex}
+%     \input{figures/maillage_tore_polyedrique_raffinement_commun.tex}
+%     \caption{Polyédrique}
+% \end{figure}
 
 % \input{chapitres/chapitre3.tex}
 
@@ -51,11 +59,14 @@ Intro : seuls deux papiers généralisent en 3D, le formalisme et la technique d
 
 % \input{backmatter/backmatter.tex}
 
+\input{conclusiongenerale.tex}
+
 \appendix
 
 \part{Appendices}
 
 \input{backmatter/appendix/simplicial_complexes.tex}
+\input{backmatter/appendix/demo_estimations_geo.tex}
 \input{backmatter/appendix/tableaux_notations.tex}
 
 \backmatter

@@ -1,36 +1,48 @@
 \section{Graphs}
 
+\begin{envide}[Notations]
+\begin{itemize}
+    \item $\graphe$ désigne un \defini{graphe};
+    \item $\vertices(\graphe)$ désigne l'\defini{ensemble des sommets} de $\graphe$;
+    \item $\edges(\graphe)$ désigne l'\defini{ensemble des arêtes} de $\graphe$;
+    \item $\degr v$ désigne le \defini{degré} du sommet $v \in \vertices(\graphe)$;
+    \item $\vol W \defeq \sum\limits_{v \in W} \degr v$ désigne le \defini{volume} d'un ensemble de sommets $W \subset \vertices(\graphe)$;
+    \item $u \sim v$ désigne que les sommets $u$ et $v$ sont \defini{voisins}. En particulier, $\sum\limits_{u \sim v} = \frac{1}{2} \sum\limits_{u \in \vertices(\graphe)} \sum\limits_{\substack{v \in \vertices(\graphe) \\ v \sim u}}$;
+    \item $\partial W \defeq \ens[\big]{ \{u, v\} \in \edges(\graphe) \tq u \in W \text{ and } v \not\in W }$ désigne le \defini{bord} de l'ensemble $W \subset \vertices(\graphe)$.
+\end{itemize}
+\end{envide}
+
 \subsection{Laplacian of a graph \texorpdfstring{{\cite[Sec. 1.2]{chung_lectures_nodate}}}{[Chu, Sec. 1.2]}}
 
-In a graph $G$, let $d_v$ denote the degree of the vertex $v$. We first define the Laplacian for graphs without loops and multiple edges. To begin, we consider the matrix $L$, defined as follows:
-\[
+In a graph $\graphe$, let $\degr(v)$ denote the degree of the vertex $v$. We first define the Laplacian for graphs without loops and multiple edges. To begin, we consider the matrix $L$, defined as follows:
+\begin{equation}
 L(u,v) = \begin{cases}
-    d_v &\text{if } u = v \\
+    \degr(v) &\text{if } u = v \\
     -1 &\text{if $u$ and $v$ are adjacent}, \\
     0 & \text{otherwise}.
 \end{cases}
-\]
-Let $T$ denote the diagonal matrix with the $(v,v)$-th entry having value $d_v$. The \defini{Laplacian} of $G$ is defined to be the matrix
-\[
-\mathcal{L}(u,v) = \begin{cases}
-    1 & \text{if $u = v$ and $d_v \not= 0$} \\
-    - \displaystyle\frac{1}{\sqrt{d_u \, d_v}} & \text{if $u$ and $v$ are adjacent}, \\
+\end{equation}
+Let $T$ denote the diagonal matrix with the $(v,v)$-th entry having value $\degr(v)$. The \defini{Laplacian} of $\graphe$ is defined to be the matrix
+\begin{equation}
+\mathcal{L}(u,v) \defeq \begin{cases}
+    1 & \text{if $u = v$ and $\degr(v) \not= 0$} \\
+    - \displaystyle\frac{1}{\sqrt{\degr(u) \degr(v)}} & \text{if $u$ and $v$ are adjacent}, \\
     0 & \text{otherwise}. 
 \end{cases}
-\]
+\end{equation}
 We can write
 \[
 \mathcal{L} = T^{-1/2} \, L \, T^{-1/2}
 \]
-with the convention $T^{-1}(v,v) = 0$ for $d_v = 0$. We say $v$ is an isolated vertex if $d_v = 0$. A graph is said to be nontrivial if it contains at least one edge. The Laplacian $\mathcal{L}$ can be viewed as an operator on the space of functions $\fonctionens[g]{V(G)}{\R}$ which satisfies
+with the convention $T^{-1}(v,v) = 0$ for $\degr(v) = 0$. We say $v$ is an isolated vertex if $\degr(v) = 0$. A graph is said to be nontrivial if it contains at least one edge. The Laplacian $\mathcal{L}$ can be viewed as an operator on the space of functions $\fonctionens[g]{\vertices(\graphe)}{\R}$ which satisfies
 \[
-\mathcal{L}g(u) = \frac{1}{\sqrt{d_u}} \sum_{v \sim u} \left( \frac{g(u)}{\sqrt{d_u}} - \frac{g(v)}{\sqrt{d_v}} \right).
+\mathcal{L}g(u) = \frac{1}{\sqrt{\degr(u)}} \sum\limits_{u \sim v} \left( \frac{g(u)}{\sqrt{\degr(u)}} - \frac{g(v)}{\sqrt{\degr(v)}} \right).
 \]
-When $G$ is $k$-regular, it is easy to see that
+When $\graphe$ is $k$-regular, it is easy to see that
 \[
 \mathcal{L} = \I - \frac{1}{k} \, A,
 \]
-where $A$ is the adjacency matrix of $G$ and $\I$ is an identity matrix. All matrices here are $n \times n$ where $n$ is the number of vertices of $G$. 
+where $A$ is the adjacency matrix of $\graphe$ and $\I$ is an identity matrix. All matrices here are $n \times n$ where $n$ is the number of vertices of $\graphe$. 
 
 For a general graph, we have
 \[
@@ -40,23 +52,21 @@ For a general graph, we have
 
 \subsection{Eigenvalues of a graph \texorpdfstring{{\cite[Sec. 1.2]{chung_lectures_nodate}}}{[Chu, Sec. 1.4]}}
 
-Since $\mathcal{L}$ is symmetric, its eigenvalues are all real and non-negative. We can use the variational characterizations of those eigenvalues in terms of the Rayleigh quotient of $\mathcal{L}$. Let $g$ denote an arbitrary function which assigns to each vertex $v$ of $G$ a real value $g(v)$. We can view $g$ as a column vector. Then
+Since $\mathcal{L}$ is symmetric, its eigenvalues are all real and non-negative. We can use the variational characterizations of those eigenvalues in terms of the Rayleigh quotient of $\mathcal{L}$. Let $g$ denote an arbitrary function which assigns to each vertex $v$ of $\graphe$ a real value $g(v)$. We can view $g$ as a column vector. Then
 \begin{align}
     \frac{\crodua{g}{\mathcal{L}g}}{\crodua{g}{g}} &= \frac{\crodua{g}{T^{-1/2} L T^{-1/2} g}}{\crodua{g}{g}} \nonumber \\
     &= \frac{\crodua{f}{Lf}}{\crodua{T^{1/2} f}{T^{1/2} f}} \nonumber \\
-    &= \frac{\sum\limits_{u \sim v} \big( f(u) - f(v) \big)^2}{\sum_v f(v)^2 \, d_v} \label{eq:rayleigh_quotient}
+    &= \frac{\sum\limits_{u \sim v} \big( f(u) - f(v) \big)^2}{\sum\limits_v f(v)^2 \, \degr(v)} \label{eq:rayleigh_quotient}
 \end{align}
-where $g = T^{1/2} f$ and $\sum\limits_{u \sim v}$ denotes the sum over all unordered pairs $\{u, v\}$ for which $u$ and $v$ are adjacent. Here $\crodua{f}{g} = \sum\limits_x f(x) \, g(x)$ denotes the standard inner product in $\R^n$. The sum $\sum\limits_{u \sim v} \big( f(u) - f(v) \big)^2$ is sometimes called the \defini{Dirichlet sum} of $G$ and the ratio on the left-hand side of \ref{eq:rayleigh_quotient} is often called the \defini{Rayleigh quotient}. 
+where $g = T^{1/2} f$ and $\sum\limits_{u \sim v}$ denotes the sum over all unordered pairs $\{u, v\}$ for which $u$ and $v$ are adjacent. Here $\crodua{f}{g} = \sum\limits_x f(x) \, g(x)$ denotes the standard inner product in $\R^n$. The sum $\sum\limits_{u \sim v} \big( f(u) - f(v) \big)^2$ is sometimes called the \defini{Dirichlet sum} of $\graphe$ and the ratio on the left-hand side of \ref{eq:rayleigh_quotient} is often called the \defini{Rayleigh quotient}. 
 
 From equation \ref{eq:rayleigh_quotient}, we see that all eigenvalues are non-negative. In fact, we can easily deduce from equation \ref{eq:rayleigh_quotient} that $0$ is an eigenvalue of $\mathcal{L}$. We denote the eigenvalues of $\mathcal{L}$ by $0 = \lambda_0 \leqslant \lambda_1 \leqslant \cdots \leqslant \lambda_{n-1}$. The set of the $\lambda_i$'s is called the \defini{spectrum} of $\mathcal{L}$. Let $\indicatrice$ denote the constant function which assumes the value $1$ on each vertex. Then $T^{1/2} \indicatrice$ is an eigenfunction of $\mathcal{L}$ with eigenvalue $0$. Furthermore,
 \begin{equation} \label{eq:lambdaG}
-    \boxed{
-    \lambda_G = \lambda_1 = \inf_{f \perp T \indicatrice} \frac{\sum\limits_{u \sim v} \big( f(u) - f(v) \big)^2}{\sum_v f(v)^2 \, d_v}
-    }.
+    \lambda_\graphe = \lambda_1 = \inf_{f \perp T \indicatrice} \frac{\sum\limits_{u \sim v} \big( f(u) - f(v) \big)^2}{\sum\limits_v f(v)^2 \, \degr(v)}.
 \end{equation}
-($f$ ranges over functions defined on the vertices of $G$ satisfying $\sum_v f(v) \, d_v = 0$). The corresponding eigenfunction is $g = T^{1/2} f$ as in \ref{eq:rayleigh_quotient}. The spectral gap $\lambda_G$ is the least nonzero eigenvalue of $\mathcal{L}$.
+($f$ ranges over functions defined on the vertices of $\graphe$ satisfying $\sum\limits_v f(v) \, \degr(v) = 0$). The corresponding eigenfunction is $g = T^{1/2} f$ as in \ref{eq:rayleigh_quotient}. The spectral gap $\lambda_\graphe$ is the least nonzero eigenvalue of $\mathcal{L}$.
 
-The above formulation for $\lambda_G$ corresponds in a natural way to the eigenvalues of the Laplace--Beltrami operator for Riemannian manifolds:
+The above formulation for $\lambda_\graphe$ corresponds in a natural way to the eigenvalues of the Laplace--Beltrami operator for Riemannian manifolds:
 \[
 \lambda_M = \inf_{\int_M f = 0} \frac{\int_M \abs{\grad f}^2}{\int_M \abs{f}^2}.
 \]
@@ -64,41 +74,43 @@ We remark that the corresponding measure here for each edge is $1$. The measure 
 
 We note that \ref{eq:lambdaG} also has the formulation
 \begin{equation} \label{eq:spectral_gap}
-\boxed{
-\lambda_G = \lambda_1 = \inf_f \frac{\sum\limits_{u \sim v} \big( f(u) - f(v) \big)^2}{\sum\limits_v \big( f(v) - \overline{f} \big)^2 \, d_v},
+\lambda_\graphe = \lambda_1 = \inf_f \frac{\sum\limits_{u \sim v} \big( f(u) - f(v) \big)^2}{\sum\limits_v \big( f(v) - \overline{f} \big)^2 \, \degr(v)},
 \quad
 \text{where}
 \quad
-\overline{f} = \frac{\sum_v f(v) \, d_v}{\vol G}
-},
+\overline{f} = \frac{\sum\limits_v f(v) \, \degr(v)}{\vol \graphe},
 \end{equation}
-and $\vol G$ denotes the volume of the graph $G$, given by $\vol G = \sum\limits_v d_v$. More generally, for a set $S$, the volume of $S$, denoted by $\vol(S)$ is defined to be $\vol(S) \defeq \sum_{v \in S} d_v$.
+and $\vol \graphe$ denotes the volume of the graph $\graphe$, given by $\vol \graphe = \sum\limits_v \degr(v)$.
 
 \subsection{Cheeger inequality on graphs \texorpdfstring{{\cite[Sec. 2]{ji_fourth_2010}}}{[Ji+10, Sec. 2]}}
 
-For a set $S$, the \defini{Cheeger ratio} of $S$ is defined to be
-\[
-h_S \defeq \frac{\abs{\partial S}}{\min\{ \vol(S), \vol(G) - \vol(S) \}},
-\]
-where the boundary of $S$ is denoted $\partial S \defeq \ens[\big]{ \{u, v\} \in E \tq u \in S \text{ and } v \not\in S }$.  Let $\overline{S}$ denote the complement of $S$. Then $h_S = h_{\overline{S}}$. The \defini{Cheeger constant} of $G$ is denoted by
-\begin{equation} \label{eq:cheeger_constant}
-h_G \defeq \min_S h_S.
+For a set $W \subset \vertices(\graphe)$, the \defini{Cheeger ratio} of $W$ is defined to be
+\begin{equation}
+h_W \defeq \frac{\abs{\partial W}}{\min\{ \vol(W), \vol(\graphe) - \vol(W) \}},
 \end{equation}
+where the \defini{boundary} of $W$ is denoted 
+\begin{equation} \label{eq:partialW}
+\partial W \defeq \ens[\big]{ \{u, v\} \in \edges \tq u \in W \text{ and } v \not\in W }.
+\end{equation}
+Let $\overline{W}$ denote the complement of $W$. Then $h_W = h_{\overline{W}}$. The \defini{Cheeger constant} of $\graphe$ is denoted by
+\begin{equation} \label{eq:cheeger_constant}
+h(\graphe) \defeq \min_{W \subset \vertices(\graphe)} h_W.
+\end{equation}
+
+\begin{theo}[Cheeger inequality {\cite[Theo. 1]{ji_fourth_2010}}] \label{theo:cheeger_inequality}
+In a graph $\graphe$, the Cheeger constant $h(\graphe)$ and the \defini{spectral gap} $\lambda_\graphe$ are related as follows:
+\[
+2 \, h(\graphe) \geqslant \lambda_\graphe \geqslant \frac{\alpha_\graphe{}^2}{2} \geqslant \frac{h(\graphe)^2}{2}
+\]
+where $\alpha_\graphe$ is the minimum Cheeger ratio of subsets $W_i$ consisting of vertices {\color{red} with the largest $i$ values in the eigenvector} associated with $\lambda_\graphe$, over all $i$. 
+\end{theo}
+
+\begin{demo}
+For a proof of the Cheeger inequality using  eigenvectors, see \cite[Sec. 3]{ji_fourth_2010}.
+\end{demo}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.3\textwidth]{img/isoperimetric-problem-in-a-region.png}
     \caption{}
 \end{figure}
-
-\begin{theo}[Cheeger inequality {\cite[Theo. 1]{ji_fourth_2010}}] \label{theo:cheeger_inequality}
-In a graph $G$, the Cheeger constant $h_G$ and the \defini{spectral gap} $\lambda_G$ are related as follows:
-\[
-2 \, h_G \geqslant \lambda_G \geqslant \frac{\alpha_G{}^2}{2} \geqslant \frac{h_G{}^2}{2}
-\]
-where $\alpha_G$ is the minimum Cheeger ratio of subsets $S_i$ consisting of vertices {\color{red} with the largest $i$ values in the eigenvector} associated with $\lambda_G$, over all $i$. 
-\end{theo}
-
-\begin{demo}
-For a proof of the Cheeger inequality using  eigenvectors, see \cite[Sec. 3]{ji_fourth_2010}.
-\end{demo}

@@ -1,53 +1,54 @@
 \@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
 \babel@toc {english}{}\relax 
-\contentsline {part}{I\hspace {1em}Convergence analysis of the \textsc {ddfv}\xspace method on surfaces in $\mathbb {R}^3$}{2}{part.1}%
-\contentsline {chapter}{\numberline {I}Generalization of the \textsc {ddfv}\xspace method to 2D surfaces in $\mathbb {R}^3$}{3}{chapter.1}%
+\contentsline {chapter}{Introduction générale}{1}{chapter*.3}%
+\contentsline {part}{I\hspace {1em}Convergence analysis of the \textsc {ddfv}\xspace method on surfaces in $\mathbb {R}^3$}{3}{part.1}%
+\contentsline {chapter}{\numberline {I}Generalization of the \textsc {ddfv}\xspace method to 2D surfaces in $\mathbb {R}^3$}{4}{chapter.1}%
 \etoc@startlocaltoc {2}
-\contentsline {section}{\numberline {I.1}Hypothesis on the surface \& Projection}{3}{section.1.1}%
-\contentsline {subsection}{\numberline {I.1.1}Global coordinates}{3}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {I.1.2}Sobolev spaces on surfaces}{4}{subsection.1.1.2}%
-\contentsline {subsection}{\numberline {I.1.3}Triangulations {\blx@tocontentsinit {0}\cite [Sec. 4.1]{dziuk_finite_2013}}}{5}{subsection.1.1.3}%
-\contentsline {section}{\numberline {I.2}Construction of the \textsc {ddfv}\xspace meshes}{6}{section.1.2}%
-\contentsline {subsection}{\numberline {I.2.1}Primal mesh}{7}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {I.2.2}Dual mesh (Maillage dual barycentrique)}{7}{subsection.1.2.2}%
-\contentsline {subsection}{\numberline {I.2.3}Diamond mesh}{9}{subsection.1.2.3}%
-\contentsline {subsection}{\numberline {I.2.4}\textsc {ddfv}\xspace mesh}{12}{subsection.1.2.4}%
-\contentsline {section}{\numberline {I.3}Unknowns / Espaces d’approximation sur les maillages \textsc {ddfv}\xspace }{12}{section.1.3}%
-\contentsline {section}{\numberline {I.4}Construction of the discrete operators}{13}{section.1.4}%
-\contentsline {subsection}{\numberline {I.4.1}Construction of the discrete gradient and vector curl operators on the diamond cells}{13}{subsection.1.4.1}%
-\contentsline {subsubsection}{Discrete gradient {\blx@tocontentsinit {0}\cite {andreianov_discrete_2007,krell_schemas_2010}}}{14}{figure.caption.14}%
-\contentsline {subsubsection}{Discrete vector curl operator (Gradient tourné)}{15}{equation.1.4.4}%
-\contentsline {subsection}{\numberline {I.4.2}Produits scalaires}{15}{subsection.1.4.2}%
-\contentsline {subsubsection}{Calcul des poids $\mu _{\mathchoice {\scalebox {0.8}{$\mathcal {K}$}}{\scalebox {0.8}{$\mathcal {K}$}}{\scalebox {0.8}{$\scriptstyle \mathcal {K}$}}{\scalebox {0.6}{$\scriptstyle \mathcal {K}$}}}$ et $\mu _{\mathchoice {\scalebox {0.8}{${\mathcal {K}^\ast }$}}{\scalebox {0.8}{${\mathcal {K}^\ast }$}}{\scalebox {0.8}{${\scriptstyle \mathcal {K}^\ast }$}}{\scalebox {0.6}{${\scriptstyle \mathcal {K}^\ast }$}}}$}{16}{equation.1.4.10}%
-\contentsline {subsubsection}{Calcul des poids $\mu _{\mathchoice {\scalebox {0.8}{$\mathcal {D}$}}{\scalebox {0.8}{$\mathcal {D}$}}{\scalebox {0.8}{$\scriptstyle \mathcal {D}$}}{\scalebox {0.6}{$\scriptstyle \mathcal {D}$}}}$}{16}{equation.1.4.12}%
-\contentsline {subsection}{\numberline {I.4.3}Écriture des produits scalaires sous forme matricielle}{18}{subsection.1.4.3}%
-\contentsline {subsection}{\numberline {I.4.4}Construction of the discrete divergence and scalar curl operators on the primal and dual meshes}{18}{subsection.1.4.4}%
-\contentsline {subsubsection}{Discrete divergence}{18}{figure.caption.17}%
-\contentsline {subsubsection}{Discrete scalar curl operator}{20}{thmt@dummyctr.dummy.32}%
-\contentsline {section}{\numberline {I.5}Properties of the operators}{20}{section.1.5}%
-\contentsline {subsection}{\numberline {I.5.1}Discrete Green formulae}{20}{subsection.1.5.1}%
+\contentsline {section}{\numberline {I.1}Hypothesis on the surface \& Projection}{4}{section.1.1}%
+\contentsline {subsection}{\numberline {I.1.1}Global coordinates}{4}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {I.1.2}Sobolev spaces on surfaces}{5}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {I.1.3}Triangulations {\blx@tocontentsinit {0}\cite [Sec. 4.1]{dziuk_finite_2013}}}{6}{subsection.1.1.3}%
+\contentsline {section}{\numberline {I.2}Construction of the \textsc {ddfv}\xspace meshes}{7}{section.1.2}%
+\contentsline {subsection}{\numberline {I.2.1}Primal mesh}{8}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {I.2.2}Dual mesh (Maillage dual barycentrique)}{10}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {I.2.3}Diamond mesh}{12}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {I.2.4}\textsc {ddfv}\xspace mesh}{13}{subsection.1.2.4}%
+\contentsline {section}{\numberline {I.3}Unknowns / Espaces d’approximation sur les maillages \textsc {ddfv}\xspace }{14}{section.1.3}%
+\contentsline {section}{\numberline {I.4}Construction of the discrete operators}{14}{section.1.4}%
+\contentsline {subsection}{\numberline {I.4.1}Construction of the discrete gradient and vector curl operators on the diamond cells}{15}{subsection.1.4.1}%
+\contentsline {subsubsection}{Discrete gradient {\blx@tocontentsinit {0}\cite {andreianov_discrete_2007,krell_schemas_2010}}}{15}{figure.caption.14}%
+\contentsline {subsubsection}{Discrete vector curl operator (Gradient tourné)}{16}{equation.1.4.4}%
+\contentsline {subsection}{\numberline {I.4.2}Produits scalaires}{17}{subsection.1.4.2}%
+\contentsline {subsubsection}{Calcul des poids $\mu _{\mathchoice {\scalebox {0.8}{$\mathcal {K}$}}{\scalebox {0.8}{$\mathcal {K}$}}{\scalebox {0.8}{$\scriptstyle \mathcal {K}$}}{\scalebox {0.6}{$\scriptstyle \mathcal {K}$}}}$ et $\mu _{\mathchoice {\scalebox {0.8}{${\mathcal {K}^\ast }$}}{\scalebox {0.8}{${\mathcal {K}^\ast }$}}{\scalebox {0.8}{${\scriptstyle \mathcal {K}^\ast }$}}{\scalebox {0.6}{${\scriptstyle \mathcal {K}^\ast }$}}}$}{17}{equation.1.4.10}%
+\contentsline {subsubsection}{Calcul des poids $\mu _{\mathchoice {\scalebox {0.8}{$\mathcal {D}$}}{\scalebox {0.8}{$\mathcal {D}$}}{\scalebox {0.8}{$\scriptstyle \mathcal {D}$}}{\scalebox {0.6}{$\scriptstyle \mathcal {D}$}}}$}{17}{equation.1.4.12}%
+\contentsline {subsection}{\numberline {I.4.3}Écriture des produits scalaires sous forme matricielle}{19}{subsection.1.4.3}%
+\contentsline {subsection}{\numberline {I.4.4}Construction of the discrete divergence and scalar curl operators on the primal and dual meshes}{20}{subsection.1.4.4}%
+\contentsline {subsubsection}{Discrete divergence}{20}{figure.caption.17}%
+\contentsline {subsubsection}{Discrete scalar curl operator}{20}{thmt@dummyctr.dummy.34}%
+\contentsline {section}{\numberline {I.5}Properties of the operators}{21}{section.1.5}%
+\contentsline {subsection}{\numberline {I.5.1}Discrete Green formulae}{21}{subsection.1.5.1}%
 \contentsline {subsection}{\numberline {I.5.2}Compositions of the discrete operators {\blx@tocontentsinit {0}\cite [Sec. 4.2]{delcourte_discrete_2007}}}{21}{subsection.1.5.2}%
-\contentsline {subsection}{\numberline {I.5.3}Hodge's decomposition}{21}{subsection.1.5.3}%
-\contentsline {section}{\numberline {I.6}Regularity of meshes}{22}{section.1.6}%
-\contentsline {subsection}{\numberline {I.6.1}Régularité du maillage {\blx@tocontentsinit {0}\cite [p. 36]{krell_schemas_2010}}}{23}{subsection.1.6.1}%
+\contentsline {subsection}{\numberline {I.5.3}Hodge's decomposition}{22}{subsection.1.5.3}%
+\contentsline {section}{\numberline {I.6}Regularity of meshes {\blx@tocontentsinit {0}\cite [p. 36]{krell_schemas_2010}}}{23}{section.1.6}%
 \contentsline {section}{\numberline {I.7}Estimates for the geometric errors {\blx@tocontentsinit {0}\cite [Sec. 4.2]{dziuk_finite_2013}}}{24}{section.1.7}%
-\contentsline {subsection}{\numberline {I.7.1}Discrete charts {\blx@tocontentsinit {0}\cite [Sec. 4.3]{dziuk_finite_2013}}}{25}{subsection.1.7.1}%
-\contentsline {chapter}{\numberline {II}Inégalité de \textsc {Poincaré} \textsc {ddfv}\xspace sur une surface fermée sans bord de $\mathbb {R}^3$}{26}{chapter.2}%
+\contentsline {subsection}{\numberline {I.7.1}Discrete charts {\blx@tocontentsinit {0}\cite [Sec. 4.3]{dziuk_finite_2013}}}{26}{subsection.1.7.1}%
+\contentsline {chapter}{\numberline {II}Inégalité de \textsc {Poincaré} \textsc {ddfv}\xspace sur une surface fermée sans bord de $\mathbb {R}^3$}{27}{chapter.2}%
 \etoc@startlocaltoc {3}
-\contentsline {section}{\numberline {II.1}The Isoperimetric Problem and the Cheeger Constant {\blx@tocontentsinit {0}\cite [Sec. 3]{benson_cheeger_2016}}}{26}{section.2.1}%
-\contentsline {section}{\numberline {II.2}Graphs}{27}{section.2.2}%
-\contentsline {subsection}{\numberline {II.2.1}Laplacian of a graph {\blx@tocontentsinit {0}\cite [Sec. 1.2]{chung_lectures_nodate}}}{27}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {II.2.2}Eigenvalues of a graph {\blx@tocontentsinit {0}\cite [Sec. 1.2]{chung_lectures_nodate}}}{28}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {II.2.3}Cheeger inequality on graphs {\blx@tocontentsinit {0}\cite [Sec. 2]{ji_fourth_2010}}}{28}{subsection.2.2.3}%
-\contentsline {section}{\numberline {II.3}Main theorem}{30}{section.2.3}%
-\contentsline {subsection}{\numberline {II.3.1}Notations \& Énoncé}{30}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {II.3.2}Une inégalité de graphe}{30}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {II.3.3}Passage du discret au continu}{35}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {II.3.4}État de l'art}{36}{subsection.2.3.4}%
-\contentsline {part}{II\hspace {1em}Appendices}{37}{part.2}%
-\contentsline {chapter}{\numberline {A}Simplicial Complexes}{38}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Geometric simplices}{38}{section.A.1}%
-\contentsline {subsection}{\numberline {A.1.1}Geometric simplicial complexes}{38}{subsection.A.1.1}%
-\contentsline {subsection}{\numberline {A.1.2}Triangulation of a finite point set of $\mathbb {R}^d$}{38}{subsection.A.1.2}%
-\contentsline {subsection}{\numberline {A.1.3}Triangulation of a polygonal domain of $\mathbb {R}^2$}{38}{subsection.A.1.3}%
-\contentsline {chapter}{\numberline {B}Notations}{39}{appendix.B}%
+\contentsline {section}{\numberline {II.1}The Isoperimetric Problem and the Cheeger Constant {\blx@tocontentsinit {0}\cite [Sec. 3]{benson_cheeger_2016}}}{27}{section.2.1}%
+\contentsline {section}{\numberline {II.2}Graphs}{28}{section.2.2}%
+\contentsline {subsection}{\numberline {II.2.1}Laplacian of a graph {\blx@tocontentsinit {0}\cite [Sec. 1.2]{chung_lectures_nodate}}}{28}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {II.2.2}Eigenvalues of a graph {\blx@tocontentsinit {0}\cite [Sec. 1.2]{chung_lectures_nodate}}}{29}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {II.2.3}Cheeger inequality on graphs {\blx@tocontentsinit {0}\cite [Sec. 2]{ji_fourth_2010}}}{30}{subsection.2.2.3}%
+\contentsline {section}{\numberline {II.3}Main theorem}{31}{section.2.3}%
+\contentsline {subsection}{\numberline {II.3.1}Une inégalité de graphe}{31}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {II.3.2}Passage du discret au continu}{34}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {II.3.3}État de l'art}{38}{subsection.2.3.3}%
+\contentsline {chapter}{Conclusion générale}{39}{chapter*.26}%
+\contentsline {part}{II\hspace {1em}Appendices}{40}{part.2}%
+\contentsline {chapter}{\numberline {A}Simplicial Complexes}{41}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Geometric simplices}{41}{section.A.1}%
+\contentsline {subsection}{\numberline {A.1.1}Geometric simplicial complexes}{41}{subsection.A.1.1}%
+\contentsline {subsection}{\numberline {A.1.2}Triangulation of a finite point set of $\mathbb {R}^d$}{41}{subsection.A.1.2}%
+\contentsline {subsection}{\numberline {A.1.3}Triangulation of a polygonal domain of $\mathbb {R}^2$}{41}{subsection.A.1.3}%
+\contentsline {chapter}{\numberline {B}Démonstrations des résultats d'estimations géométriques}{42}{appendix.B}%
+\contentsline {chapter}{\numberline {C}Notations}{43}{appendix.C}%

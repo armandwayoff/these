@@ -1,0 +1,56 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\begin{tikzpicture}[
+    ddfv,
+    angle eccentricity=1.35,
+    angle radius=7mm,
+    scale=0.7
+]
+
+    % Sommets du triangle
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (5,0.5);
+    \coordinate (C) at (1.5,4);
+
+    % Centre de gravité :
+    % G = (A+B+C)/3
+    \coordinate (G) at (barycentric cs:A=1,B=1,C=1);
+
+    % Triangle ABC
+    \draw[myblue]
+        (A) -- (B) -- (C) -- cycle;
+
+    % Segments reliant G aux sommets
+    \draw
+        (A) -- (G)
+        (B) -- (G)
+        (C) -- (G);
+
+    % Angles au centre de gravité
+    \pic[
+        draw,
+        ->,
+        "$\angle{1}^\ast$"
+    ] {angle=A--G--B};
+
+    \pic[
+        draw,
+        ->,
+        "$\angle{2}^\ast$"
+    ] {angle=B--G--C};
+
+    \pic[
+        draw,
+        ->,
+        "$\angle{3}^\ast$"
+    ] {angle=C--G--A};
+
+    % Points et étiquettes
+    \node[ptsq={myblue}{below left:{$s^\ast_1$}}] at (A) {};
+    \node[ptsq={myblue}{below right:{$s^\ast_2$}}] at (B) {};
+    \node[ptsq={myblue}{above:{$s^\ast_3$}}] at (C) {};
+    \node[ptcl={myred}{below:{$x_{\primalplat{K}}$}}] at (G) {};
+
+    \node[myblue, above left] at ($(A)!0.5!(C)$) {$\primalplat{K}$};
+
+\end{tikzpicture}

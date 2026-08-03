@@ -1,6 +1,45 @@
 \chapter*{Introduction générale}
-\addcontentsline{toc}{chapter}{Introduction générale} 
+\addcontentsline{toc}{chapter}{Introduction générale}
 
+Ce stage porte sur l’étude de méthodes de discrétisation pour la décomposition de Helmholtz--Hodge dans le cas d’une surface fermée sans bord de $\R^3$. On se propose d’adapter des méthodes volumes finis à grilles décalées de type Discrete Duality Finite Volume (\ddfv) ayant déjà été employées dans le cas de domaines à bord dans $\R^2$. Cette adaptation nécessite de résoudre des difficultés posées par la géométrie du problème et qui affectent tant l’implémentation numérique des méthodes que l’étude théorique des schémas.
+
+Les méthodes \ddfv font partie de la classe des Volumes Finis à grilles décalées. Elles reposent sur l'utilisation simultanée de deux maillages duaux l'un de l'autre, généralement appelés maillage \emph{primal} et maillage \emph{dual}. Cette construction permet de définir des opérateurs discrets de gradient et de divergence satisfaisant une propriété de dualité discrète analogue à celle existant au niveau continu. On obtient ainsi une discrétisation des gradients dans toutes les directions de l'espace ce qui permet notamment de se passer des conditions d'admissibilité des maillages souvent associées aux méthodes Volumes Finis. Tout d'abord introduites au début des années 2000 dans des problèmes de diffusion \cite{hermeline_finite_2000}, elles ont dépuis été développées dans d'autres contextes \cite{domelevo_finite_2005} À COMPLÉTER
+
+Le rapport propose une étude de l'extension de ces méthodes au cas des surfaces fermées de $\R^3$ sans bord. 
+
+\begin{figure}[H]
+    \centering
+    \input{figures/dhh.tex}
+    \caption{Exemple de la décomposition de Helmoltz--Hodge sur une surface fermée sans bord de $\R^3$ (crédit Keenan Crane)}
+\end{figure}
+
+La décomposition de Helmoltz--Hodge est un outil très utilisé et très étudié qui est notamment à la base de la cohomologie de De Rham et qui a des liens étroits avec les équations de Maxwell sous leur formulation potentiel. Elle consiste à décomposer un champ de vecteurs tangents $\vect{u}$ sous la forme :
+\[
+\vect{u} = \grad \varphi + \grad^\perp \psi + \vect{r}
+\]
+où $\varphi$ et $\psi$ sont des fonctions scalaires et $\vect{r}$ une fonction vectorielle appartenant au noyau du laplacien. Ce problème a déjà été abordé avec succès par des méthodes \ddfv dans le cadre des domaines du plan à bord \cite{delcourte_discrete_2007}. La généralisation des méthodes \ddfv au cadre des surfaces de $\R^3$ sans bord peut se faire \textbf{naturellement} en définissant un opérateur de gradient discret dans les plans canoniquement associés aux mailles diamants du maillage et un opérateur de divergence discrète qui soient alors en dualité. Des premiers tests numériques effectués dans le cas simple de la sphère laissent entrevoir une convergence numérique de la méthode et son bon comportement. La poursuite de ces tests dans des situations plus critiques présentant notamment une cohomologie non triviale s'accompagnera de l'étude théorique de convergence de la méthode. Les techniques classiques de preuves utilisées en \ddfv reposant sur des résultats de compacité et des inégalités discrètes telles que l'inégalité de Poincaré doivent être adaptées à la géométrie du problème, ce qui concentre en grande partie les difficultés de l'analyse. En effet, l'absence de bord au domaine, permettant généralement de s'assurer de la convergence des solutions primales et duales vers la même solution, ainsi que le fait de se placer dans un cadre de variétés différentielles nécessitent des adaptations aux schémas de preuves classiques et d'établir des estimations discrètes n'existant pas encore dans la littérature pour le cadre \ddfv. 
+
+Le développement de ces techniques n'en est encore qu'à ses débuts avec relativement peu de travaux présents dans la littérature \cite{tomek_discrete_2016,tomek_discrete_2019} avec des études principalement numériques sans résultats de convergence des méthodes. 
+
+
+\begin{envide}[Stage de fin d'études]
+\begin{itemize}
+    \item Familiarisation avec la méthode DDFV
+    \item Généralisation rigoureuse aux surfaces triangulées de $\R^3$
+    \item Discrétisation de la décomposition de Helmholtz--Hodge
+    \item Démonstration de la convergence lorsque $h \to 0$
+\end{itemize}
+\end{envide}
+
+\bigskip
+
+Dans un premier chapitre \dots
+
+\begin{envide}[Contributions]
+    
+\end{envide}
+
+\begin{comment}
 \section{Contexte de la thèse}
 
 \begin{itemize}
@@ -11,7 +50,7 @@
         \caption{Diffraction d'une onde électromagnétique par un obstacle}
     \end{figure}
     \item Équations de Maxwell en régime harmonique
-    \item Méthode des équations intégrales : \emph{Electric Field Integral Equation} (EFIE) sur {\color{mydarkgreen}$\Sigma$}
+    \item Méthode des équations intégrales : \emph{Electric Field Integral Equation} (\efie) sur {\color{mydarkgreen}$\Sigma$}
     \[
     \gamma^\mathrm{tan} \mathopen{}\left( \mathrm{i} \, \omega \mu_0 G \vec{J} + \frac{\mathrm{i}}{\omega \varepsilon_0} \grad G \, \mathrm{div} \vec{J} \right) = E^\mathrm{tan}_\mathrm{inc}
     % \gamma^\text{tan} T = \gamma^\text{tan} \left( \mathrm{i}\, \omega \mu_0 G + \frac{\mathrm{i}}{\omega \varepsilon_0} \grad G\, \text{div} \right)
@@ -49,7 +88,7 @@ $\div(n \times \grad \varphi) = 0$ ($\varphi$ fonction scalaire sur $\Sigma$) + 
 \begin{itemize}
     \item L'identité de Calder\'on fournit un moyen élégant de trouver un préconditionneur 
     % une paramétrix de 
-    l'opérateur intégral de l'EFIE.
+    l'opérateur intégral de l'\efie.
     \item Malheureusement, cette identité ne passe pas bien au niveau discret.
 \end{itemize}
 
@@ -90,7 +129,7 @@ Un maillage \ddfv est défini de manière unique à partir de $\mathfrak{M} \cup
 \begin{envide}[Résultats attendus]
 \begin{itemize}
     \item Une théorie de l'approximation des champs de vecteurs sur les surfaces de $\R^3$ en DDFV
-    \item Une nouvelle méthode de preconditionnement \chevron{à la Calder\'on} de l'EFIE
+    \item Une nouvelle méthode de preconditionnement \chevron{à la Calder\'on} de l'\efie
 \end{itemize}
 \end{envide}
 
@@ -111,54 +150,4 @@ Un maillage \ddfv est défini de manière unique à partir de $\mathfrak{M} \cup
     \item Lien avec l'homologie
 \end{itemize}
 \end{envide}
-
-
-\begin{envide}[Stage de fin d'études]
-\begin{itemize}
-    \item Familiarisation avec la méthode DDFV
-    \item Généralisation rigoureuse aux surfaces triangulées de $\R^3$
-    \item Discrétisation de la décomposition de Helmholtz--Hodge
-    \item Démonstration de la convergence lorsque $h \to 0$
-\end{itemize}
-\end{envide}
-
-
-\begin{figure}[H]
-\centering
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \input{figures/ddfv_M.tex}
-    \caption{Maillage primal}
-\end{subfigure}%
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \input{figures/ddfv_Me.tex}
-    \caption{Maillage dual}
-\end{subfigure} \\
-\begin{subfigure}[c]{0.5\textwidth}
-    \centering
-    \input{figures/ddfv_D.tex}
-    \caption{Maillage diamant}
-\end{subfigure}%
-\begin{subfigure}[c]{0.5\textwidth}
-    \centering
-    % \input{figures/ddfv_legende.tex} % PB DE COMPILATION
-    \caption{Légende}
-\end{subfigure}
-\caption{Maillages \ddfv}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \input{figures/diamant_int.tex}
-    \caption{Diamant intérieur}
-\end{subfigure}%
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \input{figures/diamant_bord.tex}
-    \caption{Diamant bord}
-\end{subfigure}
-\caption{Diamant intérieur et diamant bord}
-\end{figure}
+\end{comment}

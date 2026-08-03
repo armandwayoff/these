@@ -1,0 +1,46 @@
+\chapter{Démonstrations des résultats d'estimations géométriques} \label{chap:demo_estimations_geo}
+
+\begin{demo}[de {\Cref{prop:mesure_sigmacourbe}}]
+Soit $p = \projvariete$. Puisque
+\[
+p(x) = x - d(x) \, \vect{n}(p(x)),
+\]
+on a, \areprendre{lien vers la bonne section},
+\[
+Dp(x) = P(p(x)) (\I - d(x) \mathcal{H}(p(x))),
+\]
+où $P$ est la projection sur le plan tangent et $\mathcal{H}$ la \areprendre{matrice de Weingarten}. Faire le lien avec la définition de $R_h$. 
+
+Comme $\surflisse$ est compacte et $\Cont^2$, $\norme{\mathcal{H}}_{\L^\infty(\surflisse)} \leqslant C_{\mathcal{H}}$.
+Par conséquent,
+\[
+\norme{Dp(x)} \leqslant \norme{P} (1 + \abs{d(x)} \norme{\mathcal{H}}) \leqslant 1 + c \, C_{\mathcal{H}} \size(\ensddfvplat)^2.
+\]
+Considérons maintenant une arête plate $\sigma$, paramétrée par:
+\[
+\fonctionens[\gamma]{\intervalleff{0}{\mesure(\sigma)}}{\sigma},
+\quad
+\abs{\gamma'(s)} = 1.
+\]
+L'arête courbe associée est
+\[
+\sigmacourbe = p(\sigma),
+\quad
+\gamma_\surflisse = p \circ \gamma.
+\]
+Alors
+\[
+\abs{\gamma'_\surflisse(s)} = \abs{D p(\gamma(s)) \gamma'(s)} \leqslant (1 + C \size(\ensddfvplat)^2) \abs{\gamma'(s)} = 1 + C \size(\ensddfvplat)^2.
+\]
+En intégrant,
+\[
+\mesure(\sigmacourbe) = \int_0^{\mesure(\sigma)} \abs{\gamma'_\surflisse(s)} \d s
+\leqslant (1 + C \size(\ensddfvplat)^2) \mesure(\sigma),
+\]
+ce qui fournit le résultat. 
+\end{demo}
+
+\begin{demo}[de {\Cref{prop:mino_mesure_primal_K}}]
+Soit $\primalplat{K} \in \ensprimalplat$. On a $\displaystyle\frac{\diam{\primalplat{K}}}{\sqrt{\mesure(\primalplat{K})}} \leqslant \reg(\ensddfvplat)$ et $\frac{\diam{\diamantplat{D}}}{\diam{\primalplat{K}}} \leqslant \reg(\ensddfvplat)$ et $\vartheta \size(\ensddfvplat) \leqslant \diam{\diamantplat{D}}$. 
+
+\end{demo}

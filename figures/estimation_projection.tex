@@ -14,10 +14,10 @@
 % \def\f(#1){0.2*sin(pi*#1^3 r)}
 % \def\fp(#1){0.2*3*pi*#1^2*cos(pi*#1^3 r)}
 
-\draw[myblue] (0.5,0.2) -- (0.5,{\f(\xL)+0.2}) node[midway, above] {$\projvariete \primal{K}$};
-\draw[myblue] (0,0) -- (\xL,{\f(\xL)}) node[midway, below] {$\primal{K}$};
+\draw[myblue] (0.5,0.2) -- (0.5,{\f(\xL)+0.2}) node[midway, above] {$\primal{K} = \projvariete \primalplat{K}$};
+\draw[myblue] (0,0) -- (\xL,{\f(\xL)}) node[midway, below] {$\primalplat{K}$};
 
-\draw plot[domain=-0.1:{\xL+0.1},samples=20,smooth] ({\x},{\f(\x)}) node[above right] {$\variete{M}$};
+\draw plot[domain=-0.1:{\xL+0.1},samples=20,smooth] ({\x},{\f(\x)}) node[above right] {$\surflisse$};
 
 \node[ptsq={myblue}{}] at (0,0) {};
 \node[ptsq={myblue}{}] at (\xL,{\f(\xL)}) {};

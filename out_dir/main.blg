@@ -1,18 +1,18 @@
 [0] Config.pm:307> INFO - This is Biber 2.17
 [0] Config.pm:310> INFO - Logfile is 'out_dir/main.blg'
-[102] biber:340> INFO - === mer. juil. 29, 2026, 09:35:24
-[119] Biber.pm:418> INFO - Reading 'out_dir/main.bcf'
-[184] Biber.pm:972> INFO - Found 18 citekeys in bib section 0
-[197] Biber.pm:4383> INFO - Processing section 0
-[208] Biber.pm:4574> INFO - Looking for bibtex file '../biblio/PFE.bib' for section 0
-[214] bibtex.pm:1713> INFO - LaTeX decoding ...
-[281] bibtex.pm:1518> INFO - Found BibTeX data source '../biblio/PFE.bib'
-[452] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[452] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[452] Biber.pm:4203> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
-[452] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
-[477] bbl.pm:654> INFO - Writing 'out_dir/main.bbl' with encoding 'UTF-8'
-[490] bbl.pm:757> INFO - Output to out_dir/main.bbl
-[490] Biber.pm:130> WARN - ISBN '978-0-387-98271-7 978-0-387-98322-6' in entry 'lee_riemannian_1997' is invalid - run biber with '--validate_datamodel' for details.
-[490] Biber.pm:130> WARN - ISBN '978-0-8218-5021-3 978-0-8218-8851-3 978-1-4704-1751-2' in entry 'ji_fourth_2010' is invalid - run biber with '--validate_datamodel' for details.
-[490] Biber.pm:132> INFO - WARNINGS: 2
+[114] biber:340> INFO - === lun. août  3, 2026, 09:57:00
+[132] Biber.pm:418> INFO - Reading 'out_dir/main.bcf'
+[252] Biber.pm:972> INFO - Found 19 citekeys in bib section 0
+[268] Biber.pm:4383> INFO - Processing section 0
+[281] Biber.pm:4574> INFO - Looking for bibtex file '../biblio/PFE.bib' for section 0
+[288] bibtex.pm:1713> INFO - LaTeX decoding ...
+[411] bibtex.pm:1518> INFO - Found BibTeX data source '../biblio/PFE.bib'
+[665] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[665] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[665] Biber.pm:4203> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[665] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
+[697] bbl.pm:654> INFO - Writing 'out_dir/main.bbl' with encoding 'UTF-8'
+[714] bbl.pm:757> INFO - Output to out_dir/main.bbl
+[714] Biber.pm:130> WARN - ISBN '978-0-387-98271-7 978-0-387-98322-6' in entry 'lee_riemannian_1997' is invalid - run biber with '--validate_datamodel' for details.
+[714] Biber.pm:130> WARN - ISBN '978-0-8218-5021-3 978-0-8218-8851-3 978-1-4704-1751-2' in entry 'ji_fourth_2010' is invalid - run biber with '--validate_datamodel' for details.
+[714] Biber.pm:132> INFO - WARNINGS: 2

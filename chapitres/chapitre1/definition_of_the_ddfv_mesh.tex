@@ -2,6 +2,7 @@
 
 \cite{andreianov_discrete_2007} We consider the class of finite volume schemes introduced by Hermeline in \cite{hermeline_finite_2000}, by Domelevo, Omnès in \cite{domelevo_finite_2005} for the Laplace equation and in \cite{delcourte_discrete-duality_2005} for other linear equations like the Stokes or the Div-Curl system. In \cite{delcourte_discrete-duality_2005}, these schemes are called \chevron{Discrete Duality Finite Volume} (\ddfv for short) since the discrete gradient and discrete divergence operators are dual one from each other (see \ref{theo:discrete_green_formulae}). The equation is approximated simultaneously on two interrelated meshes: the primal and the dual mesh. The number of variables and of equations doubles compared to usual cell-centered \textsc{fv} schemes, but the gradient approximation (the one already used by Coudière and \emph{al.} \cite{coudiere_convergence_1999}) becomes simple and quite efficient. \\
 
+\areprendre{
 \begin{envide}[Construction maillages]
 \begin{enumerate}
     \item Soit une surface $\surflisse$
@@ -16,6 +17,7 @@
     \item Les mailles duales sont approchées par $2m$ facettes
 \end{enumerate}    
 \end{envide}
+}
 
 \subsection{Primal mesh}
 
@@ -27,27 +29,65 @@
 \end{figure}
 
 Section \ref{sec:hypothesis_on_the_surface_and_projection} : 
-\[
+\begin{equation} \label{eq:surfpoly}
 \surfpoly = \bigcup_{\primalplat{K} \in \ensprimalplat} \primalplat{K}, 
-\qquad
+\end{equation}
+\begin{equation} \label{eq:primalK}
 \forall \primalplat{K} \subset \surfpoly, \quad \exists! \primal{K} \defeq \projvariete \primalplat{K} \subset \surflisse.
-\]
-The \defini{primal mesh} $\ensprimal$ is the set of disjoint polygonal control volumes $\primal{K}$. 
+\end{equation}
+The \defini{primal mesh} $\ensprimal$ is the set of disjoint polygonal control volumes $\primal{K}$:
+\begin{equation} \label{eq:ensprimal}
+    \ensprimal \defeq \ens[\big]{\primal{K} = \projvariete \primalplat{K} \tq \primalplat{K} \in \ensprimalplat}
+\end{equation}
 \[
 \surflisse = \bigcup_{\primal{K} \in \ensprimal} \primal{K}.
 \]
-We create a representative point $x_{\primalplat{K}}$  of each triangle $\primalplat{K} \in \ensprimalplat$ (\ref{fig:ddfv_3d}, bottom left). The point $x_{\primalplat{K}}$ is taken at the barycenter of triangle $\primalplat{K}$. The denote $x_{\primal{K}} = \projvariete x_{\primalplat{K}}$ its projection onto the smooth surface $\surflisse$. 
+We create a representative point $x_{\primalplat{K}}$  of each triangle $\primalplat{K} \in \ensprimalplat$ (\ref{fig:ddfv_3d}, bottom left). The point $x_{\primalplat{K}}$ is taken at the barycenter of triangle $\primalplat{K}$. The denote 
+\begin{equation} \label{eq:xprimalK}
+x_{\primal{K}} \defeq \projvariete x_{\primalplat{K}}
+\end{equation}
+its projection onto the smooth surface $\surflisse$. 
 
-We call $\enssomprimplat$ this family of points $\ens[\big]{x_{\primalplat{K}} \tq \primalplat{K} \in \ensprimalplat}$ and let $\enssomdual$ denote the set of vertices of the mesh $\ensprimal$. For all adjacent control volumes $\primalplat{K}$ and $\primalplat{L}$, we assume that $\partial \primalplat{K} \cap \partial \primalplat{L}$ is a segment that we call \defini{an edge of the mesh} $\ensprimalplat$ and that we denote by $\sigmaplat = \arete{\primalplat{K}}{\primalplat{L}}$. Let $\ensareteprimplat$ be the set of such edges. 
+We call 
+\begin{equation} \label{eq:enssomdualplat}
+    \enssomdualplat \defeq 
+    \ens[\big]{x_{\primalplat{K}} \tq \primalplat{K} \in \ensprimalplat}
+\end{equation}
+this family of points and let $\enssomdual$ denote the set of vertices of the \areprendre{mesh $\ensdual$}:
+\begin{equation} \label{eq:enssomdual}
+    \enssomdual \defeq \ens[\big]{x_{\primal{K}} \tq \primal{K} \in \ensprimal}.
+\end{equation}
+For all adjacent control volumes $\primalplat{K}$ and $\primalplat{L}$, we assume that $\partial \primalplat{K} \cap \partial \primalplat{L}$ is a segment that we call \defini{an edge of the mesh} $\ensprimalplat$ and that we denote by 
+\begin{equation} \label{eq:sigma}
+\sigma = \sigma_{\primalplat{K},\primalplat{L}} \defeq \arete{\primalplat{K}}{\primalplat{L}}. 
+\end{equation}
+Let $\ensareteprimplat$ be the set of such edges. 
 
+\begin{equation} \label{eq:enssomprim_plat}
+\enssomprim = \ens[\big]{x_{\mailleduale{K}} \tq \mailleduale{K} \in \ensdual}
+=
+\enssomprimplat = \ens[\big]{x_{\mailledualeplate{K}} \tq \mailledualeplate{K} \in \ensdualplat}
+\end{equation}
 \[
-\enssomprim = \ens[\big]{x_{\primal{K}} \tq \primal{K} \in \ensprimal}
-\qquad
-\forall \sigmaplat \in \ensareteprimplat, \quad \sigma = \projvariete \sigmaplat
+x_{\mailledualeplate{K}} = x_{\mailleduale{K}}
 \]
 
 
+\begin{equation} \label{eq:sigmacourbe}
+    \forall \sigma \in \ensareteprimplat, \quad \sigmacourbe \defeq \projvariete \sigma
+\end{equation}
+
+\areprendre{citation à ajouter}
+
+For all bounded set $E \subset \R^d$, set the \defini{diameter}
+\begin{equation} \label{eq:diamE}
+\diam{E} \defeq \sup\limits_{x,y \in E} \abs{x - y}.
+\end{equation}
+
+We denote by $\mesure(E)$ the measure of an object $E$ in its natural dimension (i.e. the $d$-dimensional measure, if $E$ is a control volume, a dual control volume or a diamond; and the $(d - 1)$-dimensional measure, if $E$ is an interface or a part of an interface). 
+
 \noindent For any control volume $\primal{K} \in \ensprimal$, we define
+\areprendre{
 \begin{itemize}
     \item $\mesure(\primal{K})$, the measure of $\primal{K}$;
     \item $\ensareteprim_{\primal{K}}$, the set of edges of $\primal{K}$;
@@ -55,32 +95,27 @@ We call $\enssomprimplat$ this family of points $\ens[\big]{x_{\primalplat{K}} \
     \item $\vect{\nu}_{\primal{K}}$, the outward unit normal vector to $\partial \primal{K}$;
     \item $\diam{\primal{K}}$, the diameter of $\primal{K}$.
 \end{itemize}
+}
 
+\areprendre{
 It can happen that the point $x_{\primal{K}}$ does not belong to $\primal{K}$ (if $\primal{K}$ is a triangle and $x_{\primal{K}}$ its circumcenter for instance). As usual in that case (see \cite{eymard_finite_2000}) it is necessary to assume that $\vect{\nu}_{\primal{K}}$ points from $x_{\primal{K}}$ towards $x_{\primal{L}}$, that is $\vect{\nu}_{\primal{K}} = \vect{\nu}$ with the notations above. Similarly we assume that $\vect{\nu}_{\mailleduale{K}} = \dual{\vect{\nu}}$. In the case of a triangular mesh $\ensprimal$ in which $x_{\primal{K}}$ is the circumcenter of $\primal{K}$, this assumption is known as the Delaunay condition. 
-
+}
 
 \subsection{Dual mesh (Maillage dual barycentrique)}
 
-For all adjacent control volumes $\primal{K}$ and $\primal{L}$, we denote by $\dual{\sigma} = \segment{x_{\primal{K}}}{x_{\primal{L}}}$ the segment joining their representative points. Let $\ensaretedual$ be the set of such segments. 
-
 \begin{figure}[H]
-\centering
-\begin{subfigure}[t]{.5\textwidth}
     \centering
-    \includegraphics[width=0.5\textwidth]{img/dual_3D.png}
-    \caption{Dual cell}
-\end{subfigure}%
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \includegraphics[width=0.5\textwidth]{img/dual_3D_decoupage.png}
-    \caption{Découpage}
-\end{subfigure}
-\caption{}
+    \input{figures/decoupage_dual_plat_def.tex}
+    \caption{Maille duale plate $\mailledualeplate{K}$}
+    \label{fig:decoupage_dual_plat_def}
 \end{figure}
 
 \areprendre{
-The vertices $x_{\mailleduale{K}}$ and $x_{\primal{K}}$ will be referred to as $\ensprimal$-vertices and $\ensdual$-vertices respectively.
-The set $\ensdual$ is a family of \chevron{dual} control volumes defined as follows. To any point $x_{\mailleduale{K}} \in \enssomdual$, we associate the polygon $\mailleduale{K} \in \ensdual$ whose vertices are $\ens[\big]{x_{\primal{K}} \in \enssomprim \tq x_{\mailleduale{K}} \in \overline{\primal{K}}, \primal{K} \in \ensprimal}$ sorted with respect to the clockwise order of the corresponding primal control volumes.
+The set $\ensdualplat$ is a family of \chevron{dual} control volumes defined as follows. To any point $x_{\mailleduale{K}} \in \enssomdual$, we associate the \chevron{polygon} $\mailledualeplate{K} \in \ensdualplat$ whose vertices are 
+\begin{equation} \label{eq:mailledualeplate}
+\ens[\big]{x_{\primal{K}} \in \enssomprim \tq x_{\mailleduale{K}} \in \overline{\primal{K}}, \primal{K} \in \ensprimal}
+\end{equation}
+sorted with respect to the clockwise order of the corresponding primal control volumes.
 
 The corresponding notations $\dual{\sigma} = \arete{\mailleduale{K}}{\mailleduale{L}}$ and $\ensaretedual$ refer to the dual mesh $\ensdual$.
 
@@ -123,16 +158,26 @@ In the same way, for a dual control volume $\mailleduale{K} \in \ensdual$, we se
 \caption{}
 \end{figure}
 
-\begin{figure}[p]
-    \centering
-    \input{figures/maillage_tore_polyedrique.tex}
-    \caption{Polyédrique}
-\end{figure}
-
+\newpage
 
 \subsection{Diamond mesh} \label{subsec:diamond_set}
 
-Next, we construct a diamond set as follows. We consider a couple $(\sigma, \dual{\sigma}) \in \ensareteprim \times \ensaretedual$ such that $\sigma = \arete{\primal{K}}{\primal{L}}$ and $\dual{\sigma} = \segment{x_{\primal{K}}}{x_{\primal{L}}}$. We denote by $x_{\mailleduale{K}}$ and $x_{\mailleduale{L}}$ the endpoints of the edge $\sigma$. We consider the plane $P_{\sigma, \dual{\sigma}}$ passing through the midpoints of the segments $\segment{x_{\primal{K}}}{x_{\mailleduale{K}}}$, $\segment{x_{\primal{K}}}{x_{\mailleduale{L}}}$, $\segment{x_{\primal{L}}}{x_{\mailleduale{L}}}$ and $\segment{x_{\primal{L}}}{x_{\mailleduale{K}}}$ (\ref{fig:ddfv_3d_diamant} sketched in black). We then define the quadrilateral diamond cell $\diamant{D}_{\sigma, \dual{\sigma}}$ whose vertices are the projections of the points $x_{\primal{K}}$, $x_{\primal{L}}$, $x_{\mailleduale{K}}$ and $x_{\mailleduale{L}}$ onto the plane $P_{\sigma, \dual{\sigma}}$ in the direction of the vector $\sigma \times \dual{\sigma}$ (\ref{fig:ddfv_3d_diamant}). By abuse of notation, we still denote by $\sigma$ and $\dual{\sigma}$ the diagonals of the diamond cell $\diamant{D}_{\sigma, \dual{\sigma}}$, as shown on \ref{fig:diamant_int}. A diamond is also illustrated on \ref{fig:ddfv_3d}, bottom left. Notice that the diamond cells are the union of two disjoint triangles and can be non convex. The set of diamond cells is denoted by $\ensdiamant$. Our diamond set is a generalization of 2D planar diamond set used in \ddfv method developed in \cite{domelevo_finite_2005} to 2D surfaces in $\R^3$. 
+Next, we construct a flat diamond set as follows. We consider a couple $(\sigma, \dual{\sigma}) \in \ensareteprimplat \times \ensaretedualplat$ such that $\sigma = \arete{\primalplat{K}}{\primalplat{L}}$ and $\dual{\sigma} = \segment{x_{\primal{K}}}{x_{\primal{L}}}$. We denote by $x_{\mailleduale{K}}$ and $x_{\mailleduale{L}}$ the endpoints of the edge $\sigma$. We consider the plane $P_{\sigma, \dual{\sigma}}$ passing through the midpoints of the segments $\segment{x_{\primal{K}}}{x_{\mailleduale{K}}}$, $\segment{x_{\primal{K}}}{x_{\mailleduale{L}}}$, $\segment{x_{\primal{L}}}{x_{\mailleduale{L}}}$ and $\segment{x_{\primal{L}}}{x_{\mailleduale{K}}}$. This choice makes the construction of the plane easier but is arbitrary. The main thing is that the plan $P_{\sigma, \dual{\sigma}}$ is the one defined by the segments $\sigma$ and $\dual{\sigma}$. We then define the quadrilateral diamond cell $\diamantplat{D}_{\sigma, \dual{\sigma}}$ whose vertices are the projections of the points $x_{\primal{K}}$, $x_{\primal{L}}$, $x_{\mailleduale{K}}$ and $x_{\mailleduale{L}}$ onto the plane $P_{\sigma, \dual{\sigma}}$ in the direction of the vector $\sigma \times \dual{\sigma}$ (\Cref{fig:ddfv_3d_diamant}). By abuse of notation, we still denote by $\sigma$ and $\dual{\sigma}$ the diagonals of the flat diamond cell $\diamantplat{D}_{\sigma, \dual{\sigma}}$. A flat diamond is also illustrated on \ref{fig:ddfv_3d}, bottom left. 
+\areprendre{Notice that the flat diamond cells are the union of two disjoint triangles and can be non convex.} The set of flat diamond cells is denoted by $\ensdiamantplat$. Our diamond set is a generalization of 2D planar diamond set used in \ddfv method developed in \cite{domelevo_finite_2005} to 2D surfaces in $\R^3$. 
+
+\bigskip
+
+For all adjacent control volumes $\primalplat{K}$ and $\primalplat{L}$, we denote by 
+\begin{equation} \label{eq:dual_sigma}
+\dual{\sigma} \defeq \segment{x_{\primal{K}}}{x_{\primal{L}}}
+\end{equation}
+the segment joining the projections of their representative points. Let $\ensaretedualplat$ be the set of such segments.
+
+On note $\side$ un côté d'un diamant plat $\diamantplat{D}$ et $\ensareteprimplat_{\diamantplat{D}}$ l'ensemble de ses côtés. 
+
+\begin{equation} \label{eq:sidecourbe}
+    \sidecourbe \defeq \projvariete \side.
+\end{equation}
 
 \begin{figure}[H]
 \centering
@@ -151,18 +196,12 @@ Next, we construct a diamond set as follows. We consider a couple $(\sigma, \dua
 \caption{Diamond}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{img/diamant_3D_construction.png}
-    \caption{}
-\end{figure}
-
 \begin{remarque}
     The plane $P_{\sigma, \dual{\sigma}}$ approximates the tangent plane to the surface $\surflisse$ at \textbf{?}.
 \end{remarque}
 
 \begin{remarque}
-    As shown on \cref{fig:diamants_voisins}, the set of diamond cells $\ensdiamant$ does not constitute a mesh of the polyhedral surface $\surfpoly$.
+    As shown on \cref{fig:diamants_voisins}, the set of flat diamond cells $\ensdiamantplat$ does not constitute a mesh of the polyhedral surface $\surfpoly$.
 \end{remarque}
 
 \begin{figure}[H]
@@ -173,10 +212,11 @@ Next, we construct a diamond set as follows. We consider a couple $(\sigma, \dua
 \end{figure}
 
 \begin{prop}[Mesure d'un diamant plat] \label{prop:mesure_d_un_diamant_plat}
-\[
-\mesure(\diamantplat{D}) = \frac{1}{2} \norme{\sigma \times \dual{\sigma}}
- = \frac{1}{2} \mesure(\sigma) \mesure(\dual{\sigma}) \sin(\angle{\diamant{D}})
-\]
+Pour tout $\diamantplat{D}_{\sigma, \dual{\sigma}} \in \ensdiamantplat$,
+\begin{equation} \label{eq:mesure_diamantplat}
+\mesure(\diamantplat{D}_{\sigma, \dual{\sigma}}) = \frac{1}{2} \norme{\sigma \times \dual{\sigma}}
+ = \frac{1}{2} \mesure(\sigma) \mesure(\dual{\sigma}) \sin(\angle{\diamant{D}}).
+\end{equation}
 \end{prop}
 
 \noindent For a diamond cell $\diamant{D}_{\sigma, \dual{\sigma}}$, recall that $(x_{\primal{K}}, x_{\mailleduale{K}}, x_{\primal{L}}, x_{\mailleduale{L}})$ are the vertices of $\diamant{D}_{\sigma, \dual{\sigma}}$ and note (\cref{fig:stencils_for_the_discrete_operators})

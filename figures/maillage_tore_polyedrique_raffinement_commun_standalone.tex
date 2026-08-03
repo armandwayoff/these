@@ -1,0 +1,30 @@
+\documentclass[tikz,border=2pt]{standalone}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis equal image,
+        scale=2,
+        view={70}{22},
+    ]
+
+    % Chaque quadrilatère est délimité alternativement par des demi-arêtes
+    % primales et duales. Un seul réseau de patchs contient donc les deux
+    % maillages, sans qu'une seconde surface recouvre la première.
+    \foreach \chunk in {00,01,02,03,04,05,06,07}{
+        \addplot3[
+            patch,
+            patch type=rectangle,
+            fill=white,
+            faceted color=blue,
+            line width=0.6pt,
+        ] table[x, y, z]
+          {figures/maillage_tore_raffinement_primal_dual_polyedrique_\chunk.dat};
+    }
+
+    \end{axis}
+\end{tikzpicture}
+\end{document}

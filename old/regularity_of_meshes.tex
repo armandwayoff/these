@@ -1,0 +1,125 @@
+\section{Regularity of meshes}
+
+\begin{itemize}
+
+    \item On note $\sigma_{\primal{K}} \defeq \boule(x_{\primal{K}}, \rho_{\primal{K}})$ et $\sigma_{\mailleduale{K}} \defeq \boule(x_{\mailleduale{K}}, \rho_{\mailleduale{K}})$ and $\rho_{\primal{K}}$ and $\rho_{\mailleduale{K}}$ are positive numbers associated to the mesh $\ensddfv$ and such that
+    \[
+    \sigma_{\primal{K}} \subset \overline{\primal{K}}, \quad \sigma_{\mailleduale{K}} \subset \partial \mailleduale{K}.
+    \]
+    Finally, introduce numbers $\rho_{\primal{K}}$ and $\rho_{\mailleduale{K}}$ for any $\primal{K} \in \ensprimal$ (resp. $\mailleduale{K} \in \ensdual$) such that
+    \[
+    \boule_{\primal{K}} \defeq \boule(x_{\primal{K}}, \rho_{\primal{K}}) \subset {\color{red}\Omega}, \quad
+    \boule_{\mailleduale{K}} \defeq \boule(x_{\mailleduale{K}}, \rho_{\mailleduale{K}}) \subset {\color{red}\Omega}.
+    \]
+    These balls are only introduced in order to prove the convergence of the scheme. 
+\end{itemize}
+
+We note $\size(\ensddfv)$ the maximum of the diameters of the flat diamond cells in $\ensdiamantplat$:
+\[
+\size(\ensddfv) \defeq \max_{\diamantplat{D} \in \ensdiamantplat} \diam{\diamantplat{D}}.
+\]
+The following bounds follow:
+\[
+\mesure(\sigma) \leqslant \size(\ensddfv), \quad \forall \sigma \in \ensareteprim; \quad
+\mesure(\dual{\sigma}) \leqslant \size(\ensddfv), \quad \forall \dual{\sigma} \in \ensaretedual;
+\]
+\[
+\mesure(\primal{K}) \leqslant \pi \size(\ensddfv)^2, \quad \forall \primal{K} \in \ensprimal; \quad
+\mesure(\mailleduale{K}) \leqslant \pi \size(\ensddfv)^2, \quad \forall \mailleduale{K} \in \ensdual; \quad
+\mesure(\diamant{D}) \leqslant \frac{1}{2} \size(\ensddfv)^2, \quad \forall \diamant{D} \in \ensdiamant.
+\]
+We introduce now a positive number that quantifies the regularity of a given mesh and is useful to perform the convergence analysis of the finite volume schemes. We first define $\alpha_\ensddfv$ to be the unique real number in $\intervalleof{0}{\frac{\pi}{2}}$ such that
+\[
+\sin \alpha_\ensddfv \defeq \min_{\diamant{D} \in \ensdiamant} \abs{\sin \alpha_{\diamant{D}}},
+\]
+that is the minimal angle between the diagonals of the diamond cells in the mesh. 
+
+Let us introduce the number
+\begin{multline*}
+\mathcal{N}_\ensddfv \defeq
+\sup_{x \in \Omega} \#\ens[\Big]{\mailleduale{K} \tq x \in \widehat{\mailleduale{K} \cup \boule_{\mailleduale{K}}}} +
+\sup_{x \in \Omega} \#\ens[\Big]{\primal{K} \tq x \in \widehat{\primal{K} \cup \boule_{\primal{K}}}} \\
++ \sup_{x \in \Omega} \#\ens[\Big]{\diamant{D} \tq x \in \widehat{\diamant{D} \cup \boule_{\primal{K}}}, \diamant{D} \in \ensdiamant_{\primal{K}}, \primal{K} \in \ensprimal} \\
++ \sup_{x \in \Omega} \#\ens[\Big]{\diamant{D} \tq x \in \widehat{\diamant{D} \cup \boule_{\mailleduale{K}}}, \diamant{D} \in \ensdiamant_{\mailleduale{K}}, \mailleduale{K} \in \ensdual},
+\end{multline*}
+where $\widehat{E}$ denotes the convex hull of any set $E \subset \R^2$. In the usal case where the primal control volumes, the dual control volumes and the diamond cells are \textbf{convex} and where $\boule_{\primal{K}} \subset \primal{K}$, $\boule_{\mailleduale{K}} \subset \mailleduale{K}$ then $\mathcal{N}_\ensddfv$ can be bounded by a function of the maximal number of edges per primal and dual control volumes. Since we do not impose any convexity assumption on the meshes, we need to control this number $\mathcal{N}_\ensddfv$ in the convergence analysis. We can now introduce
+\begin{multline*}
+\reg \ensddfv \defeq
+\max\mathopen{}\Bigg\{
+\frac{1}{\alpha_\ensddfv},
+\mathcal{N}_\ensddfv,
+\max_{\diamant{D} \in \ensdiamant} \frac{\diam{\diamant{D}}}{\sqrt{\mesure(\diamant{D})}},
+\max_{\primal{K} \in \ensprimal} \frac{\diam{\primal{K}}}{\sqrt{\mesure(\primal{K})}},
+\max_{\mailleduale{K} \in \ensdual} \frac{\diam{\mailleduale{K}}}{\sqrt{\mesure(\mailleduale{K})}}, \\
+\max_{\primal{K} \in \ensprimal}\mathopen{}\left( \frac{\diam{\primal{K}}}{\rayon{\primal{K}}} + \frac{\rayon{\primal{K}}}{\diam{\primal{K}}} \right),
+\max_{\mailleduale{K} \in \ensdual}\mathopen{}\left( \frac{\diam{\mailleduale{K}}}{\rayon{\mailleduale{K}}} + \frac{\rayon{\mailleduale{K}}}{\diam{\mailleduale{K}}} \right),
+\max_{\substack{\primal{K} \in \ensprimal \\ \diamant{D} \in \ensdiamant_{\primal{K}}}} \frac{\diam{\primal{K}}}{\diam{\diamant{D}}},
+\max_{\substack{\mailleduale{K} \in \ensdual \\ \diamant{D} \in \ensdiamant_{\mailleduale{K}}}} \frac{\diam{\mailleduale{K}}}{\diam{\diamant{D}}} \Bigg\}.
+\end{multline*}
+Let us point out that $\reg(\ensddfv)$ essentially measures:
+\begin{itemize}
+    \item how flat the diamond cells are;
+    \item how large is the difference between the size of a primal control volume (resp. a dual control volume) and the size of a diamond cell as soon as they intersect. 
+\end{itemize}
+
+\begin{envide}[Convention]
+    In any estimate given, the dependence of the constants in $\reg(\ensddfv)$ is implicitly assumed to be non-decreasing. Futhermore, the dependence of the constants on the domain is often omitted. 
+\end{envide}
+
+\begin{remarque}
+    For conformal finite volume meshes, it is assumed that $\alpha_{\diamant{D}} = \frac{\pi}{2}$ for any diamond $\diamant{D} \in \ensdiamant$, so that $\alpha_\ensddfv = \frac{\pi}{2}$. In our case, not only this orthogonality condition is relaxed but also $\ensprimal$ can present atypical edges, non convex dual control volumes and non convex diamond cells {\color{red} figure}.
+\end{remarque}
+
+\begin{remarque}
+    The boundedness of $\reg(\ensddfv)$ imposes only local restriction on the mesh. It is easy to construct a family of locally refined mesh such that $\reg(\ensddfv)$ is bounded independently on the level of the refinement. 
+\end{remarque}
+
+\subsection{Régularité du maillage {\cite[p. 36]{krell_schemas_2010}}}
+
+Soit $\size(\ensddfv)$ le maximum des diamètres des diamants. Pour mesurer l'applatissement des diamants, on note $\alpha_\ensddfv$ l'unique réel dans $\intervalleof{0}{\frac{\pi}{2}}$ tel que $\sin(\alpha_\ensddfv) \defeq \min_{\diamant{D} \in \ensdiamant} \abs{\sin(\alpha_{\diamant{D}})}$ si la maillage dual est \textbf{direct} et $\sin(\alpha_\ensddfv) \defeq \min_{\diamant{D} \in \ensdiamant} \big( \abs{\sin(\alpha_{\primal{K}})}, \abs{\sin(\alpha_{\primal{L}})} \big)$ si le maillage dual est \textbf{barycentrique}. On introduit un nombre positif $\reg(\ensddfv)$ qui mesure la régularité d'un maillage donné et qui est utilisé pour réaliser la convergence des schémas:
+\[
+\mathcal{N}_\ensddfv = \sup_{x \in \Omega} \# \ens[\Big]{\diamant{D} \tq x \in \widehat{\diamant{D} \cup \primal{K}}, \diamant{D} \in \ensdiamant_{\primal{K}}, \primal{K} \in \ensprimal} +
+\sup_{x \in \Omega} \# \ens[\Big]{\diamant{D} \tq x \in \widehat{\diamant{D} \cup \mailleduale{K}}, \diamant{D} \in \ensdiamant_{\mailleduale{K}}, \mailleduale{K} \in \ensprimal},
+\]
+\begin{multline*}
+\reg(\ensddfv) = \max\mathopen{}\Bigg\{
+    \frac{1}{\sin(\alpha_\ensddfv)},
+    \mathcal{N}, 
+    \dual{\mathcal{N}},
+    \mathcal{N}_\ensddfv,
+    \max_{\diamant{D} \in \ensdiamant} \max_{\quart{Q} \in \ensquart_{\diamant{D}}} \frac{\diam{\diamant{D}}}{\min\limits_{\sigma \in \partial \quart{Q}} \mesure(\sigma)},
+    \max_{\primal{K} \in \ensprimal} \frac{\diam{\primal{K}}}{\sqrt{\mesure(\primal{K})}},
+    \max_{\mailleduale{K} \in \ensdual} \frac{\diam{\mailleduale{K}}}{\sqrt{\mesure(\mailleduale{K})}}, \\
+    \max_{\primal{K} \in \ensprimal} \max_{\diamant{D} \in \ensdiamant_{\primal{K}}} \frac{\diam{\primal{K}}}{\diam{\diamant{D}}},
+    \max_{\mailleduale{K} \in \ensdual} \max_{\diamant{D} \in \ensdiamant_{\mailleduale{K}}} \frac{\diam{\mailleduale{K}}}{\diam{\diamant{D}}}
+     \Bigg\},
+\end{multline*}
+où $\widehat{P}$ désigne l'enveloppe convexe d'un ensemble $P$, $\mathcal{N}$, $\dual{\mathcal{N}}$ sont le nombre maximum d'arêtes d'une maille primale et le nombre maximum d'arêtes incidentes d'un sommet du maillage primal. Ce nombre $\reg(\ensddfv)$ mesure essentiellement l'applatissement des diamants et le rapport entre le taille des mailles primales (resp. duales) et la taille des diamants et il doit être uniformément borné quand $\size(\ensddfv) \to 0$ pour avoir la convergence. Par exemple, ce nombre $\reg(\ensddfv)$ implique les résultats géométriques suivants: il existe une constante $C > 0$, dépendant uniquement de $\reg(\ensddfv)$ telle que
+\[
+\frac{\diam{\diamant{D}}}{\sqrt{\mesure(\diamant{D})}} \leqslant C, \forall \diamant{D} \in \ensdiamant, \quad
+\frac{\diam{\quart{Q}}}{\sqrt{\mesure(\quart{Q})}} \leqslant C, \forall \quart{Q} \in \ensquart \quad
+\text{et} \quad
+\diam{\diamant{D}} \leqslant C \min(\mesure(\sigma), \mesure(\dual{\sigma})), \forall \diamant{D}_{\sigma, \dual{\sigma}} \in \ensdiamant.
+\]
+\begin{envide}[Hypothèses]
+    On suppose que toute maille primale $\primal{K} \in \ensprimal$ est étoilée par rapport à $x_{\primal{K}}$.
+
+    On suppose que toute maille duale $\mailleduale{K} \in \ensdual$ est étoilée par rapport à $x_{\mailleduale{K}}$.
+\end{envide}
+
+\begin{remarque} \label{remarque:I5}
+    On a que toute maille diamant $\diamant{D}$ est étoilée par rapport à $x_{\diamant{D}}$. 
+\end{remarque}
+
+\begin{remarque}
+    Grâce aux hypothèses ci-dessus, on a également:
+    \[
+    \mathrm{diam}(\widehat{\primal{K}}) \leqslant 2 \, \diam{\primal{K}}, \forall \primal{K} \in \ensprimal
+    \quad \text{et} \quad
+    \mathrm{diam}(\widehat{\mailleduale{K}}) \leqslant 2 \, \diam{\mailleduale{K}}, \forall \mailleduale{K} \in \ensdual,
+    \]
+    de plus la remarque \ref{remarque:I5} implique:
+    \[
+    \mathrm{diam}(\widehat{\diamant{D}}) \leqslant 2 \, \diam{\diamant{D}}, \forall \diamant{D} \in \ensdiamant.
+    \]
+\end{remarque}

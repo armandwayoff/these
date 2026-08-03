@@ -78,6 +78,49 @@
       \verb https://onlinelibrary.wiley.com/doi/10.1002/num.20170
       \endverb
     \endentry
+    \entry{andreianov2009discretedualityfinitevolume}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=b4b506209516a36cb5f11fb8e75c6cd9}{%
+           family={Andreianov},
+           familyi={A\bibinitperiod},
+           given={Boris},
+           giveni={B\bibinitperiod}}}%
+        {{hash=6cf646b64855bbf8a7090586bb563c1f}{%
+           family={Bendahmane},
+           familyi={B\bibinitperiod},
+           given={Mostafa},
+           giveni={M\bibinitperiod}}}%
+        {{hash=70eca96aedbf0815a1774516af232aa1}{%
+           family={Karlsen},
+           familyi={K\bibinitperiod},
+           given={Kenneth\bibnamedelima H.},
+           giveni={K\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{94187f7bbd8aaa78948ea7d5a94be69d}
+      \strng{fullhash}{94187f7bbd8aaa78948ea7d5a94be69d}
+      \strng{bibnamehash}{94187f7bbd8aaa78948ea7d5a94be69d}
+      \strng{authorbibnamehash}{94187f7bbd8aaa78948ea7d5a94be69d}
+      \strng{authornamehash}{94187f7bbd8aaa78948ea7d5a94be69d}
+      \strng{authorfullhash}{94187f7bbd8aaa78948ea7d5a94be69d}
+      \field{labelalpha}{ABK09}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{math.AP}
+      \field{eprinttype}{arXiv}
+      \field{title}{Discrete duality finite volume schemes for doubly nonlinear degenerate hyperbolic-parabolic equations}
+      \field{year}{2009}
+      \verb{eprint}
+      \verb 0901.0816
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/0901.0816
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/0901.0816
+      \endverb
+    \endentry
     \entry{benson_cheeger_2016}{misc}{}
       \name{author}{1}{}{%
         {{hash=433f75b9ee31542a3b29dd849822fce2}{%

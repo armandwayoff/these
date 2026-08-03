@@ -104,8 +104,8 @@
 
     \coordinate (G\i) at ({\xG},{\yG},{\zG});
 
-    % \node[ptcl={red}{}] at (G\i) {};
-    \draw[red,dotted] (fG\i) -- (G\i);
+    % \node[ptcl={myred}{}] at (G\i) {};
+    \draw[myred,dotted] (fG\i) -- (G\i);
 
     % Normale radiale unitaire en G_i
     \pgfmathsetmacro{\nx}{(\xProjG-\xzero)/\Rayon}
@@ -224,7 +224,7 @@
 
 \foreach \i in {1,2,3,4,5}
 {
-    \node[ptcl={red}{}] at (fG\i) {};
+    \node[ptcl={myred}{}] at (fG\i) {};
 }
 \end{scope}
 

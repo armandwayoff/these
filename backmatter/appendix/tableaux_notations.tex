@@ -1,11 +1,27 @@
 \chapter{Notations}
 
+\begin{itemize}
+    \item $\primal{K} \not\leftrightarrow \mailleduale{K}$
+    \item $\primal{K} \defeq \projvariete \primalplat{K}$
+    \item $\mailleduale{K} \defeq \projvariete \mailledualeplate{K}$
+    \item $\diamant{D} \not= \projvariete \diamantplat{D}$
+    \item $\diamant{D} \defeq \mathrm{Hull}\big\{\projvariete \text{sides de} \dots \big\} $
+    \item $\sigmacourbe \defeq \projvariete \sigma$
+    \item $\sigmaecourbe \defeq \projvariete \dual{\sigma}$
+    \item $x_{\primal{K}} \defeq \projvariete x_{\primalplat{K}}$
+    \item $x_{\mailleduale{K}} = x_{\mailledualeplate{K}}$
+    \item $\angle{\diamant{D}} = \angle{\diamantplat{D}}$
+    \item $\diamant{D}_{\sigma, \dual{\sigma}} = \diamant{D}_{\sigmacourbe, \sigmaecourbe}$
+\end{itemize}
+
 \begin{table}[H]
     \centering
     \small
     \begin{tblr}{
         abovesep=1pt,
         belowsep=1pt,
+        leftsep=4pt,
+        rightsep=4pt,
         row{1}={font=\bfseries},
         colspec={clc|clc},
         hline{1,Z} = {1pt},
@@ -13,43 +29,52 @@
         row{2} = {abovesep+=5pt}
         }
     \SetCell[c=3]{c} Lisse & & & \SetCell[c=3]{c} Polyédrique & & \\
-    $\surflisse$ & Surface fermée de $\R^3$ & --- & $\surfpoly$ & Approximation polyédrique de $\surflisse$ de pas $h$ & --- \\
+    $\surflisse$ & Surface lisse fermée de $\R^3$ & --- & $\surfpoly$ & Approximation polyédrique de $\surflisse$& \ref{eq:surfpoly} \\
     \SetCell[c=3]{r} $\fonctionens[\projvariete]{\surfpoly}{\surflisse}$ & & & \SetCell[c=3]{l} Projection & & \\
     \hline
     \SetCell[c=6]{c} \textbf{Primal} & & & & & \\
-    $\ensprimal$ & Maillage primal & --- & $\ensprimalplat$ & Maillage primal de $\surfpoly$& --- \\
-    $\primal{K}$, $\primal{L}$ & Mailles primales & --- & $\primalplat{K}$, $\primalplat{L}$ & Mailles primales plates & --- \\
-    $\mesure(\primal{K})$ & Mesure de la maille $\primal{K}$ & --- & $\mesure(\primalplat{K})$ & Mesure de la maille plate $\primalplat{K}$ & --- \\
-    $\diam{\primal{K}}$ & Diamètre de $\primal{K}$ & --- & $\diam{\primalplat{K}}$ & Diamètre de $\primalplat{K}$ & --- \\
+    \hline
+    $\ensprimal$ & Maillage primal de $\surflisse$ & \ref{eq:ensprimal} & $\ensprimalplat$ & Maillage primal de $\surfpoly$& --- \\
+    $\primal{K}$, $\primal{L}$ & Mailles primales courbes & \ref{eq:primalK} & $\primalplat{K}$, $\primalplat{L}$ & Mailles primales plates & \ref{fig:decoupage_dual_plat_def} \\
+    $\mesure(\primal{K})$ & Mesure de la maille courbe $\primal{K}$ & --- & $\mesure(\primalplat{K})$ & Mesure de la maille plate $\primalplat{K}$ & --- \\
+    $\diam{\primal{K}}$ & Diamètre de $\primal{K}$ & \ref{eq:diamE} & $\diam{\primalplat{K}}$ & Diamètre de $\primalplat{K}$ & \ref{eq:diamE} \\
     $\rayon{\primal{K}}$ & Rayon de $\primal{K}$ & --- & $\rayon{\primalplat{K}}$ & Rayon de $\primalplat{K}$ & --- \\
-    \SetCell[c=3]{r} $\enssomprim = \ens[\big]{x_{\mailleduale{K}} \tq \mailleduale{K} \in \ensdual}$ & & & \SetCell[c=3]{l} Ensemble des sommets de $\ensprimal$ et de $\ensprimalplat$ & & \\
-    $\sigmaplat$ & & --- & $\sigma$ & Arête primale & --- \\
-    $\mesure(\sigma)$ & Longueur de l'arête $\sigma$ & --- & & & --- \\
-    $\ensareteprim$ & Ensemble des arêtes primales & --- & $\ensareteprimplat$ & & --- \\
-    $\ensareteprim_{\primal{K}}$ & Ensemble des arêtes de $\primal{K}$ & --- & & & --- \\
-    & & & $h_\ensprimalplat$ & & \ref{eq:hensprimalplat_rensprimalplat} \\
+    $x_{\primal{K}}$ & & \ref{eq:xprimalK}, \ref{fig:decoupage_dual_plat_def} & $x_{\primalplat{K}}$ & Barycentre de la maille $\primalplat{K}$ & \ref{fig:decoupage_dual_plat_def} \\
+    $\enssomprim$ & Ensemble des sommets de $\ensprimal$ & \ref{eq:enssomprim_plat} & $\enssomprimplat$ & Ensemble des sommets de $\ensprimalplat$ & \ref{eq:enssomprim_plat} \\
+    $\sigmacourbe$ & Arête primale courbe (arc) & \ref{eq:sigmacourbe} & $\sigma$, $\sigma_{\primalplat{K},\primalplat{L}}$ & Arête primale (segment) & \ref{eq:sigma}, \ref{fig:decoupage_dual_plat_def} \\
+    & & & $x_\sigma$ & Milieu de l'arête $\sigma$ & \ref{fig:decoupage_dual_plat_def} \\
+    $\mesure(\sigmacourbe)$ & Longueur de l'arête ({\color{red}de l'arc}) $\sigmacourbe$ & --- & $\mesure(\sigma)$ & Longueur de l'arête ({\color{red}du segment}) $\sigma$ & --- \\
+    $\ensareteprim$ & Ensemble des arêtes primales courbes & --- & $\ensareteprimplat$ & Ensemble des arêtes primales & --- \\
+    $\ensareteprim_{\primal{K}}$ & Ensemble des arêtes de $\primal{K}$ & --- & $\ensareteprimplat_{\primalplat{K}}$ & Ensemble des arêtes de $\primalplat{K}$ & --- \\
     \hline
     \SetCell[c=6]{c} \textbf{Dual} & & & & & \\
-    $\ensdual$ & Maillage dual & --- & & & --- \\
-    $\mailleduale{K}$, $\mailleduale{L}$ & Mailles duales & --- & $\mailledualeplate{K}$, $\mailledualeplate{L}$ & Mailles duales plates & --- \\
-    $\mesure(\mailleduale{K})$ & Mesure de la maille $\mailleduale{K}$ & --- & & & --- \\
-    $\diam{\mailleduale{K}}$ & Diamètre de $\mailleduale{K}$ & --- & & & --- \\
-    $\enssomdual$ & Ensemble des sommets de $\ensdual$ & --- & $\ens[\big]{x_{\primal{K}} \tq \primal{K} \in \ensprimal}$ & & --- \\
-    $\dual{\sigma} = \segment{x_{\primal{K}}}{x_{\primal{L}}}$ & Arête duale & --- & & & --- \\
-    $\mesure(\dual{\sigma})$ & Longueur de l'arête $\dual{\sigma}$ & --- & & & --- \\
-    $\ensaretedual$ & Ensemble des arêtes duales & --- & & & --- \\
-    $\ensaretedual_{\mailleduale{K}}$ & Ensemble des arêtes de $\mailleduale{K}$ & --- & & & --- \\
+    \hline
+    $\ensdual$ & Maillage dual de $\surflisse$ & --- & $\ensdualplat$ & Maillage dual de $\surfpoly$ & --- \\
+    $\mailleduale{K}$, $\mailleduale{L}$ & Mailles duales courbes & --- & $\mailledualeplate{K}$, $\mailledualeplate{L}$ & Mailles duales \chevron{plates} & \ref{eq:mailledualeplate} \\
+    $\mesure(\mailleduale{K})$ & Mesure de la maille courbe $\mailleduale{K}$ & --- & $\mesure(\mailledualeplate{K})$ & Mesure de la maille plate $\mailledualeplate{K}$ & --- \\
+    $\diam{\mailleduale{K}}$ & Diamètre de $\mailleduale{K}$ & \ref{eq:diamE} & $\diam{\mailledualeplate{K}}$ & Diamètre de $\mailledualeplate{K}$ & \ref{eq:diamE} \\ 
+    $\enssomdual$ & Ensemble des sommets de $\ensdual$ & \ref{eq:enssomdual} & $\enssomdualplat$ &  & \ref{eq:enssomdualplat} \\
+    $\sigmaecourbe$ & Arête duale courbe (arc) & --- & $\dual{\sigma}$ & Arête duale (segment) & \ref{eq:dual_sigma} \\
+    $\mesure(\sigmaecourbe)$ & Longueur de l'arête ({\color{red}de l'arc}) $\sigmaecourbe$ & --- & $\mesure(\dual{\sigma})$ & Longueur de l'arête ({\color{red}du segment}) $\dual{\sigma}$ & --- \\
+    $\ensaretedual$ & Ensemble des arêtes duales courbes & --- & $\ensaretedualplat$ & Ensemble des arêtes duales & --- \\
+    $\ensaretedual_{\mailleduale{K}}$ & Ensemble des arêtes de $\mailleduale{K}$ & --- & $\ensaretedualplat_{\mailledualeplate{K}}$ & Ensemble des arêtes de $\mailledualeplate{K}$ & --- \\
     \hline
     \SetCell[c=6]{c} \textbf{Diamant} & & & & & \\
-    $\diamant{D} = \diamant{D}_{\sigma, \dual{\sigma}}$ & Diamant & \ref{subsec:diamond_set} & $\diamantplat{D}$ &  & --- \\
-    $\ensdiamant$ & Maillage diamant & \ref{subsec:diamond_set} & & & --- \\
+    \hline
+    $\ensdiamant$ & Maillage diamant de $\surflisse$ & \ref{subsec:diamond_set} & $\ensdiamantplat$ & Ensemble des diamants plats & --- \\
+    $\diamant{D}, \diamant{D}_{\sigma, \dual{\sigma}}$ & Diamant courbe & \ref{subsec:diamond_set} & $\diamantplat{D}, \diamantplat{D}_{\sigma, \dual{\sigma}}$ & Diamant plat & --- \\
+    $\mesure(\diamant{D})$ & Mesure de la maille courbe $\diamant{D}$ & --- & $\mesure(\diamantplat{D})$ & Mesure du diamant plat $\diamantplat{D}$ & \ref{eq:mesure_diamantplat} \\
+    $\sidecourbe$ & Côté d'un diamant courbe & \ref{eq:sidecourbe} & $\side$ & Côté d'un diamant plat & --- \\
+    $\ensareteprim_{\diamant{D}}$ & {Ensemble des côtés de $\diamant{D}$ \\ $\ens[\big]{\sidecourbe \tq \sidecourbe \subset \partial \diamant{D}}$} & --- & $\ensareteprimplat_{\diamantplat{D}}$ & Ensemble des côtés de $\diamantplat{D}$ & --- \\
+    $\mesure(\sidecourbe)$ & Longueur de $\sidecourbe$ & --- & $\mesure(\side)$ & Longueur de $\side$ & --- \\
+    & & & $x_{\diamantplat{D}}$ & Centre du diamant $\diamantplat{D}$ \chevron{$\sigma \cap \dual{\sigma}$} & --- \\
     $\ensdiamant_{\primal{K}}$ & $\ens[\big]{\diamant{D}_{\sigma,\dual{\sigma}} \in \ensdiamant \tq \sigma \in \ensareteprim_{\primal{K}}}$ & \ref{subsec:diamond_set} & & & --- \\
     $\ensdiamant_{\mailleduale{K}}$ & $\ens[\big]{\diamant{D}_{\sigma,\dual{\sigma}} \in \ensdiamant \tq \dual{\sigma} \in \ensaretedual_{\mailleduale{K}}}$ & \ref{subsec:diamond_set} & & & --- \\
-    $\vect{\nu}_{\sigma \primal{K}}$ & Normale unitaire à $\sigma$ sortante de $\primal{K}$ & \ref{fig:ddfv_3d_diamant} & & & --- \\
-    $\vect{\tau}_{\mailleduale{K},\mailleduale{L}}$ & Tangente unitaire à $\sigma$ orientée de $\mailleduale{K}$ à $\mailleduale{L}$ & \ref{fig:ddfv_3d_diamant} & & & --- \\
-    $\vect{\nu}_{\dual{\sigma} \mailleduale{K}}$ & Normale unitaire à $\dual{\sigma}$ sortante de $\mailleduale{K}$ & \ref{fig:ddfv_3d_diamant} & & & --- \\
-    $\vect{\tau}_{\primal{K},\primal{L}}$ & Tangente unitaire à $\dual{\sigma}$ orientée de $\primal{K}$ à $\primal{L}$ & \ref{fig:ddfv_3d_diamant} & & & --- \\
-    $\angle{\diamant{D}}$ & Angle entre $\sigma$ et $\dual{\sigma}$ & \ref{fig:ddfv_3d_diamant} & & & --- \\
+    & & --- & $\vect{\nu}_{\sigma \primal{K}}$ & Normale unitaire à $\sigma$ sortante de $\primal{K}$ & \ref{fig:ddfv_3d_diamant} \\
+    & & --- & $\vect{\tau}_{\mailleduale{K},\mailleduale{L}}$ & Tangente unitaire à $\sigma$ orientée de $\mailleduale{K}$ à $\mailleduale{L}$ & \ref{fig:ddfv_3d_diamant} \\
+    & & --- & $\vect{\nu}_{\dual{\sigma} \mailleduale{K}}$ & Normale unitaire à $\dual{\sigma}$ sortante de $\mailleduale{K}$ & \ref{fig:ddfv_3d_diamant} \\
+    & & --- & $\vect{\tau}_{\primal{K},\primal{L}}$ & Tangente unitaire à $\dual{\sigma}$ orientée de $\primal{K}$ à $\primal{L}$ & \ref{fig:ddfv_3d_diamant} \\
+    & & --- & $\angle{\diamant{D}}$ & Angle entre les segments $\sigma$ et $\dual{\sigma}$ & \ref{fig:ddfv_3d_diamant} \\
     \end{tblr}
     \caption{Notations générales des maillages \ddfv}
 \end{table}
@@ -65,8 +90,9 @@
         }
     \SetCell[c=2]{c} Titre & & \\
     $\ensddfv = (\ensprimal, \ensdual)$ & Maillage \ddfv & \\
-    $\size(\ensddfv)$ & & \\
-    $\reg(\ensddfv)$ & Régularité géométrique d'un maillage $\ensddfv$ & \\
+    $\ensddfvplat = (\ensprimalplat, \ensdualplat)$ & Maillage \ddfv & \\
+    $\size(\ensddfvplat)$ & & \ref{eq:size_ensddfvplat} \\
+    $\reg(\ensddfvplat)$ & Régularité géométrique d'un maillage $\ensddfvplat$ & \ref{eq:reg_ensddfvplat} \\
     \hline
     $u_{\primal{K}}$ & Inconnue sur la maille primale $\primal{K}$ & \\
     $u_{\mailleduale{K}}$ & Inconnue sur la maille duale $\mailleduale{K}$ & \\
@@ -135,11 +161,11 @@
     $\gradmat_\ensdiamant$ & Matrice du gradient & \\
     $\divmat_\ensddfv$ & Matrice de la divergence & \\
     $\rotmat_\ensdiamant$ &  & \\
+    $\scarotmat_\ensddfv$ &  & \\
     $\masse_\ensdiamant$ & Poids & \\
     $\masse_\ensddfv$ & Poids & \\
     \end{tblr}
 \end{table}
-
 
 
 \begin{table}[H]
@@ -155,6 +181,10 @@
     $\graphe^\ensprimal$ & Graphe associé au maillage $\ensprimal$ & $(\enssomdual, \ensaretedual)$  \\
     $\graphe^\ensdual$ & Graphe associé au maillage $\ensdual$ & $(\enssomprim, \ensareteprim)$  \\
     $\degr v$ & Degré du sommet $v$ & --- \\
-    $\vol S$ & Volume d'un ensemble de sommets $S$ & --- \\
-    \end{tblr}
+    $\vol W$ & Volume combinatoire d'un ensemble de sommets $W$ & --- \\
+    $\{u, v\}$ & Unordered pair for which $u$ and $v$ are adjacent & --- \\
+    $\partial W$ & Bord de $W$ & \ref{eq:partialW} \\
+    $\vertices(\graphe)$ & Ensemble des sommets du graphe $\graphe$ & --- \\
+    $\edges(\graphe)$ & Ensemble des arêtes du graphe $\graphe$ & --- \\
+\end{tblr}
 \end{table}
