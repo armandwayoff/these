@@ -1,6 +1,4 @@
-\section{Construction of the \ddfv meshes}
-
-\cite{andreianov_discrete_2007} We consider the class of finite volume schemes introduced by Hermeline in \cite{hermeline_finite_2000}, by Domelevo, Omnès in \cite{domelevo_finite_2005} for the Laplace equation and in \cite{delcourte_discrete-duality_2005} for other linear equations like the Stokes or the Div-Curl system. In \cite{delcourte_discrete-duality_2005}, these schemes are called \chevron{Discrete Duality Finite Volume} (\ddfv for short) since the discrete gradient and discrete divergence operators are dual one from each other (see \ref{theo:discrete_green_formulae}). The equation is approximated simultaneously on two interrelated meshes: the primal and the dual mesh. The number of variables and of equations doubles compared to usual cell-centered \textsc{fv} schemes, but the gradient approximation (the one already used by Coudière and \emph{al.} \cite{coudiere_convergence_1999}) becomes simple and quite efficient. \\
+\section{Construction of the \ddfv meshes} \label{sec:construction_of_the_ddfv_meshes}
 
 \areprendre{
 \begin{envide}[Construction maillages]
@@ -19,7 +17,7 @@
 \end{envide}
 }
 
-\subsection{Primal mesh}
+\subsection{Maillages primaux}
 
 \begin{figure}[p]
     \centering
@@ -28,7 +26,15 @@
     \label{fig:ddfv_3d}
 \end{figure}
 
-Section \ref{sec:hypothesis_on_the_surface_and_projection} : 
+Dans la \Cref{sec:hypothesis_on_the_surface_and_projection}, nous avons introduit plusieurs objets géométriques:
+\begin{itemize}
+    \item la surface lisse $\surflisse$;
+    \item le projecteur $\fonctionens[\projvariete]{\surfpoly}{\surflisse}$;
+    \item la surface polyédrique $\surfpoly$;
+    \item un maillage $\ensprimalplat$ nommé \defini{maillage primal plat}, dont les mailles sont notées $\primalplat{K}$, $\primalplat{L}$ et les arêtes sont notées $\sigma$. 
+    \item un maillage $\ensprimal$ nommé \defini{maillage primal courbe}, dont les mailles sont $\primal{K} \defeq \projvariete \primalplat{K}$ et les arêtes sont $\sigmacourbe \defeq \projvariete \sigma$.
+\end{itemize}
+
 \begin{equation} \label{eq:surfpoly}
 \surfpoly = \bigcup_{\primalplat{K} \in \ensprimalplat} \primalplat{K}, 
 \end{equation}
@@ -133,33 +139,6 @@ In the same way, for a dual control volume $\mailleduale{K} \in \ensdual$, we se
     \item $\diam{\mailleduale{K}}$, the diameter of $\mailleduale{K}$. 
 \end{itemize}
 
-\begin{figure}[p]
-\centering
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \input{figures/maillage_sphere_polyedrique_primal.tex}
-    \caption{Primal polyédrique}
-\end{subfigure}%
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \input{figures/maillage_sphere_lisse_primal.tex}
-    \caption{Primal lisse}
-\end{subfigure} \\
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \input{figures/maillage_sphere_polyedrique_dual.tex}
-    \caption{Dual polyédrique}
-\end{subfigure}%
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \input{figures/maillage_sphere_lisse_dual.tex}
-    \caption{Dual lisse}
-\end{subfigure}
-\caption{}
-\end{figure}
-
-\newpage
-
 \subsection{Diamond mesh} \label{subsec:diamond_set}
 
 Next, we construct a flat diamond set as follows. We consider a couple $(\sigma, \dual{\sigma}) \in \ensareteprimplat \times \ensaretedualplat$ such that $\sigma = \arete{\primalplat{K}}{\primalplat{L}}$ and $\dual{\sigma} = \segment{x_{\primal{K}}}{x_{\primal{L}}}$. We denote by $x_{\mailleduale{K}}$ and $x_{\mailleduale{L}}$ the endpoints of the edge $\sigma$. We consider the plane $P_{\sigma, \dual{\sigma}}$ passing through the midpoints of the segments $\segment{x_{\primal{K}}}{x_{\mailleduale{K}}}$, $\segment{x_{\primal{K}}}{x_{\mailleduale{L}}}$, $\segment{x_{\primal{L}}}{x_{\mailleduale{L}}}$ and $\segment{x_{\primal{L}}}{x_{\mailleduale{K}}}$. This choice makes the construction of the plane easier but is arbitrary. The main thing is that the plan $P_{\sigma, \dual{\sigma}}$ is the one defined by the segments $\sigma$ and $\dual{\sigma}$. We then define the quadrilateral diamond cell $\diamantplat{D}_{\sigma, \dual{\sigma}}$ whose vertices are the projections of the points $x_{\primal{K}}$, $x_{\primal{L}}$, $x_{\mailleduale{K}}$ and $x_{\mailleduale{L}}$ onto the plane $P_{\sigma, \dual{\sigma}}$ in the direction of the vector $\sigma \times \dual{\sigma}$ (\Cref{fig:ddfv_3d_diamant}). By abuse of notation, we still denote by $\sigma$ and $\dual{\sigma}$ the diagonals of the flat diamond cell $\diamantplat{D}_{\sigma, \dual{\sigma}}$. A flat diamond is also illustrated on \ref{fig:ddfv_3d}, bottom left. 
@@ -203,13 +182,6 @@ On note $\side$ un côté d'un diamant plat $\diamantplat{D}$ et $\ensareteprimp
 \begin{remarque}
     As shown on \cref{fig:diamants_voisins}, the set of flat diamond cells $\ensdiamantplat$ does not constitute a mesh of the polyhedral surface $\surfpoly$.
 \end{remarque}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\textwidth]{img/diamants_voisins.png}
-    \caption{Adjacent diamonds}
-    \label{fig:diamants_voisins}
-\end{figure}
 
 \begin{prop}[Mesure d'un diamant plat] \label{prop:mesure_d_un_diamant_plat}
 Pour tout $\diamantplat{D}_{\sigma, \dual{\sigma}} \in \ensdiamantplat$,
@@ -265,3 +237,49 @@ This hypothesis is not so restrictive and is fulfilled for instance in the case 
 = \bigcup_{\diamant{D} \in \ensdiamant} \diamant{D}
 \]
 \end{prop}
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/sphere_primal_dual.pdf}
+    \caption{Maillages $\ensprimalplat$ (bleu) et $\ensdualplat$ (rouge) d'une approximation polyédrique de la sphère}
+\end{subfigure}%
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/sphere_primal_dual_curved.pdf}
+    \caption{Maillages $\ensprimal$ (bleu) et $\ensdual$ (rouge) de la sphère}
+\end{subfigure}
+\caption{Exemple de maillages \ddfv \emph{primaux} et \emph{duaux} pour la sphère}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/sphere_diamonds_flat.pdf}
+    \caption{Ensemble $\ensdiamantplat$}
+\end{subfigure}%
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/sphere_diamond_curved_bis.pdf}
+    \caption{Maillage $\ensdiamant$ de la sphère}
+\end{subfigure}
+\caption{Exemple de l'ensemble des diamants plats $\ensdiamantplat$ d'une discrétisation \ddfv de la sphère et du maillage \emph{diamant courbe} $\ensdiamant$ associé}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/torus_primal_dual.pdf}
+    \caption{Tore, $g = 1$}
+\end{subfigure}%
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/tanglecube_primal_dual.pdf}
+    \caption{\emph{Tanglecube}\protect\footnotemark, $g = 5$}
+\end{subfigure}
+\caption{Exemples de maillages $\ensprimalplat$ et $\ensdualplat$ sur des approximations polyédriques de surfaces fermées sans bord de $\R^3$ de genre $g > 0$}
+\end{figure}
+\footnotetext{Surface de degré $4$ dans $\R^3$ définie par l'équation $x^4 - 5 \, x^2 + y^4 - 5 \, y^2 + z^4 - 5 \, z^2 + 11{,}8 = 0$ (voir \url{https://academicweb.nd.edu/~jhauenst/preprints/bhrPolyTop.pdf}).}

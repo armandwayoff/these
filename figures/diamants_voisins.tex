@@ -15,13 +15,13 @@
 \coordinate (xkb) at (0.6,0.05);
 \coordinate (xkeb) at (0.4,-0.2);
 
-\node[ptsq={myblue}{above:{\contour{white}{$x_{\mailleduale{K}}$}}}] at (xke) {};
-\node[ptsq={myblue}{below:{\contour{white}{$x_{\mailleduale{K}_1}$}}}] at (xle) {};
-\node[ptsq={myblue}{below:{\contour{white}{$x_{\mailleduale{K}_2}$}}}] at (xkeb) {};
+\node[ptsq={myblue}{above:{\contour{white}{$x_{\mailledualeplate{K}}$}}}] at (xke) {};
+\node[ptsq={myblue}{below:{\contour{white}{$x_{\mailledualeplate{K}_1}$}}}] at (xle) {};
+\node[ptsq={myblue}{below:{\contour{white}{$x_{\mailledualeplate{K}_2}$}}}] at (xkeb) {};
 
-\node[ptcl={myred}{left:{$x_{\primal{K}_1}$}}] at (xk) {};
-\node[ptcl={myred}{above:{$x_{\primal{K}}$}}] at (xl) {};
-\node[ptcl={myred}{right:{$x_{\primal{K}_2}$}}] at (xkb) {};
+\node[ptcl={myred}{left:{$x_{\primalplat{K}_1}$}}] at (xk) {};
+\node[ptcl={myred}{above:{$x_{\primalplat{K}}$}}] at (xl) {};
+\node[ptcl={myred}{right:{$x_{\primalplat{K}_2}$}}] at (xkb) {};
 
 % \node[left, mygreen] at ($(xk)!0.5!(xke)$) {$\diamant{D}_{\sigma,\dual{\sigma}}$};
 
@@ -47,7 +47,7 @@ in
 \draw[black] ($(I)+(\angA:\rayonangle)$) arc[start angle=\angA,end angle=\angB,radius=\rayonangle];
 % \fill[opacity=0.5] (I) -- ($(I)+(\angA:\rayonangle)$) arc[start angle=\angA,end angle=\angB,radius=\rayonangle] -- cycle;
 
-\node at ($(I)+({0.5*(\angA+\angB)}:{1.5*\rayonangle})$) {$\angle{\diamant{D}_1}$};
+\node at ($(I)+({0.5*(\angA+\angB)}:{1.5*\rayonangle})$) {$\angle{\diamantplat{D}_1}$};
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -74,7 +74,7 @@ in
 \draw[black] ($(I)+(\angA:\rayonangle)$) arc[start angle=\angA,end angle=\angB,radius=\rayonangle];
 % \fill[opacity=0.5] (I) -- ($(I)+(\angA:\rayonangle)$) arc[start angle=\angA,end angle=\angB,radius=\rayonangle] -- cycle;
 
-\node at ($(I)+({0.5*(\angA+\angB)}:{1.5*\rayonangle})$) {$\angle{\diamant{D}_2}$};
+\node at ($(I)+({0.5*(\angA+\angB)}:{1.5*\rayonangle})$) {$\angle{\diamantplat{D}_2}$};
 
 
 
@@ -104,8 +104,8 @@ in
 \coordinate (P) at ($(xke)!\position!(xle)$);
 \draw (P) -- ($(P)!\lengthsq!(xle)$) -- ($(P)!\lengthsq!(xle)!\lengthsq!-90:(xle)$) -- ($(P)!\lengthsq!-90:(xle)$) -- cycle;
 
-\draw[myblue, ultra thick, ->] ($(xke)!\position!(xle)$) -- ($(xke)!\position!(xle)!\lengthbasis!(xle)$) node[left] {\contour{white}{$\vect{\tau}_{\mailleduale{K},\mailleduale{K}_1}$}};
-\draw[myblue, ultra thick, ->] ($(xke)!\position!(xle)$) -- ($(xke)!\position!(xle)!\lengthbasis!-90:(xle)$) node[above] {$\vect{\nu}_{\sigma_1 \primal{K}}$};
+\draw[myblue, ultra thick, ->] ($(xke)!\position!(xle)$) -- ($(xke)!\position!(xle)!\lengthbasis!(xle)$) node[left] {\contour{white}{$\vect{\tau}_{\mailledualeplate{K},\mailledualeplate{K}_1}$}};
+\draw[myblue, ultra thick, ->] ($(xke)!\position!(xle)$) -- ($(xke)!\position!(xle)!\lengthbasis!-90:(xle)$) node[above] {$\vect{\nu}_{\sigma_1 \primalplat{K}}$};
 
 
 \def\position{0.15}
@@ -113,8 +113,8 @@ in
 \coordinate (P) at ($(xk)!\position!(xl)$);
 \draw (P) -- ($(P)!\lengthsq!(xl)$) -- ($(P)!\lengthsq!(xl)!\lengthsq!-90:(xl)$) -- ($(P)!\lengthsq!-90:(xl)$) -- cycle;
 
-\draw[myred, ultra thick, ->] ($(xk)!\position!(xl)$) -- ($(xk)!\position!(xl)!\lengthbasis!(xl)$) node[above=3pt] {$\vect{\tau}_{\primal{K}_1,\primal{K}}$};
-\draw[myred, ultra thick, ->] ($(xk)!\position!(xl)$) -- ($(xk)!\position!(xl)!\lengthbasis!-90:(xl)$) node[below] {$\vect{\nu}_{\dual{\sigma}_1 \mailleduale{K}}$};
+\draw[myred, ultra thick, ->] ($(xk)!\position!(xl)$) -- ($(xk)!\position!(xl)!\lengthbasis!(xl)$) node[above=3pt] {$\vect{\tau}_{\primalplat{K}_1,\primalplat{K}}$};
+\draw[myred, ultra thick, ->] ($(xk)!\position!(xl)$) -- ($(xk)!\position!(xl)!\lengthbasis!-90:(xl)$) node[below] {$\vect{\nu}_{\dual{\sigma}_1 \mailledualeplate{K}}$};
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -123,8 +123,8 @@ in
 \coordinate (P) at ($(xke)!\position!(xkeb)$);
 \draw (P) -- ($(P)!\lengthsq!(xkeb)$) -- ($(P)!\lengthsq!(xkeb)!\lengthsq!90:(xkeb)$) -- ($(P)!\lengthsq!90:(xkeb)$) -- cycle;
 
-\draw[myblue, ultra thick, ->] ($(xke)!\position!(xkeb)$) -- ($(xke)!\position!(xkeb)!\lengthbasis!(xkeb)$) node[right] {\contour{white}{$\vect{\tau}_{\mailleduale{K},\mailleduale{K}_2}$}};
-\draw[myblue, ultra thick, ->] ($(xke)!\position!(xkeb)$) -- ($(xke)!\position!(xkeb)!\lengthbasis!90:(xkeb)$) node[above] {$\vect{\nu}_{\sigma_2 \primal{K}}$};
+\draw[myblue, ultra thick, ->] ($(xke)!\position!(xkeb)$) -- ($(xke)!\position!(xkeb)!\lengthbasis!(xkeb)$) node[right] {\contour{white}{$\vect{\tau}_{\mailledualeplate{K},\mailledualeplate{K}_2}$}};
+\draw[myblue, ultra thick, ->] ($(xke)!\position!(xkeb)$) -- ($(xke)!\position!(xkeb)!\lengthbasis!90:(xkeb)$) node[above] {$\vect{\nu}_{\sigma_2 \primalplat{K}}$};
 
 
 \def\position{0.15}
@@ -132,7 +132,7 @@ in
 \coordinate (P) at ($(xkb)!\position!(xl)$);
 \draw (P) -- ($(P)!\lengthsq!(xl)$) -- ($(P)!\lengthsq!(xl)!\lengthsq!90:(xl)$) -- ($(P)!\lengthsq!90:(xl)$) -- cycle;
 
-\draw[myred, ultra thick, ->] ($(xkb)!\position!(xl)$) -- ($(xkb)!\position!(xl)!\lengthbasis!(xl)$) node[above=3pt] {$\vect{\tau}_{\primal{K}_2,\primal{K}}$};
-\draw[myred, ultra thick, ->] ($(xkb)!\position!(xl)$) -- ($(xkb)!\position!(xl)!\lengthbasis!90:(xl)$) node[below] {$\vect{\nu}_{\dual{\sigma}_2 \mailleduale{K}}$};
+\draw[myred, ultra thick, ->] ($(xkb)!\position!(xl)$) -- ($(xkb)!\position!(xl)!\lengthbasis!(xl)$) node[above=3pt] {$\vect{\tau}_{\primalplat{K}_2,\primalplat{K}}$};
+\draw[myred, ultra thick, ->] ($(xkb)!\position!(xl)$) -- ($(xkb)!\position!(xl)!\lengthbasis!90:(xl)$) node[below] {$\vect{\nu}_{\dual{\sigma}_2 \mailledualeplate{K}}$};
 
 \end{tikzpicture}

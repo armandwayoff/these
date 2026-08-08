@@ -1,0 +1,60 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\begin{tikzpicture}[
+    ddfv,
+    scale=1
+]
+
+
+\coordinate (V1) at (1,0);
+\coordinate (V2) at (0,0.5);
+\coordinate (V3) at (2,0.5);
+\coordinate (V4) at (0.5,1);
+\coordinate (V5) at (1.5,1);
+\coordinate (V6) at (0,1.5);
+\coordinate (V7) at (2,1.5);
+\coordinate (V8) at (1,2);
+\coordinate (V9) at (2,1);
+\coordinate (V10) at (2.5,1);
+
+
+\draw[dashed, myblue] (V1) -- (V2);
+\draw (V1) -- (V3);
+\draw[dashed, myblue] (V2) -- (V3);
+\draw (V2) -- (V4);
+\draw (V2) -- (V6);
+\draw (V2) -- (V4);
+\draw (V3) -- (V5);
+\draw[dashed, myblue] (V3) -- (V9);
+\draw[dashed, myblue] (V4) -- (V5);
+\draw (V4) -- (V6);
+\draw (V5) -- (V7);
+\draw (V6) -- (V8);
+\draw[dashed, myblue] (V7) -- (V8);
+\draw[dashed, myblue] (V7) -- (V9);
+\draw (V7) -- (V10);
+\draw[dashed, myblue] (V9) -- (V5);
+\draw[dashed, myblue] (V9) -- (V10);
+\draw (V10) -- (V3);
+
+\node[ptcl={black}{}] at (V2) {};
+\node[ptcl={black}{}] at (V4) {};
+\node[ptcl={black}{}] at (V6) {};
+\node[ptcl={black}{}] at (V8) {};
+\node[ptcl={black}{}] at (V9) {};
+
+
+\node[ptcl={myred}{}] at (V1) {};
+\node[ptcl={myred}{}] at (V3) {};
+\node[ptcl={myred}{}] at (V5) {};
+\node[ptcl={myred}{}] at (V7) {};
+\node[ptcl={myred}{}] at (V10) {};
+
+\node[above left] at (V6) {$\graphe$};
+\node[myred, above right] at ($(V7)!0.5!(V10)$) {$W$};
+\node[myblue, above right] at ($(V8)!0.5!(V7)$) {$\partial W$};
+
+\node[below=2pt] at (V2) {$u$};
+\node[myred, below=2pt] at (V1) {$v$};
+
+\end{tikzpicture}

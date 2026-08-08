@@ -1,5 +1,57 @@
 \chapter{Démonstrations des résultats d'estimations géométriques} \label{chap:demo_estimations_geo}
 
+\begin{demo}[de la \Cref{prop:estimations_tailles_plat_vs_courbe}]
+Posons \(h=\size(\ensddfvplat)\). D'après le
+\Cref{lemme:projection_dziuk}, le quotient \(\delta_h\) entre les
+mesures surfaciques lisse et polyédrique, défini par
+\[
+\delta_h\,\d A_h=\d A,
+\]
+vérifie
+\[
+\norme{1-\delta_h}_{\L^\infty(\surfpoly)}
+\leqslant C h^2,
+\]
+où \(C>0\) est indépendante de \(h\). Ainsi,
+\[
+\delta_h\geqslant 1-Ch^2
+\qquad\text{presque partout sur }\surfpoly.
+\]
+
+Soit \(E\subset\surfpoly\) une partie mesurable. Puisque
+\(\projvariete:\surfpoly\to\surflisse\) est bijective, la formule de
+changement de variables donne
+\[
+\mesure(\projvariete E)
+=
+\int_E\delta_h\,\d A_h
+\geqslant
+(1-Ch^2)\mesure(E).
+\]
+Pour \(h\) suffisamment petit, on a \(Ch^2\leqslant 1/2\), et donc
+\[
+\mesure(\projvariete E)\geqslant \frac12\mesure(E).
+\]
+
+En appliquant cette inégalité successivement à
+\(E=\primalplat K\) et à \(E=\mailledualeplate K\), et en utilisant
+\[
+\primal K=\projvariete\primalplat K,
+\qquad
+\mailleduale K=\projvariete\mailledualeplate K,
+\]
+on obtient
+\[
+\frac12\mesure(\primalplat K)\leqslant\mesure(\primal K),
+\qquad
+\frac12\mesure(\mailledualeplate K)
+\leqslant\mesure(\mailleduale K).
+\]
+On peut donc prendre
+\(\underline C^\ensddfvplat=1/2\), indépendamment de
+\(\size(\ensddfvplat)\).
+\end{demo}
+
 \begin{demo}[de {\Cref{prop:mesure_sigmacourbe}}]
 Soit $p = \projvariete$. Puisque
 \[

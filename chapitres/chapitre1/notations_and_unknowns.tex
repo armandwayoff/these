@@ -1,33 +1,33 @@
-\section{Unknowns / Espaces d’approximation sur les maillages \ddfv} \label{sec:unknowns}
+\section{Espaces d’approximation sur les maillages \ddfv} \label{sec:unknowns}
 
-The finite volume method associates to all primal control volumes $\primal{K} \in \ensprimal$, an unknown value $u_{\primal{K}}$ and to all dual control volumes $\mailleduale{K} \in \ensdual$, an unknown value $u_{\mailleduale{K}}$. We denote the approximate solution on the mesh $\ensddfv$ by
+The finite volume method associates to all primal control volumes $\primalplat{K} \in \ensprimalplat$, an unknown value $u_{\primalplat{K}}$ and to all dual control volumes $\mailledualeplate{K} \in \ensdualplat$, an unknown value $u_{\mailledualeplate{K}}$. We denote the approximate solution on the mesh $\ensddfvplat$ by
 \begin{equation} \label{eq:ddfv_unknown}
-u^\ensddfv = \big( u^\ensprimal, u^\ensdual \big) 
+u^\ensddfvplat \defeq \big( u^\ensprimalplat, u^\ensdualplat \big) 
 \quad
 \text{with}
 \quad
-u^\ensprimal = (u_{\primal{K}})_{\primal{K} \in \ensprimal},
+u^\ensprimalplat = (u_{\primalplat{K}})_{\primalplat{K} \in \ensprimalplat},
 \quad
-u^\ensdual = (u_{\mailleduale{K}})_{\mailleduale{K} \in \ensdual}.
+u^\ensdualplat = (u_{\mailledualeplate{K}})_{\mailledualeplate{K} \in \ensdualplat}.
 \end{equation}
 On a environ deux fois plus d'inconnues que dans la méthode VF4 mais cela permet de définir une approximation complète du gradient et pas uniquement dans la direction normale, ceci rend la méthode beaucoup plus robuste. \\
-The approximation spaces of all discrete functions $u^\ensprimal$, $u^\ensdual$ and $u^\ensddfv$ respectively in the sense of definition \ref{eq:ddfv_unknown} is denoted by $\R^\ensprimal$, $\R^\ensdual$ and $\R^\ensddfv$ respectively. By introducing the projector
+The approximation spaces of all discrete functions $u^\ensprimalplat$, $u^\ensdualplat$ and $u^\ensddfvplat$ respectively in the sense of definition \ref{eq:ddfv_unknown} is denoted by $\R^\ensprimalplat$, $\R^\ensdualplat$ and $\R^\ensddfvplat$ respectively. By introducing the projector
 \begin{equation} \label{eq:projddfvvar}
-\fonction[\projddfvvar]{\R^\ensddfv}{\L^2(\surflisse)}{u^\ensddfv}{\frac{1}{2} \sum_{\primal{K} \in \ensprimal} \indicatrice_{\primal{K}} \, u_{\primal{K}} + \frac{1}{2} \sum_{\mailleduale{K} \in \ensdual} \indicatrice_{\mailleduale{K}} \, u_{\mailleduale{K}}},
+\fonction[\projddfvvar]{\R^\ensddfvplat}{\L^2(\surflisse)}{u^\ensddfvplat}{\frac{1}{2} \sum_{\primal{K} \in \ensprimal} \indicatrice_{\primal{K}} \, u_{\primalplat{K}} + \frac{1}{2} \sum_{\mailleduale{K} \in \ensdual} \indicatrice_{\mailleduale{K}} \, u_{\mailledualeplate{K}}},
 \end{equation}
-we associate to the discrete function $u^\ensddfv$ the piecewise constant function $\projddfvvar u^\ensddfv$. \url{https://theses.hal.science/tel-03265697/file/HDR_VersionImprimee.pdf} Avec cette définition, nous utilisons simultanément les valeurs sur le maillage primal et les valeurs sur le maillage dual. En effet, nous avons $u_h = \frac{1}{2} \, (u_{h,\ensprimal} + u_{h,\ensdual})$, où $u_{h,\ensprimal}$ et $u_{h,\ensdual}$ sont deux reconstructions différentes basées soit sur les valeurs primales soit sur les valeurs duales. L'espace des solutions approchées est dénoté par $\H_\ensddfv$:
+we associate to the discrete function $u^\ensddfvplat$ the piecewise constant function $\projddfvvar u^\ensddfvplat$. \areprendre{À nouveau, on utilise implicitement la correspondance $\primal{K} \leftrightarrow \primalplat{K}$.} \url{https://theses.hal.science/tel-03265697/file/HDR_VersionImprimee.pdf} Avec cette définition, nous utilisons simultanément les valeurs sur le maillage primal et les valeurs sur le maillage dual. En effet, nous avons $u_h = \frac{1}{2} \, (u_{h,\ensprimalplat} + u_{h,\ensdualplat})$, où $u_{h,\ensprimalplat}$ et $u_{h,\ensdualplat}$ sont deux reconstructions différentes basées soit sur les valeurs primales soit sur les valeurs duales. L'espace des solutions approchées est dénoté par $\H_\ensddfvplat$:
 \[
-\H_\ensddfv = \ens[\Big]{u_h \in \L^1(\surflisse) \tq \exists u^\ensddfv \in \R^\ensddfv \text{ tel que } u_h = \projddfvvar u^\ensddfv}.
+\H_\ensddfvplat = \ens[\Big]{u_h \in \L^1(\surflisse) \tq \exists u^\ensddfvplat \in \R^\ensddfvplat \text{ tel que } u_h = \projddfvvar u^\ensddfvplat}.
 \]
-As a consequence, one can define for any $r \in \intervalleff{1}{+\infty}$ the $\L^r$ norm of $\projddfvvar u^\ensddfv$. 
+As a consequence, one can define for any $r \in \intervalleff{1}{+\infty}$ the $\L^r$ norm of $\projddfvvar u^\ensddfvplat$.
 
 \begin{figure}[H]
     \centering
     \caption{Fonction constante par mailles primales et duales}
 \end{figure}
 
-On définit également $\xi^\ensdiamant \in (\R^2)^\ensdiamant$ par $\xi^\ensdiamant = (\xi^{\diamant{D}})_{\diamant{D} \in \ensdiamant}$, avec $\xi^{\diamant{D}} \in \R^2$. In the same way as above, by introducing the projector
+On définit également $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$ par $\xi^\ensdiamantplat = (\xi^{\diamantplat{D}})_{\diamantplat{D} \in \ensdiamantplat}$, avec $\xi^{\diamantplat{D}} \in \R^2$. In the same way as above, by introducing the projector
 \begin{equation} \label{eq:projdiamantvar}
-\fonction[\projdiamantvar]{(\R^2)^\ensdiamant}{\L^2(\surflisse)^2}{\xi^\ensdiamant}{\sum_{\diamant{D} \in \ensdiamant} \indicatrice_{\diamant{D}} \, \xi^{\diamant{D}}},
+\fonction[\projdiamantvar]{(\R^2)^\ensdiamantplat}{\L^2(\surflisse)^2}{\xi^\ensdiamantplat}{\sum_{\diamant{D} \in \ensdiamant} \indicatrice_{\diamant{D}} \, \xi^{\diamantplat{D}}},
 \end{equation}
-we associate to the discrete function $\xi^\ensdiamant$ the piecewise constant function $\projdiamantvar \xi^\ensdiamant$. 
+we associate to the discrete function $\xi^\ensdiamantplat$ the piecewise constant function $\projdiamantvar \xi^\ensdiamantplat$. \areprendre{On utilise implicitement la correspondance $\diamant{D} \leftrightarrow \diamantplat{D}$.}

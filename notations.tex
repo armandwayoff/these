@@ -22,8 +22,8 @@
 \newcommand{\comp}[1]{#1^{\mathsf{c}}}
 
 \DeclareMathOperator{\projvariete}{\Pi^\surflisse}
-\DeclareMathOperator{\projddfvvar}{\Pi^{\surflisse}_\ensddfv}
-\DeclareMathOperator{\projdiamantvar}{\Pi^{\surflisse}_\ensdiamant}
+\DeclareMathOperator{\projddfvvar}{\Pi^{\surflisse}_\ensddfvplat}
+\DeclareMathOperator{\projdiamantvar}{\Pi^{\surflisse}_\ensdiamantplat}
 
 \newcommand{\boule}{\mathrm{B}}
 
@@ -40,13 +40,13 @@
 \newcommand{\edges}{\mathrm{E}}
 
 \newcommand{\normeddfvT}[2][2]{\norme{#2}_{#1,\ensddfvplat}}
-\newcommand{\normeddfvD}[2][2]{\norme{#2}_{#1,\ensdiamant}}
+\newcommand{\normeddfvD}[2][2]{\norme{#2}_{#1,\ensdiamantplat}}
 
 
 % \newcommand{\intervalleddfv}[2]{#1 \mathclose{}\mathpunct{}, #2}
 % \DeclarePairedDelimiterX{\prodscalddfv}[2]{\llbracket}{\rrbracket_\ensddfv}{\intervalleddfv{\argordot{#1}}{\argordot{#2}}}
 \newcommand{\prodscalddfv}[2]{\prodscal{#1}{#2}_\ensddfvplat}
-\newcommand{\prodscalD}[2]{\prodscal{#1}{#2}_\ensdiamant}
+\newcommand{\prodscalD}[2]{\prodscal{#1}{#2}_\ensdiamantplat}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -106,7 +106,7 @@
 \newcommand{\ensddfv}{{\bm{\mathfrak{T}}}} % ensemble mailles ddfv
 % \newcommand{\ensddfv}{\oldmathcal{T}} % ensemble mailles ddfv
 \newcommand{\ensddfvplat}{\mathbf{T}}
-\newcommand{\Rddfvmn}{\widetilde{\R}^\ensddfv} % fonction ddfv scalaires a moyenne nulle
+\newcommand{\Rddfvmn}{\widetilde{\R}^\ensddfvplat} % fonction ddfv scalaires a moyenne nulle
 
 \newcommand{\ensprimal}{{\bm{\mathfrak{M}}}} % ensemble mailles primales
 \newcommand{\ensprimalplat}{\mathbf{M}}
