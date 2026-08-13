@@ -1,0 +1,45 @@
+%--------------------------------------------------
+% 2. Maillage triangulaire sur la demi-sphère
+%--------------------------------------------------
+
+% Sommets sphériques
+\foreach \i in {0,...,\Ntheta} {
+  \pgfmathsetmacro{\theta}{90*\i/\Ntheta}
+
+  \foreach \j in {0,...,\Nphi} {
+    \pgfmathsetmacro{\phi}{360*\j/\Nphi}
+
+    \pgfmathsetmacro{\x}{\R*sin(\theta)*cos(\phi)}
+    \pgfmathsetmacro{\y}{\R*sin(\theta)*sin(\phi)}
+    \pgfmathsetmacro{\z}{\R*cos(\theta)}
+
+    \coordinate (S-\i-\j) at (\x,\y,\z);
+  }
+}
+
+% Triangles du maillage sphérique
+\foreach \i in {0,...,\numexpr\Ntheta-1\relax} {
+  \foreach \j in {0,...,\numexpr\Nphi-1\relax} {
+
+    \pgfmathtruncatemacro{\ip}{\i+1}
+    \pgfmathtruncatemacro{\jp}{\j+1}
+
+    % Triangle 1
+    \drawplanartriangle
+      {\i}{\j}
+      {\ip}{\j}
+      {\ip}{\jp}
+      {(S-\i-\j)}
+      {(S-\ip-\j)}
+      {(S-\ip-\jp)}
+
+    % Triangle 2
+    \drawplanartriangle
+      {\i}{\j}
+      {\ip}{\jp}
+      {\i}{\jp}
+      {(S-\i-\j)}
+      {(S-\ip-\jp)}
+      {(S-\i-\jp)}
+  }
+}

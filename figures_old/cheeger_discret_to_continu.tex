@@ -1,0 +1,96 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\tdplotsetmaincoords{60}{0}
+
+%--------------------------------------------------
+% Paramètres
+%--------------------------------------------------
+\def\R{1}
+\def\Ntheta{6}
+\def\Nphi{16}
+
+% Sommets sélectionnés : couples i/j
+\def\SelectedPoints{{2/12},{4/14},{5/11},{4/12}}
+
+%--------------------------------------------------
+% Tests de sélection
+%--------------------------------------------------
+\newif\ifselectedpoint
+\newif\ifselectedtriangle
+
+\newcommand{\testselectedpoint}[2]{%
+  \selectedpointfalse
+  \foreach \si/\sj in \SelectedPoints {%
+    \ifnum#1=\si
+      \ifnum#2=\sj
+        \global\selectedpointtrue
+      \fi
+    \fi
+  }%
+}
+
+\newcommand{\testselectedtriangle}[6]{%
+  \selectedtrianglefalse
+  \testselectedpoint{#1}{#2}%
+  \ifselectedpoint
+    \global\selectedtriangletrue
+  \else
+    \testselectedpoint{#3}{#4}%
+    \ifselectedpoint
+      \global\selectedtriangletrue
+    \else
+      \testselectedpoint{#5}{#6}%
+      \ifselectedpoint
+        \global\selectedtriangletrue
+      \fi
+    \fi
+  \fi
+}
+
+%--------------------------------------------------
+% Dessin d'un triangle plan
+%--------------------------------------------------
+\newcommand{\drawplanartriangle}[9]{%
+  \testselectedtriangle{#1}{#2}{#3}{#4}{#5}{#6}%
+  \ifselectedtriangle
+    \draw[mailleprimale] #7 -- #8 -- #9 -- cycle;
+  \else
+    \draw[gray] #7 -- #8 -- #9 -- cycle;
+  \fi
+}
+
+\newcommand{\drawplanartrianglegraphe}[9]{%
+  \testselectedtriangle{#1}{#2}{#3}{#4}{#5}{#6}%
+  \ifselectedtriangle
+    \draw[mailleprimale, dashed] #7 -- #8 -- #9 -- cycle;
+  \else
+    \draw[gray, dashed] #7 -- #8 -- #9 -- cycle;
+  \fi
+}
+
+\newcommand{\cheegerfig}[2][]{%
+\begin{tikzpicture}[
+  ddfv,
+  scale=1.5,
+  baseline=(current bounding box.center),
+  #1
+]
+  \input{#2}
+\end{tikzpicture}%
+}
+
+\begin{tikzpicture}[
+  node distance=1.2cm,
+  every node/.style={inner sep=0pt}
+]
+
+\node (G) {\cheegerfig{figures/cheeger_discret_to_continu_graphe.tex}};
+
+\node[right=of G] (M) {\cheegerfig[tdplot_main_coords]{figures/cheeger_discret_to_continu_maillage.tex}};
+
+\node[right=of M] (V) {\cheegerfig[tdplot_main_coords]{figures/cheeger_discret_to_continu_variete.tex}};
+
+\draw[->, ultra thick, shorten >=4pt, shorten <=4pt] (G.east) -- (M.west);
+\draw[->, ultra thick, shorten >=4pt, shorten <=4pt] (M.east) -- (V.west);
+
+\end{tikzpicture}

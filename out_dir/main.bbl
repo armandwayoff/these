@@ -742,45 +742,6 @@
       \verb PDF:/home/wayoff/Zotero/storage/XFFP8PDT/Krell - Schémas Volumes Finis en mécanique des fluides complexes.pdf:application/pdf
       \endverb
     \endentry
-    \entry{lee_riemannian_1997}{book}{}
-      \name{author}{1}{}{%
-        {{hash=36896354ee3aedc1a13d683ea773634e}{%
-           family={Lee},
-           familyi={L\bibinitperiod},
-           given={John\bibnamedelima M.},
-           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {New York Berlin Heidelberg}%
-      }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{36896354ee3aedc1a13d683ea773634e}
-      \strng{fullhash}{36896354ee3aedc1a13d683ea773634e}
-      \strng{bibnamehash}{36896354ee3aedc1a13d683ea773634e}
-      \strng{authorbibnamehash}{36896354ee3aedc1a13d683ea773634e}
-      \strng{authornamehash}{36896354ee3aedc1a13d683ea773634e}
-      \strng{authorfullhash}{36896354ee3aedc1a13d683ea773634e}
-      \field{labelalpha}{Lee97}
-      \field{sortinit}{L}
-      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{shorttitle}
-      \field{edition}{Nachdr.}
-      \field{isbn}{978-0-387-98271-7 978-0-387-98322-6}
-      \field{langid}{english}
-      \field{number}{176}
-      \field{pagetotal}{224}
-      \field{series}{Graduate texts in mathematics}
-      \field{shorttitle}{Riemannian manifolds}
-      \field{title}{Riemannian manifolds: an introduction to curvature}
-      \field{year}{1997}
-      \field{dateera}{ce}
-      \verb{file}
-      \verb leeriemm.pdf:/home/wayoff/Zotero/storage/GTXNIIAF/Lee - 1997 - Riemannian manifolds an introduction to curvature.pdf:application/pdf
-      \endverb
-    \endentry
     \entry{ros_isoperimetric_2005}{article}{}
       \name{author}{1}{}{%
         {{hash=99ec486a960ab4749b65614416eb53ec}{%

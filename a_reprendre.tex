@@ -1,0 +1,56 @@
+\begin{prop}
+\[
+\norme{\Pi^\surflisse_\ensddfv u^\ensddfv}^2_{\L^2(\surflisse)} \sim h^2 \sum_{\primal{K} \in \ensprimal} u_{\primal{K}}{}^2
+\]
+\end{prop}
+
+\begin{prop}
+\[
+\normeddfvD{} \sim \norme{}_{\L^2(\surflisse)}   
+\]
+\end{prop}
+
+\begin{prop}
+\begin{equation}
+\underline{C}^\ensddfv \leqslant \norme{\projddfvvar}_{\L^2} \leqslant \overline{C}^\ensddfv,
+\quad
+\underline{C}^\ensdiamant \leqslant \norme{\projdiamantvar}_{\L^2} \leqslant \overline{C}^\ensdiamant.
+\end{equation}
+\end{prop}
+
+\begin{demo}
+\[
+\norme{\projddfvvar}_{\L^2} = \sup_{u^\ensddfv \in \R^\ensddfv} \frac{\norme{\projddfvvar u^\ensddfv}_{\L^2(\surflisse)}}{\normeddfvT{u^\ensddfv}}
+\]
+\end{demo}
+
+\begin{corol}
+On a
+\[
+\norme{\projddfvvar u^\ensddfv}_{\L^2(\surflisse)} \leqslant C \, \frac{\overline{C}^\ensdiamant}{\underline{C}^\ensddfv} \norme{\projdiamantvar \grad^\ensdiamant u^\ensddfv}_{\L^2(\surflisse)}.
+\]
+\end{corol}
+
+
+\areprendre{
+For any function $\eta$ defined on the discrete surface $\surfpoly$ we define an extension or lift onto $\surflisse$ by
+\begin{equation} \label{eq:lift}
+\eta^\ell(a) = \eta(x(a)), \quad a \in \surflisse,    
+\end{equation}
+where, by our assumptions, $x(a)$ is defined as the unique solution of
+\[
+x = a + d(x) \, \nu(a).
+\]
+Furthermore, we understand by $\eta^\ell(x)$ the constant extension from $\surflisse$ in the normal direction $\nu(a(x))$.
+
+In order to compare the norms between functions on $\surfpoly$ and their lift \ref{eq:lift} to $\surflisse$ we need the following lemma. 
+
+\begin{lemme}
+Let $\fonctionens[\eta]{\surfpoly}{\R}$ with the lift $\fonctionens[\eta^\ell]{\surflisse}{\R}$. Then, for the plane $T \subset \surfpoly$, and smooth curved triangles $\widetilde{T} \subset \surflisse$, the following estimates hold is the norm exist. There is a constant $c > 0$ independant of $h$ such that
+\begin{align*}
+    \frac{1}{c} \norme{\eta}_{\L^2(T)} &\leqslant \norme{\eta^\ell}_{\L^2(\widetilde{T})} \leqslant c \norme{\eta}_{\L^2(T)}, \\
+    \frac{1}{c} \norme{\grad_{\surfpoly} \eta}_{\L^2(T)} &\leqslant \norme{\grad_{\surflisse} \eta^\ell}_{\L^2(\widetilde{T})} \leqslant c \norme{\grad_{\surfpoly} \eta}_{\L^2(T)}, \\
+    \norme{\grad^2_{\surfpoly} \eta}_{\L^2(T)} &\leqslant c \norme{\grad^2_{\surflisse} \eta^\ell}_{\L^2(\widetilde{T})} + c \, h \norme{\grad_{\surflisse} \eta^\ell}_{\L^2(\widetilde{T})}.
+\end{align*}
+\end{lemme}
+}
