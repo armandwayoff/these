@@ -121,6 +121,139 @@
       \verb https://arxiv.org/abs/0901.0816
       \endverb
     \endentry
+    \entry{andriulli_multiplicative_2008}{article}{}
+      \name{author}{7}{}{%
+        {{hash=23edf53222a45d2de4266d541cb3d470}{%
+           family={Andriulli},
+           familyi={A\bibinitperiod},
+           given={Francesco\bibnamedelima P.},
+           giveni={F\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=1a5a0562117b6f982d9a05c78f2ee66a}{%
+           family={Cools},
+           familyi={C\bibinitperiod},
+           given={Kristof},
+           giveni={K\bibinitperiod}}}%
+        {{hash=be0ac546c18f089e82d75120a409af52}{%
+           family={Bagci},
+           familyi={B\bibinitperiod},
+           given={Hakan},
+           giveni={H\bibinitperiod}}}%
+        {{hash=7165be23d83a7b00608d5679c694c664}{%
+           family={Olyslager},
+           familyi={O\bibinitperiod},
+           given={Femke},
+           giveni={F\bibinitperiod}}}%
+        {{hash=54402977d90d8e67241c9380be3703ea}{%
+           family={Buffa},
+           familyi={B\bibinitperiod},
+           given={Annalisa},
+           giveni={A\bibinitperiod}}}%
+        {{hash=73ff5640618aa5bac3adcaf676e6814c}{%
+           family={Christiansen},
+           familyi={C\bibinitperiod},
+           given={Snorre},
+           giveni={S\bibinitperiod}}}%
+        {{hash=1a4174774037cfe70367750dd6221a79}{%
+           family={Michielssen},
+           familyi={M\bibinitperiod},
+           given={Eric},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{13f350fedeb3d0558f20adbc1d6ffee9}
+      \strng{fullhash}{d52f34748d08e181a7f61b0aa4e21940}
+      \strng{bibnamehash}{13f350fedeb3d0558f20adbc1d6ffee9}
+      \strng{authorbibnamehash}{13f350fedeb3d0558f20adbc1d6ffee9}
+      \strng{authornamehash}{13f350fedeb3d0558f20adbc1d6ffee9}
+      \strng{authorfullhash}{d52f34748d08e181a7f61b0aa4e21940}
+      \field{labelalpha}{And+08}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this paper, a new technique for preconditioning electric ﬁeld integral equations (EFIEs) by leveraging Calderón identities is presented. In contrast to all previous Calderón preconditioners, the proposed preconditioner is purely multiplicative in nature, applicable to open and closed structures, straightforward to implement, and easily interfaced with existing method of moments (MoM) code. Numerical results demonstrate that the MoM EFIE system obtained using the proposed preconditioning converges rapidly, independently of the discretization density.}
+      \field{issn}{0018-926X}
+      \field{journaltitle}{IEEE Transactions on Antennas and Propagation}
+      \field{month}{8}
+      \field{number}{8}
+      \field{title}{A {Multiplicative} {Calderon} {Preconditioner} for the {Electric} {Field} {Integral} {Equation}}
+      \field{urlday}{23}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{volume}{56}
+      \field{year}{2008}
+      \field{urldateera}{ce}
+      \field{pages}{2398\bibrangedash 2412}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1109/TAP.2008.926788
+      \endverb
+      \verb{file}
+      \verb PDF:/home/wayoff/Zotero/storage/43QX6LL7/Andriulli et al. - 2008 - A Multiplicative Calderon Preconditioner for the Electric Field Integral Equation.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://ieeexplore.ieee.org/document/4589072/
+      \endverb
+      \verb{url}
+      \verb http://ieeexplore.ieee.org/document/4589072/
+      \endverb
+    \endentry
+    \entry{buffa_dual_2005}{article}{}
+      \name{author}{2}{}{%
+        {{hash=54402977d90d8e67241c9380be3703ea}{%
+           family={Buffa},
+           familyi={B\bibinitperiod},
+           given={Annalisa},
+           giveni={A\bibinitperiod}}}%
+        {{hash=ea9f59eb633cb4c0bc5f88412e62e8e4}{%
+           family={Christiansen},
+           familyi={C\bibinitperiod},
+           given={Snorre\bibnamedelima H.},
+           giveni={S\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{1593993e58cb410f7effb1fc810109fd}
+      \strng{fullhash}{1593993e58cb410f7effb1fc810109fd}
+      \strng{bibnamehash}{1593993e58cb410f7effb1fc810109fd}
+      \strng{authorbibnamehash}{1593993e58cb410f7effb1fc810109fd}
+      \strng{authornamehash}{1593993e58cb410f7effb1fc810109fd}
+      \strng{authorfullhash}{1593993e58cb410f7effb1fc810109fd}
+      \field{labelalpha}{BC05}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A simplicial mesh on an oriented two-dimensional surface gives rise to a complex X• of ﬁnite element spaces centered on divergence conforming Raviart–Thomas vector ﬁelds and naturally isomorphic to the simplicial cochain complex. On the barycentric reﬁnement of such a mesh, we construct ﬁnite element spaces forming a complex Y •, centered around curl conforming vector ﬁelds, naturally isomorphic to the simplicial chain complex on the original mesh and such that Y 2−i is in L2 duality with Xi . In terms of differential forms this provides a ﬁnite element analogue of Hodge duality. To cite this article: A. Buffa, S.H. Christiansen, C. R. Acad. Sci. Paris, Ser. I 340 (2005).}
+      \field{issn}{1631-073X, 1778-3569}
+      \field{journaltitle}{Comptes Rendus. Mathématique}
+      \field{month}{2}
+      \field{number}{6}
+      \field{title}{A dual finite element complex on the barycentric refinement}
+      \field{urlday}{23}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{volume}{340}
+      \field{year}{2005}
+      \field{urldateera}{ce}
+      \field{pages}{461\bibrangedash 464}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1016/j.crma.2004.12.022
+      \endverb
+      \verb{file}
+      \verb PDF:/home/wayoff/Zotero/storage/S8XV3ZB2/Buffa et Christiansen - 2005 - A dual finite element complex on the barycentric refinement.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://comptes-rendus.academie-sciences.fr/mathematique/articles/10.1016/j.crma.2004.12.022/
+      \endverb
+      \verb{url}
+      \verb https://comptes-rendus.academie-sciences.fr/mathematique/articles/10.1016/j.crma.2004.12.022/
+      \endverb
+    \endentry
     \entry{benson_cheeger_2016}{misc}{}
       \name{author}{1}{}{%
         {{hash=433f75b9ee31542a3b29dd849822fce2}{%
@@ -173,6 +306,60 @@
       \endverb
       \keyw{Mathematics - Differential Geometry,Mathematics - Spectral Theory,Mathematics - Geometric Topology}
     \endentry
+    \entry{boyer_ddfv_2017}{article}{}
+      \name{author}{2}{}{%
+        {{hash=4bece6b6f4b549eaaa860e14a5c83534}{%
+           family={Boyer},
+           familyi={B\bibinitperiod},
+           given={Franck},
+           giveni={F\bibinitperiod}}}%
+        {{hash=60b7b72a034cef21fddf382b907a0f15}{%
+           family={Nabet},
+           familyi={N\bibinitperiod},
+           given={Flore},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{43eebcb216434c8e9ebdf6a86e7e5aed}
+      \strng{fullhash}{43eebcb216434c8e9ebdf6a86e7e5aed}
+      \strng{bibnamehash}{43eebcb216434c8e9ebdf6a86e7e5aed}
+      \strng{authorbibnamehash}{43eebcb216434c8e9ebdf6a86e7e5aed}
+      \strng{authornamehash}{43eebcb216434c8e9ebdf6a86e7e5aed}
+      \strng{authorfullhash}{43eebcb216434c8e9ebdf6a86e7e5aed}
+      \field{labelalpha}{BN17}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In this paper we propose a “Discrete Duality Finite Volume” method (DDFV for short) for the diﬀuse interface modelling of incompressible two-phase ﬂows. This numerical method is, conservative, robust and is able to handle general geometries and meshes. The model we study couples the Cahn-Hilliard equation and the unsteady Stokes equation and is endowed with particular nonlinear boundary conditions called dynamic boundary conditions. To implement the scheme for this model we have to derive new discrete consistent DDFV operators that allows an energy stable coupling between both discrete equations. We are thus able to obtain the existence of a family of solutions satisfying a suitable energy inequality, even in the case where a ﬁrst order time-splitting method between the two subsystems is used. We illustrate various properties of such a model with some numerical results.}
+      \field{issn}{0764-583X, 1290-3841}
+      \field{journaltitle}{ESAIM: Mathematical Modelling and Numerical Analysis}
+      \field{month}{9}
+      \field{number}{5}
+      \field{title}{A {DDFV} method for a {Cahn}-{Hilliard}/{Stokes} phase field model with dynamic boundary conditions}
+      \field{urlday}{29}
+      \field{urlmonth}{7}
+      \field{urlyear}{2026}
+      \field{volume}{51}
+      \field{year}{2017}
+      \field{urldateera}{ce}
+      \field{pages}{1691\bibrangedash 1731}
+      \range{pages}{41}
+      \verb{doi}
+      \verb 10.1051/m2an/2016073
+      \endverb
+      \verb{file}
+      \verb PDF:/home/wayoff/Zotero/storage/2ANHF9WC/Boyer et Nabet - 2017 - A DDFV method for a Cahn-HilliardStokes phase field model with dynamic boundary conditions.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://www.esaim-m2an.org/10.1051/m2an/2016073
+      \endverb
+      \verb{url}
+      \verb http://www.esaim-m2an.org/10.1051/m2an/2016073
+      \endverb
+    \endentry
     \entry{buser_note_1982}{article}{}
       \name{author}{1}{}{%
         {{hash=2e5945fba963875d724cb521f0694b8a}{%
@@ -220,6 +407,41 @@
       \verb http://www.numdam.org/item?id=ASENS_1982_4_15_2_213_0
       \endverb
     \endentry
+    \entry{cances_convergence_2010}{article}{}
+      \name{author}{3}{}{%
+        {{hash=cc9ba758d7683bf691c44537507e186f}{%
+           family={Cancès},
+           familyi={C\bibinitperiod},
+           given={Clément},
+           giveni={C\bibinitperiod}}}%
+        {{hash=3bf757ce5310973b33388ede082c2a5e}{%
+           family={Domelevo},
+           familyi={D\bibinitperiod},
+           given={Komla},
+           giveni={K\bibinitperiod}}}%
+        {{hash=5e4192c59fb38a400780f5dc4ba4647e}{%
+           family={Omnès},
+           familyi={O\bibinitperiod},
+           given={Pascal},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{bfbe70c0b6660606457a9fce33fd2d4d}
+      \strng{fullhash}{bfbe70c0b6660606457a9fce33fd2d4d}
+      \strng{bibnamehash}{bfbe70c0b6660606457a9fce33fd2d4d}
+      \strng{authorbibnamehash}{bfbe70c0b6660606457a9fce33fd2d4d}
+      \strng{authornamehash}{bfbe70c0b6660606457a9fce33fd2d4d}
+      \strng{authorfullhash}{bfbe70c0b6660606457a9fce33fd2d4d}
+      \field{labelalpha}{CDO10}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical Modelling and Numerical Analysis}
+      \field{title}{Convergence of the discrete duality finite volume scheme for convection--diffusion equations}
+      \field{year}{2010}
+      \field{pages}{995\bibrangedash 1020}
+      \range{pages}{26}
+    \endentry
     \entry{chung_lectures_nodate}{article}{}
       \name{author}{1}{}{%
         {{hash=ce1756c17f1256e62cd8740ce5e05805}{%
@@ -243,6 +465,48 @@
       \field{title}{Lectures on Spectral Graph Theory}
       \verb{file}
       \verb PDF:/home/wayoff/Zotero/storage/7QT5HFPY/Chung - Lectures on Spectral Graph Theory.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{christiansen_preconditioner_2002}{article}{}
+      \name{author}{2}{}{%
+        {{hash=ea9f59eb633cb4c0bc5f88412e62e8e4}{%
+           family={Christiansen},
+           familyi={C\bibinitperiod},
+           given={Snorre\bibnamedelima H.},
+           giveni={S\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=5c9a76ed288825bf3508a7d0c22119bf}{%
+           family={Nédélec},
+           familyi={N\bibinitperiod},
+           given={Jean-Claude},
+           giveni={J\bibinithyphendelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{18269a38f0eadc2e5ea91222cf4e68ce}
+      \strng{fullhash}{18269a38f0eadc2e5ea91222cf4e68ce}
+      \strng{bibnamehash}{18269a38f0eadc2e5ea91222cf4e68ce}
+      \strng{authorbibnamehash}{18269a38f0eadc2e5ea91222cf4e68ce}
+      \strng{authornamehash}{18269a38f0eadc2e5ea91222cf4e68ce}
+      \strng{authorfullhash}{18269a38f0eadc2e5ea91222cf4e68ce}
+      \field{labelalpha}{CN02}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We describe a preconditioning technique for the Galerkin approximation of the electric field integral equation (EFIE), which arises in the scattering theory for harmonic electromagnetic waves. It is based on a discretization of the Calderon formulas and the Helmholtz decomposition. We prove several properties of the method, in particular that it produces a variational solution on a subspace of the Galerkin space for which we have an LBB inf-sup condition. When the Krylov spaces associated with the continuous operators are nondegenerate we prove that the discrete Krylov spaces converge as the mesh refinement goes to zero; when, moreover, the EFIE is nondegenerate on the continuous Krylov spaces, the discrete Krylov iterates converge towards the continuous ones. We also argue that one might expect the continuous Krylov iterates to exhibit superlinear convergence of the form {\textbackslash}n {\textbackslash}mapsto C{\textasciicircum}n(n!){\textasciicircum}-{\textbackslash}alpha{\textbackslash} for some C {>} 0 and {\textbackslash}alpha{>}0{\textbackslash}. Finally, we illustrate the theory with numerical experiments.}
+      \field{journaltitle}{SIAM Journal on Numerical Analysis}
+      \field{number}{3}
+      \field{title}{A {Preconditioner} for the {Electric} {Field} {Integral} {Equation} {Based} on {Calderon} {Formulas}}
+      \field{volume}{40}
+      \field{year}{2002}
+      \field{pages}{1100\bibrangedash 1135}
+      \range{pages}{36}
+      \verb{doi}
+      \verb 10.1137/S0036142901388731
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1137/S0036142901388731
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1137/S0036142901388731
       \endverb
     \endentry
     \entry{coudiere_convergence_1999}{article}{}
@@ -515,46 +779,63 @@
       \verb http://www.esaim-m2an.org/10.1051/m2an:2005047
       \endverb
     \endentry
-    \entry{eymard_finite_2000}{article}{}
+    \entry{goudon_ddfv_2019}{article}{}
       \name{author}{3}{}{%
-        {{hash=fd541e738566091fb5652a5d456e6af2}{%
-           family={Eymard},
-           familyi={E\bibinitperiod},
-           given={Robert},
-           giveni={R\bibinitperiod}}}%
-        {{hash=929ba7e6042cda6e0104ea118bd0abfb}{%
-           family={Gallouet},
+        {{hash=774bf8e9e53c69e999bbd800f9f6bdc3}{%
+           family={Goudon},
            familyi={G\bibinitperiod},
            given={Thierry},
            giveni={T\bibinitperiod}}}%
-        {{hash=42767eee16d6012d4b1f02f82f67df50}{%
-           family={Herbin},
-           familyi={H\bibinitperiod},
-           given={Raphaele},
-           giveni={R\bibinitperiod}}}%
+        {{hash=af55e3835f555094fe3b2aafeba5bdd5}{%
+           family={Krell},
+           familyi={K\bibinitperiod},
+           given={Stella},
+           giveni={S\bibinitperiod}}}%
+        {{hash=a2a6695a4dd218d6939b7527eaf41145}{%
+           family={Lissoni},
+           familyi={L\bibinitperiod},
+           given={Giulia},
+           giveni={G\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {North-Holland}%
+      \list{language}{1}{%
+        {en}%
       }
-      \strng{namehash}{298394c1de1c54baccd60e7026171298}
-      \strng{fullhash}{298394c1de1c54baccd60e7026171298}
-      \strng{bibnamehash}{298394c1de1c54baccd60e7026171298}
-      \strng{authorbibnamehash}{298394c1de1c54baccd60e7026171298}
-      \strng{authornamehash}{298394c1de1c54baccd60e7026171298}
-      \strng{authorfullhash}{298394c1de1c54baccd60e7026171298}
-      \field{labelalpha}{EGH00}
-      \field{sortinit}{E}
-      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \strng{namehash}{28141d615f68150ea058ccf2e9e0d8c7}
+      \strng{fullhash}{28141d615f68150ea058ccf2e9e0d8c7}
+      \strng{bibnamehash}{28141d615f68150ea058ccf2e9e0d8c7}
+      \strng{authorbibnamehash}{28141d615f68150ea058ccf2e9e0d8c7}
+      \strng{authornamehash}{28141d615f68150ea058ccf2e9e0d8c7}
+      \strng{authorfullhash}{28141d615f68150ea058ccf2e9e0d8c7}
+      \field{labelalpha}{GKL19}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{langid}{english}
-      \field{series}{Handbook of Numerical Analysis}
-      \field{title}{Finite Volume Methods}
-      \field{volume}{{VII}}
-      \field{year}{2000}
-      \field{dateera}{ce}
+      \field{abstract}{We propose a Discrete Duality Finite Volume scheme (DDFV for short) for the unsteady incompressible Navier-Stokes problem with outﬂow boundary conditions. As in the continuous case, those conditions are derived from a weak formulation of the equations and they provide an energy estimate of the solution. We prove wellposedness of the scheme and a discrete energy estimate. Finally we perform some numerical tests simulating the ﬂow behind a cylinder inside a long channel to show the robustness of such conditions in the DDFV framework.}
+      \field{issn}{0029-599X, 0945-3245}
+      \field{journaltitle}{Numerische Mathematik}
+      \field{month}{5}
+      \field{number}{1}
+      \field{title}{{DDFV} method for {Navier}–{Stokes} problem with outflow boundary conditions}
+      \field{urlday}{29}
+      \field{urlmonth}{7}
+      \field{urlyear}{2026}
+      \field{volume}{142}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \field{pages}{55\bibrangedash 102}
+      \range{pages}{48}
+      \verb{doi}
+      \verb 10.1007/s00211-018-1014-y
+      \endverb
       \verb{file}
-      \verb PDF:/home/wayoff/Zotero/storage/8IAK6AFG/Eymard et al. - 2000 - Finite Volume Methods.pdf:application/pdf
+      \verb PDF:/home/wayoff/Zotero/storage/DQZ5SI6E/Goudon et al. - 2019 - DDFV method for Navier–Stokes problem with outflow boundary conditions.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://link.springer.com/10.1007/s00211-018-1014-y
+      \endverb
+      \verb{url}
+      \verb http://link.springer.com/10.1007/s00211-018-1014-y
       \endverb
     \endentry
     \entry{gregoire_decomposition_2025}{report}{}
@@ -728,6 +1009,7 @@
       \strng{authorbibnamehash}{af55e3835f555094fe3b2aafeba5bdd5}
       \strng{authornamehash}{af55e3835f555094fe3b2aafeba5bdd5}
       \strng{authorfullhash}{af55e3835f555094fe3b2aafeba5bdd5}
+      \field{extraname}{1}
       \field{labelalpha}{Kre10}
       \field{sortinit}{K}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
@@ -740,6 +1022,35 @@
       \field{dateera}{ce}
       \verb{file}
       \verb PDF:/home/wayoff/Zotero/storage/XFFP8PDT/Krell - Schémas Volumes Finis en mécanique des fluides complexes.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{krell_developpement_2021}{article}{}
+      \name{author}{1}{}{%
+        {{hash=af55e3835f555094fe3b2aafeba5bdd5}{%
+           family={Krell},
+           familyi={K\bibinitperiod},
+           given={Stella},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {fr}%
+      }
+      \strng{namehash}{af55e3835f555094fe3b2aafeba5bdd5}
+      \strng{fullhash}{af55e3835f555094fe3b2aafeba5bdd5}
+      \strng{bibnamehash}{af55e3835f555094fe3b2aafeba5bdd5}
+      \strng{authorbibnamehash}{af55e3835f555094fe3b2aafeba5bdd5}
+      \strng{authornamehash}{af55e3835f555094fe3b2aafeba5bdd5}
+      \strng{authorfullhash}{af55e3835f555094fe3b2aafeba5bdd5}
+      \field{extraname}{2}
+      \field{labelalpha}{Kre21}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Développement et analyse de schémas {Volumes} {Finis} en mécanique des fluides complexes}
+      \field{year}{2021}
+      \verb{file}
+      \verb PDF:/home/wayoff/Zotero/storage/D43H2CGP/Krell - 2021 - Développement et analyse de schémas Volumes Finis en mécanique des fluides complexes.pdf:application/pdf
       \endverb
     \endentry
     \entry{ros_isoperimetric_2005}{article}{}

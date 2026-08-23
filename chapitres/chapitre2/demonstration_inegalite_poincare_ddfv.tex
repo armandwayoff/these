@@ -5,10 +5,10 @@ Ce chapitre est consacré à la démonstration de l'inégalité de Poincaré \dd
 \begin{equation*}
     \normeddfvT{u^\ensddfvplat} \leqslant C \normeddfvD{\grad^\ensdiamantplat u^\ensddfvplat}.
 \end{equation*}
-L'ensemble $\Rddfvmn$ défini par \Cref{eq:moyenne_nulle} est l'ensemble des fonctions scalaires \ddfv à moyenne nulle.}
+L'ensemble $\Rddfvmn$ défini par \ref{eq:moyenne_nulle} est l'ensemble des fonctions scalaires \ddfv à moyenne nulle.}
 \smallskip
 
-Dans \cite[Lemma 3.2]{andreianov_discrete_2007}, on trouve une démonstration de l'inégalité de Poincaré discrète dans le cas des domaines polygonaux bornés de $\R^2$. En revanche, à notre connaissance, aucune démonstration n'existe dans le cas des surfaces sans bord de $\R^3$. \\
+Dans \cite[Lemma 3.2]{andreianov_discrete_2007}, on trouve une démonstration de l'inégalité de Poincaré discrète dans le cas des domaines polygonaux bornés de $\R^2$. En revanche, à notre connaissance, aucune démonstration n'existe dans le cas des surfaces fermées sans bord de $\R^3$. \\
 
 Dans la \Cref{subsec:une_inegalite_de_graphe}, nous établissons, grâce à un résultat de théorie spectrale des graphes, une inégalité de type Poincaré \chevron{intermédiaire} dont la constante dépend encore de la taille du maillage (\Cref{eq:inegalite_poincare_inter}). L'objectif de la \Cref{subsec:passage_du_discret_au_continu} est de s'affranchir de cette dépendance en comparant une constante isopérimétrique de la surface lisse $\surflisse$ avec celle de graphes associés à son approximation polyédrique $\surfpoly$. 
 
@@ -21,9 +21,9 @@ La \defini{constante de Cheeger} du graphe $\graphe$ est définie par
 h(\graphe) \defeq \min_{W \subset \vertices(\graphe)}
 \frac{\abs{\partial W}}{\min\{ \vol(W), \vol(\comp{W}) \}}.
 \end{equation}
-Cette constante est aussi appelé \defini{nombre isopérimétrique}.
+Cette constante est aussi appelée \defini{nombre isopérimétrique}.
 \end{defi}
-La constante de Cheeger d'un graphe mesure la présence de \chevron{goulots d'étranglement} dans celui-ci. Intuitivement, si un graphe est bien \chevron{connecté}, il n'est pas être possible d'en isoler une \chevron{grande} partie en supprimant un petit nombre d'arêtes. On peut, par exemple, interpréter la \chevron{taille} de cette partie comme son nombre d'arêtes. Ce point de vue correspond aux valeurs propres du laplacien normalisé. Pour plus de détails, voir \Cref{chap:graphs}. \\
+La constante de Cheeger d'un graphe mesure la présence de \chevron{goulots d'étranglement} dans celui-ci. Intuitivement, si un graphe est bien \chevron{connecté}, il n'est pas être possible d'en isoler une grande partie en supprimant un petit nombre d'arêtes. On peut, par exemple, interpréter la \chevron{taille} de cette partie comme son nombre d'arêtes. Ce point de vue correspond aux valeurs propres du laplacien normalisé. Pour plus de détails, voir \Cref{chap:graphs}. \\
 
 \begin{figure}[H]
   \centering
@@ -32,10 +32,10 @@ La constante de Cheeger d'un graphe mesure la présence de \chevron{goulots d'é
   \label{fig:graphe}
 \end{figure}
 
-\noindent Nous pouvons à présent énoncer le \Cref{theo:cheeger_inequality} qui sera la clé pour obtenir l'inégalité de type Poincaré \chevron{intermédiaire} \ref{eq:inegalite_poincare_inter}. 
+\noindent Énonçons le \Cref{theo:cheeger_inequality} qui sera la clé pour obtenir l'inégalité de type Poincaré \chevron{intermédiaire} \ref{eq:inegalite_poincare_inter}. 
 
-\begin{theo}[Inégalité de Cheeger {\cite[Theo. 1]{ji_fourth_2010}}] \label{theo:cheeger_inequality}
-Dans un graphe $\graphe$, on a
+\begin{theo}[Inégalité de Cheeger {\cite[Theorem 1]{ji_fourth_2010}}] \label{theo:cheeger_inequality}
+La constante de Cheeger $h(\graphe)$ d'un graphe $\graphe$ vérifie
 \[
 \inf_f \frac{\sum\limits_{u \sim v} \big( f(u) - f(v) \big)^2}{\sum\limits_v \big( f(v) - \overline{f} \big)^2 \degr(v)}
 \geqslant
@@ -47,7 +47,7 @@ Dans un graphe $\graphe$, on a
 \]
 L'infimum est pris sur l'ensemble des fonctions à valeurs réelles définies en les sommets du graphe; $\fonctionens[f]{\vertices(\graphe)}{\R}$.
 \end{theo}
-Pour une démonstration de ce théorème, voir \cite[Sec. 3]{ji_fourth_2010} et pour plus de détails sur ce résultat de théorie spectrale des graphes, voir \Cref{chap:graphs}. \\
+Pour une démonstration de ce théorème, voir \cite[Section 3]{ji_fourth_2010} et pour plus de détails sur ce résultat de théorie spectrale des graphes, voir \Cref{chap:graphs}. \\
 
 Définissons maintenant les graphes sur lesquels nous allons appliquer l'inégalité de Cheeger. À un maillage \ddfv plat $\ensddfvplat = (\ensprimalplat, \ensdualplat)$, on associe deux graphes: le \defini{graphe du maillage primal} noté $\graphe^\ensprimalplat$ avec $\vertices(\graphe^\ensprimalplat) = \enssomdualplat$ et $\edges(\graphe^\ensprimalplat) = \ensaretedualplat$, et le \defini{graphe du maillage dual} noté $\graphe^\ensdualplat$ avec $\vertices(\graphe^\ensdualplat) = \enssomprimplat$ et $\edges(\graphe^\ensdualplat) = \ensareteprimplat$. On rappelle que $\enssomdualplat$ est l'ensemble des sommets de $\ensdualplat$, que $\ensaretedualplat$ est l'ensemble des arêtes de $\ensdualplat$, que $\enssomprimplat$ est l'ensemble des sommets de $\ensprimalplat$ et que $\ensareteprimplat$ est l'ensemble des arêtes de $\ensprimalplat$. La \Cref{fig:graphe_ddfv} illustre un maillage primal $\ensprimalplat$ et son graphe associé $\graphe^\ensprimalplat$.
 
@@ -103,7 +103,7 @@ La constante $h(\graphe^\ensprimalplat)$ (resp. $h(\graphe^\ensdualplat)$) est l
 \end{lemme}
 
 \begin{demo}
-Soit $u^\ensddfvplat \in \R^\ensddfvplat$. On considère cette fonction comme une fonction sur les graphes $\graphe^\ensprimalplat$ et $\graphe^\ensdualplat$ comme expliqué précedemment. Il suffit alors d'appliquer le \Cref{theo:cheeger_inequality}, établissant l'inégalité de Cheeger, d'une part au graphe $\graphe^\ensprimalplat$: 
+Soit $u^\ensddfvplat \in \R^\ensddfvplat$. On considère cette fonction comme une fonction sur les graphes $\graphe^\ensprimalplat$ et $\graphe^\ensdualplat$ comme expliqué précedemment. Il suffit alors d'appliquer le \Cref{theo:cheeger_inequality} établissant l'inégalité de Cheeger, d'une part au graphe $\graphe^\ensprimalplat$: 
 \begin{equation} \label{eq:ineg_de_graphe_primal}
 \sum_{\primalplat{K} \sim \primalplat{L}} ( u_{\primalplat{K}} - u_{\primalplat{L}} )^2
 \geqslant 
@@ -132,7 +132,7 @@ Soient $\primalplat{K} \in \ensprimalplat$ et $\mailledualeplate{K} \in \ensdual
 \end{lemme}
 
 \begin{demo}
-On raisonne sur une maille primale plate $\primalplat{K}$. Posons $n_{\primalplat{K}} \defeq \degr(x_{\primalplat{K}})$. Chaque arête de $\primalplat{K}$ correspond à une maille primale voisine donc $n_{\primalplat{K}}$ est le nombre d'arêtes de $\primalplat{K}$. Puisque la maille est étoilée par rapport à $x_{\primalplat{K}}$, on peut la découper en $n_{\primalplat{K}}$ triangles d'intérieurs disjoints, comme illustré sur la \Cref{fig:decoupage_primal_plat} :
+On raisonne sur une maille primale plate $\primalplat{K}$. Posons $n_{\primalplat{K}} \defeq \degr(x_{\primalplat{K}})$. Chaque arête de $\primalplat{K}$ correspond à une maille primale voisine donc $n_{\primalplat{K}}$ est égal au nombre d'arêtes de $\primalplat{K}$. Puisque la maille est étoilée par rapport à $x_{\primalplat{K}}$, on peut la découper en $n_{\primalplat{K}}$ triangles d'intérieurs disjoints, comme illustré sur la \Cref{fig:decoupage_primal_plat} :
 \[
 \primalplat{K}
 =
@@ -162,8 +162,8 @@ où $n_{\mailledualeplate{K}} = \degr(x_{\mailledualeplate{K}})$, $(s_i)_{1 \leq
 \[
 \mesure(\mailledualeplate{K})
 =
-\sum_{i=1}^{n_{\mailledualeplate{K}}}
 \frac{1}{2}
+\sum_{i=1}^{n_{\mailledualeplate{K}}}
 \Big[
     \norme{s_i - x_{\mailledualeplate{K}}} \norme{m_i - x_{\mailledualeplate{K}}} \abs{\sin \theta_i}
     +
@@ -176,7 +176,7 @@ et on obtient
 \begin{equation} \label{eq:estim_ter}
 \degr(x_{\mailledualeplate{K}}) \geqslant \frac{\mesure(\mailledualeplate{K})}{\diam{\mailledualeplate{K}}{}^2}.
 \end{equation}
-Dans la régularité $\reg(\ensddfvplat)$, les termes $\displaystyle\max_{\primalplat{K} \in \ensprimalplat} \max_{\diamantplat{D} \in \ensdiamantplat_{\primalplat{K}}} \frac{\diam{\primalplat{K}}}{\diam{\diamantplat{D}}}$ et $\displaystyle\max_{\mailledualeplate{K} \in \ensdualplat} \max_{\diamantplat{D} \in \ensdiamantplat_{\mailledualeplate{K}}} \frac{\diam{\mailledualeplate{K}}}{\diam{\diamantplat{D}}}$
+Dans la régularité $\reg(\ensddfvplat)$ (voir \ref{eq:reg_ensddfvplat}), les termes $\displaystyle\max_{\primalplat{K} \in \ensprimalplat} \max_{\diamantplat{D} \in \ensdiamantplat_{\primalplat{K}}} \frac{\diam{\primalplat{K}}}{\diam{\diamantplat{D}}}$ et $\displaystyle\max_{\mailledualeplate{K} \in \ensdualplat} \max_{\diamantplat{D} \in \ensdiamantplat_{\mailledualeplate{K}}} \frac{\diam{\mailledualeplate{K}}}{\diam{\diamantplat{D}}}$
 permettent d'avoir les estimations
 \begin{equation} \label{eq:estim_bis}
 \diam{\primalplat{K}} \leqslant \reg(\ensddfvplat) \diam{\diamantplat{D}} \leqslant \reg(\ensddfvplat) \size(\ensddfvplat)
@@ -205,27 +205,21 @@ La combinaison des \Cref{eq:estim,eq:estim_ter,eq:estim_bis} donne le résultat.
 \end{figure}
 \end{demo}
 
-\begin{remarque} \label{remarque:poids_particuliers}
-Avec les poids $\poids{\primalplat{K}} = \frac{1}{2} \mesure(\primalplat{K})$ et $\poids{\mailledualeplate{K}} = \frac{1}{2} \mesure(\mailledualeplate{K})$, les minorations deviennent $\degr(x_{\primalplat{K}}) \geqslant \displaystyle\frac{2}{\reg(\ensddfvplat)^2 \size(\ensddfvplat)^2} \, \poids{\primalplat{K}}$ et $\degr(x_{\mailledualeplate{K}}) \geqslant \displaystyle\frac{2}{\reg(\ensddfvplat)^2 \size(\ensddfvplat)^2} \, \poids{\mailledualeplate{K}}$.
-\end{remarque}
-Les \Cref{lemme:ineg_de_graphe,lemme:minoration_degre} vont nous permettre d'obtenir la minoration de $\mathcal{E}$ suivante. 
+\noindent Les \Cref{lemme:ineg_de_graphe,lemme:minoration_degre} vont nous permettre d'obtenir la minoration de $\mathcal{E}$ suivante. 
 
 \begin{prop} \label{prop:minoration_energie}
 Pour tout $u^\ensddfvplat \in \Rddfvmn$,
 \[
 \mathcal{E}(u^\ensddfvplat) \geqslant \frac{h(\graphe^\ensddfvplat)^2}{\reg(\ensddfvplat)^2 \size(\ensddfvplat)^2} \normeddfvT{u^\ensddfvplat}^2.
 \]
-L'ensemble $\Rddfvmn$ défini par \Cref{eq:moyenne_nulle} est l'ensemble des fonctions scalaires \ddfv à moyenne nulle. 
+L'ensemble $\Rddfvmn$ défini par \ref{eq:moyenne_nulle} est l'ensemble des fonctions scalaires \ddfv à moyenne nulle. 
 \end{prop}
 
 \begin{demo}
-Soit $u^\ensddfvplat \in \Rddfvmn$. Par définition, la moyenne géométrique $\sum\limits_{\primalplat{K} \in \ensprimalplat} \poids{\primalplat{K}} \, u_{\primalplat{K}}$ est nulle. De plus, elle minimise la fonction $c \mapsto \sum\limits_{\primalplat{K} \in \ensprimalplat} \poids{\primalplat{K}} \, (u_{\primalplat{K}} - c)^2$. Par conséquent,
-\[
-\sum_{\primalplat{K} \in \ensprimalplat} \poids{\primalplat{K}} \big( u_{\primalplat{K}} - \overline{u}^\ensprimalplat)^ 2
+Soit $u^\ensddfvplat \in \Rddfvmn$. Par définition, la moyenne géométrique $\sum\limits_{\primalplat{K} \in \ensprimalplat} \poids{\primalplat{K}} \, u_{\primalplat{K}}$ est nulle. De plus, elle minimise la fonction $c \mapsto \sum\limits_{\primalplat{K} \in \ensprimalplat} \poids{\primalplat{K}} \, (u_{\primalplat{K}} - c)^2$. Par conséquent, $\sum\limits_{\primalplat{K} \in \ensprimalplat} \poids{\primalplat{K}} \big( u_{\primalplat{K}} - \overline{u}^\ensprimalplat)^ 2
 \geqslant
-\sum_{\primalplat{K} \in \ensprimalplat} \poids{\primalplat{K}} \, u_{\primalplat{K}}{}^2,
-\]
-et en utilisant les estimations du \Cref{lemme:minoration_degre} et les poids de la \Cref{remarque:poids_particuliers} on trouve
+\sum\limits_{\primalplat{K} \in \ensprimalplat} \poids{\primalplat{K}} \, u_{\primalplat{K}}{}^2
+$ où $\overline{u}^\ensprimalplat$ est défini dans le \Cref{lemme:ineg_de_graphe}. En utilisant les estimations du \Cref{lemme:minoration_degre} et les poids $\poids{\primalplat{K}} = \frac{1}{2} \mesure(\primalplat{K})$ et $\poids{\mailledualeplate{K}} = \frac{1}{2} \mesure(\mailledualeplate{K})$, on trouve
 \begin{equation} \label{eq:ineg1}
 \sum_{\primalplat{K} \in \ensprimalplat} \big(u_{\primalplat{K}} - \overline{u}^\ensprimalplat \big)^2 \degr(x_{\primalplat{K}})
 \geqslant
@@ -254,7 +248,7 @@ Pour tout $u^\ensddfvplat \in \R^\ensddfvplat$,
 \end{prop}
 
 \begin{demo}
-Soient deux mailles primales voisines $\primalplat{K} \sim \primalplat{L}$ définissant le diamant $\diamantplat{D} = \diamantplat{D}_{\sigma', \dual{\sigma}}$. Par définition du gradient \ref{defi:discrete_gradient} sur $\diamantplat{D}$, on a
+Soient deux mailles primales voisines $\primalplat{K} \sim \primalplat{L}$ définissant le diamant $\diamantplat{D} = \diamantplat{D}_{\sigma', \dual{\sigma}}$. D'après la \Cref{defi:discrete_gradient} du gradient sur $\diamantplat{D}$, on a
 \begin{equation*}
     (u_{\primalplat{L}} - u_{\primalplat{K}})^2 
     = \mesure(\dual{\sigma})^2 \abs{\prodscal{\grad^{\diamantplat{D}} u^\ensddfvplat}{\vect{\tau}_{\primalplat{K},\primalplat{L}}}}^2
@@ -266,7 +260,7 @@ De même, pour deux mailles duales voisines $\mailledualeplate{K} \sim \mailledu
     = \mesure(\sigma)^2 \abs{\prodscal{\grad^{\diamantplat{D}} u^\ensddfvplat}{\vect{\tau}_{\mailledualeplate{K},\mailledualeplate{L}}}}^2
     \leqslant \mesure(\sigma)^2 \abs{\grad^{\diamantplat{D}} u^\ensddfvplat}^2.
 \end{equation*}
-Les ensembles $\ensareteprimplat$ et $\ensaretedualplat$ étant en bijection avec l'ensemble $\ensdiamantplat$, on a
+Les ensembles $\ensareteprimplat$ et $\ensaretedualplat$ étant en bijection avec l'ensemble $\ensdiamantplat$, on a en sommant les inégalités précédentes
 \begin{equation} \label{eq:inter}
 \mathcal{E}(u^\ensddfvplat)
 \leqslant
@@ -285,32 +279,32 @@ $\frac{
     +
     \frac{\mesure(\dual{\sigma})}{\mesure(\sigma)}
 \right)$.
-Dans la régularité $\reg(\ensddfvplat)$, les termes $\max\limits_{\diamantplat{D}_{\sigma, \dual{\sigma}} \in \ensdiamantplat}\mathopen{}\left[
+Dans la régularité $\reg(\ensddfvplat)$ (voir \ref{eq:reg_ensddfvplat}), les termes $\frac{1}{\sin \angle{\ensddfvplat}}$ et $\max\limits_{\diamantplat{D}_{\sigma, \dual{\sigma}} \in \ensdiamantplat}\mathopen{}\left[
     \frac{\mesure(\sigma)}{\mesure(\dual{\sigma})},
     \frac{\mesure(\dual{\sigma})}{\mesure(\sigma)}
-\right]$ et $\frac{1}{\sin \angle{\ensddfvplat}}$ imposent que l'angle entre deux diagonales ne tende ni vers $0$ ni vers $\pi$ et que le rapport des longueurs des deux diagonales reste uniformément borné. Ainsi, on obtient l'estimation $\mesure(\sigma)^2 + \mesure(\dual{\sigma})^2 
+\right]$ permettent d'obtenir l'estimation $\mesure(\sigma)^2 + \mesure(\dual{\sigma})^2 
 \leqslant
 4 \reg(\ensddfvplat)^2 \poids{\diamantplat{D}}$
 ce qui, avec \ref{eq:inter}, fournit le résultat.
 \end{demo}
 
-\noindent Les \Cref{prop:minoration_energie,prop:majoration_energie} aboutissent à une inégalité de type Poincaré mais dont la constante dépend encore de la taille du maillage :
+\noindent Les \Cref{prop:minoration_energie,prop:majoration_energie} aboutissent à une inégalité de type Poincaré dont la constante dépend encore de la taille du maillage :
 \begin{equation} \label{eq:inegalite_poincare_inter}
 \forall u^\ensddfvplat \in \Rddfvmn, 
 \quad
 \frac{1}{2 \reg(\ensddfvplat)^2} \, \frac{h(\graphe^\ensddfvplat)}{\size(\ensddfvplat)} \normeddfvT{u^\ensddfvplat} \leqslant \normeddfvD{\grad^\ensdiamantplat u^\ensddfvplat}.
 \end{equation}
-L'objectif de la section suivante est de s'affranchir de cette dépendance. 
+L'objectif de la section suivante est de s'affranchir de cette dépendance en comparant une constante isopérimétrique de la surface lisse $\surflisse$ avec celle de graphes associés à son approximation polyédrique $\surfpoly$.
 
-\section{Passage du discret au continu} \label{subsec:passage_du_discret_au_continu}
+\section{Comparaisons de constantes isopérimétriques} \label{subsec:passage_du_discret_au_continu}
 
 Dans la suite, nous allons démontrer que sous des hypothèses géométriques appropriées, il existe une constante $c^\ensddfvplat > 0$ indépendante de $\size(\ensddfvplat)$ telle que
 \begin{equation} \label{eq:objectif}
 h(\graphe^\ensddfvplat) \geqslant c^\ensddfvplat \size(\ensddfvplat).
 \end{equation}
-Ce résultat, combiné avec \Cref{eq:inegalite_poincare_inter}, fournira l'inégalité de Poincaré finale, énoncée dans le \Cref{theo:main}.
+Ce résultat, combiné avec l'inégalité \ref{eq:inegalite_poincare_inter}, fournira l'inégalité de Poincaré finale, énoncée dans le \Cref{theo:main}. \\
 
-Pour l'instant, la régularité $\reg(\ensddfvplat)$ contrôle la géométrie locale des mailles et autorise les raffinements locaux. Elle ne contrôle donc pas le rapport entre la plus grande et la plus petite taille de maille. Pour montrer \Cref{eq:objectif}, nous allons ajouter une condition de \defini{quasi-uniformité} au maillage $\ensddfvplat$: il existe $\vartheta > 0$ tel que
+Pour l'instant, la régularité $\reg(\ensddfvplat)$ contrôle la géométrie locale des mailles et autorise les raffinements locaux. Elle ne contrôle donc pas le rapport entre la plus grande et la plus petite taille de maille. Pour montrer \ref{eq:objectif}, nous allons ajouter une condition de \defini{quasi-uniformité} au maillage $\ensddfvplat$: il existe $\vartheta > 0$ tel que
 \begin{equation} \label{eq:quasi_uniformite}
 \vartheta \size(\ensddfvplat) \leqslant \diam{E} \quad \forall E \in \ensprimalplat \cup \ensdualplat \cup \ensdiamantplat.
 \end{equation}
@@ -328,8 +322,7 @@ Commençons par la première inégalité sur le graphe $\graphe^\ensprimalplat$.
 \begin{equation} \label{eq:varieteA_W}
 \variete{A}_W \defeq \bigcup_{x_{\primalplat{K}} \in W} \primal{K}.
 \end{equation}
-De la même manière, à tout ensemble de sommets $W \subset \vertices(\graphe^\ensdualplat)$, on associe une sous-région de $\surflisse$ constituée de l'union des mailles duales courbes $\mailleduale{K}$ de $\ensdual$ dont le représentant $x_{\mailledualeplate{K}}$ appartient à $W$. Une telle construction est illustrée par la \Cref{fig:cheeger_bord_dual}. \\
-Notre stratégie pour obtenir une inégalité du type \Cref{eq:sous_objectif} consiste à établir deux autres inégalités. Nous allons montrer que pour tout $W \subset \vertices(\graphe^\ensprimalplat)$,
+De la même manière, à tout ensemble de sommets $W \subset \vertices(\graphe^\ensdualplat)$, on associe une sous-région de $\surflisse$ constituée de l'union des mailles duales courbes $\mailleduale{K}$ de $\ensdual$ dont le représentant $x_{\mailledualeplate{K}}$ appartient à $W$. Une telle construction est illustrée par la \Cref{fig:cheeger_bord_dual}. Notre stratégie pour obtenir une inégalité du type \ref{eq:sous_objectif} consiste à établir deux autres inégalités. Nous allons montrer que pour tout $W \subset \vertices(\graphe^\ensprimalplat)$,
 \begin{equation} \label{eq:inegalites_strategie}
 \min\{ \vol(W), \vol(\comp{W}) \} \lesssim \frac{1}{\size(\ensddfvplat)^2} \min\{ \mesure(\variete{A}_W), \mesure(\surflisse \setminus \variete{A}_W) \}
 \quad
@@ -337,15 +330,15 @@ Notre stratégie pour obtenir une inégalité du type \Cref{eq:sous_objectif} co
 \quad
 \abs{\partial W} \gtrsim \frac{1}{\size(\ensddfvplat)} \mesure(\partial \variete{A}_W).
 \end{equation}
-Elles permettront d'obtenir
+En notant $h(\surflisse)$ la constante de Cheeger de la surface $\surflisse$ (voir \Cref{sec:cheeger_constant}), elles permettront d'obtenir
 \[
 \frac{\abs{\partial W}}{\min\{ \vol(W), \vol(\comp{W}) \}} \gtrsim \size(\ensddfvplat) \, \frac{\mesure(\partial \variete{A}_W)}{\min\{ \mesure(\variete{A}_W), \mesure(\surflisse \setminus \variete{A}_W) \}} \geqslant \size(\ensddfvplat) \, h(\surflisse),
 \]
 ce qui, en prenant l'infimum sur $W$, donne
-\[
+\begin{equation} \label{eq:ineg_GM}
 h(\graphe^\ensprimalplat) \gtrsim \size(\ensddfvplat) \, h(\surflisse).
-\]
-Comme $\surflisse$ est une surface compacte connexe donnée, sa constante de Cheeger $h(\surflisse)$ est strictement positive (voir \Cref{sec:cheeger_constant}). Cette constante est \chevron{intrinsèque} à la géométrie de la surface $\surflisse$ et est donc en particulier indépendante du maillage $\ensddfvplat$. Nous obtenons alors une inégalité du type \Cref{eq:sous_objectif}. \\
+\end{equation}
+Comme $\surflisse$ est une surface compacte connexe donnée, sa constante de Cheeger $h(\surflisse)$ est strictement positive (voir \Cref{sec:cheeger_constant}). Cette constante est intrinsèque à la géométrie de la surface $\surflisse$ et est donc en particulier indépendante du maillage $\ensddfvplat$. Nous obtiendrons alors une inégalité du type \ref{eq:sous_objectif}. \\
 
 Commençons par établir la proposition suivante selon laquelle les éléments plats et leurs analogues courbes ont essentiellement \chevron{la même taille}. Elle repose sur l'observation suivante. La courbure de la surface $\surflisse$ étant minorée, pour $\size(\ensddfvplat)$ suffisamment petit, les mailles primales et duales plates sont dans un voisinage tubulaire de la surface qui est tel qu'on peut projeter de manière unique tout point du maillage sur la surface lisse (voir \Cref{sec:hypothesis_on_the_surface_and_projection}). 
 
@@ -368,16 +361,16 @@ En particulier, pour $\size(\ensddfvplat)$ suffisamment petit, on a $\frac{1}{2}
 \begin{lemme} \label{prop:mino_mesure_primal_K}
 Pour tout $\primalplat{K} \in \ensprimalplat$ et $\mailledualeplate{K} \in \ensdualplat$, on a
 \[
-\frac{\vartheta^2}{\reg(\ensddfvplat)^2} \size(\ensddfvplat)^2 \leqslant \mesure(\primalplat{K})
+\frac{\vartheta^2 \size(\ensddfvplat)^2}{\reg(\ensddfvplat)^2} \leqslant \mesure(\primalplat{K})
 \quad
 \text{et}
 \quad
-\frac{\vartheta^2}{\reg(\ensddfvplat)^2} \size(\ensddfvplat)^2 \leqslant \mesure(\mailledualeplate{K}),
+\frac{\vartheta^2 \size(\ensddfvplat)^2}{\reg(\ensddfvplat)^2} \leqslant \mesure(\mailledualeplate{K}),
 \]
 où $\vartheta$ est la constante de quasi-uniformité.
 \end{lemme}
 \begin{demo}
-Soit $\primalplat{K} \in \ensprimalplat$. D'après la définition \ref{eq:reg_ensddfvplat} de $\reg(\ensddfvplat)$, on a $\diam{\primalplat{K}} \leqslant \reg(\ensddfvplat) \sqrt{\mesure(\primalplat{K})}$ et d'après la condition de quasi-uniformité \ref{eq:quasi_uniformite} on a $\vartheta \size(\ensddfvplat) \leqslant \diam{\primalplat{K}}$. On en déduit le résultat et le même raisonnement s'applique à toute maille $\mailledualeplate{K} \in \ensdualplat$.
+Soit $\primalplat{K} \in \ensprimalplat$. D'après la définition \ref{eq:reg_ensddfvplat} de $\reg(\ensddfvplat)$, on a $\diam{\primalplat{K}} \leqslant \reg(\ensddfvplat) \sqrt{\mesure(\primalplat{K})}$ et d'après la condition de quasi-uniformité \ref{eq:quasi_uniformite} on a $\vartheta \size(\ensddfvplat) \leqslant \diam{\primalplat{K}}$. On en déduit le résultat et le même raisonnement s'applique à toute maille duale $\mailledualeplate{K} \in \ensdualplat$.
 \end{demo}
 Nous sommes maintenant en mesure de démontrer la proposition suivante fournissant la première inégalité de \ref{eq:inegalites_strategie}.
 \begin{prop} \label{prop:inegalites_strategie_un}
@@ -388,20 +381,16 @@ Pour tout $W \subset \vertices(\graphe^\ensprimalplat)$ et pour $\size(\ensddfvp
 où $\vartheta$ est la constante de quasi-uniformité.
 \end{prop}
 \begin{demo}
-Soient $W \subset \vertices(\graphe^\ensprimalplat)$ et $\variete{A}_W$, la sous-région de $\surflisse$ associée à $W$ et définie par \Cref{eq:varieteA_W}. Puisque les mailles courbes forment une partition de $\variete{A}_W$,
+Soient $W \subset \vertices(\graphe^\ensprimalplat)$ et $\variete{A}_W$, la sous-région de $\surflisse$ associée à $W$ et définie par \ref{eq:varieteA_W}. Puisque les mailles courbes forment une partition de $\variete{A}_W$, on a $\mesure(\variete{A}_W) = \sum_{x_{\primalplat{K}} \in W} \mesure(\primal{K})$. Le volume combinatoire de $W$ vaut quant à lui $\vol(W) = \sum\limits_{x_{\primalplat{K}} \in W} \degr(x_{\primalplat{K}})$. En appliquant \ref{eq:estimations_tailles_plat_vs_courbe_primal}, la \Cref{remarque:estimations_tailles_plat_vs_courbe}, le \Cref{prop:mino_mesure_primal_K} et le fait que $\degr(x_{\primalplat{K}}) \leqslant \mathcal{N} \leqslant \reg(\ensddfvplat)$, on a
 \[
-\mesure(\variete{A}_W) = \sum_{x_{\primalplat{K}} \in W} \mesure(\primal{K}).
+\degr(x_{\primalplat{K}}) \leqslant \displaystyle\frac{2 \reg(\ensddfvplat)^3}{\vartheta^2 \size(\ensddfvplat)^2} \mesure(\primal{K})
 \]
-Le volume combinatoire de $W$ vaut quant à lui $\vol(W) = \sum\limits_{x_{\primalplat{K}} \in W} \degr(x_{\primalplat{K}})$. En appliquant \ref{eq:estimations_tailles_plat_vs_courbe_primal}, la \Cref{remarque:estimations_tailles_plat_vs_courbe}, le \Cref{prop:mino_mesure_primal_K} et d'après la \Cref{remarque:NNe_degr}, on a $\degr(x_{\primalplat{K}}) \leqslant \displaystyle\frac{2 \reg(\ensddfvplat)^3}{\vartheta^2 \size(\ensddfvplat)^2} \mesure(\primal{K})$ ce qui donne en sommant, 
-\[
-\vol(W) \leqslant \frac{2 \reg(\ensddfvplat)^3}{\vartheta^2 \size(\ensddfvplat)^2} \mesure(\variete{A}_W).
-\]
-De même sur la complémentaire : $\vol(\comp{W}) \leqslant \displaystyle\frac{2 \reg(\ensddfvplat)^3}{\vartheta^2 \size(\ensddfvplat)^2} \mesure(\surflisse \setminus \variete{A}_W)$, et on en déduit le résultat.
+ce qui donne en sommant, $\vol(W) \leqslant \frac{2 \reg(\ensddfvplat)^3}{\vartheta^2 \size(\ensddfvplat)^2} \mesure(\variete{A}_W)$. De même sur le complémentaire : $\vol(\comp{W}) \leqslant \frac{2 \reg(\ensddfvplat)^3}{\vartheta^2 \size(\ensddfvplat)^2} \mesure(\surflisse \setminus \variete{A}_W)$, et on en déduit le résultat.
 \end{demo}
 
 \noindent Pour démontrer la deuxième inégalité de notre stratégie (\Cref{eq:inegalites_strategie}), nous aurons besoin du résultat suivant qui est l'analogue du \Cref{prop:estimations_tailles_plat_vs_courbe} pour les segments.
 \begin{lemme} \label{prop:mesure_sigmacourbe}
-Pour $\size(\ensddfvplat)$ suffisamment petit, il existe $C > 0$ telle que pour tout segment $\ell \subset \surfpoly$,
+Pour $\size(\ensddfvplat)$ suffisamment petit, il existe $C > 0$ indépendante de $\size(\ensddfvplat)$ telle que pour tout segment $\ell \subset \surfpoly$,
 \[
 \mesure(\projvariete \ell) \leqslant \big(1 + C \size(\ensddfvplat)^2\big) \mesure(\ell).
 \]
@@ -409,7 +398,7 @@ Pour $\size(\ensddfvplat)$ suffisamment petit, il existe $C > 0$ telle que pour 
 \begin{remarque} \label{remarque:size_ensddfvplat_suffisamment_petit}
 En particulier, pour $\size(\ensddfvplat)$ suffisamment petit, on a $\mesure(\projvariete \ell) \leqslant 2 \mesure(\ell)$.
 \end{remarque}
-La démonstration de \Cref{prop:mesure_sigmacourbe} est également donnée dans \Cref{chap:demo_estimations_geo}. Nous sommes maintenant en mesure de démontrer la proposition suivante fournissant la deuxième inégalité de \Cref{eq:inegalites_strategie}.
+La démonstration de \Cref{prop:mesure_sigmacourbe} est également donnée dans \Cref{chap:demo_estimations_geo}. Nous sommes maintenant en mesure de démontrer la proposition suivante fournissant la deuxième inégalité de \ref{eq:inegalites_strategie}.
 \begin{prop} \label{prop:inegalites_strategie_deux}
 Pour tout $W \subset \vertices(\graphe^\ensprimalplat)$ et pour $\size(\ensddfvplat)$ suffisamment petit, on a
 \[
@@ -427,14 +416,19 @@ Or d'après le \Cref{prop:mesure_sigmacourbe} et la \Cref{remarque:size_ensddfvp
 \leqslant 
 2 \size(\ensddfvplat) \abs{\partial W}$.
 \end{demo}
-Nous avons ainsi établi les deux inégalités \ref{eq:inegalites_strategie} énoncées dans les \Cref{prop:inegalites_strategie_un,prop:inegalites_strategie_deux}. Elles permettent d'obtenir l'inégalité suivante :
-\[
-h(\graphe^\ensprimalplat) \geqslant \frac{\vartheta^2}{4 \reg(\ensddfvplat)^3} \size(\ensddfvplat) \, h(\surflisse).
-\]
-Il reste encore à montrer la deuxième inégalité $h(\graphe^\ensdualplat) \geqslant c^\ensdualplat \size(\ensddfvplat)$ qu'on obtient par le même raisonnement. Les objets géométriques à considérer sont illustrés sur la \Cref{fig:cheeger_bord_dual}. Pour la démonstration de la \Cref{prop:inegalites_strategie_un}, on utilise \ref{eq:estimations_tailles_plat_vs_courbe_dual} au lieu de \ref{eq:estimations_tailles_plat_vs_courbe_primal}. Pour la \Cref{prop:inegalites_strategie_deux}, le découpage du bord de la sous-région encore notée $\variete{A}_W$ donne l'estimation $\abs{\partial W} \geqslant \frac{1}{4 \size(\ensddfvplat)} \mesure(\partial \variete{A}_W)$ puisque, comme pour le découpage en triangles d'une maille $\mailledualeplate{K}$ dans la démonstration du \Cref{lemme:minoration_degre}, le découpage de $\partial \variete{A}_W$ donne lieu a deux fois plus de segments à projeter que dans le cas du graphe $\graphe^\ensprimalplat$. On obtient alors l'inégalité du type \ref{eq:objectif} pour laquelle on a explicité la constante : 
+Nous avons ainsi établi les deux inégalités \ref{eq:inegalites_strategie} énoncées dans les \Cref{prop:inegalites_strategie_un,prop:inegalites_strategie_deux}. Elles permettent d'obtenir une inégalité du type \ref{eq:ineg_GM}. Il reste encore à montrer la deuxième inégalité $h(\graphe^\ensdualplat) \geqslant c^\ensdualplat \size(\ensddfvplat)$ qu'on obtient par le même raisonnement. Les objets géométriques à considérer sont illustrés sur la \Cref{fig:cheeger_bord_dual}. Pour la démonstration de la \Cref{prop:inegalites_strategie_un}, on utilise \ref{eq:estimations_tailles_plat_vs_courbe_dual} au lieu de \ref{eq:estimations_tailles_plat_vs_courbe_primal}. Pour la \Cref{prop:inegalites_strategie_deux}, le découpage du bord de la sous-région encore notée $\variete{A}_W$ donne l'estimation $\abs{\partial W} \geqslant \frac{1}{4 \size(\ensddfvplat)} \mesure(\partial \variete{A}_W)$ puisque, comme pour le découpage en triangles d'une maille $\mailledualeplate{K}$ dans la démonstration du \Cref{lemme:minoration_degre}, le découpage de $\partial \variete{A}_W$ donne lieu a deux fois plus de segments à projeter que dans le cas du graphe $\graphe^\ensprimalplat$. On obtient alors l'inégalité du type \ref{eq:objectif} pour laquelle on a explicité la constante : 
 \[
 h(\graphe^\ensddfvplat) \geqslant \frac{\vartheta^2 \, h(\surflisse)}{8 \reg(\ensddfvplat)^3} \size(\ensddfvplat).
 \]
+
+\noindent Finalement, nous pouvons énoncer l'inégalité de Poincaré \ddfv sur une surface fermée sans bord de $\R^3$.
+\begin{theo} \label{theo:main}
+    Soit $\surflisse$ une surface $\Cont^2$, compacte, connexe et sans bord de $\R^3$ et soit $\surfpoly$ une approximation polyédrique de $\surflisse$ au sens de la \Cref{sec:triangulations}. Soit $\ensddfvplat$ un maillage \ddfv de la surface polyédrique $\surfpoly$ tel que $\size(\ensddfvplat)$ est suffisamment petit, $\ensddfvplat$ est quasi-uniforme au sens de \ref{eq:quasi_uniformite} et $\reg(\ensddfvplat)$ est uniformément bornée en $\size(\ensddfvplat)$. Alors pour tout $u^\ensddfvplat \in \Rddfvmn$, on a
+    \begin{equation*}
+    \normeddfvT{u^\ensddfvplat} \leqslant \frac{16 \reg(\ensddfvplat)^5}{\vartheta^2 \, h(\surflisse)} \normeddfvD{\grad^\ensdiamantplat u^\ensddfvplat},
+    \end{equation*}
+    où $\vartheta$ est la constante de quasi-uniformité et $h(\surflisse)$ est la constante de Cheeger de la surface $\surflisse$. L'ensemble $\Rddfvmn$ défini par \ref{eq:moyenne_nulle} est l'ensemble des fonctions scalaires \ddfv à moyenne nulle. 
+\end{theo}
 
 \begin{figure}[H]
     \centering
@@ -442,18 +436,3 @@ h(\graphe^\ensddfvplat) \geqslant \frac{\vartheta^2 \, h(\surflisse)}{8 \reg(\en
     \caption{Un sous-ensemble $W \subset \vertices(\graphe^\ensdualplat)$ et la sous-région $\variete{A}_W \subset \surflisse$ associée}
     \label{fig:cheeger_bord_dual}
 \end{figure}
-
-\noindent Finalement, nous pouvons énoncer l'inégalité de Poincaré \ddfv sur une surface fermée sans bord de $\R^3$.
-\begin{theo} \label{theo:main}
-    Soit $\surflisse$ une surface $\Cont^2$, compacte, connexe et sans bord de $\R^3$ et soit $\surfpoly$ une approximation polyédrique de $\surflisse$. Soit $\ensddfvplat$ un maillage \ddfv de la surface polyédrique $\surfpoly$ tel que
-    \begin{itemize}
-        \item $\size(\ensddfvplat)$ est suffisamment petit;
-        \item $\ensddfvplat$ est quasi-uniforme au sens de \ref{eq:quasi_uniformite};
-        \item $\reg(\ensddfvplat)$ est uniformément bornée en $\size(\ensddfvplat)$.
-    \end{itemize}
-    Alors pour tout $u^\ensddfvplat \in \Rddfvmn$, on a
-    \begin{equation*}
-    \normeddfvT{u^\ensddfvplat} \leqslant \frac{16 \reg(\ensddfvplat)^5}{\vartheta^2 \, h(\surflisse)} \normeddfvD{\grad^\ensdiamantplat u^\ensddfvplat},
-    \end{equation*}
-    où $\vartheta$ est la constante de quasi-uniformité et $h(\surflisse)$ est la constante de Cheeger de la surface $\surflisse$. L'ensemble $\Rddfvmn$ défini par \Cref{eq:moyenne_nulle} est l'ensemble des fonctions scalaires \ddfv à moyenne nulle. 
-\end{theo}

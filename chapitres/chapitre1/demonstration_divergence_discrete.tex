@@ -1,0 +1,104 @@
+% Démonstration de la formule locale de la divergence discrète.
+% Ce fichier peut être inclus à la place de l'environnement `demo` vide.
+
+Soit $u^\ensddfvplat \in \R^\ensddfvplat$. Par définition de la
+divergence discrète comme opposé de l'adjoint du gradient,
+\begin{equation}\label{eq:preuve_div_adjonction}
+    \prodscalddfv{u^\ensddfvplat}{\div^\ensddfvplat\xi^\ensdiamantplat}
+    =-
+    \prodscalD{\grad^\ensdiamantplat u^\ensddfvplat}{\xi^\ensdiamantplat}.
+\end{equation}
+Développons le membre de droite diamant par diamant. Pour
+$\diamantplat{D}_{\sigma,\dual{\sigma}}$, la formule du gradient donne
+\[
+\grad^{\diamantplat{D}}u^\ensddfvplat
+=\frac{1}{\sin\angle{\diamantplat{D}}}
+\left(
+ \frac{u_{\primalplat{L}}-u_{\primalplat{K}}}{\mesure(\dual{\sigma})}
+ \vect{\nu}_{\sigma\primalplat{K}}
+ +
+ \frac{u_{\mailledualeplate{L}}-u_{\mailledualeplate{K}}}{\mesure(\sigma)}
+ \vect{\nu}_{\dual{\sigma}\mailledualeplate{K}}
+\right).
+\]
+Or
+\[
+\mesure(\diamantplat{D})
+=\frac12\mesure(\sigma)\mesure(\dual{\sigma})
+ \sin\angle{\diamantplat{D}}.
+\]
+Par conséquent,
+\begin{align*}
+-\prodscalD{\grad^\ensdiamantplat u^\ensddfvplat}{\xi^\ensdiamantplat}
+={}&-\frac12\sum_{\diamantplat{D}_{\sigma,\dual{\sigma}}\in\ensdiamantplat}
+ \mesure(\sigma)
+ (u_{\primalplat{L}}-u_{\primalplat{K}})
+ \xi^{\diamantplat{D}}\cdot\vect{\nu}_{\sigma\primalplat{K}}
+\\
+&-\frac12\sum_{\diamantplat{D}_{\sigma,\dual{\sigma}}\in\ensdiamantplat}
+ \mesure(\dual{\sigma})
+ (u_{\mailledualeplate{L}}-u_{\mailledualeplate{K}})
+ \xi^{\diamantplat{D}}\cdot
+ \vect{\nu}_{\dual{\sigma}\mailledualeplate{K}}.
+\end{align*}
+
+Regroupons maintenant les termes qui multiplient une même valeur
+$u_{\primalplat{K}}$. Sur une arête $\sigma$ de $\primalplat{K}$, la
+normale $\vect{\nu}_{\sigma\primalplat{K}}$ est la normale extérieure à
+$\primalplat{K}$. Si $\primalplat{K}$ est désignée comme la seconde
+maille du diamant, l'inversion simultanée de la différence des valeurs
+et de la normale donne le même terme. Le coefficient de
+$u_{\primalplat{K}}$ dans le membre de droite de
+\eqref{eq:preuve_div_adjonction} est donc
+\[
+\frac12
+\sum_{\diamantplat{D}_{\sigma,\dual{\sigma}}
+      \in\ensdiamantplat_{\primalplat{K}}}
+\mesure(\sigma)\,
+\xi^{\diamantplat{D}}\cdot\vect{\nu}_{\sigma\primalplat{K}}.
+\]
+De même, le coefficient de $u_{\mailledualeplate{K}}$ vaut
+\[
+\frac12
+\sum_{\diamantplat{D}_{\sigma,\dual{\sigma}}
+      \in\ensdiamantplat_{\mailledualeplate{K}}}
+\mesure(\dual{\sigma})\,
+\xi^{\diamantplat{D}}\cdot
+\vect{\nu}_{\dual{\sigma}\mailledualeplate{K}}.
+\]
+
+D'autre part, puisque
+$\poids{\primalplat{K}}=\mesure(\primalplat{K})/2$ et
+$\poids{\mailledualeplate{K}}=\mesure(\mailledualeplate{K})/2$, le
+membre de gauche de \eqref{eq:preuve_div_adjonction} est
+\begin{align*}
+&\frac12\sum_{\primalplat{K}\in\ensprimalplat}
+ \mesure(\primalplat{K})u_{\primalplat{K}}
+ \div^{\primalplat{K}}\xi^\ensdiamantplat
+\\
+&\qquad+
+\frac12\sum_{\mailledualeplate{K}\in\ensdualplat}
+ \mesure(\mailledualeplate{K})u_{\mailledualeplate{K}}
+ \div^{\mailledualeplate{K}}\xi^\ensdiamantplat.
+\end{align*}
+L'identité étant vraie pour tout $u^\ensddfvplat$, l'identification des
+coefficients de ses composantes fournit
+\[
+\div^{\primalplat{K}}\xi^\ensdiamantplat
+=\frac{1}{\mesure(\primalplat{K})}
+ \sum_{\diamantplat{D}_{\sigma,\dual{\sigma}}
+       \in\ensdiamantplat_{\primalplat{K}}}
+ \mesure(\sigma)\,
+ \xi^{\diamantplat{D}}\cdot\vect{\nu}_{\sigma\primalplat{K}},
+\]
+et
+\[
+\div^{\mailledualeplate{K}}\xi^\ensdiamantplat
+=\frac{1}{\mesure(\mailledualeplate{K})}
+ \sum_{\diamantplat{D}_{\sigma,\dual{\sigma}}
+       \in\ensdiamantplat_{\mailledualeplate{K}}}
+ \mesure(\dual{\sigma})\,
+ \xi^{\diamantplat{D}}\cdot
+ \vect{\nu}_{\dual{\sigma}\mailledualeplate{K}},
+\]
+ce qui est précisément le résultat annoncé.

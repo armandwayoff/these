@@ -10,11 +10,11 @@ Cette annexe est consacrée aux démonstrations des résultats d'estimations gé
 \end{figure}
 
 \begin{lemme}[{\cite[Lemma 4.1]{dziuk_finite_2013}}] \label{lemme:projection_dziuk}
-Assume $\surflisse$ and $\surfpoly$ are as described in \Cref{sec:triangulations}. The map $\fonctionens[\projvariete]{\surfpoly}{\surflisse}$ is bijective. For the oriented distance function to $\surflisse$ defined by \ref{eq:def_oriented_distance}, we have the estimate
+Assume $\surflisse$ and $\surfpoly$ are as described in \Cref{sec:triangulations}. The map $\fonctionens[\projvariete]{\surfpoly}{\surflisse}$ is bijective (see \Cref{lemme:fermi_coordinates}). For the oriented distance function to $\surflisse$ defined by \ref{eq:def_oriented_distance}, we have the estimate
 \[
 \norme{d}_{\L^\infty(\surfpoly)} \leqslant c \size(\ensprimalplat)^2.
 \]
-For subscript notation, we denote $h = \size(\ensprimalplat)$. The quotient, $\delta_h$, between the smooth and discrete surface measures $\d A$ and $\d A_h$, defined by $\delta_h \d A_h = \d A$, satisfies
+For subscript notation, we denote $h = \size(\ensprimalplat)$. The quotient $\delta_h$ between the smooth and discrete surface measures $\d A$ and $\d A_h$, defined by $\delta_h \d A_h = \d A$, satisfies
 \[
 \norme{1 - \delta_h}_{\L^\infty(\surfpoly)} \leqslant c \size(\ensprimalplat)^2.
 \]
@@ -25,9 +25,7 @@ D'après la définition \ref{eq:size_ensddfvplat} de $\size(\ensddfvplat)$, on a
 \end{remarque}
 
 \begin{demo}[\Cref{prop:estimations_tailles_plat_vs_courbe}]
-On suppose $\size(\ensddfvplat)$ suffisamment petit de sorte que la surface polyédrique $\surfpoly$ soit dans le voisinage tubulaire $U_\delta$ défini dans le \Cref{lemme:fermi_coordinates}. On peut alors appliquer le \Cref{lemme:projection_dziuk} et la \Cref{remarque:sizeM_vs_sizeT} d'après lesquels le quotient \(\delta_h\) entre les
-mesures surfaciques lisse et polyédrique, défini par $\delta_h \d A_h = \d A$, vérifie $\norme{1 - \delta_h}_{\L^\infty(\surfpoly)} \leqslant c \size(\ensddfvplat)^2$,
-où $c > 0$ est indépendante de $\size(\ensddfvplat)$. Ainsi, $\delta_h \geqslant 1 - c \size(\ensddfvplat)^2$ presque partout sur $\surfpoly$. Soit $E \subset \surfpoly$ une partie mesurable. Puisque la projection $\fonctionens[\projvariete]{\surfpoly}{\surflisse}$ est bijective, la formule de changement de variables donne
+On suppose $\size(\ensddfvplat)$ suffisamment petit de sorte que la surface polyédrique $\surfpoly$ soit dans le voisinage tubulaire $U_\delta$ défini dans le \Cref{lemme:fermi_coordinates}. On peut alors appliquer le \Cref{lemme:projection_dziuk} et la \Cref{remarque:sizeM_vs_sizeT} d'après lesquels le quotient $\delta_h$ entre les mesures surfaciques lisse et polyédrique vérifie $\norme{1 - \delta_h}_{\L^\infty(\surfpoly)} \leqslant c \size(\ensddfvplat)^2$, où $c > 0$ est indépendante de $\size(\ensddfvplat)$. Ainsi, $\delta_h \geqslant 1 - c \size(\ensddfvplat)^2$ presque partout sur $\surfpoly$. Soit $E \subset \surfpoly$ une partie mesurable. Puisque la projection $\fonctionens[\projvariete]{\surfpoly}{\surflisse}$ est bijective, la formule de changement de variables donne
 \[
 \mesure(\projvariete E)
 =

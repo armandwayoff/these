@@ -1,0 +1,204 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\begin{tikzpicture}[
+  ddfv,
+  face/.style={
+    draw=myblue,
+    line join=round
+  },
+]
+
+% Longueur d'une arête
+\def\arete{16mm}
+
+% ------------------------------------------------------------
+% \Triangle{numéro}{contenu côté 1}{contenu côté 2}{contenu côté 3}
+%
+% Dans le repère local, les sommets sont :
+%   A_i = (0,0),
+%   B_i = (\arete,0),
+%   C_i = (60:\arete).
+%
+% Le centre de gravité est enregistré sous le nom G<i>.
+% ------------------------------------------------------------
+\newcommand{\Triangle}[4]{%
+  % Sommets de la face
+  \coordinate (A#1) at (0,0);
+  \coordinate (B#1) at (\arete,0);
+  \coordinate (C#1) at (60:\arete);
+
+  % Centre de gravité
+  \coordinate (G#1) at
+    (barycentric cs:A#1=1,B#1=1,C#1=1);
+
+  \coordinate (M#1) at ($(A#1)!0.5!(B#1)$);
+  \coordinate (MB#1) at ($(A#1)!0.5!(C#1)$);
+  \coordinate (MT#1) at ($(B#1)!0.5!(C#1)$);
+
+  % Premier côté : C_i -- B_i
+  \begin{scope}[
+    shift={(60:\arete)},
+    rotate=-60
+  ]
+    #2
+  \end{scope}
+
+  % Deuxième côté : B_i -- A_i
+  \begin{scope}[
+    xshift=\arete,
+    rotate=180
+  ]
+    #3
+  \end{scope}
+
+  % Troisième côté : A_i -- C_i
+  \begin{scope}[
+    rotate=60
+  ]
+    #4
+  \end{scope}
+}
+
+% Une arête libre ne porte aucun triangle supplémentaire.
+\newcommand{\Libre}{}
+
+% ------------------------------------------------------------
+% Patron de l'icosaèdre.
+%
+% La structure d'emboîtement est celle de
+% \tikzfoldingicosahedron dans tikzlibraryfolding.code.tex.
+% ------------------------------------------------------------
+
+\Triangle{1}
+{
+    \Triangle{2}
+    {
+        \Triangle{3}
+        {\Libre}
+        {\Libre}
+        {\Libre}
+    }
+    {\Libre}
+    {
+        \Triangle{4}
+        {
+            \Triangle{5}
+            {
+                \Triangle{6}
+                {\Libre}
+                {\Libre}
+                {
+                    \Triangle{7}
+                    {\Libre}
+                    {\Libre}
+                    {
+                        \Triangle{8}
+                        {
+                            \Triangle{9}
+                            {
+                                \Triangle{11}
+                                {
+                                    \Triangle{12}
+                                    {\Libre}
+                                    {\Libre}
+                                    {
+                                        \Triangle{13}
+                                        {\Libre}
+                                        {\Libre}
+                                        {
+                                            \Triangle{14}
+                                            {\Libre}
+                                            {\Libre}
+                                            {
+                                                \Triangle{15}
+                                                {\Libre}
+                                                {\Libre}
+                                                {\Libre}
+                                            }
+                                        }
+                                    }
+                                }
+                                {\Libre}
+                                {\Libre}
+                            }
+                            {\Libre}
+                            {\Libre}  
+                        }
+                        {\Libre}
+                        {
+                            \Triangle{10}
+                            {
+                                \Triangle{16}
+                                {
+                                    \Triangle{17}
+                                    {\Libre}
+                                    {\Libre}
+                                    {
+                                        \Triangle{18}
+                                        {\Libre}
+                                        {\Libre}
+                                        {
+                                            \Triangle{19}
+                                            {\Libre}
+                                            {\Libre}
+                                            {
+                                                \Triangle{20}
+                                                {\Libre}
+                                                {\Libre}
+                                                {\Libre}
+                                            }
+                                        }
+                                    }
+                                }
+                                {\Libre}
+                                {\Libre}
+                            }
+                            {\Libre}
+                            {\Libre}
+                        }
+                    }
+                }
+            }
+            {\Libre}
+            {\Libre}
+        }
+        {\Libre}
+        {\Libre}
+    }
+    }
+{\Libre}
+{\Libre}
+
+\fill[mylightred] (G3) -- (G2) -- (G4) -- (G5) -- (G6) -- (MT6) -- (B6) -- (MB3) -- cycle;
+
+\foreach \i in {1,2,...,20}{
+    \draw[myred] (G\i) -- (M\i);
+    \draw[myred] (G\i) -- (MB\i);
+    \draw[myred] (G\i) -- (MT\i);
+
+    \draw[black,semithick] (G\i) -- (A\i);
+    \draw[black,semithick] (G\i) -- (B\i);
+    \draw[black,semithick] (G\i) -- (C\i);
+
+    % Triangle
+    \draw[face]
+      (A\i) -- (B\i) -- (C\i) -- cycle;
+
+    \node[ptsq={myblue}{}] at (A\i) {};
+    \node[ptsq={myblue}{}] at (B\i) {};
+    \node[ptsq={myblue}{}] at (C\i) {};
+
+    \node[ptcl={myred}{}] at (G\i) {};
+
+    \node[ptcl={black}{}] at (M\i) {};
+    \node[ptcl={black}{}] at (MB\i) {};
+    \node[ptcl={black}{}] at (MT\i) {};
+}
+
+\node[myblue, below right] at (B6) {\contour{white}{$x_{\mailleduale{K}}$}};
+\node[below] at (MT6) {$m_\sigma$};
+\node[myred, above=3pt] at (G6) {\contour{white}{$x_{\primalplat{K}}$}};
+
+% \node[myblue, below] at (B9) {$x_{\mailleduale{K}}$};
+
+\end{tikzpicture}

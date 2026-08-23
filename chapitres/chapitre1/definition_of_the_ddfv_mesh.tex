@@ -1,113 +1,41 @@
-\section{Construction of the \ddfv meshes} \label{sec:construction_of_the_ddfv_meshes}
 
-\areprendre{
-\begin{envide}[Construction maillages]
-\begin{enumerate}
-    \item Soit une surface $\surflisse$
-    \item On place des points sur la surface $\surflisse$
-    \item On en déduit un complexe sur la variété
-    \item Ce complexe définit le maillage primal, courbe et polyédrique
-    \item On calcule les barycentres des mailles primales plates
-    \item On projette ces barycentres sur la surface $\surflisse$
-    \item Construction des mailles duales (barycentriques):
-    \item Projection du milieu des arêtes primales sur $\surflisse$
-    \item Arcs passant par les milieux projetés
-    \item Les mailles duales sont approchées par $2m$ facettes
-\end{enumerate}    
-\end{envide}
-}
+Nous allons définir des maillages \ddfv d'une surface lisse $\surflisse$ et de son approximation polyédrique $\surfpoly$; le \defini{maillage primal plat} $\ensprimalplat$, le \defini{maillage primal courbe} $\ensprimal$, le \defini{maillage dual plat} $\ensdualplat$, le \defini{maillage dual courbe} $\ensdual$, l'\defini{ensemble des diamants plats} $\ensdiamantplat$ et le \defini{maillage diamant courbe} $\ensdiamant$. Les maillages $\ensprimal$ et $\ensdual$ de la surface $\surflisse$ seront la projection sur $\surflisse$ des maillages $\ensprimalplat$ et $\ensdualplat$ de la surface $\surfpoly$ respectivement. Le maillage $\ensdiamant$ sera également un maillage de la surface $\surflisse$. 
 
-\subsection{Maillages primaux}
-
-\begin{figure}[p]
-    \centering
-    \input{figures/ddfv_3d.tex}
-    \caption{Triangulated surface from the point of view of the differential geometry}
-    \label{fig:ddfv_3d}
-\end{figure}
-
-Dans la \Cref{sec:hypothesis_on_the_surface_and_projection}, nous avons introduit plusieurs objets géométriques:
-\begin{itemize}
-    \item la surface lisse $\surflisse$;
-    \item le projecteur $\fonctionens[\projvariete]{\surfpoly}{\surflisse}$;
-    \item la surface polyédrique $\surfpoly$;
-    \item un maillage $\ensprimalplat$ nommé \defini{maillage primal plat}, dont les mailles sont notées $\primalplat{K}$, $\primalplat{L}$ et les arêtes sont notées $\sigma$. 
-    \item un maillage $\ensprimal$ nommé \defini{maillage primal courbe}, dont les mailles sont $\primal{K} \defeq \projvariete \primalplat{K}$ et les arêtes sont $\sigmacourbe \defeq \projvariete \sigma$.
-\end{itemize}
-
-\begin{equation} \label{eq:surfpoly}
-\surfpoly = \bigcup_{\primalplat{K} \in \ensprimalplat} \primalplat{K}, 
-\end{equation}
-\begin{equation} \label{eq:primalK}
-\forall \primalplat{K} \subset \surfpoly, \quad \exists! \primal{K} \defeq \projvariete \primalplat{K} \subset \surflisse.
-\end{equation}
-The \defini{primal mesh} $\ensprimal$ is the set of disjoint polygonal control volumes $\primal{K}$:
-\begin{equation} \label{eq:ensprimal}
-    \ensprimal \defeq \ens[\big]{\primal{K} = \projvariete \primalplat{K} \tq \primalplat{K} \in \ensprimalplat}
-\end{equation}
-\[
-\surflisse = \bigcup_{\primal{K} \in \ensprimal} \primal{K}.
-\]
-We create a representative point $x_{\primalplat{K}}$  of each triangle $\primalplat{K} \in \ensprimalplat$ (\ref{fig:ddfv_3d}, bottom left). The point $x_{\primalplat{K}}$ is taken at the barycenter of triangle $\primalplat{K}$. The denote 
-\begin{equation} \label{eq:xprimalK}
-x_{\primal{K}} \defeq \projvariete x_{\primalplat{K}}
-\end{equation}
-its projection onto the smooth surface $\surflisse$. 
-
-We call 
-\begin{equation} \label{eq:enssomdualplat}
-    \enssomdualplat \defeq 
-    \ens[\big]{x_{\primalplat{K}} \tq \primalplat{K} \in \ensprimalplat}
-\end{equation}
-this family of points and let $\enssomdual$ denote the set of vertices of the \areprendre{mesh $\ensdual$}:
-\begin{equation} \label{eq:enssomdual}
-    \enssomdual \defeq \ens[\big]{x_{\primal{K}} \tq \primal{K} \in \ensprimal}.
-\end{equation}
-For all adjacent control volumes $\primalplat{K}$ and $\primalplat{L}$, we assume that $\partial \primalplat{K} \cap \partial \primalplat{L}$ is a segment that we call \defini{an edge of the mesh} $\ensprimalplat$ and that we denote by 
-\begin{equation} \label{eq:sigma}
-\sigma = \sigma_{\primalplat{K},\primalplat{L}} \defeq \arete{\primalplat{K}}{\primalplat{L}}. 
-\end{equation}
-Let $\ensareteprimplat$ be the set of such edges. 
-
-\begin{equation} \label{eq:enssomprim_plat}
-\enssomprim = \ens[\big]{x_{\mailleduale{K}} \tq \mailleduale{K} \in \ensdual}
-=
-\enssomprimplat = \ens[\big]{x_{\mailledualeplate{K}} \tq \mailledualeplate{K} \in \ensdualplat}
-\end{equation}
-\[
-x_{\mailledualeplate{K}} = x_{\mailleduale{K}}
-\]
-
-
-\begin{equation} \label{eq:sigmacourbe}
-    \forall \sigma \in \ensareteprimplat, \quad \sigmacourbe \defeq \projvariete \sigma
-\end{equation}
-
-\areprendre{citation à ajouter}
-
-For all bounded set $E \subset \R^d$, set the \defini{diameter}
+Pour toute partie $E \subset \R^3$, on définit son \defini{diamètre} par
 \begin{equation} \label{eq:diamE}
 \diam{E} \defeq \sup\limits_{x,y \in E} \abs{x - y}.
 \end{equation}
+On note $\mesure(E)$ la \defini{mesure} d'une partie $E$ dans sa dimension naturelle, c'est-à-dire sa mesure $3$-dimensionnelle si $E$ est une union de triangles et la mesure $2$-dimensionnelle si $E$ est une interface.
 
-We denote by $\mesure(E)$ the measure of an object $E$ in its natural dimension (i.e. the $d$-dimensional measure, if $E$ is a control volume, a dual control volume or a diamond; and the $(d - 1)$-dimensional measure, if $E$ is an interface or a part of an interface). 
+\subsection{Maillages primaux} \label{sec:maillages_primaux}
 
-\noindent For any control volume $\primal{K} \in \ensprimal$, we define
-\areprendre{
+Dans la \Cref{sec:triangulations}, nous avons introduit un maillage $\ensprimalplat$ de la surface polyédrique $\surfpoly$ (voir \ref{eq:surfpoly}). Il est nommé \defini{maillage primal plat} et ses mailles sont notées $\primalplat{K}$. Le projecteur $\fonctionens[\projvariete]{\surfpoly}{\surflisse}$ introduit dans le \Cref{lemme:fermi_coordinates} permet de construire un maillage de la surface lisse $\surflisse$ à partir de $\ensprimalplat$. On le note $\ensprimal$ et il est nommé \defini{maillage primal courbe}. Ses mailles sont notées $\primal{K} \defeq \projvariete \primalplat{K}$ :
+\begin{equation} \label{eq:ensprimal}
+    \ensprimal \defeq \ens[\big]{\primal{K} = \projvariete \primalplat{K} \tq \primalplat{K} \in \ensprimalplat}.
+\end{equation}
+Comme expliqué dans la \Cref{sec:triangulations}, pour tout triangle $\primalplat{K} \subset \surfpoly$ il existe un unique triangle courbe noté $\primal{K} \subset \surflisse$ (voir \Cref{fig:projection_3d_courbe}). La \Cref{fig:sphere_primal_dual_flat_and_curved} illustre pour la sphère un exemple de maillages $\ensprimalplat$ et $\ensprimal$ associés. On associe à chacune des mailles primales $\primalplat{K}$ un point $x_{\primalplat{K}}$ placé en son barycentre (voir \Cref{fig:decoupage_dual_plat_def}). On note $\enssomdualplat$ l'ensemble de ces points :
+\begin{equation} \label{eq:enssomdualplat}
+    \enssomdualplat \defeq 
+    \ens[\big]{x_{\primalplat{K}} \tq \primalplat{K} \in \ensprimalplat}.
+\end{equation}
+De plus, on note
+\begin{equation} \label{eq:xprimalK}
+x_{\primal{K}} \defeq \projvariete x_{\primalplat{K}}
+\end{equation}
+sa projection sur la surface lisse $\surflisse$ (voir \Cref{fig:decoupage_dual_plat_def}). Pour toutes les mailles primales plates voisines $\primalplat{K}$ et $\primalplat{L}$, on suppose que $\partial \primalplat{K} \cap \partial \primalplat{L}$ est un segment que l'on appelle \defini{arête primale} du maillage $\ensprimalplat$, notée 
+\begin{equation} \label{eq:sigma}
+\sigma_{\primalplat{K},\primalplat{L}} \defeq \arete{\primalplat{K}}{\primalplat{L}}. 
+\end{equation}
+On utilisera la notation $\sigma$ lorsqu'il n'y a pas d'ambiguïté sur les mailles (voir la \Cref{fig:decoupage_dual_plat_def} pour une illustration). D'après cette définition, une arête peut intersecter de façon non triviale plusieurs autres mailles. On note $\ensareteprimplat$ l'ensemble de ces arêtes. On ne considère pas ici d'hypothèse de type \emph{admissibilité du maillage}. Autrement dit, il n'est pas nécessaire que soit vérifiée une condition d'orthogonalité entre les arêtes et les droites joignant les centres des mailles. Pour tout $\primalplat{K} \in \ensprimalplat$ et $\primal{K} \in \ensprimal$, on note
 \begin{itemize}
-    \item $\mesure(\primal{K})$, the measure of $\primal{K}$;
-    \item $\ensareteprim_{\primal{K}}$, the set of edges of $\primal{K}$;
-    \item $\ensdiamant_{\primal{K}} = \ens[\big]{\diamant{D}_{\sigma, \dual{\sigma}} \in \ensdiamant \tq \sigma \in \ensareteprim_{\primal{K}}}$;
-    \item $\vect{\nu}_{\primal{K}}$, the outward unit normal vector to $\partial \primal{K}$;
-    \item $\diam{\primal{K}}$, the diameter of $\primal{K}$.
+    \item $\mesure(\primalplat{K})$ la mesure de la maille plate $\primalplat{K}$ et $\mesure(\primal{K})$ la mesure de la maille courbe $\primal{K}$;
+    \item $\diam{\primalplat{K}}$ (resp. $\diam{\primal{K}}$) le diamètre de $\primalplat{K}$ (resp. $\primal{K}$);
+    \item $\ensareteprimplat_{\primalplat{K}}$ (resp. $\ensareteprim_{\primal{K}}$) l'ensemble des arêtes de $\primalplat{K}$ (resp. $\primal{K}$).
 \end{itemize}
-}
 
-\areprendre{
-It can happen that the point $x_{\primal{K}}$ does not belong to $\primal{K}$ (if $\primal{K}$ is a triangle and $x_{\primal{K}}$ its circumcenter for instance). As usual in that case (see \cite{eymard_finite_2000}) it is necessary to assume that $\vect{\nu}_{\primal{K}}$ points from $x_{\primal{K}}$ towards $x_{\primal{L}}$, that is $\vect{\nu}_{\primal{K}} = \vect{\nu}$ with the notations above. Similarly we assume that $\vect{\nu}_{\mailleduale{K}} = \dual{\vect{\nu}}$. In the case of a triangular mesh $\ensprimal$ in which $x_{\primal{K}}$ is the circumcenter of $\primal{K}$, this assumption is known as the Delaunay condition. 
-}
+\subsection{Maillages duaux} \label{sec:maillages_duaux}
 
-\subsection{Dual mesh (Maillage dual barycentrique)}
+À partir de ce maillage primal plat $\ensprimalplat$, on forme le maillage dual associé. Une maille duale \chevron{plate} $\mailledualeplate{K}$ est associée à un sommet $x_{\mailledualeplate{K}}$ du maillage primal. Les mailles duales plates (ici dites \defini{barycentriques}) sont obtenues en joignant (dans le sens trigonométrique par exemple) les centres des mailles primales qui ont pour sommet $x_{\mailledualeplate{K}}$ et les milieux des arêtes qui ont pour sommet $x_{\mailledualeplate{K}}$ notés $x_\sigma$ (voir \Cref{fig:decoupage_dual_plat_def}). Avec ce choix barycentrique, les mailles duales sont d'intérieurs disjoints grâce au fait que toute maille $\primalplat{K}$ est étoilée par rapport à son centre $x_{\primalplat{K}}$. L'ensemble des mailles duales plates est noté $\ensdualplat$ et est nommé \defini{maillage dual plat}. La notation $\mailledualeplate{K}$ désigne une maille duale plate quelconque et n'a pas de lien avec $\primalplat{K}$ qui désigne une maille primale plate quelconque.
 
 \begin{figure}[H]
     \centering
@@ -116,127 +44,31 @@ It can happen that the point $x_{\primal{K}}$ does not belong to $\primal{K}$ (i
     \label{fig:decoupage_dual_plat_def}
 \end{figure}
 
-\areprendre{
-The set $\ensdualplat$ is a family of \chevron{dual} control volumes defined as follows. To any point $x_{\mailleduale{K}} \in \enssomdual$, we associate the \chevron{polygon} $\mailledualeplate{K} \in \ensdualplat$ whose vertices are 
-\begin{equation} \label{eq:mailledualeplate}
-\ens[\big]{x_{\primal{K}} \in \enssomprim \tq x_{\mailleduale{K}} \in \overline{\primal{K}}, \primal{K} \in \ensprimal}
+\begin{envide}[Hypothèse]
+On suppose que toute maille duale plate $\mailledualeplate{K} \in \ensdualplat$ est étoilée par rapport à $x_{\mailledualeplate{K}}$. 
+\end{envide}
+
+\begin{remarque}
+Nous avons préféré une construction barycentrique à une construction dite \emph{directe} (ne passant pas par les milieux des arêtes) afin que les ensembles $\ensprimalplat$ et $\ensdualplat$ constituent des pavages d'une même surface (voir la \Cref{fig:sphere_primal_dual}).
+\end{remarque}
+De la même manière que pour les maillages primaux, le projecteur $\fonctionens[\projvariete]{\surfpoly}{\surflisse}$ introduit dans le \Cref{lemme:fermi_coordinates} permet de construire un maillage de la surface lisse $\surflisse$ à partir de $\ensdualplat$. On le note $\ensdual$ et il est nommé \defini{maillage dual courbe}. Ses mailles sont notées $\mailleduale{K} \defeq \projvariete \mailledualeplate{K}$ :
+\begin{equation} \label{eq:ensdual}
+    \ensdual \defeq \ens[\big]{\mailleduale{K} = \projvariete \mailledualeplate{K} \tq \mailledualeplate{K} \in \ensdualplat}.
 \end{equation}
-sorted with respect to the clockwise order of the corresponding primal control volumes.
-
-The corresponding notations $\dual{\sigma} = \arete{\mailleduale{K}}{\mailleduale{L}}$ and $\ensaretedual$ refer to the dual mesh $\ensdual$.
-
-The finite volume mesh is constructed by the barycentric subdivision of $\surflisse$. The finite volume (or covolume) {\color{red}$V_i$} $\mailleduale{K} \in \ensdual$ around a vertex {\color{red}$X_i$} $x_{\mailleduale{K}}$ is a region bounded by the piecewise linear curve joining the barycenters of the neighbouring triangles and the midpoints of the edges leading to the neighbouring vertices $X_{i,p}$, $p \in \intervalleentier{1}{m}$ where $m$ is the number of neighbours.
-}
-
-
-
-In the same way, for a dual control volume $\mailleduale{K} \in \ensdual$, we set
-\begin{itemize}
-    \item $\mesure(\mailleduale{K})$, the measure of $\mailleduale{K}$;
-    \item $\ensareteprim_{\mailleduale{K}}$, the set of edges of $\mailleduale{K}$;
-    \item $\ensdiamant_{\mailleduale{K}} = \ens[\big]{\diamant{D}_{\sigma, \dual{\sigma}} \in \ensdiamant \tq \dual{\sigma} \in \ensareteprim_{\mailleduale{K}}}$;
-    \item $\vect{\nu}_{\mailleduale{K}}$, the outward unit normal vector to $\partial \mailleduale{K}$;
-    \item $\diam{\mailleduale{K}}$, the diameter of $\mailleduale{K}$. 
-\end{itemize}
-
-\subsection{Diamond mesh} \label{subsec:diamond_set}
-
-Next, we construct a flat diamond set as follows. We consider a couple $(\sigma, \dual{\sigma}) \in \ensareteprimplat \times \ensaretedualplat$ such that $\sigma = \arete{\primalplat{K}}{\primalplat{L}}$ and $\dual{\sigma} = \segment{x_{\primal{K}}}{x_{\primal{L}}}$. We denote by $x_{\mailleduale{K}}$ and $x_{\mailleduale{L}}$ the endpoints of the edge $\sigma$. We consider the plane $P_{\sigma, \dual{\sigma}}$ passing through the midpoints of the segments $\segment{x_{\primal{K}}}{x_{\mailleduale{K}}}$, $\segment{x_{\primal{K}}}{x_{\mailleduale{L}}}$, $\segment{x_{\primal{L}}}{x_{\mailleduale{L}}}$ and $\segment{x_{\primal{L}}}{x_{\mailleduale{K}}}$. This choice makes the construction of the plane easier but is arbitrary. The main thing is that the plan $P_{\sigma, \dual{\sigma}}$ is the one defined by the segments $\sigma$ and $\dual{\sigma}$. We then define the quadrilateral diamond cell $\diamantplat{D}_{\sigma, \dual{\sigma}}$ whose vertices are the projections of the points $x_{\primal{K}}$, $x_{\primal{L}}$, $x_{\mailleduale{K}}$ and $x_{\mailleduale{L}}$ onto the plane $P_{\sigma, \dual{\sigma}}$ in the direction of the vector $\sigma \times \dual{\sigma}$ (\Cref{fig:ddfv_3d_diamant}). By abuse of notation, we still denote by $\sigma$ and $\dual{\sigma}$ the diagonals of the flat diamond cell $\diamantplat{D}_{\sigma, \dual{\sigma}}$. A flat diamond is also illustrated on \ref{fig:ddfv_3d}, bottom left. 
-\areprendre{Notice that the flat diamond cells are the union of two disjoint triangles and can be non convex.} The set of flat diamond cells is denoted by $\ensdiamantplat$. Our diamond set is a generalization of 2D planar diamond set used in \ddfv method developed in \cite{domelevo_finite_2005} to 2D surfaces in $\R^3$. 
-
-\bigskip
-
-For all adjacent control volumes $\primalplat{K}$ and $\primalplat{L}$, we denote by 
+La \Cref{fig:sphere_primal_dual_flat_and_curved} illustre pour la sphère un exemple de maillages $\ensdualplat$ et $\ensdual$ associés. On rappelle que par construction, les sommets $x_{\mailledualeplate{K}}$ du maillage $\ensprimalplat$ sont sur la surface lisse $\surflisse$ (voir \Cref{sec:triangulations}). Ainsi $x_{\mailleduale{K}} \defeq \projvariete x_{\mailledualeplate{K}} = x_{\mailledualeplate{K}}$. On utilisera indifféremment ces notations. On note $\enssomprimplat$ l'ensemble de ces points :
+\begin{equation} \label{eq:enssomprim_plat}
+\enssomprimplat = \ens[\big]{x_{\mailledualeplate{K}} \tq \mailledualeplate{K} \in \ensdualplat}.
+\end{equation}
+Pour toutes mailles primales plates voisines $\primalplat{K}$ et $\primalplat{L}$, on note
 \begin{equation} \label{eq:dual_sigma}
 \dual{\sigma} \defeq \segment{x_{\primal{K}}}{x_{\primal{L}}}
 \end{equation}
-the segment joining the projections of their representative points. Let $\ensaretedualplat$ be the set of such segments.
-
-On note $\side$ un côté d'un diamant plat $\diamantplat{D}$ et $\ensareteprimplat_{\diamantplat{D}}$ l'ensemble de ses côtés. 
-
-\begin{equation} \label{eq:sidecourbe}
-    \sidecourbe \defeq \projvariete \side.
-\end{equation}
-
-\begin{figure}[H]
-\centering
-\begin{subfigure}[c]{.5\textwidth}
-    \centering
-    \input{figures/ddfv_3d_diamant.tex}
-    \caption{Construction of a diamond}
-    \label{fig:ddfv_3d_diamant}
-\end{subfigure}%
-\begin{subfigure}[c]{.5\textwidth}
-    \centering
-    \input{figures/diamant_int_barycentrique.tex}
-    \caption{A diamond and its notations}
-    \label{fig:diamant_int}
-\end{subfigure}
-\caption{Diamond}
-\end{figure}
-
-\begin{remarque}
-    The plane $P_{\sigma, \dual{\sigma}}$ approximates the tangent plane to the surface $\surflisse$ at \textbf{?}.
-\end{remarque}
-
-\begin{remarque}
-    As shown on \cref{fig:diamants_voisins}, the set of flat diamond cells $\ensdiamantplat$ does not constitute a mesh of the polyhedral surface $\surfpoly$.
-\end{remarque}
-
-\begin{prop}[Mesure d'un diamant plat] \label{prop:mesure_d_un_diamant_plat}
-Pour tout $\diamantplat{D}_{\sigma, \dual{\sigma}} \in \ensdiamantplat$,
-\begin{equation} \label{eq:mesure_diamantplat}
-\mesure(\diamantplat{D}_{\sigma, \dual{\sigma}}) = \frac{1}{2} \norme{\sigma \times \dual{\sigma}}
- = \frac{1}{2} \mesure(\sigma) \mesure(\dual{\sigma}) \sin(\angle{\diamant{D}}).
-\end{equation}
-\end{prop}
-
-\noindent For a diamond cell $\diamant{D}_{\sigma, \dual{\sigma}}$, recall that $(x_{\primal{K}}, x_{\mailleduale{K}}, x_{\primal{L}}, x_{\mailleduale{L}})$ are the vertices of $\diamant{D}_{\sigma, \dual{\sigma}}$ and note (\cref{fig:stencils_for_the_discrete_operators})
+le segment joignant les projections sur $\surflisse$ de leurs centres (voir \Cref{fig:ddfv_3d_diamant}). On note $\ensaretedualplat$ l'ensemble de ces segments. Les arêtes des mailles duales plates barycentriques sont les segments $\segment{x_{\primalplat{K}}}{x_\sigma}$ qui seront notés $\sigma_{\primalplat{K}}$ (voir \Cref{fig:decoupage_dual_plat_def}). Pour tout $\mailledualeplate{K} \in \ensdualplat$ et $\mailledualeplate{K} \in \ensdual$, on note
 \begin{itemize}
-    \item $x_\sigma$ le milieu de l'arête $\sigma$,
-    \item $x_{\diamant{D}} = x_\sigma$ le centre du diamant $\diamant{D}$
-    \item $\mesure(\sigma)$, the length of $\sigma$, $\mesure(\dual{\sigma})$ the length of $\dual{\sigma}$ and $\mesure(\diamant{D})$ the measure of the diamond cell;
-    \item $\vect{\tau}_{\mailleduale{K},\mailleduale{L}}$, the unit vector parallel to $\sigma$, oriented from $x_{\mailleduale{K}}$ to $x_{\mailleduale{L}}$;
-    \item $\vect{\nu}_{\sigma \primal{K}}$, the unit vector normal to $\sigma$, oriented from $x_{\primal{K}}$ to $x_{\primal{L}}$ ({\color{red}sortante de $\primal{K}$});
-    \item $\vect{\tau}_{\primal{K},\primal{L}}$, the unit vector parallel to $\dual{\sigma}$, oriented from $x_{\primal{K}}$ to $x_{\primal{L}}$;
-    \item $\vect{\nu}_{\dual{\sigma} \mailleduale{K}}$, the unit vector normal to $\dual{\sigma}$, oriented from $x_{\mailleduale{K}}$ to $x_{\mailleduale{L}}$ ({\color{red}sortante de $\mailleduale{K}$});
-    \item $\angle{\diamant{D}}$, the angle between $\vect{\tau}_{\mailleduale{K},\mailleduale{L}}$ and $\vect{\tau}_{\primal{K},\primal{L}}$ ({\color{red}entre $\sigma$ et $\dual{\sigma}$});
-    \item $\diam{\diamant{D}}$, the diameter of $\diamant{D}_{\sigma, \dual{\sigma}}$.
+    \item $\mesure(\mailledualeplate{K})$ la mesure de la maille plate $\mailledualeplate{K}$ et $\mesure(\mailleduale{K})$ la mesure de la maille courbe $\mailleduale{K}$;
+    \item $\diam{\mailledualeplate{K}}$ (resp. $\diam{\mailleduale{K}}$) le diamètre de $\mailledualeplate{K}$ (resp. $\mailleduale{K}$);
+    \item $\ensareteprimplat_{\mailledualeplate{K}}$ l'ensemble des segments $\dual{\sigma}$ de $\mailledualeplate{K}$.
 \end{itemize}
-
-\begin{envide}[Cas barycentrique {\cite[p. 35]{krell_schemas_2010}}]
-    Le maillage dual barycentrique nécessite de nouvelles notations (voir la {\color{red}figure}), pour un diamant $\diamant{D} = \diamant{D}_{\sigma,\dual{\sigma}}$
-\end{envide}
-
-\begin{prop}[{\cite{krell_schemas_2010}}] \label{prop:bases_nu_tau}
-On introduit pour chaque diamant les deux bases orthonormées directes $(\vect{\tau}_{\mailleduale{K},\mailleduale{L}}, \vect{\nu}_{\sigma,\primal{K}})$ et $(\vect{\nu}_{\dual{\sigma}\mailleduale{K}}, \vect{\tau}_{\primal{K},\primal{L}})$. On a les relations
-\begin{align}
-\vect{\tau}_{\primal{K},\primal{L}} \cdot \vect{\nu}_{\dual{\sigma}\mailleduale{K}} = \vect{\tau}_{\mailleduale{K},\mailleduale{L}} \cdot \vect{\nu}_{\sigma \primal{K}} &= 0, \\
-\vect{\tau}_{\mailleduale{K},\mailleduale{L}} \cdot \vect{\nu}_{\dual{\sigma}\mailleduale{K}} = \vect{\tau}_{\primal{K},\primal{L}} \cdot \vect{\nu}_{\sigma \primal{K}} &= \sin(\angle{\diamant{D}}), \\
-\vect{\tau}_{\mailleduale{K},\mailleduale{L}} \cdot \vect{\tau}_{\primal{K},\primal{L}} = \vect{\nu}_{\dual{\sigma}\mailleduale{K}} \cdot \vect{\nu}_{\sigma \primal{K}} &= \cos(\angle{\diamant{D}}).
-\end{align}
-\end{prop}
-
-\subsection{\ddfv mesh}
-
-We call $\ensddfv$ a double $(\ensprimal, \ensdual)$ of meshes on the smooth surface $\surflisse$, where $\ensprimal$ is the \defini{primal mesh} and $\ensdual$ is the \defini{dual mesh}. Even though more general situations can be handled, we concentrate in this paper to meshes satisfying the following assumption.
-\begin{envide}[Main assumption]
-We assume either that all the primal control volumes $\primal{K} \in \ensprimal$ are star-shaped with respect to $x_{\primal{K}}$ either that all the dual control volumes $\mailleduale{K} \in \ensdual$ are star-shaped with respect to $x_{\mailleduale{K}}$. 
-\end{envide}
-
-\areprendre{
-\begin{remarque}
-This hypothesis is not so restrictive and is fulfilled for instance in the case of a primal Voronoï mesh associated to the vertices $x_{\mailleduale{K}}$, or in the dual case of a Delaunay conformal triangulation of the domain.
-\end{remarque}
-}
-
-\begin{prop}
-\[
-\surflisse = \bigcup_{\primal{K} \in \ensprimal} \primal{K}
-= \bigcup_{\mailleduale{K} \in \ensdual} \mailleduale{K}
-= \bigcup_{\diamant{D} \in \ensdiamant} \diamant{D}
-\]
-\end{prop}
 
 \begin{figure}[H]
 \centering
@@ -244,14 +76,41 @@ This hypothesis is not so restrictive and is fulfilled for instance in the case 
     \centering
     \includegraphics[width=0.6\textwidth]{img/sphere_primal_dual.pdf}
     \caption{Maillages $\ensprimalplat$ (bleu) et $\ensdualplat$ (rouge) d'une approximation polyédrique de la sphère}
+    \label{fig:sphere_primal_dual}
 \end{subfigure}%
 \begin{subfigure}[t]{.5\textwidth}
     \centering
     \includegraphics[width=0.6\textwidth]{img/sphere_primal_dual_curved.pdf}
     \caption{Maillages $\ensprimal$ (bleu) et $\ensdual$ (rouge) de la sphère}
+    \label{fig:sphere_primal_dual_curved}
 \end{subfigure}
-\caption{Exemple de maillages \ddfv \emph{primaux} et \emph{duaux} pour la sphère}
+\caption{Exemple de maillages \ddfv \emph{primaux} et \emph{duaux} de la sphère}
+\label{fig:sphere_primal_dual_flat_and_curved}
 \end{figure}
+
+\noindent Un maillage \ddfv \defini{plat} (resp. \defini{courbe}) est un couple constitué d'un maillage primal $\ensprimalplat$ (resp. $\ensprimal$) et d'un maillage dual $\ensdualplat$ (resp. $\ensdual$). Il sera désigné par $\ensddfvplat$ (resp. $\ensddfv$).
+
+\subsection{Ensemble et maillage diamants} \label{subsec:diamond_set}
+
+Considérons un couple $(\sigma, \dual{\sigma}) \in \ensareteprimplat \times \ensaretedualplat$ tel que $\sigma = \arete{\primalplat{K}}{\primalplat{L}} = \segment{x_{\mailleduale{K}}}{x_{\mailleduale{L}}}$ et $\dual{\sigma} = \segment{x_{\primal{K}}}{x_{\primal{L}}}$ (voir \Cref{fig:ddfv_3d_diamant}). On considère le plan $P_{\sigma, \dual{\sigma}}$ défini par les directions $\sigma$ et $\dual{\sigma}$. Le \defini{diamant plat} $\diamantplat{D}_{\sigma, \dual{\sigma}}$ est le quadrilatère dont les sommets sont les projections orthogonales des points $x_{\primal{K}}$, $x_{\primal{L}}$, $x_{\mailleduale{K}}$ et $x_{\mailleduale{L}}$ sur le plan $P_{\sigma, \dual{\sigma}}$. Moralement, le plan $P_{\sigma, \dual{\sigma}}$ approche un plan tangent à la surface lisse $\surflisse$. Par abus de notation, on note encore $\sigma$ et $\dual{\sigma}$ les diagonales du diamant plat $\diamantplat{D}_{\sigma, \dual{\sigma}}$. Lorsqu'il n'y a pas d'ambiguïté, on note simplement $\diamantplat{D} = \diamantplat{D}_{\sigma, \dual{\sigma}}$. L'ensemble des diamants plats et noté $\ensdiamantplat$. Cet ensemble de diamants est une généralisation aux surfaces dans $\R^3$ des diamants 2D introduits dans \cite{domelevo_finite_2005}. 
+
+\begin{remarque}
+Il y a une bijection entre les diamants $\diamantplat{D} \in \ensdiamantplat$ et les arêtes $\ensareteprimplat$ du maillage primal $\ensprimalplat$, de même entre les diamants $\diamantplat{D} \in \ensdiamantplat$ et les segments $\ensaretedualplat$.
+\end{remarque}
+À nouveau, le projecteur $\fonctionens[\projvariete]{\surfpoly}{\surflisse}$ introduit dans le \Cref{lemme:fermi_coordinates} permet de construire un maillage de la surface lisse $\surflisse$ à partir de $\ensdiamantplat$. On le note $\ensdiamant$ et il est nommé \defini{maillage diamant courbe}. Ses mailles sont notées $\diamant{D}$. Une maille $\diamant{D}$, aussi notée $\diamant{D}_{\sigma, \dual{\sigma}}$, est la partie de $\surflisse$ délimitée par la projection sur $\surflisse$ des segments $\segment{x_{\primal{K}}}{x_{\mailleduale{K}}}$, $\segment{x_{\primal{K}}}{x_{\mailleduale{L}}}$, $\segment{x_{\primal{L}}}{x_{\mailleduale{K}}}$ et $\segment{x_{\primal{L}}}{x_{\mailleduale{L}}}$ (dessinés en gris sur la \Cref{fig:ddfv_3d_diamant}).
+
+\begin{figure}[H]
+    \centering
+    \input{figures/ddfv_3d_diamant.tex}
+    \caption{Un \defini{diamant plat} $\diamantplat{D}_{\sigma, \dual{\sigma}}$}
+    \label{fig:ddfv_3d_diamant}
+\end{figure}
+
+\begin{remarque}
+Contrairement aux mailles primales et duales, le diamant courbe n'est pas la projection du diamant plat : $\diamant{D} \not= \projvariete \diamantplat{D}$.
+\end{remarque}
+
+\noindent La \Cref{fig:sphere_diamonds_flat_and_curved} illustre un exemple de l'ensemble des diamants plats $\ensdiamantplat$ d'une discrétisation \ddfv de la sphère et du maillage \emph{diamant courbe} $\ensdiamant$ associé.
 
 \begin{figure}[H]
 \centering
@@ -259,6 +118,7 @@ This hypothesis is not so restrictive and is fulfilled for instance in the case 
     \centering
     \includegraphics[width=0.6\textwidth]{img/sphere_diamonds_flat.pdf}
     \caption{Ensemble $\ensdiamantplat$}
+    \label{fig:sphere_diamonds_flat}
 \end{subfigure}%
 \begin{subfigure}[t]{.5\textwidth}
     \centering
@@ -266,7 +126,58 @@ This hypothesis is not so restrictive and is fulfilled for instance in the case 
     \caption{Maillage $\ensdiamant$ de la sphère}
 \end{subfigure}
 \caption{Exemple de l'ensemble des diamants plats $\ensdiamantplat$ d'une discrétisation \ddfv de la sphère et du maillage \emph{diamant courbe} $\ensdiamant$ associé}
+\label{fig:sphere_diamonds_flat_and_curved}
 \end{figure}
+
+\begin{remarque}
+Comme illustré sur la \Cref{fig:sphere_diamonds_flat}, l'ensemble des diamants plats $\ensdiamantplat$ ne forme pas un maillage de la surface polyédrique $\surfpoly$. Il s'agit plutôt d'une approximation de l'ensemble des plans tangents à la surface lisse $\surflisse$.
+\end{remarque}
+Introduisons quelques notations en partie illustrées sur la \Cref{fig:ddfv_3d_diamant}. Pour tout diamant plat $\diamantplat{D}_{\sigma, \dual{\sigma}}$, on note
+\begin{itemize}
+    \item $\mesure(\sigma)$ la longueur de $\sigma$, $\mesure(\dual{\sigma})$ la longueur de $\dual{\sigma}$ et $\mesure(\diamantplat{D})$ (resp. $\mesure(\diamant{D})$) la mesure du diamant plat $\diamantplat{D}$ (resp. du diamant courbe $\diamant{D}$);
+    \item $\diam{\diamantplat{D}}$ le diamètre $\diamantplat{D}$;
+    \item $\angle{\diamantplat{D}}$ l'angle entre $\sigma$ et $\dual{\sigma}$;
+    \item $\ensdiamantplat_{\primalplat{K}} \defeq \ens[\big]{\diamantplat{D}_{\sigma, \dual{\sigma}} \in \ensdiamantplat \tq \sigma \in \ensareteprimplat_{\primalplat{K}}}$ pour $\primalplat{K} \in \ensprimalplat$;
+    \item $\ensdiamantplat_{\mailledualeplate{K}} \defeq \ens[\big]{\diamantplat{D}_{\sigma, \dual{\sigma}} \in \ensdiamantplat \tq \dual{\sigma} \in \ensareteprimplat_{\mailledualeplate{K}}}$ pour $\mailledualeplate{K} \in \ensdualplat$.
+\end{itemize}
+On introduit pour chaque diamant plat les deux bases orthonormées directes $(\vect{\tau}_{\mailledualeplate{K},\mailledualeplate{L}}, \vect{\nu}_{\sigma,\primalplat{K}})$ et $(\vect{\nu}_{\dual{\sigma}\mailledualeplate{K}}, \vect{\tau}_{\primalplat{K},\primalplat{L}})$, où
+\begin{itemize}
+    \item $\vect{\nu}_{\sigma \primalplat{K}}$ est la normale unitaire à $\sigma$ sortante de $\primalplat{K}$;
+    \item $\vect{\tau}_{\mailledualeplate{K},\mailledualeplate{L}}$ est le vecteur tangent unitaire à $\sigma$ orienté de $x_{\mailledualeplate{K}}$ à $x_{\mailledualeplate{L}}$;
+    \item $\vect{\nu}_{\dual{\sigma} \mailledualeplate{K}}$ est la normale unitaire à $\dual{\sigma}$ \chevron{sortante de $\mailledualeplate{K}$};
+    \item $\vect{\tau}_{\primalplat{K},\primalplat{L}}$ est le vecteur tangent unitaire à $\dual{\sigma}$ orienté de $x_{\primal{K}}$ à $x_{\primal{L}}$;
+\end{itemize}
+On a les relations
+\begin{align}
+\vect{\tau}_{\primalplat{K},\primalplat{L}} \cdot \vect{\nu}_{\dual{\sigma}\mailledualeplate{K}} = \vect{\tau}_{\mailledualeplate{K},\mailledualeplate{L}} \cdot \vect{\nu}_{\sigma \primalplat{K}} &= 0\ , \label{prop:bases_nu_tau} \\
+\vect{\tau}_{\mailledualeplate{K},\mailledualeplate{L}} \cdot \vect{\nu}_{\dual{\sigma}\mailledualeplate{K}} = \vect{\tau}_{\primalplat{K},\primalplat{L}} \cdot \vect{\nu}_{\sigma \primalplat{K}} &= \sin(\angle{\diamantplat{D}})\ , \\
+\vect{\tau}_{\mailledualeplate{K},\mailledualeplate{L}} \cdot \vect{\tau}_{\primalplat{K},\primalplat{L}} = \vect{\nu}_{\dual{\sigma}\mailledualeplate{K}} \cdot \vect{\nu}_{\sigma \primalplat{K}} &= \cos(\angle{\diamantplat{D}}).
+\end{align}
+La mesure de tout $\diamantplat{D}_{\sigma, \dual{\sigma}} \in \ensdiamantplat$ a pour expression
+\begin{equation} \label{eq:mesure_diamantplat}
+\mesure(\diamantplat{D}_{\sigma, \dual{\sigma}}) = \frac{1}{2} \norme{\sigma \times \dual{\sigma}}
+ = \frac{1}{2} \mesure(\sigma) \mesure(\dual{\sigma}) \sin(\angle{\diamant{D}}).
+\end{equation}
+
+\bigskip
+
+Ainsi, dans cette section, nous avons construit deux maillages de la surface polyédrique $\surfpoly$; $\ensprimalplat$ et $\ensdualplat$, et trois maillages de la surface lisse $\surflisse$; $\ensprimal$, $\ensdual$ et $\ensdiamant$ de sorte que
+\[
+\surfpoly = \bigcup_{\primalplat{K} \in \ensprimalplat} \primalplat{K}
+= \bigcup_{\mailledualeplate{K} \in \ensdualplat} \mailledualeplate{K}
+\quad
+\text{et}
+\quad
+\surflisse = \bigcup_{\primal{K} \in \ensprimal} \primal{K}
+= \bigcup_{\mailleduale{K} \in \ensdual} \mailleduale{K}
+= \bigcup_{\diamant{D} \in \ensdiamant} \diamant{D}.
+\]
+
+\begin{remarque}
+L'ensemble des objets géométriques que nous avons introduits constituent bien une généralisation de la méthode en 2D dans le sens où dans le plan, on a $\surfpoly = \surflisse$, $\projvariete = \Id$, $\ensprimalplat = \ensprimal$, $\ensdualplat = \ensdual$ et $\ensdiamantplat = \ensdiamant$. 
+\end{remarque}
+
+La généralisation de la méthode que nous venons de proposer permet de définir des maillages \ddfv sur toute surface fermée sans bord de $\R^3$, en particulier de genre $g > 0$ par exemple, comme illustré sur la \Cref{fig:genre_primal_dual}.
 
 \begin{figure}[H]
 \centering
@@ -281,5 +192,6 @@ This hypothesis is not so restrictive and is fulfilled for instance in the case 
     \caption{\emph{Tanglecube}\protect\footnotemark, $g = 5$}
 \end{subfigure}
 \caption{Exemples de maillages $\ensprimalplat$ et $\ensdualplat$ sur des approximations polyédriques de surfaces fermées sans bord de $\R^3$ de genre $g > 0$}
+\label{fig:genre_primal_dual}
 \end{figure}
 \footnotetext{Surface de degré $4$ dans $\R^3$ définie par l'équation $x^4 - 5 \, x^2 + y^4 - 5 \, y^2 + z^4 - 5 \, z^2 + 11{,}8 = 0$ (voir \url{https://academicweb.nd.edu/~jhauenst/preprints/bhrPolyTop.pdf}).}

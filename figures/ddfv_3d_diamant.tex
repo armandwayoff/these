@@ -160,7 +160,7 @@ in
         radius=\rayonangle
     ];
 
-\node[below] at ($(Inter)+({0.5*(\angA+\angB)}:\rayonangle)$) {$\angle{\diamant{D}}$};
+\node[below] at ($(Inter)+({0.5*(\angA+\angB)}:\rayonangle)$) {$\angle{\diamantplat{D}}$};
 
 \draw ($(xke2D)!0.2!(xle2D)$) rectangle ++(\lengthsq,-\lengthsq);
 \coordinate (P) at ($(xk2D)!0.2!(xl2D)$);
@@ -175,11 +175,11 @@ in
 \coordinate (Pbase) at ($(xke2D)!0.2!(xle2D)$);
 \coordinate (Pbasedual) at ($(xk2D)!0.2!(xl2D)$);
 
-\node[myblue, above left] at ($(Pbase)+(0,{-\lengthbasis})$) {$\vect{\tau}_{\mailleduale{K},\mailleduale{L}}$};
-\node[myblue, right] at ($(Pbase)+({\lengthbasis},0)$) {$\vect{\nu}_{\sigma \primal{K}}$};
+\node[myblue, above left] at ($(Pbase)+(0,{-\lengthbasis})$) {$\vect{\tau}_{\mailledualeplate{K},\mailledualeplate{L}}$};
+\node[myblue, right] at ($(Pbase)+({\lengthbasis},0)$) {$\vect{\nu}_{\sigma \primalplat{K}}$};
     
-\node[myred, above] at ($(Pbasedual)!\lengthbasis!(xl2D)$) {$\vect{\tau}_{\primal{K},\primal{L}}$};
-\node[myred, below] at ($(Pbasedual)!\lengthbasis!-90:(xl2D)$) {$\vect{\nu}_{\dual{\sigma}\mailleduale{K}}$};
+\node[myred, above] at ($(Pbasedual)!\lengthbasis!(xl2D)$) {$\vect{\tau}_{\primalplat{K},\primalplat{L}}$};
+\node[myred, below] at ($(Pbasedual)!\lengthbasis!-90:(xl2D)$) {$\vect{\nu}_{\dual{\sigma}\mailledualeplate{K}}$};
 
 \end{scope}
 

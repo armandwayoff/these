@@ -1,0 +1,84 @@
+Après avoir choisi un ordre pour les inconnues scalaires,
+\[
+\mathbf u=
+\bigl((u_K)_{K\in\mathfrak M},
+      (u_{K^\ast})_{K^\ast\in\mathfrak M^\ast}\bigr)^\top
+\in\mathbb R^{\lvert\mathfrak M\rvert+\lvert\mathfrak M^\ast\rvert},
+\]
+et un ordre pour les diamants, le gradient discret s'écrit
+\[
+\mathbf g=\gradmat_{\ensdiamantplat}\mathbf u,
+\qquad
+\mathbf g=
+\bigl((\grad^D u)_x,(\grad^D u)_y\bigr)_{D\in\ensdiamantplat}^{\top}.
+\]
+
+Pour un diamant \(D=D_{\sigma,\sigma^\ast}\), avec
+\[
+\sigma=[x_K,x_L],
+\qquad
+\sigma^\ast=[x_{K^\ast},x_{L^\ast}],
+\]
+posons
+\[
+\mathbf a_D
+=
+\frac{\vect{\nu}_{\sigma K}}
+{\sin(\angle D)\,\mesure(\sigma^\ast)},
+\qquad
+\mathbf b_D
+=
+\frac{\vect{\nu}_{\sigma^\ast K^\ast}}
+{\sin(\angle D)\,\mesure(\sigma)}.
+\]
+La formule du gradient devient alors
+\[
+\grad^D u
+=
+\mathbf a_D(u_L-u_K)
++
+\mathbf b_D(u_{L^\ast}-u_{K^\ast}).
+\]
+
+Le bloc de deux lignes de \(\gradmat_{\ensdiamantplat}\) associé à \(D\) ne comporte donc que quatre colonnes non nulles :
+\[
+\boxed{
+\left(\gradmat_{\ensdiamantplat}\right)_{D,\{K,L,K^\ast,L^\ast\}}
+=
+\begin{pmatrix}
+-\mathbf a_D & \mathbf a_D & -\mathbf b_D & \mathbf b_D
+\end{pmatrix}}
+\]
+où chaque entrée est un vecteur colonne de \(\mathbb R^2\).
+
+En coordonnées cartésiennes, si
+\[
+\mathbf a_D=
+\begin{pmatrix}a_{D,x}\\a_{D,y}\end{pmatrix},
+\qquad
+\mathbf b_D=
+\begin{pmatrix}b_{D,x}\\b_{D,y}\end{pmatrix},
+\]
+ce bloc est explicitement
+\[
+\begin{pmatrix}
+-a_{D,x} & a_{D,x} & -b_{D,x} & b_{D,x}\\
+-a_{D,y} & a_{D,y} & -b_{D,y} & b_{D,y}
+\end{pmatrix}.
+\]
+
+La matrice globale est obtenue en empilant ces blocs pour tous les diamants :
+\[
+\gradmat_{\ensdiamantplat}
+=
+\begin{pmatrix}
+\gradmat_{D_1}\\
+\vdots\\
+\gradmat_{D_{\lvert\ensdiamantplat\rvert}}
+\end{pmatrix}
+\in
+\mathbb R^{2\lvert\ensdiamantplat\rvert
+\times
+(\lvert\mathfrak M\rvert+\lvert\mathfrak M^\ast\rvert)}.
+\]
+Chaque bloc contient au plus huit coefficients scalaires non nuls, ce qui fait de \(\gradmat_{\ensdiamantplat}\) une matrice creuse.

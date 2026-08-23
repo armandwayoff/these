@@ -1,35 +1,33 @@
-\chapter*{Conclusions et perspectives}
-\addcontentsline{toc}{chapter}{Conclusion générale} 
+\chapter*{Conclusion et perspectives}
+\markboth{Conclusion et perspectives}{Conclusion et perspectives}
+\addcontentsline{toc}{chapter}{Conclusion et perspectives} 
 
-et leur application potentielle en électromagnétisme pour l’\efie (Electric Field Integration Equation).
+\paragraph{Conclusion} Dans le \Cref{chap:generalisation_ddfv}, nous avons introduit une adaptation de la méthode \ddfv au cadre des surfaces fermées sans bord de $\R^3$. Nous avons défini la régularité du maillage, les espaces d'approximation, les opérateurs discrets, les produits scalaires et avons démontré des propriétés de dualité des opérateurs ainsi qu'une discrétisation de la décomposition de Helmholtz--Hodge.
 
-Les propriétés intrinsèques des opérateurs \ddfv, que ce soit en terme d’identités vérifiées au niveau discret ou bien de dimension des espaces présentent un intérêt notamment dans les méthodes de préconditionnement utilisées en \efie.
+La démonstration de la convergence de la méthode numérique repose essentiellement sur un résultat de compacité discrète qui lui-même repose sur une inégalité de Poincaré discrète, que nous avons démontrée dans le \Cref{chap:demo_ineg_poincare}, et sur un théorème de type Riesz--Fréchet--Kolmogorov. Ce dernier fournit un critère effectif pour déterminer si un ensemble de fonctions dans $\L^p$ est relativement compact dans $\L^p$. Un premier travail à venir sera de finaliser la démonstration de la convergence de la méthode.
 
+\paragraph{Perspectives} Les propriétés intrinsèques des opérateurs \ddfv, que ce soit en terme d’identités vérifiées au niveau discret ou bien de dimension des espaces présentent un intérêt notamment dans les méthodes de préconditionnement utilisées en électromagnétisme pour l’\efie (Electric Field Integration Equation).
 
-Lors de la simulation numérique du problème de diffraction électromagnétique par un objet, on est amené à devoir résoudre les équations de Maxwell en régime harmonique à l'extérieur de l'objet considéré. On peut alors utiliser la méthode dite des équations intégrales qui revient, dans sa formulation la plus simple (appelée \efie), à résoudre sur la surface $\surflisse$ de l'objet diffractant
+Lors de la simulation numérique du problème de diffraction électromagnétique par un objet, on est amené à devoir résoudre les équations de Maxwell en régime harmonique à l'extérieur de l'objet considéré. On peut alors utiliser la méthode dite des équations intégrales qui revient, dans sa formulation la plus simple, à résoudre sur la surface $\surflisse$ de l'objet diffractant
 \begin{equation} \label{eq:efie}
-\gamma^\mathrm{tan} \mathopen{}\left( \mathrm{i} \, \omega \mu_0 G \vect{J} + \frac{\mathrm{i}}{\omega \varepsilon_0} \grad G \, \mathrm{div} \vect{J} \right) = E^\mathrm{tan}_\mathrm{inc}.
+\gamma^\mathrm{tan} \mathopen{}\left( \mathrm{i} \, \omega \, \mu_0 \, G \vect{J} + \frac{\mathrm{i}}{\omega \, \varepsilon_0} \grad G \, \mathrm{div} \vect{J} \right) = E^\mathrm{tan}_\mathrm{inc}.
 \end{equation}
-Dans cette équation, $E^\mathrm{tan}_\mathrm{inc}$ est la composante tangentielle du champ électrique incident, $\gamma^\mathrm{tan}$ est la trace tangentielle, $\omega$ est la pulsation de l'onde incidente, et $\varepsilon_0$ et $\mu_0$ sont les coefficients diélectriques du milieu. Enfin, $\vect{J}$ est le courant électrique (c'est un champ de vecteurs tangents sur la surface $\surflisse$ de l'objet) et $G$ est la convolution sur $\surflisse$ par $\displaystyle\frac{\exp(-\i k \abs{x})}{4 \pi \abs{x}}$ où le nombre d'onde $k$ est donné par $k = \omega / c$ avec $c$ la vitesse de la lumière. 
+Dans cette équation, $E^\mathrm{tan}_\mathrm{inc}$ est la composante tangentielle du champ électrique incident, $\gamma^\mathrm{tan}$ est la trace tangentielle, $\omega$ est la pulsation de l'onde incidente, et $\varepsilon_0$ et $\mu_0$ sont les coefficients diélectriques du milieu. Enfin, $\vect{J}$ est le courant électrique (c'est un champ de vecteurs tangents sur la surface $\surflisse$ de l'objet) et $G$ est la convolution sur $\surflisse$ par $\displaystyle\frac{\exp(-\i k \abs{x})}{4 \, \pi \abs{x}}$ où le nombre d'onde $k$ est donné par $k = \omega / c$ avec $c$ la vitesse de la lumière. 
 
 Toutefois, la résolution numérique de l'équation linéaire \ref{eq:efie} est délicate car l'opérateur sous-jacent
 \[
-\gamma^\mathrm{tan} T = \gamma^\mathrm{tan} \mathopen{}\left( \i \omega \mu_0 G + \frac{\i}{\omega \varepsilon_0} \grad G \div \right)
+\gamma^\mathrm{tan} T = \gamma^\mathrm{tan} \mathopen{}\left( \i \omega \, \mu_0 \, G + \frac{\i}{\omega \, \varepsilon_0} \grad G \div \right)
 \] 
-aboutit après discrétisation à des matrices très mal conditionnées. Une méthode originale de préconditionnement À COMPLETER consiste à utiliser $\vect{n} \times T$ où $\vect{n}$ est la normale extérieure à l'objet et qui grâce à l'identité de Calder\'on est son propre inverse à perturbation compacte près. 
-
-Cette propriété provient principalement de la relation continu
+aboutit après discrétisation à des matrices très mal conditionnées. Une méthode originale de préconditionnement \cite{christiansen_preconditioner_2002,andriulli_multiplicative_2008} consiste à utiliser $\vect{n} \times T$ où $\vect{n}$ est la normale extérieure à l'objet et qui grâce à l'identité de Calder\'on est son propre inverse à perturbation compacte près. Cette propriété provient principalement de la relation continue
 \begin{equation} \label{eq:eq2}
 \div(\vect{n} \times \grad \varphi) = 0
 \end{equation}
-pour tout fonction $\varphi$ scalaire, définie sur $\surflisse$, qui est l'analogue surfacique de $\div(\rot \psi) = 0$ pour les champs tridimensionnels. 
-
-La méthode de discrétisation doit donc à tout le moins respecter deux propriétés importantes:
+pour tout fonction $\varphi$ scalaire, définie sur $\surflisse$, qui est l'analogue surfacique de $\div(\rot \psi) = 0$ pour les champs tridimensionnels. La méthode de discrétisation doit donc à tout le moins respecter deux propriétés importantes:
 \begin{itemize}
     \item Avoir un analogue de \ref{eq:eq2} au niveau discret.
-    \item Faire en sorte que $\vect{u} \mapsto \vect{n} \times \vect{u}$ où $\vect{u}$ est un champ de vecteurs sur $\surflisse$ soit inversible dans l'espace discret (afin que $\vect{n} \times T$ ait une chance d'être inversible aussi). Ce point qui paraît anodin est en fait un des principaux obstacles À COMPLETER.
+    \item Faire en sorte que $\vect{u} \mapsto \vect{n} \times \vect{u}$ où $\vect{u}$ est un champ de vecteurs sur $\surflisse$ soit inversible dans l'espace discret (afin que $\vect{n} \times T$ ait une chance d'être inversible aussi). Ce point qui paraît anodin est en fait un des principaux obstacles \cite{buffa_dual_2005}.
 \end{itemize}
 
-De nombreuses méthodes de discrétisation ont été introduites pour résoudre ce problème parmi lesquelles on peut citer les méthodes de type Nédélec, basées sur des discrétisations de Whitney valables aussi sur des surfaces. Toutefois, ces méthodes ne permettent pas d'utiliser l'identité de Calder\'on, et des adaptations complexes et peu naturelles sont nécessaires pour pouvoir le faire. Un des objectifs de la thèse est ainsi de simplifier ce genre d'approches. 
+De nombreuses méthodes de discrétisation ont été introduites pour résoudre ce problème parmi lesquelles on peut citer les méthodes de type Nédélec, basées sur des discrétisations de Whitney valables aussi sur des surfaces. Toutefois, ces méthodes ne permettent pas d'utiliser l'identité de Calder\'on, et des adaptations complexes et peu naturelles sont nécessaires pour pouvoir le faire. Un des objectifs de la thèse à venir est ainsi de simplifier ce genre d'approches. 
 
 Les méthodes \ddfv constituent un candidat assez naturel et adapté dans le cadre de l'\efie. En effet, la conservation des propriétés des opérateurs au niveau discret est un élément central des méthodes \ddfv ce qui permet de facilement envisager la conservation de \ref{eq:eq2}. De plus, la prise en compte, directement dans la définition des maillages, de la dualité entre centres et sommets des mailles permet d'obtenir des dimensions d'espaces de discrétisation qui permettent d'envisager l'inversibilité de la version discrète de l'opérateur $\vect{u} \mapsto \vect{n} \times \vect{u}$. 

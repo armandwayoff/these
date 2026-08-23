@@ -1,16 +1,16 @@
-\section{Properties of the operators}
+\section{Properties of the operators} \label{sec:properties_of_the_operators}
 
 \subsection{Discrete Green formulae}
 
-Here, we check that the discrete operators verify some discrete duality principles. Les opérateurs discrets introduits sont en dualité. En effet, grâce aux produits scalaires ci-dessus (ref), on peut écrire une formule de Green. C'est cette propriété de dualité qui a donné le nom à la méthode.
+Here, we check that the discrete operators verify some discrete duality principles. Les opérateurs discrets introduits sont en dualité. En effet, grâce aux produits scalaires ci-dessus (ref), on peut écrire une formule de Green. C'est cette propriété de dualité qui a donné le nom à la méthode \ddfv.
 
-\begin{theo}[Discrete Green formulae] \label{theo:discrete_green_formulae}
-Pour tout $\xi^\ensdiamant, u^\ensddfv \in (\R^2)^\ensdiamant \times \R^\ensddfv$, on a
+\begin{theo}[Formules de Green discrètes] \label{theo:discrete_green_formulae}
+Pour tout $\xi^\ensdiamantplat, u^\ensddfvplat \in (\R^2)^\ensdiamantplat \times \R^\ensddfvplat$, on a
 \[
-\prodscalddfv{\div^\ensddfv \xi^\ensdiamant}{u^\ensddfv} = - \prodscal{\xi^\ensdiamant}{\grad^\ensdiamant u^\ensddfv}_\ensdiamant,
+\prodscalddfv{\div^\ensddfvplat \xi^\ensdiamantplat}{u^\ensddfvplat} = - \prodscalD{\xi^\ensdiamantplat}{\grad^\ensdiamantplat u^\ensddfvplat},
 \]
 \[
-\prodscalddfv{\scarot^\ensddfv \xi^\ensdiamant}{u^\ensddfv} = \prodscal{\xi^\ensdiamant}{\rot^\ensdiamant u^\ensddfv}_\ensdiamant.
+\prodscalddfv{\scarot^\ensddfvplat \xi^\ensdiamantplat}{u^\ensddfvplat} = \prodscalD{\xi^\ensdiamantplat}{\rot^\ensdiamantplat u^\ensddfvplat}.
 \]
 \end{theo}
 \begin{demo}[{\cite[Prop. 2.3]{domelevo_finite_2005}}]
@@ -40,7 +40,7 @@ Let $\xi^\ensdiamant$ be a discrete vector field and $\grad^\ensdiamant u^\ensdd
 \caption{}
 \end{figure}
 
-\subsection{Compositions of the discrete operators \texorpdfstring{{\cite[Sec. 4.2]{delcourte_discrete_2007}}}{[DDO07, Sec. 4.2]}}
+\subsection{Compositions of the discrete operators \texorpdfstring{{\cite[Sec. 4.2]{delcourte_discrete_2007}}}{[DDO07, Sec. 4.2]}} \label{sec:compositions_discrete_operators}
 
 The aim of this section is to {\color{red}verify} a discrete analogue of the following continuous identities: $\div \rot = 0$, $\scarot \grad = 0$ and $\scarot \rot = - \div \grad$\ .
 

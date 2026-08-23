@@ -1,10 +1,10 @@
-\section{Hypothesis on the surface \& Projection} \label{sec:hypothesis_on_the_surface_and_projection}
+\section{Construction des maillages \ddfv} \label{sec:construction_of_the_ddfv_meshes}
 
-\subsection{Global coordinates}
+Dans la \Cref{sec:hypothesis_on_the_surface_and_projection}, nous introduisons un projecteur $\fonctionens[\projvariete]{\surfpoly}{\surflisse}$ dont le but est de permettre le passage de manière univoque des objects géométriques définis sur l'approximation polyédrique $\surfpoly$ à ceux définis sur la surface lisse $\surflisse$. Ce qu'on entend par \chevron{approximation polyédrique} sera précisé dans la \Cref{sec:triangulations}. Ceci nous permettra, dans les \Cref{sec:maillages_primaux,sec:maillages_duaux,subsec:diamond_set}, de définir les maillages \ddfv; le \defini{maillage primal plat} $\ensprimalplat$, le \defini{maillage primal courbe} $\ensprimal$, le \defini{maillage dual plat} $\ensdualplat$, le \defini{maillage dual courbe} $\ensdual$, l'\defini{ensemble des diamants plats} $\ensdiamantplat$ et le \defini{maillage diamant courbe} $\ensdiamant$. Enfin, nous introduirons la régularité du maillage \ddfv dans la \Cref{sec:regularite}.
 
-\cite[Sec. 2.3]{dziuk_finite_2013} It is quite convenient to use global coordinates in a neighbourhood of a hypersurface (see \cite[Sec. 2.2]{dziuk_finite_2013} for a definition of \defini{hypersurfaces}), the so-called \defini{Fermi coordinates}. This avoids working with charts and atlases when proving results and carrying out the numerical analysis. For this one introduces the \defini{oriented distance function} for $\surflisse$.
+\subsection{Global coordinates} \label{sec:hypothesis_on_the_surface_and_projection}
 
-Assume in the following that $\mathcal{O} \subset \R^{3}$ is bounded and open with exterior normal $\vect{n}$ and assume that $\surflisse = \partial \mathcal{O}$ is a $\Cont^k$-hypersurface ($k \geqslant 2$). The \defini{oriented distance function} for $\surflisse$ is defined by
+Following \cite[Section 2.3]{dziuk_finite_2013} we introduce global coordinates in a neighbourhood of a hypersurface (see \cite[Section 2.2]{dziuk_finite_2013} for a definition of \defini{hypersurfaces}), the so-called \defini{Fermi coordinates}. This avoids working with charts and atlases when proving results and carrying out the numerical analysis. For this one introduces the \defini{oriented distance function} for $\surflisse$. Assume in the following that $\mathcal{O} \subset \R^{3}$ is bounded and open with exterior normal $\vect{n}$ and assume that $\surflisse = \partial \mathcal{O}$ is a $\Cont^k$-hypersurface ($k \geqslant 2$). The \defini{oriented distance function} for $\surflisse$ is defined by
 \begin{equation} \label{eq:def_oriented_distance}
 d(x) \defeq \begin{cases}
 \phantom{-} \inf\limits_{y \in \surflisse} \abs{x - y} & x \in \R^{3} \setminus \overline{\mathcal{O}} \\
@@ -35,30 +35,17 @@ We also extend the normal constantly in the normal direction: $\vect{n}(x) = \ve
     \label{fig:strip_u_delta}
 \end{figure}
 
-\subsection{Triangulations \texorpdfstring{\cite[Sec. 4.1]{dziuk_finite_2013}}{[DE13, Sec. 4.1]}} \label{sec:triangulations}
+\subsection{Approximation of a smooth surface by a polygonal surface} \label{sec:triangulations}
 
-The smooth $2$-dimensional surface $\surflisse$ ($\partial \surflisse = \varnothing$) is approximated by a surface $\surfpoly$ which lies in the strip $U_\delta$ (see \Cref{lemme:fermi_coordinates}) and which is a Lipschitz surface.
-
-We assume that the discrete triangulated surface $\surfpoly$ has the following properties. The surface $\surfpoly$ is the union of finitely many non-degenerate (closed) $2$-simplices in $\R^{3}$. We let $\ensprimalplat$ denote the set of these simplices:
-\[
+Following \cite[Section 4.1]{dziuk_finite_2013}, the smooth $2$-dimensional surface $\surflisse$ ($\partial \surflisse = \varnothing$) is approximated by a surface $\surfpoly$ which lies in the strip $U_\delta$ (see \Cref{lemme:fermi_coordinates}) and which is a Lipschitz surface. We assume that the discrete triangulated surface $\surfpoly$ has the following properties. The surface $\surfpoly$ is the union of finitely many non-degenerate (closed) $2$-simplices in $\R^{3}$. We let $\ensprimalplat$ denote the set of these simplices:
+\begin{equation} \label{eq:surfpoly}
 \surfpoly = \bigcup_{\primalplat{K} \in \ensprimalplat} \primalplat{K}. 
-\]
-The vertices $\enssomprim$ of the simplices are taken to sit on the smooth surface $\surflisse$. For $\primalplat{K}, \primalplat{L} \in \ensprimalplat$, either $\primalplat{K} \cap \primalplat{L} = \varnothing$ or $\primalplat{K} \cap \primalplat{L}$ is an $(3-k)$-dimensional side simplex ($k \in \{1, 2, 3\}$) common to both of the simplices $\primalplat{K}$ and $\primalplat{L}$. For $\primalplat{K} \in \ensprimalplat$ we denote by \areprendre{$\diam{\primalplat{K}}$ its diameter}.
-
-Note that, by \Cref{lemme:fermi_coordinates}, for every simplex $\primalplat{K} \subset \surfpoly$ there is a unique curved simplex $\primal{K} \defeq \projvariete \primalplat{K} \subset \surflisse$ (see \Cref{fig:projection_3d_courbe}). In order to avoid global double covering, we assume that for each point $a \in \surflisse$ there is at most one point $x \in \surfpoly$ with $a = \projvariete(x)$. This implies that there is a bijective correspondence between the triangles on $\surfpoly$ and the induced curvilinear triangles on $\surflisse$.
+\end{equation}
+The vertices of the simplices are taken to sit on the smooth surface $\surflisse$. For $\primalplat{K}, \primalplat{L} \in \ensprimalplat$, either $\primalplat{K} \cap \primalplat{L} = \varnothing$ or $\primalplat{K} \cap \primalplat{L}$ is an $(3-k)$-dimensional side simplex ($k \in \{1, 2, 3\}$) common to both of the simplices $\primalplat{K}$ and $\primalplat{L}$. Note that, by \Cref{lemme:fermi_coordinates}, for every simplex $\primalplat{K} \subset \surfpoly$ there is a unique curved simplex denoted $\primal{K} \defeq \projvariete \primalplat{K} \subset \surflisse$ (see \Cref{fig:projection_3d_courbe}). In order to avoid global double covering, we assume that for each point $a \in \surflisse$ there is at most one point $x \in \surfpoly$ with $a = \projvariete(x)$. This implies that there is a bijective correspondence between the triangles on $\surfpoly$ and the induced curvilinear triangles on $\surflisse$.
 
 \begin{figure}[H]
     \centering
     \input{figures/projection_3d_courbe.tex}
-    \caption{Approximation of a smooth surface by a polygonal surface : a control volume $\primalplat{K}$ and its projection $\primal{K} = \projvariete \primalplat{K}$ onto the hyperurface $\surflisse$}
+    \caption{A simplex $\primalplat{K}$ and its projection $\primal{K} = \projvariete \primalplat{K}$ onto the hyperurface $\surflisse$}
     \label{fig:projection_3d_courbe}
 \end{figure}
-
-\begin{theo}
-\[
-\primal{K} \defeq \projvariete \primalplat{K}
-\quad
-\ensprimal \defeq \ens[\big]{\primal{K}}
-\]
-
-\end{theo}

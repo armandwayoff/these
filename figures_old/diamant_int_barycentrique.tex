@@ -1,0 +1,99 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\begin{tikzpicture}[
+  ddfv,
+  scale=5,
+]
+
+\def\a{0.2}
+
+\coordinate (xke) at (0,0.5);
+\coordinate (xle) at (0,-0.5);
+\coordinate (xk) at (-0.35,0.4);
+\coordinate (xl) at (0.35,0.3);
+\coordinate (xm) at ($(xke)!0.5!(xle)$);
+
+\node[ptsq={myblue}{above:{\contour{white}{$x_{\mailleduale{K}}$}}}] at (xke) {};
+
+\node[ptsq={myblue}{below:{\contour{white}{$x_{\mailleduale{L}}$}}}] at (xle) {};
+
+\node[ptcl={myred}{left:{$x_{\primal{K}}$}}] at (xk) {};
+\node[ptcl={myred}{right:{$x_{\primal{L}}$}}] at (xl) {};
+
+% \node[left, mygreen] at ($(xk)!0.5!(xke)$) {$\diamant{D}_{\sigma,\dual{\sigma}}$};
+
+\path[name path=sigma] (xle) -- (xke);
+\path[name path=sigmae] (xk) -- (xl);
+
+\path[name intersections={of=sigma and sigmae, by=I}];
+
+\def\rayonangle{0.08}
+
+\path let
+    \p0 = (I),
+    \p1 = (xke),
+    \p2 = (xl)
+in
+    \pgfextra{
+        \pgfmathsetmacro{\angA}{atan2(-\y1+\y0,\x1-\x0)}
+        \pgfmathsetmacro{\angB}{atan2(\y2-\y0,\x2-\x0)}
+        \global\let\angA\angA
+        \global\let\angB\angB
+    };
+
+\draw[black] ($(I)+(\angA:\rayonangle)$) arc[start angle=\angA,end angle=\angB,radius=\rayonangle];
+% \fill[opacity=0.5] (I) -- ($(I)+(\angA:\rayonangle)$) arc[start angle=\angA,end angle=\angB,radius=\rayonangle] -- cycle;
+
+\node[right] at ($(I)+({0.5*(\angA+\angB)}:\rayonangle)$) {$\alpha_{\diamant{D}}$};
+
+\draw[myblue]
+    (xle) -- (xke)
+    node[pos=0.2, right] {$\sigma$};
+
+\draw[myred]
+    (xk) -- (xl)
+    node[pos=0.7, above] {$\dual{\sigma}$};
+
+\draw[myred] (xk) -- (xm);
+\draw[myred] (xl) -- (xm);
+\node[ptsq={black}{right:{$x_{\diamant{D}}$}}] at (xm) {};
+
+\def\lengthbasis{2pt}
+\def\lengthsq{0.5pt}
+
+\draw[ultra thick, ->] ($(xke)!0.8!(xle)$) -- ++(0,-\lengthbasis) node[right] {$\vect{\tau}_{\mailleduale{K},\mailleduale{L}}$};
+\draw[ultra thick, ->] ($(xke)!0.8!(xle)$) -- ++(\lengthbasis,0) node[above] {$\vect{\nu}_{\sigma \primal{K}}$};
+\draw ($(xke)!0.8!(xle)$) rectangle ++(\lengthsq,-\lengthsq);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\position{0.25}
+
+\draw[ultra thick, ->] ($(xk)!\position!(xl)$) -- ($(xk)!\position!(xl)!\lengthbasis!(xl)$) node[above] {$\vect{\tau}_{\primal{K},\primal{L}}$};
+\draw[ultra thick, ->] ($(xk)!\position!(xl)$) -- ($(xk)!\position!(xl)!\lengthbasis!-90:(xl)$) node[right] {$\vect{\nu}_{\dual{\sigma} \mailleduale{K}}$};
+
+\coordinate (P) at ($(xk)!\position!(xl)$);
+\draw (P) -- ($(P)!\lengthsq!(xl)$) -- ($(P)!\lengthsq!(xl)!\lengthsq!-90:(xl)$) -- ($(P)!\lengthsq!-90:(xl)$) -- cycle;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\position{0.5}
+
+\draw[ultra thick, ->] ($(xm)!\position!(xl)$) -- ($(xm)!\position!(xl)!\lengthbasis!(xl)$) node[above] {$\vect{\tau}_{\sigma_{\primal{L}}\mailleduale{K}}$};
+\draw[ultra thick, ->] ($(xm)!\position!(xl)$) -- ($(xm)!\position!(xl)!\lengthbasis!-90:(xl)$) node[right] {$\vect{\nu}_{\sigma_{\primal{L}}\mailleduale{K}}$};
+
+\coordinate (P) at ($(xm)!\position!(xl)$);
+\draw (P) -- ($(P)!\lengthsq!(xl)$) -- ($(P)!\lengthsq!(xl)!\lengthsq!-90:(xl)$) -- ($(P)!\lengthsq!-90:(xl)$) -- cycle;
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\position{0.5}
+
+\draw[ultra thick, ->] ($(xk)!\position!(xm)$) -- ($(xk)!\position!(xm)!-\lengthbasis!(xk)$) node[above] {$\vect{\tau}_{\sigma_{\primal{K}}\mailleduale{K}}$};
+\draw[ultra thick, ->] ($(xk)!\position!(xm)$) -- ($(xk)!\position!(xm)!-\lengthbasis!-90:(xk)$) node[right] {$\vect{\nu}_{\sigma_{\primal{K}}\mailleduale{K}}$};
+
+\coordinate (P) at ($(xk)!\position!(xm)$);
+\draw (P) -- ($(P)!\lengthsq!(xm)$) -- ($(P)!\lengthsq!(xm)!\lengthsq!-90:(xm)$) -- ($(P)!\lengthsq!-90:(xm)$) -- cycle;
+
+\end{tikzpicture}

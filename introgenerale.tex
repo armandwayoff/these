@@ -1,43 +1,26 @@
 \chapter*{Introduction générale}
+\markboth{Introduction générale}{Introduction générale}
 \addcontentsline{toc}{chapter}{Introduction générale}
 
-Ce stage porte sur l’étude de méthodes de discrétisation pour la décomposition de Helmholtz--Hodge dans le cas d’une surface fermée sans bord de $\R^3$. On se propose d’adapter des méthodes volumes finis à grilles décalées de type Discrete Duality Finite Volume (\ddfv) ayant déjà été employées dans le cas de domaines à bord dans $\R^2$. Cette adaptation nécessite de résoudre des difficultés posées par la géométrie du problème et qui affectent tant l’implémentation numérique des méthodes que l’étude théorique des schémas.
+Ce rapport porte sur l’étude de méthodes de discrétisation pour la décomposition de Helmholtz--Hodge dans le cas d’une surface fermée sans bord de $\R^3$. On se propose d’adapter des méthodes volumes finis à grilles décalées de type \defini{Discrete Duality Finite Volume} (\ddfv) ayant déjà été employées dans le cas de domaines à bord dans $\R^2$. Cette adaptation nécessite de résoudre des difficultés posées par la géométrie du problème et qui affectent tant l’implémentation numérique des méthodes que l’étude théorique des schémas. \\
 
-Les méthodes \ddfv font partie de la classe des Volumes Finis à grilles décalées. Elles reposent sur l'utilisation simultanée de deux maillages duaux l'un de l'autre, généralement appelés maillage \emph{primal} et maillage \emph{dual}. Cette construction permet de définir des opérateurs discrets de gradient et de divergence satisfaisant une propriété de dualité discrète analogue à celle existant au niveau continu. On obtient ainsi une discrétisation des gradients dans toutes les directions de l'espace ce qui permet notamment de se passer des conditions d'admissibilité des maillages souvent associées aux méthodes Volumes Finis. Tout d'abord introduites au début des années 2000 dans des problèmes de diffusion \cite{hermeline_finite_2000}, elles ont dépuis été développées dans d'autres contextes \cite{domelevo_finite_2005} À COMPLÉTER
-
-Le rapport propose une étude de l'extension de ces méthodes au cas des surfaces fermées de $\R^3$ sans bord. 
-
-\begin{figure}[H]
-    \centering
-    \input{figures/dhh.tex}
-    \caption{Exemple de la décomposition de Helmoltz--Hodge sur une surface fermée sans bord de $\R^3$ (crédit Keenan Crane)}
-\end{figure}
+Les méthodes \ddfv font partie de la classe des \defini{Volumes Finis à grilles décalées}. Elles reposent sur l'utilisation simultanée de deux maillages duaux l'un de l'autre, généralement appelés maillage \emph{primal} et maillage \emph{dual}. Cette construction permet de définir des opérateurs discrets de gradient et de divergence satisfaisant une propriété de dualité discrète analogue à celle existant au niveau continu. On obtient ainsi une discrétisation des gradients dans toutes les directions de l'espace ce qui permet notamment de se passer des conditions d'admissibilité des maillages souvent associées aux méthodes Volumes Finis. Tout d'abord introduites au début des années 2000 dans des problèmes de diffusion \cite{hermeline_finite_2000}, elles ont dépuis été développées dans d'autres contextes \cite{domelevo_finite_2005,andreianov2009discretedualityfinitevolume,cances_convergence_2010,boyer_ddfv_2017,goudon_ddfv_2019}. Le rapport propose une étude de l'extension de ces méthodes au cas des surfaces fermées de $\R^3$ sans bord. \\
 
 La décomposition de Helmoltz--Hodge est un outil très utilisé et très étudié qui est notamment à la base de la cohomologie de De Rham et qui a des liens étroits avec les équations de Maxwell sous leur formulation potentiel. Elle consiste à décomposer un champ de vecteurs tangents $\vect{u}$ sous la forme :
 \[
 \vect{u} = \grad \varphi + \grad^\perp \psi + \vect{r}
 \]
-où $\varphi$ et $\psi$ sont des fonctions scalaires et $\vect{r}$ une fonction vectorielle appartenant au noyau du laplacien. Ce problème a déjà été abordé avec succès par des méthodes \ddfv dans le cadre des domaines du plan à bord \cite{delcourte_discrete_2007}. La généralisation des méthodes \ddfv au cadre des surfaces de $\R^3$ sans bord peut se faire \textbf{naturellement} en définissant un opérateur de gradient discret dans les plans canoniquement associés aux mailles diamants du maillage et un opérateur de divergence discrète qui soient alors en dualité. Des premiers tests numériques effectués dans le cas simple de la sphère laissent entrevoir une convergence numérique de la méthode et son bon comportement. La poursuite de ces tests dans des situations plus critiques présentant notamment une cohomologie non triviale s'accompagnera de l'étude théorique de convergence de la méthode. Les techniques classiques de preuves utilisées en \ddfv reposant sur des résultats de compacité et des inégalités discrètes telles que l'inégalité de Poincaré doivent être adaptées à la géométrie du problème, ce qui concentre en grande partie les difficultés de l'analyse. En effet, l'absence de bord au domaine, permettant généralement de s'assurer de la convergence des solutions primales et duales vers la même solution, ainsi que le fait de se placer dans un cadre de variétés différentielles nécessitent des adaptations aux schémas de preuves classiques et d'établir des estimations discrètes n'existant pas encore dans la littérature pour le cadre \ddfv. 
+où $\varphi$ et $\psi$ sont des fonctions scalaires et $\vect{r}$ une fonction vectorielle appartenant au noyau du laplacien. 
+\begin{figure}[H]
+    \centering
+    \input{figures/dhh.tex}
+    \caption{Exemple de la décomposition de Helmoltz--Hodge sur une surface fermée sans bord de $\R^3$ (crédit K. Crane)}
+\end{figure}
+Ce problème a déjà été abordé avec succès par des méthodes \ddfv dans le cadre des domaines du plan à bord \cite{delcourte_discrete_2007}. La généralisation des méthodes \ddfv au cadre des surfaces de $\R^3$ sans bord peut se faire en définissant un opérateur de gradient discret dans les plans canoniquement associés aux mailles diamants du maillage et un opérateur de divergence discrète qui soient alors en dualité. Des premiers tests numériques effectués dans le cas simple de la sphère laissent entrevoir une convergence numérique de la méthode et son bon comportement. La poursuite de ces tests dans des situations plus critiques présentant notamment une cohomologie non triviale s'accompagnera de l'étude théorique de convergence de la méthode. Les techniques classiques de preuves utilisées en \ddfv reposant sur des résultats de compacité et des inégalités discrètes telles que l'inégalité de Poincaré doivent être adaptées à la géométrie du problème, ce qui concentre en grande partie les difficultés de l'analyse. En effet, l'absence de bord au domaine, permettant généralement de s'assurer de la convergence des solutions primales et duales vers la même solution, ainsi que le fait de se placer dans un cadre de variétés différentielles nécessitent des adaptations aux schémas de preuves classiques et d'établir des estimations discrètes n'existant pas encore dans la littérature pour le cadre \ddfv. \\
 
-Le développement de ces techniques n'en est encore qu'à ses débuts avec relativement peu de travaux présents dans la littérature \cite{tomek_discrete_2016,tomek_discrete_2019} avec des études principalement numériques sans résultats de convergence des méthodes. 
+Le développement de ces techniques n'en est encore qu'à ses débuts avec relativement peu de travaux présents dans la littérature \cite{tomek_discrete_2016,tomek_discrete_2019} avec des études principalement numériques sans résultats de convergence des méthodes. \\
 
-
-\begin{envide}[Stage de fin d'études]
-\begin{itemize}
-    \item Familiarisation avec la méthode DDFV
-    \item Généralisation rigoureuse aux surfaces triangulées de $\R^3$
-    \item Discrétisation de la décomposition de Helmholtz--Hodge
-    \item Démonstration de la convergence lorsque $h \to 0$
-\end{itemize}
-\end{envide}
-
-\bigskip
-
-Dans un premier chapitre \dots
-
-\begin{envide}[Contributions]
-    
-\end{envide}
+Les contributions principales de ce rapport sont au nombre de deux et constituent chacune l'objet d'un chapitre. Dans \textbf{Chapitre I : Généralisation de la méthode \ddfv au cadre des surfaces fermées sans bord de $\R^3$}, nous introduisons un cadre nouveau à cette adaptation de la méthode et définissons la régularité du maillage, les espaces d'approximation, les opérateurs discrets, les produits scalaires et démontrons des propriétés de dualité des opérateurs ainsi qu'une discrétisation de la décomposition de Helmholtz--Hodge. La suite naturelle est de démontrer la convergence de la méthode numérique dans ce nouveau cadre. La démonstration de la convergence repose notamment sur une inégalité de Poincaré dont une démonstration utilisant des techniques inédites dans la littérature \ddfv est proposée dans le \textbf{Chapitre II : Démonstration de l'inégalité de Poincaré \ddfv sur une surface fermée sans bord de $\R^3$}.
 
 \begin{comment}
 \section{Contexte de la thèse}
