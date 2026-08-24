@@ -32,6 +32,6 @@
 \contentsline {section}{\numberline {A.1}Laplacian of a graph}{28}{section.A.1}%
 \contentsline {section}{\numberline {A.2}Eigenvalues of a graph}{28}{section.A.2}%
 \contentsline {section}{\numberline {A.3}The Cheeger inequality}{29}{section.A.3}%
-\contentsline {chapter}{\numberline {B}Le problème isopérimétrique et la constante de Cheeger}{31}{appendix.B}%
-\contentsline {chapter}{\numberline {C}Démonstrations des résultats d'estimations géométriques}{33}{appendix.C}%
-\contentsline {chapter}{\numberline {D}Notations}{35}{appendix.D}%
+\contentsline {chapter}{\numberline {B}Le problème isopérimétrique et la constante de Cheeger}{30}{appendix.B}%
+\contentsline {chapter}{\numberline {C}Démonstrations des résultats d'estimations géométriques}{32}{appendix.C}%
+\contentsline {chapter}{\numberline {D}Notations}{34}{appendix.D}%
