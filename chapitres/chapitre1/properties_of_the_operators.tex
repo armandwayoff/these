@@ -1,19 +1,21 @@
-\section{Properties of the operators} \label{sec:properties_of_the_operators}
+\section{Propriétés des opérateurs discrets} \label{sec:properties_of_the_operators}
 
-\subsection{Discrete Green formulae}
+\subsection{Formules de Green discrètes}
 
-Here, we check that the discrete operators verify some discrete duality principles. Les opérateurs discrets introduits sont en dualité. En effet, grâce aux produits scalaires ci-dessus (ref), on peut écrire une formule de Green. C'est cette propriété de dualité qui a donné le nom à la méthode \ddfv.
+Les opérateurs discrets introduits sont en dualité. En effet, grâce aux produits scalaires dans la \Cref{sec:produits_scalaires}, on peut écrire des formules de Green discrètes. C'est cette propriété de dualité qui a donné son nom à la méthode \ddfv.
 
 \begin{theo}[Formules de Green discrètes] \label{theo:discrete_green_formulae}
 Pour tout $\xi^\ensdiamantplat, u^\ensddfvplat \in (\R^2)^\ensdiamantplat \times \R^\ensddfvplat$, on a
 \[
-\prodscalddfv{\div^\ensddfvplat \xi^\ensdiamantplat}{u^\ensddfvplat} = - \prodscalD{\xi^\ensdiamantplat}{\grad^\ensdiamantplat u^\ensddfvplat},
-\]
-\[
+\prodscalddfv{\div^\ensddfvplat \xi^\ensdiamantplat}{u^\ensddfvplat} = - \prodscalD{\xi^\ensdiamantplat}{\grad^\ensdiamantplat u^\ensddfvplat}
+\quad
+\text{et}
+\quad
 \prodscalddfv{\scarot^\ensddfvplat \xi^\ensdiamantplat}{u^\ensddfvplat} = \prodscalD{\xi^\ensdiamantplat}{\rot^\ensdiamantplat u^\ensddfvplat}.
 \]
 \end{theo}
 \begin{demo}[{\cite[Prop. 2.3]{domelevo_finite_2005}}]
+\areprendre{
 Let $\xi^\ensdiamant$ be a discrete vector field and $\grad^\ensdiamant u^\ensddfv$ the discrete gradient of a function $u^\ensddfv$, respectively defined by the values $\xi^{\diamant{D}}$ and formula \ref{eq:gradient_discret} on each of diamond-cells $\diamant{D} \in \ensdiamant$. There holds:
 \begin{equation}
     \prodscalD{\xi^\ensdiamant}{\grad^\ensdiamant u^\ensddfv} = \sum_{\diamant{D} \in \ensdiamant} \mesure(\diamant{D}) \, \xi^{\diamant{D}} \cdot \grad^{\diamant{D}} u^\ensddfv = 
@@ -23,43 +25,29 @@ Let $\xi^\ensdiamant$ be a discrete vector field and $\grad^\ensdiamant u^\ensdd
     \prodscalD{\xi^\ensdiamant}{\grad^\ensdiamant u^\ensddfv} = - \frac{1}{2} \sum_{\primal{K} \in \ensprimal} u_{\primal{K}} \mathopen{}\left( \sum_{\diamant{D}_{\sigma,\dual{\sigma}} \in \ensdiamant_{\primal{K}}} \mesure(\sigma) \, \xi^{\diamant{D}} \cdot \vect{\nu} \right)
     - \frac{1}{2} \sum_{\mailleduale{K} \in \ensdual} u_{\mailleduale{K}} \mathopen{}\left( \sum_{\diamant{D}_{\sigma,\dual{\sigma}} \in \ensdiamant_{\mailleduale{K}}} \mesure(\dual{\sigma}) \, \xi^{\diamant{D}} \cdot \dual{\vect{\nu}} \right).
 \end{equation}
+}
 \end{demo}
 
-\begin{figure}[H]
-\centering
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \input{figures/duality_div_grad.tex}
-    \caption{}
-\end{subfigure}%
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \input{figures/duality_scarot_rot.tex}
-    \caption{}
-\end{subfigure}
-\caption{}
-\end{figure}
+\subsection{Compositions des opérateurs discrets} \label{sec:compositions_discrete_operators}
 
-\subsection{Compositions of the discrete operators \texorpdfstring{{\cite[Sec. 4.2]{delcourte_discrete_2007}}}{[DDO07, Sec. 4.2]}} \label{sec:compositions_discrete_operators}
-
-The aim of this section is to {\color{red}verify} a discrete analogue of the following continuous identities: $\div \rot = 0$, $\scarot \grad = 0$ and $\scarot \rot = - \div \grad$\ .
+\cite[Sec. 4.2]{delcourte_discrete_2007} The aim of this section is to {\color{red}verify} a discrete analogue of the following continuous identities: $\div \rot = 0$, $\scarot \grad = 0$ and $\scarot \rot = - \div \grad$\ .
 
 \begin{prop}
-Given any $u^\ensddfv \in \R^\ensddfv$, there holds
+Pour tout $u^\ensddfvplat \in \R^\ensddfvplat$, on a
 \begin{align}
-    \div^\ensddfv (\rot^\ensdiamant u^\ensddfv) &= 0 \\
-    \scarot^\ensddfv (\grad^\ensdiamant u^\ensddfv) &= 0. 
+    \div^\ensddfvplat (\rot^\ensdiamantplat u^\ensddfvplat) &= 0 \\
+    \scarot^\ensddfvplat (\grad^\ensdiamantplat u^\ensddfvplat) &= 0. 
 \end{align}
 \end{prop}
 
 \begin{prop}
-The following equality holds
+Pour tout $u^\ensddfvplat \in \R^\ensddfvplat$, l'égalité suivante est vérifiée
 \[
-\scarot^\ensddfv \rot^\ensdiamant u^\ensddfv = - \div^\ensddfv \grad^\ensdiamant u^\ensddfv.
+\scarot^\ensddfvplat \rot^\ensdiamantplat u^\ensddfvplat = - \div^\ensddfvplat \grad^\ensdiamantplat u^\ensddfvplat.
 \]
 \end{prop}
 
-\subsection{Hodge's decomposition}
+\subsection{Discrétisation de la décomposition de Helmholtz--Hodge}
 
 \cite[Sec. 4.3]{delcourte_discrete_2007} In the continuous case, the Hodge decomposition for non simply connected domains reads:
 \begin{equation} \label{eq:413}
@@ -74,18 +62,28 @@ For a non simply connected \dots
 \]
 \end{lemme}
 
-We may now state the following discrete Hodge decomposition:
+\begin{lemme}[Identité d'Euler{\cite{gregoire_decomposition_2025}}]
+Soient $\chi$ la caractéristique d'Euler d'une surface donnée, un graphe sur cette surface avec $A = \#{\text{arêtes}}$, $S = \#{\text{sommets}}$ et $F = \#{\text{faces}}$. Alors
+\[
+S - A + F = \chi.
+\]
+\end{lemme}
 
-\begin{theo}
-Let $\xi^\ensdiamant \in (\R^2)^\ensdiamant$ be a discrete vector field defined by its values on the diamond-cells $\diamant{D}$. There exist unique $\phi^\ensddfv \in \R^\ensddfv, \psi^\ensddfv \in \R^\ensddfv$ such that:
+\begin{corol}[{\cite{gregoire_decomposition_2025}}]
+\begin{itemize}
+    \item La dimension de l'espace vectoriel des fonctions scalaires sera : $S + F$.
+    \item La dimension de l'espace vectoriel des fonction vectorielles sera : $A$.
+    \item Si $\chi$ est nul, ce qui est le cas pour le tore, nous serons assurés d'avoir des opérateurs tel que le gradient ou la divergence par exemple carrés. Dans le cas contraire, la cohomologie devra intervenir dans la décomposition.
+\end{itemize}
+\end{corol}
+
+On peut maintenant énoncer la décomposition de Helmholtz--Hodge discrète.
+\begin{theo}[Décomposition de Helmholtz--Hodge discrète]
+Soit $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$ un champ de vecteurs discret défini par ses valeurs sur les diamants plats. Il existe un unique couple $(\phi^\ensddfvplat, \psi^\ensddfvplat) \in \Rddfvmn \times \R^\ensddfvplat$ tel que
 \begin{equation} \label{eq:415}
-    \xi^\ensddfv = \grad^\ensdiamant \phi^\ensddfv + \rot^\ensdiamant \psi^\ensddfv,
+    \xi^\ensdiamantplat = \grad^\ensdiamantplat \phi^\ensddfvplat + \rot^\ensdiamantplat \psi^\ensddfvplat.
 \end{equation}
-\begin{equation} \label{eq:416}
-    \sum_{\primal{K} \in \ensprimal} \alpha_{\primal{K}} \, \phi_{\primal{K}} = 
-    \sum_{\mailleduale{K} \in \ensdual} \alpha_{\mailleduale{K}} \, \phi_{\mailleduale{K}} = 0.
-\end{equation}
-Moreover, the decomposition \ref{eq:415} is orthogonal. 
+De plus, la décomposition \ref{eq:415} est orthogonale. 
 \end{theo}
 
 \begin{demo}
@@ -93,7 +91,7 @@ Moreover, the decomposition \ref{eq:415} is orthogonal.
 \end{demo}
 
 \begin{remarque}
-Formulae \ref{eq:416} are discrete analogues (respectively stated on the primal mesh and on the dual mesh) of the condition $\int_\Omega \phi = 0$ that appears in the definition of the space $V$ in \ref{eq:413}. 
+La condition $\phi^\ensddfvplat \in \Rddfvmn$ est un analogue discret de la condition $\int_\Omega \phi = 0$ qui apparaît dans la définition de l'espace $V$ dans \ref{eq:413}. 
 \end{remarque}
 
 \cite[Sec. 3.2.5]{gregoire_decomposition_2025} Nous allons aussi définir la divergence et la divergence perp. Pour cela, nous allons utiliser la dualité grâce à la formule d'intégration par parties

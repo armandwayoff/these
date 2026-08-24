@@ -2497,14 +2497,6 @@ INPUT ./chapitres/chapitre1/properties_of_the_operators.tex
 INPUT chapitres/chapitre1/properties_of_the_operators.tex
 INPUT ./chapitres/chapitre1/properties_of_the_operators.tex
 INPUT chapitres/chapitre1/properties_of_the_operators.tex
-INPUT ./figures/duality_div_grad.tex
-INPUT figures/duality_div_grad.tex
-INPUT ./figures/duality_div_grad.tex
-INPUT figures/duality_div_grad.tex
-INPUT ./figures/duality_scarot_rot.tex
-INPUT figures/duality_scarot_rot.tex
-INPUT ./figures/duality_scarot_rot.tex
-INPUT figures/duality_scarot_rot.tex
 INPUT ./chapitres/chapitre2.tex
 INPUT chapitres/chapitre2.tex
 INPUT ./chapitres/chapitre2.tex
@@ -2575,11 +2567,6 @@ INPUT ./backmatter/appendix/graphs.tex
 INPUT backmatter/appendix/graphs.tex
 INPUT ./backmatter/appendix/graphs.tex
 INPUT backmatter/appendix/graphs.tex
-INPUT ./img/isoperimetric-problem-in-a-region.png
-INPUT ./img/isoperimetric-problem-in-a-region.png
-INPUT img/isoperimetric-problem-in-a-region.png
-INPUT ./img/isoperimetric-problem-in-a-region.png
-INPUT ./img/isoperimetric-problem-in-a-region.png
 INPUT ./backmatter/appendix/the_isoperimetric_problem_and_the_cheeger_constant.tex
 INPUT backmatter/appendix/the_isoperimetric_problem_and_the_cheeger_constant.tex
 INPUT ./backmatter/appendix/the_isoperimetric_problem_and_the_cheeger_constant.tex

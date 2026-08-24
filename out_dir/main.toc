@@ -12,27 +12,26 @@
 \contentsline {subsection}{\numberline {I.1.6}Régularité du maillage}{10}{subsection.1.1.6}%
 \contentsline {section}{\numberline {I.2}Espaces d’approximation sur les maillages \textsc {ddfv}\xspace }{10}{section.1.2}%
 \contentsline {section}{\numberline {I.3}Définitions des opérateurs discrets}{11}{section.1.3}%
-\contentsline {subsection}{\numberline {I.3.1}Construction des opérateurs gradient discret et rotationnel vectoriel discret sur les diamants plats}{11}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {I.3.1}Construction des opérateurs gradient discret et rotationnel vectoriel discret}{11}{subsection.1.3.1}%
 \contentsline {subsection}{\numberline {I.3.2}Produits scalaires}{12}{subsection.1.3.2}%
 \contentsline {subsubsection}{Valeurs des poids $\mu _{\mathchoice {\scalebox {0.8}{$\mathrm {K}$}}{\scalebox {0.8}{$\mathrm {K}$}}{\scalebox {0.8}{$\scriptstyle \mathrm {K}$}}{\scalebox {0.6}{$\scriptstyle \mathrm {K}$}}}$ et $\mu _{\mathchoice {\scalebox {0.8}{${\mathrm {K}^\ast }$}}{\scalebox {0.8}{${\mathrm {K}^\ast }$}}{\scalebox {0.8}{${\scriptstyle \mathrm {K}^\ast }$}}{\scalebox {0.6}{${\scriptstyle \mathrm {K}^\ast }$}}}$}{12}{equation.1.3.6}%
 \contentsline {subsubsection}{Calcul des poids $\mu _{\mathchoice {\scalebox {0.8}{$\mathrm {D}$}}{\scalebox {0.8}{$\mathrm {D}$}}{\scalebox {0.8}{$\scriptstyle \mathrm {D}$}}{\scalebox {0.6}{$\scriptstyle \mathrm {D}$}}}$}{13}{equation.1.3.8}%
 \contentsline {subsection}{\numberline {I.3.3}Écriture des produits scalaires sous forme matricielle}{14}{subsection.1.3.3}%
-\contentsline {subsection}{\numberline {I.3.4}Construction of the discrete divergence and scalar curl operators on the primal and dual meshes}{15}{subsection.1.3.4}%
-\contentsline {subsubsection}{Discrete divergence}{15}{section*.15}%
-\contentsline {subsubsection}{Discrete scalar curl operator}{15}{thmt@dummyctr.dummy.19}%
-\contentsline {section}{\numberline {I.4}Properties of the operators}{16}{section.1.4}%
-\contentsline {subsection}{\numberline {I.4.1}Discrete Green formulae}{16}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {I.4.2}Compositions of the discrete operators {\blx@tocontentsinit {0}\cite [Sec. 4.2]{delcourte_discrete_2007}}}{16}{subsection.1.4.2}%
-\contentsline {subsection}{\numberline {I.4.3}Hodge's decomposition}{16}{subsection.1.4.3}%
+\contentsline {subsection}{\numberline {I.3.4}Construction des opérateurs divergence discrète et rotationnel scalaire discret}{15}{subsection.1.3.4}%
+\contentsline {section}{\numberline {I.4}Propriétés des opérateurs discrets}{15}{section.1.4}%
+\contentsline {subsection}{\numberline {I.4.1}Formules de Green discrètes}{15}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {I.4.2}Compositions des opérateurs discrets}{16}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {I.4.3}Discrétisation de la décomposition de Helmholtz--Hodge}{16}{subsection.1.4.3}%
 \contentsline {chapter}{\numberline {II}Démonstration de l'inégalité de Poincaré \textsc {ddfv}\xspace sur une surface fermée sans bord de $\mathbb {R}^3$}{18}{chapter.2}%
 \contentsline {section}{\numberline {II.1}Une inégalité de graphe}{18}{section.2.1}%
 \contentsline {section}{\numberline {II.2}Comparaisons de constantes isopérimétriques}{22}{section.2.2}%
-\contentsline {chapter}{Conclusion et perspectives}{26}{chapter*.21}%
-\contentsline {paragraph}{Conclusion}{26}{chapter*.21}%
-\contentsline {paragraph}{Perspectives}{26}{chapter*.21}%
-\contentsline {chapter}{\numberline {A}Graphs}{28}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Laplacian of a graph {\blx@tocontentsinit {0}\cite [Sec. 1.2]{chung_lectures_nodate}}}{28}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Eigenvalues of a graph {\blx@tocontentsinit {0}\cite [Sec. 1.2]{chung_lectures_nodate}}}{28}{section.A.2}%
-\contentsline {section}{\numberline {A.3}The Isoperimetric Problem and the Cheeger Constant {\blx@tocontentsinit {0}\cite [Sec. 3]{benson_cheeger_2016}}}{30}{section.A.3}%
-\contentsline {chapter}{\numberline {B}Démonstrations des résultats d'estimations géométriques}{31}{appendix.B}%
-\contentsline {chapter}{\numberline {C}Notations}{33}{appendix.C}%
+\contentsline {chapter}{Conclusion et perspectives}{26}{chapter*.19}%
+\contentsline {paragraph}{Conclusion}{26}{chapter*.19}%
+\contentsline {paragraph}{Perspectives}{26}{chapter*.19}%
+\contentsline {chapter}{\numberline {A}Éléments de théorie spectrale des graphes}{28}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Laplacian of a graph}{28}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Eigenvalues of a graph}{28}{section.A.2}%
+\contentsline {section}{\numberline {A.3}The Cheeger inequality}{29}{section.A.3}%
+\contentsline {chapter}{\numberline {B}Le problème isopérimétrique et la constante de Cheeger}{31}{appendix.B}%
+\contentsline {chapter}{\numberline {C}Démonstrations des résultats d'estimations géométriques}{33}{appendix.C}%
+\contentsline {chapter}{\numberline {D}Notations}{35}{appendix.D}%

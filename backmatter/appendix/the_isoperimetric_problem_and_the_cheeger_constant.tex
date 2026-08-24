@@ -1,17 +1,29 @@
 
-\section{The Isoperimetric Problem and the Cheeger Constant \texorpdfstring{{\cite[Sec. 3]{benson_cheeger_2016}}}{[Ben16, Sec. 3]}} \label{sec:cheeger_constant}
+\chapter{Le problème isopérimétrique et la constante de Cheeger} \label{sec:cheeger_constant}
+
+Cette annexe a pour objectif d'introduire la notion de constante de Cheeger d'une variété compacte (une telle notion a été introduite pour les graphes dans l'\Cref{chap:graphs}) et de fournir des éléments permettant d'aboutir à la conclusion que les minimiseurs de Cheeger existent pour toute variété compacte. Le contenu de cette annexe provient de \cite[Section 3]{benson_cheeger_2016}. 
 
 \begin{remarque}
-    The following results are given in dimension $n \geqslant 1$ but will then by applied for $n = 2$ which our setting. 
+Dans le \Cref{chap:demo_ineg_poincare}, nous utilisons la notation $\mesure$ pour désigner la mesure d'une partie de $\R^3$ (voir la \Cref{sec:triangulations}). Dans cette annexe, nous utilisons les notations $\vol_{n-1}$ (resp. $\vol_n$) pour désigner la mesure de dimension $n - 1$ (resp. $n$).
 \end{remarque}
 
-Let $\surflisse$ be an $n$-dimensional, Riemannian manifold with $\vol_n(\surflisse) < \infty$. For a positive $n$-Hausdorff measure subset $A \subseteq \surflisse$ having $(n-1)$-Hausdorff measurable boundary $\partial A$, the \textbf{isoperimetric ratio} of $A$ is given by
+\begin{remarque}
+    The following results are given in dimension $n \geqslant 1$ but will then by applied for $n = 2$ which is our setting. 
+\end{remarque}
+
+Let $\surflisse$ be an $n$-dimensional, Riemannian manifold with $\vol_n(\surflisse) < \infty$. The \textbf{Cheeger constant} of $\surflisse$ is defined to be
+\[
+h(\surflisse) \defeq \inf_D \frac{\vol_{n - 1}(\partial D)}{\vol_n(D)}
+\]
+with $D \subset \surflisse$ a smooth $n$-submanifold with boundary and $0 < \vol_n(D) \leqslant \vol_n(\surflisse) / 2$.
+
+For a positive $n$-Hausdorff measure subset $A \subseteq \surflisse$ having $(n-1)$-Hausdorff measurable boundary $\partial A$, the \textbf{isoperimetric ratio} of $A$ is given by
 \begin{equation}
     h^\ast(A) \defeq \frac{\vol_{n-1}(\partial A)}{\vol_n(A)}.
 \end{equation}
 The isoperimetric ratio is well-defined when $A$ is a smooth submanifold with boundary of $\surflisse$ or, more generally, when $A$ is an integral current. We also define the \textbf{isoperimetric constant} of a subset $A \subseteq \surflisse$ to be 
 \begin{equation}
-\overline{h}(A) = \inf_{D \subseteq A} \frac{\vol_{n-1}(\partial D)}{\vol_n(D)} = \inf_{D \subseteq A} h^\ast(D),
+\overline{h}(A) = \inf_{D \subseteq A} h^\ast(D),
 \end{equation}
 where $D$ ranges over all subsets of $A$ which have smooth boundary. 
 
@@ -37,9 +49,4 @@ Let $\surflisse$ be an $n$-dimensional, compact Riemannian manifold, possibly wi
 h(\surflisse) = \lim_{k \to \infty} \frac{\vol_{n-1}(\partial A_k)}{\vol_n(A_k)}.
 \]
 \end{lemme}
-
 Combining \ref{theo:fundamental_existence_and_regularity} and \ref{lemme:buser}, we can immediately conclude that \textbf{Cheeger minimizers exists for all compact manifolds}.
-
-\begin{envide}[Interprétation]
-    \chevron{On ne peut pas trouver d'ensembles de périmètres qui tendent vers $0$ et de volumes non nuls}.
-\end{envide}

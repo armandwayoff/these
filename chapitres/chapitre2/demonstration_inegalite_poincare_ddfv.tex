@@ -23,7 +23,7 @@ h(\graphe) \defeq \min_{W \subset \vertices(\graphe)}
 \end{equation}
 Cette constante est aussi appelée \defini{nombre isopérimétrique}.
 \end{defi}
-La constante de Cheeger d'un graphe mesure la présence de \chevron{goulots d'étranglement} dans celui-ci. Intuitivement, si un graphe est bien \chevron{connecté}, il n'est pas être possible d'en isoler une grande partie en supprimant un petit nombre d'arêtes. On peut, par exemple, interpréter la \chevron{taille} de cette partie comme son nombre d'arêtes. Ce point de vue correspond aux valeurs propres du laplacien normalisé. Pour plus de détails, voir \Cref{chap:graphs}. \\
+La constante de Cheeger d'un graphe mesure la présence de \chevron{goulots d'étranglement} dans celui-ci. Intuitivement, si un graphe est bien \chevron{connecté}, il n'est pas être possible d'en isoler une grande partie en supprimant un petit nombre d'arêtes. On peut, par exemple, interpréter la \chevron{taille} de cette partie comme son nombre d'arêtes. Ce point de vue correspond aux valeurs propres du laplacien normalisé. Pour plus de détails, voir l'\Cref{chap:graphs}. \\
 
 \begin{figure}[H]
   \centering
@@ -47,7 +47,7 @@ La constante de Cheeger $h(\graphe)$ d'un graphe $\graphe$ vérifie
 \]
 L'infimum est pris sur l'ensemble des fonctions à valeurs réelles définies en les sommets du graphe; $\fonctionens[f]{\vertices(\graphe)}{\R}$.
 \end{theo}
-Pour une démonstration de ce théorème, voir \cite[Section 3]{ji_fourth_2010} et pour plus de détails sur ce résultat de théorie spectrale des graphes, voir \Cref{chap:graphs}. \\
+Pour une démonstration de ce théorème, voir \cite[Section 3]{ji_fourth_2010} et pour plus de détails sur ce résultat de théorie spectrale des graphes, voir l'\Cref{chap:graphs}. \\
 
 Définissons maintenant les graphes sur lesquels nous allons appliquer l'inégalité de Cheeger. À un maillage \ddfv plat $\ensddfvplat = (\ensprimalplat, \ensdualplat)$, on associe deux graphes: le \defini{graphe du maillage primal} noté $\graphe^\ensprimalplat$ avec $\vertices(\graphe^\ensprimalplat) = \enssomdualplat$ et $\edges(\graphe^\ensprimalplat) = \ensaretedualplat$, et le \defini{graphe du maillage dual} noté $\graphe^\ensdualplat$ avec $\vertices(\graphe^\ensdualplat) = \enssomprimplat$ et $\edges(\graphe^\ensdualplat) = \ensareteprimplat$. On rappelle que $\enssomdualplat$ est l'ensemble des sommets de $\ensdualplat$, que $\ensaretedualplat$ est l'ensemble des arêtes de $\ensdualplat$, que $\enssomprimplat$ est l'ensemble des sommets de $\ensprimalplat$ et que $\ensareteprimplat$ est l'ensemble des arêtes de $\ensprimalplat$. La \Cref{fig:graphe_ddfv} illustre un maillage primal $\ensprimalplat$ et son graphe associé $\graphe^\ensprimalplat$.
 
