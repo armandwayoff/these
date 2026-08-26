@@ -1,6 +1,6 @@
 \begin{tikzpicture}[
     scale=1.1,
-    every node/.style={font=\footnotesize},
+    % every node/.style={font=\footnotesize},
     every path/.append style={line cap=round}
 ]
 
@@ -13,7 +13,7 @@
 
 \node[anchor=south west, inner sep=0] (obs) at (0,0) {\includegraphics[width=2cm]{img/avion.pdf}};
 \node[below=8pt] at (obs.center) {obstacle};
-\node[mydarkgreen, right] at (obs.east) {$\Sigma$};
+\node[mydarkgreen, right] at (obs.east) {$\surflisse$};
 
 \begin{scope}[rotate=-45, shift={(0.03,0.25)}]
     \draw[decoration={expanding waves, segment length=3mm, angle=40}, decorate, myred] (0, 0) -- ++(-1.2,0) node[right=25pt] {onde diffractée};

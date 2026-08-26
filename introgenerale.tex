@@ -10,17 +10,42 @@ La décomposition de Helmoltz--Hodge est un outil très utilisé et très étudi
 \[
 \vect{u} = \grad \varphi + \grad^\perp \psi + \vect{r}
 \]
-où $\varphi$ et $\psi$ sont des fonctions scalaires et $\vect{r}$ une fonction vectorielle appartenant au noyau du laplacien. 
+où $\varphi$ et $\psi$ sont des fonctions scalaires et $\vect{r}$ une fonction vectorielle appartenant au noyau du laplacien (voir la \Cref{fig:dhh}).
 \begin{figure}[H]
     \centering
     \input{figures/dhh.tex}
     \caption{Exemple de la décomposition de Helmoltz--Hodge sur une surface fermée sans bord de $\R^3$ (crédit K. Crane)}
+    \label{fig:dhh}
 \end{figure}
 Ce problème a déjà été abordé avec succès par des méthodes \ddfv dans le cadre des domaines du plan à bord \cite{delcourte_discrete_2007}. La généralisation des méthodes \ddfv au cadre des surfaces de $\R^3$ sans bord peut se faire en définissant un opérateur de gradient discret dans les plans canoniquement associés aux mailles diamants du maillage et un opérateur de divergence discrète qui soient alors en dualité. Des premiers tests numériques effectués dans le cas simple de la sphère laissent entrevoir une convergence numérique de la méthode et son bon comportement \cite{gregoire_decomposition_2025}. La poursuite de ces tests dans des situations plus critiques présentant notamment une cohomologie non triviale s'accompagnera de l'étude théorique de convergence de la méthode. Les techniques classiques de preuves utilisées en \ddfv reposant sur des résultats de compacité et des inégalités discrètes telles que l'inégalité de Poincaré doivent être adaptées à la géométrie du problème, ce qui concentre en grande partie les difficultés de l'analyse. En effet, l'absence de bord au domaine, permettant généralement de s'assurer de la convergence des solutions primales et duales vers la même solution, ainsi que le fait de se placer dans un cadre de variétés différentielles nécessitent des adaptations aux schémas de preuves classiques et d'établir des estimations discrètes n'existant pas encore dans la littérature pour le cadre \ddfv. \\
 
 Le développement de ces techniques n'en est encore qu'à ses débuts avec relativement peu de travaux présents dans la littérature \cite{tomek_discrete_2016,tomek_discrete_2019} avec des études principalement numériques sans résultats de convergence des méthodes. \\
 
-Les contributions principales de ce rapport sont au nombre de deux et constituent chacune l'objet d'un chapitre. Dans \textbf{Chapitre I : Généralisation de la méthode \ddfv au cadre des surfaces fermées sans bord de $\R^3$}, nous introduisons un cadre nouveau à cette adaptation de la méthode et définissons la régularité du maillage, les espaces d'approximation, les opérateurs discrets, les produits scalaires et démontrons des propriétés de dualité des opérateurs ainsi qu'une discrétisation de la décomposition de Helmholtz--Hodge. La suite naturelle est de démontrer la convergence de la méthode numérique dans ce nouveau cadre. La démonstration de la convergence repose notamment sur une inégalité de Poincaré dont une démonstration utilisant des techniques inédites dans la littérature \ddfv est proposée dans le \textbf{Chapitre II : Démonstration de l'inégalité de Poincaré \ddfv sur une surface fermée sans bord de $\R^3$}.
+Les contributions principales de ce rapport sont au nombre de deux et constituent chacune l'objet d'un chapitre. Dans le \textbf{Chapitre I : Généralisation de la méthode \ddfv au cadre des surfaces fermées sans bord de $\R^3$}, nous introduisons un cadre nouveau à cette adaptation de la méthode et définissons la régularité du maillage, les espaces d'approximation, les opérateurs discrets, les produits scalaires et démontrons des propriétés de dualité des opérateurs ainsi qu'une discrétisation de la décomposition de Helmholtz--Hodge. La suite naturelle est de démontrer la convergence de la méthode numérique dans ce nouveau cadre. La démonstration de la convergence repose notamment sur une inégalité de Poincaré dont une démonstration utilisant des techniques inédites dans la littérature \ddfv est proposée dans le \textbf{Chapitre~II : Démonstration de l'inégalité de Poincaré \ddfv sur une surface fermée sans bord de $\R^3$}.
+
+\paragraph{Précisions sur la nature des surfaces considérées}
+Dans le titre de ce rapport, nous parlons de \chevron{surface fermée}, dans l'ensemble du rapport nous rajoutons la précision \chevron{sans bord}, dans l'énoncé du \Cref{theo:main}, nous supposons que la surface est \chevron{compacte}. Précisons ces différents termes. Selon certaines acceptions, une surface \defini{fermée} est une surface \defini{compacte} et \defini{sans bord}. Selon cette définition, la sphère, le tore et la bouteille de Klein sont des exemples de surfaces fermées. Un disque ou un ruban de Möbius sont des exemples de surfaces qui ne sont pas fermées. Il faut ajouter à cela la notion d'\defini{orientabilité}. L'orientabilité est une propriété des surfaces dans l'espace euclidien qui mesure s'il est possible de faire un choix cohérent de vecteur normal de surface en chaque point. Par exemple, la bouteille de Klein se distingue de la sphère et du tore par son caractère \defini{non orientable}. Nous excluons les surfaces non orientables. Finalement, les seules surfaces que nous considérons sont les surfaces 
+\begin{center}
+\textbf{compactes}, \textbf{connexes}, \textbf{sans bord} et \textbf{orientables}.
+\end{center}
+Le théorème de classification des surfaces nous assure que toute surface de cette nature est homéomorphe à la sphère $\mathbb{S}^2$ ou à la somme connexe de $g$ tores ($g \geqslant 1$), illustrés par la \Cref{fig:sphere_et_n-tore}. De plus, une propriété remarquable des surfaces compactes est qu'elles admettent toujours une triangulation par un nombre fini de triangles. Une autre manière de définir ces surfaces est de les définir comme le bord de tout ouvert borné (lisse) de $\R^3$; $\surflisse \defeq \partial \mathcal{O}$ pour $\mathcal{O} \subset \R^3$.
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \includegraphics[width=0.2\textwidth]{img/sphere.pdf}
+    \caption{Sphère $\mathbb{S}^2$}
+\end{subfigure}%
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/n-tores.pdf}
+    \caption{Somme connexe de $g$ tores}
+\end{subfigure}
+\caption{Surfaces compactes, connexes, sans bord et orientables}
+\label{fig:sphere_et_n-tore}
+\end{figure}
+
 
 \begin{comment}
 \section{Contexte de la thèse}

@@ -2,7 +2,7 @@
 
 Dans cette section, on définit des opérateurs discrets : un gradient discret et une divergence discrète qui sont en dualité discrète ainsi qu'un rotationnel vectoriel discret et un rotationnel scalaire discret. Soulignons que dans le plan, on distingue généralement l’opérateur rotationnel vectoriel de $\R$ dans $\R^2$, défini par $\rot u^\ensddfvplat = \big( \upPartial_y u^\ensddfvplat, - \upPartial_x u^\ensddfvplat \big)^\top$ et l’opérateur rotationnel scalaire de $\R^2$ dans $\R$, défini par $\scarot \xi^\ensdiamantplat = \upPartial_x \xi^\ensdiamantplat_y - \upPartial_y \xi^\ensdiamantplat_x$.
 
-\subsection{Construction des opérateurs gradient discret et rotationnel vectoriel discret}
+\subsection{Opérateurs gradient discret et rotationnel vectoriel discret}
 
 On considère le gradient discret introduit par Coudière \emph{et al.} dans \cite{coudiere_convergence_1999} et appliqué par Hermeline dans \cite{hermeline_finite_2000} et Domelevo et Omnès dans \cite{domelevo_finite_2005} au cadre des méthodes \ddfv.
 
@@ -25,9 +25,19 @@ On remarque que le gradient $\grad^{\diamantplat{D}} u^\ensddfvplat$ peut être 
 \end{equation}
 grâce au lemme 2.1 dans \cite{andreianov_discrete_2007}. La \Cref{fig:ddfv_3d_diamant} rappelle les notations associées à un diamant plat et la \Cref{fig:torus_ddfv} illustre un exemple de calcul du gradient \ddfv d'un champ scalaire sur le tore. On note $\gradmat_\ensdiamantplat \in \R^{2 \abs{\ensdiamantplat} \times \abs{\ensddfvplat}}$ l'écriture de l'opérateur gradient discret sous forme matricielle.
 
-% \input{chapitres/chapitre1/matrice_gradient_discret.tex}
+De la même manière que dans \cite[Definition 3.2]{delcourte_discrete_2007}, on approche le rotationnel vectoriel $\rot \bullet = \big( \upPartial_y \bullet, - \upPartial_x \bullet \big)^\top$ par un opérateur rotationnel vectoriel discret. Cet opérateur discret est construit comme le \chevron{tourné du gradient discret}. 
 
-\begin{figure}
+\begin{defi}[Rotationnel vectoriel discret] \label{defi:discrete_vector_curl_operator}
+L'\defini{opérateur rotationnel vectoriel discret} $\fonctionens[\rot^\ensdiamantplat]{\R^\ensddfvplat}{(\R^2)^\ensdiamantplat}$ est défini de la manière suivante~: pour tout $u^\ensddfvplat \in \R^\ensddfvplat$, $\rot^\ensdiamantplat u^\ensddfvplat = (\rot^{\diamantplat{D}} u^\ensddfvplat)_{\diamantplat{D} \in \ensdiamantplat}$ est la fonction, constante par diamants plats $\diamantplat{D}_{\sigma, \dual{\sigma}}$, donnée par
+\begin{equation} \label{eq:discrete_vector_curl}
+\prodscal{\rot^{\diamantplat{D}_{\sigma,\dual{\sigma}}} u^\ensddfvplat}{\vect{\nu}_{\dual{\sigma} \mailledualeplate{K}}} = -\frac{u_{\primalplat{L}} - u_{\primalplat{K}}}{\mesure(\dual{\sigma})},
+\quad
+\prodscal{\rot^{\diamantplat{D}_{\sigma,\dual{\sigma}}} u^\ensddfvplat}{\vect{\nu}_{\sigma \primalplat{K}}} = -\frac{u_{\mailledualeplate{L}} - u_{\mailledualeplate{K}}}{\mesure(\sigma)}
+\end{equation}
+où les vecteurs $\vect{\nu}_{\dual{\sigma} \mailledualeplate{K}}$ et $\vect{\nu}_{\sigma \primalplat{K}}$ sont tels que les deux bases $(\vect{\tau}_{\mailledualeplate{K},\mailledualeplate{L}}, \vect{\nu}_{\sigma,\primalplat{K}})$ et $(\vect{\nu}_{\dual{\sigma}\mailledualeplate{K}}, \vect{\tau}_{\primalplat{K},\primalplat{L}})$ sont orthonormées et directes (voir la \Cref{fig:ddfv_3d_diamant} pour les notations).
+\end{defi}
+
+\begin{figure}[H]
 \centering
 \begin{subfigure}[t]{.5\textwidth}
     \centering
@@ -43,18 +53,7 @@ grâce au lemme 2.1 dans \cite{andreianov_discrete_2007}. La \Cref{fig:ddfv_3d_d
 \label{fig:torus_ddfv}
 \end{figure}
 
-De la même manière que dans \cite[Definition 3.2]{delcourte_discrete_2007}, on approche le rotationnel vectoriel $\rot \bullet = \big( \upPartial_y \bullet, - \upPartial_x \bullet \big)^\top$ par un opérateur rotationnel vectoriel discret. Cet opérateur discret est construit comme le \chevron{tourné du gradient discret}. 
-
-\begin{defi}[Rotationnel vectoriel discret] \label{defi:discrete_vector_curl_operator}
-L'\defini{opérateur rotationnel vectoriel discret} $\fonctionens[\rot^\ensdiamantplat]{\R^\ensddfvplat}{(\R^2)^\ensdiamantplat}$ est défini de la manière suivante~: pour tout $u^\ensddfvplat \in \R^\ensddfvplat$, $\rot^\ensdiamantplat u^\ensddfvplat = (\rot^{\diamantplat{D}} u^\ensddfvplat)_{\diamantplat{D} \in \ensdiamantplat}$ est la fonction, constante par diamants plats $\diamantplat{D}_{\sigma, \dual{\sigma}}$, donnée par
-\begin{equation} \label{eq:discrete_vector_curl}
-\prodscal{\rot^{\diamantplat{D}_{\sigma,\dual{\sigma}}} u^\ensddfvplat}{\vect{\nu}_{\dual{\sigma} \mailledualeplate{K}}} = -\frac{u_{\primalplat{L}} - u_{\primalplat{K}}}{\mesure(\dual{\sigma})},
-\quad
-\prodscal{\rot^{\diamantplat{D}_{\sigma,\dual{\sigma}}} u^\ensddfvplat}{\vect{\nu}_{\sigma \primalplat{K}}} = -\frac{u_{\mailledualeplate{L}} - u_{\mailledualeplate{K}}}{\mesure(\sigma)}
-\end{equation}
-où les vecteurs $\vect{\nu}_{\dual{\sigma} \mailledualeplate{K}}$ et $\vect{\nu}_{\sigma \primalplat{K}}$ sont tels que les deux bases $(\vect{\tau}_{\mailledualeplate{K},\mailledualeplate{L}}, \vect{\nu}_{\sigma,\primalplat{K}})$ et $(\vect{\nu}_{\dual{\sigma}\mailledualeplate{K}}, \vect{\tau}_{\primalplat{K},\primalplat{L}})$ sont orthonormées et directes (voir la \Cref{fig:ddfv_3d_diamant} pour les notations).
-\end{defi}
-On remarque que le rotationnel $\rot^{\diamantplat{D}} u^\ensddfvplat$ peut être exprimé dans la base $(\vect{\tau}_{\mailledualeplate{K}, \mailledualeplate{L}}, \vect{\tau}_{\primalplat{K}, \primalplat{L}})$ de la manière suivante :
+\noindent On remarque que le rotationnel $\rot^{\diamantplat{D}} u^\ensddfvplat$ peut être exprimé dans la base $(\vect{\tau}_{\mailledualeplate{K}, \mailledualeplate{L}}, \vect{\tau}_{\primalplat{K}, \primalplat{L}})$ de la manière suivante :
 \begin{equation} \label{eq:discrete_vector_curl_bis}
 \rot^{\diamantplat{D}} u^\ensddfvplat = -\frac{1}{\sin \angle{\diamantplat{D}}} \mathopen{}\left( \frac{u_{\primalplat{L}} - u_{\primalplat{K}}}{\mesure(\dual{\sigma})} \, \vect{\tau}_{\mailledualeplate{K}, \mailledualeplate{L}} + \frac{u_{\mailledualeplate{L}} - u_{\mailledualeplate{K}}}{\mesure(\sigma)} \, \vect{\tau}_{\primalplat{K}, \primalplat{L}} \right).
 \end{equation}
@@ -105,13 +104,13 @@ Nous allons déterminer les poids $(\poids{\diamantplat{D}})_{\diamantplat{D} \i
 \quad
 \int_\surflisse \grad^\perp u \cdot \grad v \d s = 0.
 \]
-Le but de cette partie est d'obtenir l'analogue discret de cette formule. Calculons alors les poids $(\poids{\diamantplat{D}})_{\diamantplat{D} \in \ensdiamantplat}$ de telle sorte que pour tout $u^\ensddfvplat, v^\ensddfvplat \in \R^\ensddfvplat$, on ait $\prodscalD{\rot^\ensdiamantplat u^\ensddfvplat}{\grad^\ensdiamantplat v^\ensddfvplat} = 0$. D'après les expressions \ref{eq:discrete_gradient_bis} et \ref{eq:discrete_vector_curl_bis} et la propriété \ref{prop:bases_nu_tau},
+Le but de cette partie est d'obtenir l'analogue discret de cette formule. Calculons alors les poids $(\poids{\diamantplat{D}})_{\diamantplat{D} \in \ensdiamantplat}$ de telle sorte que pour tout $u^\ensddfvplat, v^\ensddfvplat \in \R^\ensddfvplat$, on ait $\prodscalD{\rot^\ensdiamantplat u^\ensddfvplat}{\grad^\ensdiamantplat v^\ensddfvplat} = 0$. D'après les expressions \ref{eq:discrete_gradient_bis} et \ref{eq:discrete_vector_curl_bis} et les relations \ref{eq:bases_nu_tau} et \ref{eq:bases_nu_tau_bis},
 \[
 \prodscalD{\rot^\ensdiamantplat u^\ensddfvplat}{\grad^\ensdiamantplat v^\ensddfvplat}
 =
 - \sum_{\diamantplat{D} \in \ensdiamantplat} \frac{\poids{\diamantplat{D}}}{\sin(\angle{\diamantplat{D}}) \mesure(\sigma) \mesure(\dual{\sigma})} \, \psi_{\diamantplat{D}}(u^\ensddfvplat, v^\ensddfvplat)
 \]
-avec $\psi_{\diamantplat{D}}(u^\ensddfvplat, v^\ensddfvplat) = \big(u_{\primalplat{L}} - u_{\primalplat{K}} \big) \big(v_{\mailledualeplate{L}} - v_{\mailledualeplate{K}} \big) + \big(u_{\mailledualeplate{L}} - u_{\mailledualeplate{K}} \big) \big(v_{\primalplat{L}} - v_{\primalplat{K}} \big)$. \areprendre{Toute fonction $u^\ensddfvplat \in \R^\ensddfvplat$, peut s'écrire sous la forme $u^\ensddfvplat = \sum_{\primalplat{K} \in \ensprimalplat} \indicatrice^\ensddfvplat(\primalplat{K}) \, u_{\primalplat{K}} + \sum_{\mailledualeplate{K} \in \ensdualplat} \indicatrice^\ensddfvplat(\mailledualeplate{K}) \, u_{\mailledualeplate{K}}$. Il y a donc quatre cas à traiter; $(u^\ensddfvplat, v^\ensddfvplat) = \big(\indicatrice^\ensddfvplat(\primalplat{K}), \indicatrice^\ensddfvplat(\primalplat{K})\big)$, $(u^\ensddfvplat, v^\ensddfvplat) = \big(\indicatrice^\ensddfvplat(\mailledualeplate{K}), \indicatrice^\ensddfvplat(\mailledualeplate{K})\big)$, $(u^\ensddfvplat, v^\ensddfvplat) = \big(\indicatrice^\ensddfvplat(\primalplat{K}), \indicatrice^\ensddfvplat(\mailledualeplate{K})\big)$ et $(u^\ensddfvplat, v^\ensddfvplat) = \big(\indicatrice^\ensddfvplat(\mailledualeplate{K}), \indicatrice^\ensddfvplat(\primalplat{K})\big)$.} Dans les deux premiers cas, $\psi_{\diamantplat{D}}(u^\ensddfvplat, v^\ensddfvplat) = 0$. Étudions les deux derniers cas pour deux mailles $\primalplat{K} \in \ensprimalplat$ et $\mailledualeplate{K} \in \ensdualplat$ quelconques. On pose $u^\ensddfvplat = \indicatrice^\ensddfvplat(\primalplat{K})$ et $v^\ensddfvplat = \indicatrice^\ensddfvplat(\mailledualeplate{K})$. Si $\ensdiamantplat_{\primalplat{K}} \cap \ensdiamantplat_{\mailledualeplate{K}} = \varnothing$, alors $\psi_{\diamantplat{D}}(u^\ensddfvplat, v^\ensddfvplat) = 0$. Sinon, les mailles $\primalplat{K}$ et $\mailledualeplate{K}$ ont exactement deux diamants en commun et on note $\ensdiamantplat_{\primalplat{K}} \cap \ensdiamantplat_{\mailledualeplate{K}} = \{ \diamantplat{D}_1, \diamantplat{D}_2 \}$. On les représente sur la \Cref{fig:diamants_voisins}. À nouveau, d'après les expressions \ref{eq:discrete_gradient_bis} et \ref{eq:discrete_vector_curl_bis}, on a
+avec $\psi_{\diamantplat{D}}(u^\ensddfvplat, v^\ensddfvplat) = \big(u_{\primalplat{L}} - u_{\primalplat{K}} \big) \big(v_{\mailledualeplate{L}} - v_{\mailledualeplate{K}} \big) + \big(u_{\mailledualeplate{L}} - u_{\mailledualeplate{K}} \big) \big(v_{\primalplat{L}} - v_{\primalplat{K}} \big)$. Dans la suite on note $\indicatrice^\ensddfvplat(\primalplat{K})$ (resp. $\indicatrice^\ensddfvplat(\mailledualeplate{K})$) la fonction de $\R^\ensddfvplat$ dont toutes les valeurs sont nulles sauf en $\primalplat{K}$ (resp. $\mailledualeplate{K}$) où elle vaut $1$. Par linéarité, il n'y a que quatre cas à traiter; $(u^\ensddfvplat, v^\ensddfvplat) = \big(\indicatrice^\ensddfvplat(\primalplat{K}_1), \indicatrice^\ensddfvplat(\primalplat{K}_2)\big)$, $(u^\ensddfvplat, v^\ensddfvplat) = \big(\indicatrice^\ensddfvplat(\mailledualeplate{K}_1), \indicatrice^\ensddfvplat(\mailledualeplate{K}_2)\big)$, $(u^\ensddfvplat, v^\ensddfvplat) = \big(\indicatrice^\ensddfvplat(\primalplat{K}_1), \indicatrice^\ensddfvplat(\mailledualeplate{K}_2)\big)$ et $(u^\ensddfvplat, v^\ensddfvplat) = \big(\indicatrice^\ensddfvplat(\mailledualeplate{K}_1), \indicatrice^\ensddfvplat(\primalplat{K}_2)\big)$ pour des mailles $\primalplat{K}_i$ et $\mailledualeplate{K}_i$ quelconques. Dans les deux premiers cas, $\psi_{\diamantplat{D}}(u^\ensddfvplat, v^\ensddfvplat) = 0$. Étudions les deux derniers cas pour deux mailles $\primalplat{K} \in \ensprimalplat$ et $\mailledualeplate{K} \in \ensdualplat$ quelconques (on peut omettre les indices). On pose $u^\ensddfvplat = \indicatrice^\ensddfvplat(\primalplat{K})$ et $v^\ensddfvplat = \indicatrice^\ensddfvplat(\mailledualeplate{K})$. Si $\ensdiamantplat_{\primalplat{K}} \cap \ensdiamantplat_{\mailledualeplate{K}} = \varnothing$, alors $\psi_{\diamantplat{D}}(u^\ensddfvplat, v^\ensddfvplat) = 0$. Sinon, les mailles $\primalplat{K}$ et $\mailledualeplate{K}$ ont exactement deux diamants en commun et on note $\ensdiamantplat_{\primalplat{K}} \cap \ensdiamantplat_{\mailledualeplate{K}} = \{ \diamantplat{D}_1, \diamantplat{D}_2 \}$. On les représente sur la \Cref{fig:diamants_voisins}. À nouveau, d'après les expressions \ref{eq:discrete_gradient_bis} et \ref{eq:discrete_vector_curl_bis}, on a
 \begin{align}
     \rot^{\diamantplat{D}_1} u^\ensddfvplat = \frac{1}{\sin \angle{\diamantplat{D}_1}} \frac{-1}{\mesure(\dual{\sigma}_1)} \, \vect{\tau}_{\mailledualeplate{K}, \mailledualeplate{K}_1},
     \quad
@@ -144,10 +143,7 @@ L'expression de la mesure d'un diamant plat est donnée par \ref{eq:mesure_diama
 \end{figure}
 \noindent Nous avons donc construit le produit scalaire \ref{eq:prodscalD} de sorte à ce qu'on ait le résultat suivant.
 \begin{theo} \label{theo:rotperpgrad}
-Pour tout $u^\ensddfvplat, v^\ensddfvplat \in \R^\ensddfvplat$,
-\[
-\prodscalD{\rot^\ensdiamantplat u^\ensddfvplat}{\grad^\ensdiamantplat v^\ensddfvplat} = 0.
-\]
+Pour tout $u^\ensddfvplat, v^\ensddfvplat \in \R^\ensddfvplat$, $\prodscalD{\rot^\ensdiamantplat u^\ensddfvplat}{\grad^\ensdiamantplat v^\ensddfvplat} = 0$.
 \end{theo}
 Nous résumons ci-dessous les expressions des normes que nous avons introduites.
 Soient $u^\ensddfvplat \in \R^\ensddfvplat$, $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$ et $0 < \alpha < 1$. Les normes discrètes ont pour expression
@@ -214,13 +210,13 @@ La matrice $\frac{1}{\poids{\diamantplat{D}}} \, \masse^{\diamantplat{D}}_\Sigma
 \prodscalD{\xi^\ensdiamantplat}{\phi^\ensdiamantplat} &= (\Xi^\ensdiamantplat_\Sigma)^\top \masse^\ensdiamantplat_\Sigma \Phi^\ensdiamantplat_\Sigma.
 \end{align}
 Dans la suite, nous noterons simplement $\masse_\ensdiamantplat = \masse^\ensdiamantplat_\Sigma$. Par exemple, le \Cref{theo:rotperpgrad} se réécrit sous la forme
-\[
+\begin{equation} \label{eq:rotperpgrad_mat}
 \forall u^\ensddfvplat, v^\ensddfvplat \in \R^\ensddfvplat, 
 \quad
 (U^\ensddfvplat)^\top \, (\rotmat_\ensdiamantplat)^\top \masse_\ensdiamantplat \gradmat_\ensdiamantplat V^\ensddfvplat = 0.
-\]
+\end{equation}
 
-\subsection{Construction des opérateurs divergence discrète et rotationnel scalaire discret} \label{sec:discrete_divergence_and_scalar_curl_operators}
+\subsection{Opérateurs divergence discrète et rotationnel scalaire discret} \label{sec:discrete_divergence_and_scalar_curl_operators}
 
 L'écriture des produits scalaires sous forme matricielle donnée dans la \Cref{sec:ecriture_prodscal_matricielle} va nous permettre de définir des opérateurs divergence discrète $\div^\ensddfvplat$ et rotationnel scalaire discret $\scarot^\ensddfvplat$ de $(\R^2)^\ensdiamantplat$ à valeurs dans $\R^\ensddfvplat$. Nous allons définir $\div^\ensddfvplat$ (resp. $\scarot^\ensddfvplat$) comme l'adjoint de $\grad^\ensdiamantplat$ (resp. $\rot^\ensdiamantplat$).
 
@@ -242,38 +238,6 @@ L'\defini{opérateur rotationnel scalaire discret} est défini de la manière su
 où $\rotmat_\ensdiamantplat \in \R^{2 \abs{\ensdiamantplat} \times \abs{\ensddfvplat}}$ est l'écriture matricielle de l'opérateur rotationnel vectoriel discret.
 \end{defi}
 
-\begin{prop}
-\areprendre{
-L'opérateur divergence discrète peut s'écrire sous la forme $\fonctionens[\div^\ensddfvplat]{(\R^2)^\ensdiamantplat}{\R^\ensddfvplat}$. Soit $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$, on pose
-\[
-\div^\ensddfvplat \xi^\ensdiamantplat = \mathopen{}\big( 
-\div^\ensprimalplat \xi^\ensdiamantplat,
-\div^\ensdualplat \xi^\ensdiamantplat    
-\big),
-\]
-avec $\div^\ensprimalplat \xi^\ensdiamantplat = \mathopen{}\big(\div^{\primalplat{K}} \xi^\ensdiamantplat \big)_{\primalplat{K} \in \ensprimalplat}$, $\div^\ensdualplat \xi^\ensdiamantplat = \mathopen{}\big( \div^{\mailledualeplate{K}} \xi^\ensdiamantplat \big)_{\mailledualeplate{K} \in \ensdualplat}$:
-\begin{align*}
-    \forall \primalplat{K} \in \ensprimalplat, \quad \div^{\primalplat{K}} \xi^\ensdiamantplat &= \frac{1}{\mesure(\primalplat{K})} \sum_{\diamantplat{D}_{\sigma, \dual{\sigma}} \in \ensdiamantplat_{\primalplat{K}}} \mesure(\sigma) \, \xi^{\diamantplat{D}} \cdot \vect{\nu}, \\
-    \forall \mailledualeplate{K} \in \ensdualplat, \quad \div^{\mailledualeplate{K}} \xi^\ensdiamantplat &= \frac{1}{\mesure(\mailledualeplate{K})} \sum_{\diamantplat{D}_{\sigma, \dual{\sigma}} \in \ensdiamantplat_{\mailledualeplate{K}}} \mesure(\dual{\sigma}) \, \xi^{\diamantplat{D}} \cdot \dual{\vect{\nu}}.
-\end{align*}    
-}
-\end{prop}
-
-% \input{chapitres/chapitre1/demonstration_divergence_discrete.tex}
-
-\begin{prop}
-\areprendre{
-$\fonctionens[\scarot^\ensddfvplat]{(\R^2)^\ensdiamantplat}{\R^\ensddfvplat}$. Soit $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$, on pose
-\[
-\scarot^\ensddfvplat \xi^\ensdiamantplat = \mathopen{}\big( 
-\scarot^\ensprimalplat \xi^\ensdiamantplat,
-\scarot^\ensdualplat \xi^\ensdiamantplat    
-\big),
-\]
-with $\scarot^\ensprimalplat \xi^\ensdiamantplat = \mathopen{}\big(\scarot^{\primalplat{K}} \xi^\ensdiamantplat \big)_{\primalplat{K} \in \ensprimalplat}$, $\scarot^\ensdualplat \xi^\ensdiamantplat = \mathopen{}\big( \scarot^{\mailledualeplate{K}} \xi^\ensdiamantplat \big)_{\mailledualeplate{K} \in \ensdualplat}$:
-\begin{align*}
-    \forall \primalplat{K} \in \ensprimalplat, \quad \scarot^{\primalplat{K}} \xi^\ensdiamantplat &= \frac{1}{\mesure(\primalplat{K})} \sum_{\diamantplat{D}_{\sigma, \dual{\sigma}} \in \ensdiamantplat_{\primalplat{K}}} \mesure(\sigma) \, \xi^{\diamantplat{D}} \cdot \vect{\tau}, \\
-    \forall \mailledualeplate{K} \in \ensdualplat, \quad \scarot^{\mailledualeplate{K}} \xi^\ensdiamantplat &= \frac{1}{\mesure(\mailledualeplate{K})} \sum_{\diamantplat{D}_{\sigma, \dual{\sigma}} \in \ensdiamantplat_{\mailledualeplate{K}}} \mesure(\dual{\sigma}) \, \xi^{\diamantplat{D}} \cdot \dual{\vect{\tau}}.
-\end{align*}
-}
-\end{prop}
+\begin{remarque}
+Les opérateurs divergence discrète et rotationnel scalaire discret peuvent s'écrire de manière explicite par mailles primales et duales de manière analogue à \cite[Definitions 3.4 \& 3.5]{delcourte_discrete_2007}.
+\end{remarque}

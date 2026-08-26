@@ -92,3 +92,71 @@ Let $\fonctionens[\eta]{\surfpoly}{\R}$ with the lift $\fonctionens[\eta^\ell]{\
     \includegraphics[width=0.3\textwidth]{img/isoperimetric-problem-in-a-region.png}
     \caption{}
 \end{figure}
+
+\begin{prop}
+\areprendre{
+L'opérateur divergence discrète peut s'écrire sous la forme $\fonctionens[\div^\ensddfvplat]{(\R^2)^\ensdiamantplat}{\R^\ensddfvplat}$. Soit $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$, on pose
+\[
+\div^\ensddfvplat \xi^\ensdiamantplat = \mathopen{}\big( 
+\div^\ensprimalplat \xi^\ensdiamantplat,
+\div^\ensdualplat \xi^\ensdiamantplat    
+\big),
+\]
+avec $\div^\ensprimalplat \xi^\ensdiamantplat = \mathopen{}\big(\div^{\primalplat{K}} \xi^\ensdiamantplat \big)_{\primalplat{K} \in \ensprimalplat}$, $\div^\ensdualplat \xi^\ensdiamantplat = \mathopen{}\big( \div^{\mailledualeplate{K}} \xi^\ensdiamantplat \big)_{\mailledualeplate{K} \in \ensdualplat}$:
+\begin{align*}
+    \forall \primalplat{K} \in \ensprimalplat, \quad \div^{\primalplat{K}} \xi^\ensdiamantplat &= \frac{1}{\mesure(\primalplat{K})} \sum_{\diamantplat{D}_{\sigma, \dual{\sigma}} \in \ensdiamantplat_{\primalplat{K}}} \mesure(\sigma) \, \xi^{\diamantplat{D}} \cdot \vect{\nu}, \\
+    \forall \mailledualeplate{K} \in \ensdualplat, \quad \div^{\mailledualeplate{K}} \xi^\ensdiamantplat &= \frac{1}{\mesure(\mailledualeplate{K})} \sum_{\diamantplat{D}_{\sigma, \dual{\sigma}} \in \ensdiamantplat_{\mailledualeplate{K}}} \mesure(\dual{\sigma}) \, \xi^{\diamantplat{D}} \cdot \dual{\vect{\nu}}.
+\end{align*}    
+}
+\end{prop}
+
+% \input{chapitres/chapitre1/demonstration_divergence_discrete.tex}
+
+\begin{prop}
+\areprendre{
+$\fonctionens[\scarot^\ensddfvplat]{(\R^2)^\ensdiamantplat}{\R^\ensddfvplat}$. Soit $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$, on pose
+\[
+\scarot^\ensddfvplat \xi^\ensdiamantplat = \mathopen{}\big( 
+\scarot^\ensprimalplat \xi^\ensdiamantplat,
+\scarot^\ensdualplat \xi^\ensdiamantplat    
+\big),
+\]
+with $\scarot^\ensprimalplat \xi^\ensdiamantplat = \mathopen{}\big(\scarot^{\primalplat{K}} \xi^\ensdiamantplat \big)_{\primalplat{K} \in \ensprimalplat}$, $\scarot^\ensdualplat \xi^\ensdiamantplat = \mathopen{}\big( \scarot^{\mailledualeplate{K}} \xi^\ensdiamantplat \big)_{\mailledualeplate{K} \in \ensdualplat}$:
+\begin{align*}
+    \forall \primalplat{K} \in \ensprimalplat, \quad \scarot^{\primalplat{K}} \xi^\ensdiamantplat &= \frac{1}{\mesure(\primalplat{K})} \sum_{\diamantplat{D}_{\sigma, \dual{\sigma}} \in \ensdiamantplat_{\primalplat{K}}} \mesure(\sigma) \, \xi^{\diamantplat{D}} \cdot \vect{\tau}, \\
+    \forall \mailledualeplate{K} \in \ensdualplat, \quad \scarot^{\mailledualeplate{K}} \xi^\ensdiamantplat &= \frac{1}{\mesure(\mailledualeplate{K})} \sum_{\diamantplat{D}_{\sigma, \dual{\sigma}} \in \ensdiamantplat_{\mailledualeplate{K}}} \mesure(\dual{\sigma}) \, \xi^{\diamantplat{D}} \cdot \dual{\vect{\tau}}.
+\end{align*}
+}
+\end{prop}
+
+\begin{remarque}
+La matrice $\rotmat^\top_\ensdiamant \masse_\ensdiamant$ est symétrique positive mais pas définie. Néanmoins, cela n'est pas gênant car la méthode du gradient conjugué converge à un vecteur du noyau de $\gradmat_\ensdiamant$ près. Or le noyau de $\gradmat_\ensdiamant$ contient l'homologie ainsi que des modes hyper-oscillants. De plus, la composante dans le noyau de $\gradmat$ est préservée dans toutes les étapes du gradient conjugué et en prenant comme solution initiale un vecteur nul, cela nous assure de n'obtenir aucun de ces modes tout en convergeant. 
+\end{remarque}
+
+Il faudra vérifier que la définition retenue de l'espace harmonique
+discret élimine ou identifie éventuellement cette duplication si l'on
+souhaite retrouver exactement la dimension topologique continue.
+
+
+\cite[Sec. 4.3]{delcourte_discrete_2007} In the continuous case, the Hodge decomposition for non simply connected domains reads:
+\begin{equation} \label{eq:413}
+(\L^2)^2 = \grad V \oplusperp \rot W,
+\end{equation}
+with $V = \ens[\big]{\phi \in \H^1 \tq \int_\Omega \phi = 0}$ and $W = \ens[\big]{\psi \in \H^1 \tq \cdot}$. To prove an analogous property in the discrete case, we rely on the following result:
+
+
+A surface embedded in three-dimensional space is closed if and only if it is the boundary of a solid. As with any closed manifold, a surface embedded in Euclidean space that is closed with respect to the inherited Euclidean topology is not necessarily a closed surface; for example, a disk embedded in $\R^3$ that contains its boundary is a surface that is topologically closed but not a closed surface. (\url{https://en.wikipedia.org/wiki/Surface_%28topology%29})
+
+
+It follows that an orientable closed surface is determined, up to homeomorphism, by its Euler characteristic.
+
+
+\begin{demo}
+La décomposition se ramène donc à un système carré, comportant autant d'équations que d'inconnues. L'existence et l'unicité de la décomposition sont donc équivalentes et nous allons montrer l'unicité par injectivité. On suppose que $\xi^\ensdiamantplat = 0$. En prenant le produit scalaire de \ref{eq:415} avec $\grad^\ensdiamantplat \phi^\ensddfvplat$, on obtient
+\[
+0 = \normeddfvD{\grad^\ensdiamantplat \phi^\ensddfvplat}^2
++ \prodscalD{\rot^\ensdiamantplat \psi^\ensddfvplat}{\grad^\ensdiamantplat \phi^\ensddfvplat} 
++ \prodscalD{h^\ensdiamantplat}{\grad^\ensdiamantplat \phi^\ensddfvplat}.
+\]
+Le deuxième terme est nul par le \Cref{theo:rotperpgrad}, ainsi que le troisième en appliquant une formule de Green discrète (voir le \Cref{theo:discrete_green_formulae}) et en utilisant le fait que $h^\ensdiamantplat \in \ker(\div^\ensddfvplat)$. Ainsi, $\grad^\ensdiamantplat \phi^\ensddfvplat = 0$ et comme $\phi^\ensddfvplat \in \Rddfvmn$, on en déduit que $\phi^\ensddfvplat = 0$. De la même manière, en prenant le produit scalaire de \ref{eq:415} avec $\rot^\ensdiamantplat \psi^\ensddfvplat$ et en utilisant que $h^\ensdiamantplat \in \ker(\scarot^\ensddfvplat)$ et que $\psi^\ensddfvplat \in \Rddfvmn$, on obtient que $\psi^\ensddfvplat = 0$. Finalement on obtient $h^\ensdiamantplat = 0$ ce qui fournit l'injectivité et donc l'existence et l'unicité de la décomposition de Helmholtz--Hodge discrète dans le cadre \ddfv.
+\end{demo}

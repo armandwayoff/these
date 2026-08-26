@@ -1,17 +1,17 @@
 [0] Config.pm:307> INFO - This is Biber 2.17
 [0] Config.pm:310> INFO - Logfile is 'out_dir/main.blg'
-[97] biber:340> INFO - === lun. août 24, 2026, 16:38:47
-[113] Biber.pm:418> INFO - Reading 'out_dir/main.bcf'
-[191] Biber.pm:972> INFO - Found 24 citekeys in bib section 0
-[206] Biber.pm:4383> INFO - Processing section 0
-[222] Biber.pm:4574> INFO - Looking for bibtex file '../biblio/PFE.bib' for section 0
-[229] bibtex.pm:1713> INFO - LaTeX decoding ...
-[325] bibtex.pm:1518> INFO - Found BibTeX data source '../biblio/PFE.bib'
-[560] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
-[560] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[560] Biber.pm:4203> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'fr-FR'
-[560] Biber.pm:4209> INFO - No sort tailoring available for locale 'fr-FR'
-[591] bbl.pm:654> INFO - Writing 'out_dir/main.bbl' with encoding 'UTF-8'
-[606] bbl.pm:757> INFO - Output to out_dir/main.bbl
-[607] Biber.pm:130> WARN - ISBN '978-0-8218-5021-3 978-0-8218-8851-3 978-1-4704-1751-2' in entry 'ji_fourth_2010' is invalid - run biber with '--validate_datamodel' for details.
-[607] Biber.pm:132> INFO - WARNINGS: 1
+[116] biber:340> INFO - === mer. août 26, 2026, 16:04:52
+[136] Biber.pm:418> INFO - Reading 'out_dir/main.bcf'
+[216] Biber.pm:972> INFO - Found 24 citekeys in bib section 0
+[229] Biber.pm:4383> INFO - Processing section 0
+[242] Biber.pm:4574> INFO - Looking for bibtex file '../biblio/PFE.bib' for section 0
+[250] bibtex.pm:1713> INFO - LaTeX decoding ...
+[346] bibtex.pm:1518> INFO - Found BibTeX data source '../biblio/PFE.bib'
+[591] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[591] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[591] Biber.pm:4203> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'fr-FR'
+[591] Biber.pm:4209> INFO - No sort tailoring available for locale 'fr-FR'
+[623] bbl.pm:654> INFO - Writing 'out_dir/main.bbl' with encoding 'UTF-8'
+[640] bbl.pm:757> INFO - Output to out_dir/main.bbl
+[640] Biber.pm:130> WARN - ISBN '978-0-8218-5021-3 978-0-8218-8851-3 978-1-4704-1751-2' in entry 'ji_fourth_2010' is invalid - run biber with '--validate_datamodel' for details.
+[641] Biber.pm:132> INFO - WARNINGS: 1

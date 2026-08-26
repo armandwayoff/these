@@ -16,6 +16,8 @@ openany,
 \usetikzlibrary{angles}
 \usetikzlibrary{folding}
 
+\usepackage{xurl}
+
 \SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n} % https://tex.stackexchange.com/questions/106714/stmaryrd-and-boldsymbol-avoid-warnings
 
 \usepackage{tikz-cd}
@@ -38,8 +40,6 @@ openany,
 
 \input{introgenerale.tex}
 
-% \part{Convergence analysis of the \ddfv method on surfaces in \texorpdfstring{$\R^3$}{R3}}
-
 \input{chapitres/chapitre1.tex}
 
 \input{chapitres/chapitre2.tex}
@@ -48,15 +48,19 @@ openany,
 
 \appendix
 
-% \input{backmatter/appendix/simplicial_complexes.tex}
-
 \input{backmatter/appendix/graphs.tex}
 \input{backmatter/appendix/the_isoperimetric_problem_and_the_cheeger_constant.tex}
 \input{backmatter/appendix/demo_estimations_geo.tex}
+
+{
+\Crefname{equation}{Éq.}{Éqs.}
+\Crefname{figure}{Fig.}{Figs.}
+\Crefname{section}{Sec.}{Sects.}
+\Crefname{subsection}{Sec.}{Sects.}
+\Crefname{defi}{Déf.}{Défs.}
+
 \input{backmatter/appendix/tableaux_notations.tex}
-
-% \input{backmatter/appendix/sobolev_on_surfaces.tex}
-
+}
 
 \backmatter
 

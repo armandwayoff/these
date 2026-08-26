@@ -8,11 +8,18 @@ La démonstration de la convergence de la méthode numérique repose essentielle
 
 \paragraph{Perspectives} Les propriétés intrinsèques des opérateurs \ddfv, que ce soit en terme d’identités vérifiées au niveau discret ou bien de dimension des espaces présentent un intérêt notamment dans les méthodes de préconditionnement utilisées en électromagnétisme pour l’\efie (Electric Field Integration Equation).
 
-Lors de la simulation numérique du problème de diffraction électromagnétique par un objet, on est amené à devoir résoudre les équations de Maxwell en régime harmonique à l'extérieur de l'objet considéré. On peut alors utiliser la méthode dite des équations intégrales qui revient, dans sa formulation la plus simple, à résoudre sur la surface $\surflisse$ de l'objet diffractant
+Lors de la simulation numérique du problème de diffraction électromagnétique par un objet, illustré par la \Cref{fig:diffraction}, on est amené à devoir résoudre les équations de Maxwell en régime harmonique à l'extérieur de l'objet considéré. On peut alors utiliser la méthode dite des équations intégrales qui revient, dans sa formulation la plus simple, à résoudre sur la surface $\surflisse$ de l'objet diffractant
 \begin{equation} \label{eq:efie}
 \gamma^\mathrm{tan} \mathopen{}\left( \mathrm{i} \, \omega \, \mu_0 \, G \vect{J} + \frac{\mathrm{i}}{\omega \, \varepsilon_0} \grad G \, \mathrm{div} \vect{J} \right) = E^\mathrm{tan}_\mathrm{inc}.
 \end{equation}
 Dans cette équation, $E^\mathrm{tan}_\mathrm{inc}$ est la composante tangentielle du champ électrique incident, $\gamma^\mathrm{tan}$ est la trace tangentielle, $\omega$ est la pulsation de l'onde incidente, et $\varepsilon_0$ et $\mu_0$ sont les coefficients diélectriques du milieu. Enfin, $\vect{J}$ est le courant électrique (c'est un champ de vecteurs tangents sur la surface $\surflisse$ de l'objet) et $G$ est la convolution sur $\surflisse$ par $\displaystyle\frac{\exp(-\i k \abs{x})}{4 \, \pi \abs{x}}$ où le nombre d'onde $k$ est donné par $k = \omega / c$ avec $c$ la vitesse de la lumière. 
+
+\begin{figure}[H]
+    \centering
+    \input{figures/diffraction.tex}
+    \caption{Diffraction d'une onde électromagnétique par un obstacle}
+    \label{fig:diffraction}
+\end{figure}
 
 Toutefois, la résolution numérique de l'équation linéaire \ref{eq:efie} est délicate car l'opérateur sous-jacent
 \[

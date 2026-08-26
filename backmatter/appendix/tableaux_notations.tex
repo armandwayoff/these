@@ -15,46 +15,46 @@
         row{2} = {abovesep+=5pt}
         }
     \SetCell[c=3]{c} Lisse & & & \SetCell[c=3]{c} Polyédrique & & \\
-    $\surflisse$ & Surface lisse fermée de $\R^3$ & --- & $\surfpoly$ & Approximation polyédrique de $\surflisse$& \ref{eq:surfpoly} \\
+    $\surflisse$ & Surface lisse fermée de $\R^3$ & --- & $\surfpoly$ & Approximation polyédrique de $\surflisse$& \Cref{eq:surfpoly} \\
     \hline
     \SetCell[c=6]{c} \textbf{Primal} & & & & & \\
     \hline
-    $\ensprimal$ & Maillage primal de $\surflisse$ & \ref{eq:ensprimal} & $\ensprimalplat$ & Maillage primal de $\surfpoly$& \ref{eq:surfpoly} \\
-    $\primal{K}$, $\primal{L}$ & Mailles primales courbes & --- & $\primalplat{K}$, $\primalplat{L}$ & Mailles primales plates & \ref{fig:decoupage_dual_plat_def} \\
+    $\ensprimal$ & Maillage primal de $\surflisse$ & \Cref{eq:ensprimal} & $\ensprimalplat$ & Maillage primal de $\surfpoly$& \Cref{eq:surfpoly} \\
+    $\primal{K}$, $\primal{L}$ & Mailles primales courbes & --- & $\primalplat{K}$, $\primalplat{L}$ & Mailles primales plates & \Cref{fig:decoupage_dual_plat_def} \\
     $\mesure(\primal{K})$ & Mesure de la maille courbe $\primal{K}$ & --- & $\mesure(\primalplat{K})$ & Mesure de la maille plate $\primalplat{K}$ & --- \\
-    $\diam{\primal{K}}$ & Diamètre de $\primal{K}$ & \ref{eq:diamE} & $\diam{\primalplat{K}}$ & Diamètre de $\primalplat{K}$ & \ref{eq:diamE} \\
-    $x_{\primal{K}}$ & Projection sur $\surflisse$ de $x_{\primalplat{K}}$ & \ref{eq:xprimalK} & $x_{\primalplat{K}}$ & Barycentre de la maille $\primalplat{K}$ & \ref{fig:decoupage_dual_plat_def} \\
-    $\enssomprimplat$ & Ensemble des sommets de $\ensprimal$ & \ref{eq:enssomprim_plat} & $\enssomprimplat$ & Ensemble des sommets de $\ensprimalplat$ & \ref{eq:enssomprim_plat} \\
-    & & & $\sigma$, $\sigma_{\primalplat{K},\primalplat{L}}$ & Arête primale (segment) & \ref{eq:sigma} \\
-    & & & $x_\sigma$ & Milieu de l'arête $\sigma$ & \ref{fig:decoupage_dual_plat_def} \\
+    $\diam{\primal{K}}$ & Diamètre de $\primal{K}$ & \Cref{eq:diamE} & $\diam{\primalplat{K}}$ & Diamètre de $\primalplat{K}$ & \Cref{eq:diamE} \\
+    $x_{\primal{K}}$ & Projection sur $\surflisse$ de $x_{\primalplat{K}}$ & \Cref{eq:xprimalK} & $x_{\primalplat{K}}$ & Barycentre de la maille $\primalplat{K}$ & \Cref{fig:decoupage_dual_plat_def} \\
+    $\enssomprimplat$ & Ensemble des sommets de $\ensprimal$ & \Cref{eq:enssomprim_plat} & $\enssomprimplat$ & Ensemble des sommets de $\ensprimalplat$ & \Cref{eq:enssomprim_plat} \\
+    & & & $\sigma$, $\sigma_{\primalplat{K},\primalplat{L}}$ & Arête primale (segment) & \Cref{eq:sigma} \\
+    & & & $x_\sigma$ & Milieu de l'arête $\sigma$ & \Cref{fig:decoupage_dual_plat_def} \\
     & & & $\mesure(\sigma)$ & Longueur de l'arête (du segment) $\sigma$ & --- \\
     $\ensareteprim_{\primal{K}}$ & Ensemble des arêtes de $\primal{K}$ & --- & $\ensareteprimplat_{\primalplat{K}}$ & Ensemble des arêtes de $\primalplat{K}$ & --- \\
     \hline
     \SetCell[c=6]{c} \textbf{Dual} & & & & & \\
     \hline
-    $\ensdual$ & Maillage dual de $\surflisse$ & \ref{eq:ensdual} & $\ensdualplat$ & Maillage dual de $\surfpoly$ & --- \\
-    $\mailleduale{K}$, $\mailleduale{L}$ & Mailles duales courbes & --- & $\mailledualeplate{K}$, $\mailledualeplate{L}$ & Mailles duales \chevron{plates} & \ref{fig:decoupage_dual_plat_def} \\
+    $\ensdual$ & Maillage dual de $\surflisse$ & \Cref{eq:ensdual} & $\ensdualplat$ & Maillage dual de $\surfpoly$ & --- \\
+    $\mailleduale{K}$, $\mailleduale{L}$ & Mailles duales courbes & --- & $\mailledualeplate{K}$, $\mailledualeplate{L}$ & Mailles duales \chevron{plates} & \Cref{fig:decoupage_dual_plat_def} \\
     $\mesure(\mailleduale{K})$ & Mesure de la maille courbe $\mailleduale{K}$ & --- & $\mesure(\mailledualeplate{K})$ & Mesure de la maille plate $\mailledualeplate{K}$ & --- \\
-    $\diam{\mailleduale{K}}$ & Diamètre de $\mailleduale{K}$ & \ref{eq:diamE} & $\diam{\mailledualeplate{K}}$ & Diamètre de $\mailledualeplate{K}$ & \ref{eq:diamE} \\ 
+    $\diam{\mailleduale{K}}$ & Diamètre de $\mailleduale{K}$ & \Cref{eq:diamE} & $\diam{\mailledualeplate{K}}$ & Diamètre de $\mailledualeplate{K}$ & \Cref{eq:diamE} \\ 
     & & & $x_{\mailledualeplate{K}}$ & Sommet du maillage primal & --- \\
-    & & & $\enssomdualplat$ & Ensemble des $x_{\primalplat{K}}$ & \ref{eq:enssomdualplat} \\
-    & & & $\dual{\sigma}$ & Arête duale (segment) & \ref{eq:dual_sigma} \\
+    & & & $\enssomdualplat$ & Ensemble des $x_{\primalplat{K}}$ & \Cref{eq:enssomdualplat} \\
+    & & & $\dual{\sigma}$ & Arête duale (segment) & \Cref{eq:dual_sigma} \\
     & & & $\mesure(\dual{\sigma})$ & Longueur de l'arête (du segment) $\dual{\sigma}$ & --- \\
     $\ensareteprim_{\mailleduale{K}}$ & Ensemble des arêtes de $\mailleduale{K}$ & --- & $\ensareteprimplat_{\mailledualeplate{K}}$ & Ensemble des arêtes de $\mailledualeplate{K}$ & --- \\
     \hline
     \SetCell[c=6]{c} \textbf{Diamant} & & & & & \\
     \hline
-    $\ensdiamant$ & Maillage diamant de $\surflisse$ & \ref{subsec:diamond_set} & $\ensdiamantplat$ & Ensemble des diamants plats & \ref{subsec:diamond_set} \\
-    $\diamant{D}, \diamant{D}_{\sigma, \dual{\sigma}}$ & Diamant courbe & \ref{subsec:diamond_set} & $\diamantplat{D}, \diamantplat{D}_{\sigma, \dual{\sigma}}$ & Diamant plat & \ref{fig:ddfv_3d_diamant} \\
-    $\mesure(\diamant{D})$ & Mesure de la maille courbe $\diamant{D}$ & --- & $\mesure(\diamantplat{D})$ & Mesure du diamant plat $\diamantplat{D}$ & \ref{eq:mesure_diamantplat} \\
-    & & & $\diam{\diamantplat{D}}$ & Diamètre de $\diamantplat{D}$ & \ref{eq:diamE} \\
-    & & & $\ensdiamantplat_{\primalplat{K}}$ & $\ens[\big]{\diamantplat{D}_{\sigma,\dual{\sigma}} \in \ensdiamantplat \tq \sigma \in \ensareteprimplat_{\primalplat{K}}}$ & \ref{subsec:diamond_set} \\
-    & & & $\ensdiamantplat_{\mailledualeplate{K}}$ & $\ens[\big]{\diamantplat{D}_{\sigma,\dual{\sigma}} \in \ensdiamantplat \tq \dual{\sigma} \in \ensareteprimplat_{\mailledualeplate{K}}}$ & \ref{subsec:diamond_set} \\
-    & & & $\vect{\nu}_{\sigma \primalplat{K}}$ & Normale unitaire à $\sigma$ sortante de $\primalplat{K}$ & \ref{fig:ddfv_3d_diamant} \\
-    & & & $\vect{\tau}_{\mailledualeplate{K},\mailledualeplate{L}}$ & Tangente unitaire à $\sigma$ orientée de $x_{\mailledualeplate{K}}$ à $x_{\mailledualeplate{L}}$ & \ref{fig:ddfv_3d_diamant} \\
-    & & & $\vect{\nu}_{\dual{\sigma} \mailledualeplate{K}}$ & Normale unitaire à $\dual{\sigma}$ \chevron{sortante de $\mailledualeplate{K}$} & \ref{fig:ddfv_3d_diamant} \\
-    & & & $\vect{\tau}_{\primalplat{K},\primalplat{L}}$ & Tangente unitaire à $\dual{\sigma}$ orientée de $x_{\primal{K}}$ à $x_{\primal{L}}$ & \ref{fig:ddfv_3d_diamant} \\
-    & & & $\angle{\diamantplat{D}}$ & Angle entre les segments $\sigma$ et $\dual{\sigma}$ & \ref{fig:ddfv_3d_diamant} \\
+    $\ensdiamant$ & Maillage diamant de $\surflisse$ & \Cref{subsec:diamond_set} & $\ensdiamantplat$ & Ensemble des diamants plats & \Cref{subsec:diamond_set} \\
+    $\diamant{D}, \diamant{D}_{\sigma, \dual{\sigma}}$ & Diamant courbe & \Cref{subsec:diamond_set} & $\diamantplat{D}, \diamantplat{D}_{\sigma, \dual{\sigma}}$ & Diamant plat & \Cref{fig:ddfv_3d_diamant} \\
+    $\mesure(\diamant{D})$ & Mesure de la maille courbe $\diamant{D}$ & --- & $\mesure(\diamantplat{D})$ & Mesure du diamant plat $\diamantplat{D}$ & \Cref{eq:mesure_diamantplat} \\
+    & & & $\diam{\diamantplat{D}}$ & Diamètre de $\diamantplat{D}$ & \Cref{eq:diamE} \\
+    & & & $\ensdiamantplat_{\primalplat{K}}$ & $\ens[\big]{\diamantplat{D}_{\sigma,\dual{\sigma}} \in \ensdiamantplat \tq \sigma \in \ensareteprimplat_{\primalplat{K}}}$ & \Cref{subsec:diamond_set} \\
+    & & & $\ensdiamantplat_{\mailledualeplate{K}}$ & $\ens[\big]{\diamantplat{D}_{\sigma,\dual{\sigma}} \in \ensdiamantplat \tq \dual{\sigma} \in \ensareteprimplat_{\mailledualeplate{K}}}$ & \Cref{subsec:diamond_set} \\
+    & & & $\vect{\nu}_{\sigma \primalplat{K}}$ & Normale unitaire à $\sigma$ sortante de $\primalplat{K}$ & \Cref{fig:ddfv_3d_diamant} \\
+    & & & $\vect{\tau}_{\mailledualeplate{K},\mailledualeplate{L}}$ & Tangente unitaire à $\sigma$ orientée de $x_{\mailledualeplate{K}}$ à $x_{\mailledualeplate{L}}$ & \Cref{fig:ddfv_3d_diamant} \\
+    & & & $\vect{\nu}_{\dual{\sigma} \mailledualeplate{K}}$ & Normale unitaire à $\dual{\sigma}$ \chevron{sortante de $\mailledualeplate{K}$} & \Cref{fig:ddfv_3d_diamant} \\
+    & & & $\vect{\tau}_{\primalplat{K},\primalplat{L}}$ & Tangente unitaire à $\dual{\sigma}$ orientée de $x_{\primal{K}}$ à $x_{\primal{L}}$ & \Cref{fig:ddfv_3d_diamant} \\
+    & & & $\angle{\diamantplat{D}}$ & Angle entre les segments $\sigma$ et $\dual{\sigma}$ & \Cref{fig:ddfv_3d_diamant} \\
     \end{tblr}
 \end{table}
 
@@ -64,17 +64,17 @@
     \begin{tblr}{
         colspec={clc},
         hline{1,Z} = {1pt},
-        row{2} = {abovesep+=5pt}
+        % row{2} = {abovesep+=5pt}
         }
     $\ensddfvplat = (\ensprimalplat, \ensdualplat)$ & Maillage \ddfv plat & --- \\
-    $\size(\ensddfvplat)$ & Taille du maillage $\ensddfvplat$ & \ref{eq:size_ensddfvplat} \\
-    $\reg(\ensddfvplat)$ & Régularité géométrique du maillage $\ensddfvplat$ & \ref{eq:reg_ensddfvplat} \\
+    $\size(\ensddfvplat)$ & Taille du maillage $\ensddfvplat$ & \Cref{eq:size_ensddfvplat} \\
+    $\reg(\ensddfvplat)$ & Régularité géométrique du maillage $\ensddfvplat$ & \Cref{eq:reg_ensddfvplat} \\
     \hline
     $u_{\primalplat{K}}$ & Inconnue sur la maille primale plate $\primalplat{K}$ & --- \\
     $u_{\mailledualeplate{K}}$ & Inconnue sur la maille duale plate $\mailledualeplate{K}$ & --- \\
     $u^\ensprimalplat$ & $(u_{\primalplat{K}})_{\primalplat{K} \in \ensprimalplat}$ & --- \\
     $u^\ensdualplat$ & $(u_{\mailledualeplate{K}})_{\mailledualeplate{K} \in \ensdualplat}$ & --- \\
-    $u^\ensddfvplat$ & Inconnue associée au maillage \ddfv $\ensddfvplat$ & \ref{eq:ddfv_unknown}
+    $u^\ensddfvplat$ & Inconnue associée au maillage \ddfv $\ensddfvplat$ & \Cref{eq:ddfv_unknown}
     \\
     $\R^\ensprimalplat$ & Ensemble des inconnues $u^\ensprimalplat$ & --- \\
     $\R^\ensdualplat$ & Ensemble des inconnues $u^\ensdualplat$ & --- \\
@@ -82,16 +82,16 @@
     $(\R^2)^\ensdiamantplat$ & Ensemble des vecteurs de $\R^2$ définis par diamant $\diamantplat{D}$ & --- \\
     $\xi^\ensdiamantplat$, $\phi^\ensdiamantplat$ & Inconnues de $(\R^2)^\ensdiamantplat$ & --- \\
     \hline
-    $\prodscalddfv{u^\ensddfvplat}{v^\ensddfvplat}$ & Produit scalaire $\L^2$ discret dans $\R^\ensddfvplat$ & \ref{eq:prodscalddfv} \\
-    $\prodscalD{\xi^\ensdiamantplat}{\phi^\ensdiamantplat}$ & Produit scalaire $\L^2$ discret dans $(\R^2)^\ensdiamantplat$ & \ref{eq:prodscalD} \\
+    $\prodscalddfv{u^\ensddfvplat}{v^\ensddfvplat}$ & Produit scalaire $\L^2$ discret dans $\R^\ensddfvplat$ & \Cref{eq:prodscalddfv} \\
+    $\prodscalD{\xi^\ensdiamantplat}{\phi^\ensdiamantplat}$ & Produit scalaire $\L^2$ discret dans $(\R^2)^\ensdiamantplat$ & \Cref{eq:prodscalD} \\
     $\poids{\primalplat{K}}$, $\poids{\mailledualeplate{K}}$ & Poids du produit scalaire $\prodscalddfv{}{}$ & --- \\
     $\poids{\diamantplat{D}}$ & Poids du produit scalaire $\prodscalD{}{}$ & --- \\
-    $\Rddfvmn$ & Ensemble des fonctions scalaires \ddfv à moyenne nulle & \ref{eq:moyenne_nulle} \\
+    $\Rddfvmn$ & Ensemble des fonctions scalaires \ddfv à moyenne nulle & \Cref{eq:moyenne_nulle} \\
     $\normeddfvT{u^\ensddfvplat}$ & $\prodscalddfv{u^\ensddfvplat}{u^\ensddfvplat}^{1/2}$ pour tout $u^\ensddfvplat \in \R^\ensddfvplat$ & --- \\
     $\normeddfvD{\xi^\ensdiamantplat}$ & $\prodscalD{\xi^\ensdiamantplat}{\xi^\ensdiamantplat}^{1/2}$ pour tout $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$ & --- \\
     \hline
-    $\projddfvvar$ & Projecteur $\fonctionens[\projddfvvar]{\R^\ensddfv}{\L^2(\surflisse)}$ & \ref{eq:projddfvvar} \\
-    $\projdiamantvar$ & Projecteur $\fonctionens[\projdiamantvar]{(\R^2)^\ensdiamant}{\L^2(\surflisse)}$ & \ref{eq:projdiamantvar} \\
+    $\projddfvvar$ & Projecteur $\fonctionens[\projddfvvar]{\R^\ensddfv}{\L^2(\surflisse)}$ & \Cref{eq:projddfvvar} \\
+    $\projdiamantvar$ & Projecteur $\fonctionens[\projdiamantvar]{(\R^2)^\ensdiamant}{\L^2(\surflisse)}$ & \Cref{eq:projdiamantvar} \\
     \end{tblr}
 \end{table}
 
@@ -108,11 +108,11 @@
         row{2} = {abovesep+=5pt}
         }
     \SetCell[c=3]{c} Opérateurs &  & \\
-    $\grad^\ensdiamantplat$ & Opérateur gradient discret de $\R^\ensddfvplat \rightarrow (\R^2)^\ensdiamantplat$ & \ref{defi:discrete_gradient} \\
-    $\grad^{\diamantplat{D}} u^\ensddfvplat$ & Gradient discret de $u^\ensddfvplat$ sur le diamant plat $\diamantplat{D}$ & \ref{eq:discrete_gradient} \\
-    $\rot^\ensdiamantplat$ & Opérateur rotationnel vectoriel discret de $\R^\ensddfvplat \rightarrow (\R^2)^\ensdiamantplat$ & \ref{defi:discrete_vector_curl_operator} \\
-    $\div^\ensddfvplat$ & Opérateur divergence discrète de $(\R^2)^\ensdiamantplat \rightarrow \R^\ensddfvplat$ & \ref{defi:discrete_divergence} \\
-    $\scarot^\ensddfvplat$ & Opérateur rotationnel scalaire discret de $(\R^2)^\ensdiamantplat \rightarrow \R^\ensddfvplat$ & \ref{defi:discrete_scalar_curl} \\
+    $\grad^\ensdiamantplat$ & Opérateur gradient discret de $\R^\ensddfvplat \rightarrow (\R^2)^\ensdiamantplat$ & \Cref{defi:discrete_gradient} \\
+    $\grad^{\diamantplat{D}} u^\ensddfvplat$ & Gradient discret de $u^\ensddfvplat$ sur le diamant plat $\diamantplat{D}$ & \Cref{eq:discrete_gradient} \\
+    $\rot^\ensdiamantplat$ & Opérateur rotationnel vectoriel discret de $\R^\ensddfvplat \rightarrow (\R^2)^\ensdiamantplat$ & \Cref{defi:discrete_vector_curl_operator} \\
+    $\div^\ensddfvplat$ & Opérateur divergence discrète de $(\R^2)^\ensdiamantplat \rightarrow \R^\ensddfvplat$ & \Cref{defi:discrete_divergence} \\
+    $\scarot^\ensddfvplat$ & Opérateur rotationnel scalaire discret de $(\R^2)^\ensdiamantplat \rightarrow \R^\ensddfvplat$ & \Cref{defi:discrete_scalar_curl} \\
     \end{tblr}
 \end{table}
 
@@ -135,8 +135,8 @@
     $\divmat_\ensddfvplat$ & Matrice de la divergence discrète & --- \\
     $\rotmat_\ensdiamantplat$ & Matrice du rotationnel vectoriel discret & --- \\
     $\scarotmat_\ensddfvplat$ & Matrice du rotationnel scalaire discret & --- \\
-    $\masse_\ensdiamantplat$ & Poids du produit scalaire $\prodscalddfv{}{}$ & \ref{sec:ecriture_prodscal_matricielle} \\
-    $\masse_\ensddfvplat$ & Poids du produit scalaire $\prodscalD{}{}$ & \ref{sec:ecriture_prodscal_matricielle} \\
+    $\masse_\ensdiamantplat$ & Poids du produit scalaire $\prodscalddfv{}{}$ & \Cref{sec:ecriture_prodscal_matricielle} \\
+    $\masse_\ensddfvplat$ & Poids du produit scalaire $\prodscalD{}{}$ & \Cref{sec:ecriture_prodscal_matricielle} \\
     \end{tblr}
 \end{minipage}
 \begin{minipage}[t]{0.48\textwidth}
