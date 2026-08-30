@@ -1,6 +1,6 @@
 \section{Définitions des opérateurs discrets} \label{sec:definitions_operateurs_discrets}
 
-Dans cette section, on définit des opérateurs discrets : un gradient discret et une divergence discrète qui sont en dualité discrète ainsi qu'un rotationnel vectoriel discret et un rotationnel scalaire discret. Soulignons que dans le plan, on distingue généralement l’opérateur rotationnel vectoriel de $\R$ dans $\R^2$, défini par $\rot u^\ensddfvplat = \big( \upPartial_y u^\ensddfvplat, - \upPartial_x u^\ensddfvplat \big)^\top$ et l’opérateur rotationnel scalaire de $\R^2$ dans $\R$, défini par $\scarot \xi^\ensdiamantplat = \upPartial_x \xi^\ensdiamantplat_y - \upPartial_y \xi^\ensdiamantplat_x$.
+Dans cette section, on définit des opérateurs discrets : un gradient discret et une divergence discrète qui sont en dualité discrète ainsi qu'un rotationnel vectoriel discret et un rotationnel scalaire discret. Soulignons que dans le plan, on distingue généralement l’opérateur rotationnel vectoriel de $\R$ dans $\R^2$, défini par $\rot u = \big( \upPartial_y u, - \upPartial_x u \big)^\top$ et l’opérateur rotationnel scalaire de $\R^2$ dans $\R$, défini par $\scarot \vect{\xi} = \upPartial_x \vect{\xi}_y - \upPartial_y \vect{\xi}_x$.
 
 \subsection{Opérateurs gradient discret et rotationnel vectoriel discret}
 
@@ -42,14 +42,14 @@ où les vecteurs $\vect{\nu}_{\dual{\sigma} \mailledualeplate{K}}$ et $\vect{\nu
 \begin{subfigure}[t]{.5\textwidth}
     \centering
     \input{figures/torus_ddfv_field.tex}
-    \caption{Champ scalaire $u(\theta, \phi) = \frac{7}{10} \sin(3 \, \theta) \cos(2 \, \phi) + \frac{3}{10} \sin(\theta + 3 \, \phi)$}
+    \caption{Champ scalaire $u(\theta, \phi) = \frac{7}{10} \sin(3 \, \theta) \cos(2 \, \phi) + \frac{3}{10} \sin(\theta + 3 \, \phi)$.}
 \end{subfigure}%
 \begin{subfigure}[t]{.5\textwidth}
     \centering
     \input{figures/torus_ddfv_gradient.tex}
     \caption{Champ vectoriel discret $\grad^\ensdiamantplat u^\ensddfvplat$. La direction de chaque vecteur correspond à celle du gradient \ddfv $\grad^{\diamantplat{D}} u^\ensddfvplat$ calculé sur le diamant $\diamantplat{D}$. Sa longueur est proportionnelle à la norme de ce gradient. La couleur de chaque diamant représente l’erreur entre le gradient \ddfv et le gradient surfacique exact évalué au centre projeté du diamant.}
 \end{subfigure}
-\caption{Exemple de calcul du gradient \ddfv d'un champ scalaire sur le tore}
+\caption{Exemple de calcul du gradient \ddfv d'un champ scalaire sur le tore.}
 \label{fig:torus_ddfv}
 \end{figure}
 
@@ -92,9 +92,9 @@ Les deux normes correspondantes sont notées par $\normeddfvT{}$ et $\normeddfvD
 \end{equation}
 On prend en général les valeurs
 \begin{equation} \label{eq:poidsprimaldual}
-\poids{\primalplat{K}} = \frac{\mesure(\primalplat{K})}{2} \quad \text{et} \quad \poids{\mailledualeplate{K}} = \frac{\mesure(\mailledualeplate{K})}{2}.
+\poids{\primalplat{K}} = \frac{\mesure(\primalplat{K})}{2} \quad \text{et} \quad \poids{\mailledualeplate{K}} = \frac{\mesure(\mailledualeplate{K})}{2}
 \end{equation}
-On peut prendre d'autres découpages comme par exemple $\poids{\primalplat{K}} = \alpha \mesure(\primalplat{K})$ et $\poids{\mailledualeplate{K}} = (1 - \alpha) \mesure(\mailledualeplate{K})$ pour $0 < \alpha < 1$. L'essentiel est d'avoir $\normeddfvT{\indicatrice} = \mesure(\surfpoly)$.
+de manière à avoir une symétrie des rôles du maillage primal et du maillage dual. Mais nous pourrions prendre d'autres découpages comme par exemple $\poids{\primalplat{K}} = \alpha \mesure(\primalplat{K})$ et $\poids{\mailledualeplate{K}} = (1 - \alpha) \mesure(\mailledualeplate{K})$ pour $0 < \alpha < 1$. L'essentiel est d'avoir $\normeddfvT{\indicatrice} = \mesure(\surfpoly)$.
 
 \subsubsection{Calcul des poids \texorpdfstring{$\poids{\diamantplat{D}}$}{muD}}
 
@@ -138,12 +138,12 @@ L'expression de la mesure d'un diamant plat est donnée par \ref{eq:mesure_diama
 \begin{figure}[H]
     \centering
     \input{figures/diamants_voisins.tex}
-    \caption{Notations de deux diamants voisins}
+    \caption{Notations de deux diamants voisins.}
     \label{fig:diamants_voisins}
 \end{figure}
 \noindent Nous avons donc construit le produit scalaire \ref{eq:prodscalD} de sorte à ce qu'on ait le résultat suivant.
 \begin{theo} \label{theo:rotperpgrad}
-Pour tout $u^\ensddfvplat, v^\ensddfvplat \in \R^\ensddfvplat$, $\prodscalD{\rot^\ensdiamantplat u^\ensddfvplat}{\grad^\ensdiamantplat v^\ensddfvplat} = 0$.
+Pour tout $u^\ensddfvplat, v^\ensddfvplat \in \R^\ensddfvplat$, on a $\prodscalD{\rot^\ensdiamantplat u^\ensddfvplat}{\grad^\ensdiamantplat v^\ensddfvplat} = 0$.
 \end{theo}
 Nous résumons ci-dessous les expressions des normes que nous avons introduites.
 Soient $u^\ensddfvplat \in \R^\ensddfvplat$, $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$ et $0 < \alpha < 1$. Les normes discrètes ont pour expression
@@ -171,7 +171,7 @@ Nous venons de montrer que les expressions des poids $\poids{\primalplat{K}}$, $
 
 \subsection{Écriture des produits scalaires sous forme matricielle} \label{sec:ecriture_prodscal_matricielle}
 
-Dans cette section, nous allons réécrire les produits scalaires \ref{eq:prodscalddfv} et \ref{eq:prodscalD} introduits dans la section précedente sous forme matricielle de manière à pouvoir définir de manière plus explicite les opérateurs de divergence discrète et de rotationnel scalaire discret (voir \Cref{sec:discrete_divergence_and_scalar_curl_operators}) . Soient $u^\ensddfvplat \in \R^\ensddfvplat$ et $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$. On note $m = \# \ensprimalplat$, $\dual{m} = \# \ensdualplat$ et $d = \# \ensdiamantplat$ et on désigne par
+Dans cette section, nous allons réécrire les produits scalaires \ref{eq:prodscalddfv} et \ref{eq:prodscalD} introduits dans la section précédente sous forme matricielle de manière à pouvoir définir de manière plus explicite les opérateurs de divergence discrète et de rotationnel scalaire discret (voir \Cref{sec:discrete_divergence_and_scalar_curl_operators}) . Soient $u^\ensddfvplat \in \R^\ensddfvplat$ et $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$. On note $m = \# \ensprimalplat$, $\dual{m} = \# \ensdualplat$ et $d = \# \ensdiamantplat$ et on désigne par
 \[
 U^\ensddfvplat \defeq \big( u_{\primalplat{K}_1} \quad \cdots \quad u_{\primalplat{K}_m} \quad u_{\mailledualeplate{K}_1} \quad \cdots \quad u_{\mailledualeplate{K}_{\dual{m}}} \big)^\top
 \quad

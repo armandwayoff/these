@@ -1,91 +1,89 @@
 \chapter{Éléments de théorie spectrale des graphes} \label{chap:graphs}
 
-Cette annexe fournit des éléments de contexte pour le \Cref{theo:cheeger_inequality} établissant l'inégalité de Cheeger sur un graphe. Les notes des \Cref{sec:laplacian_of_a_graph,sec:eigenvalues_of_a_graph} proviennent de \cite[Section 1.2]{chung_lectures_nodate} et celles de l'\Cref{sec:the_cheeger_inequality} sont issues de \cite[Sec.~2]{ji_fourth_2010}.
+Cette annexe fournit des éléments de contexte pour le \Cref{theo:cheeger_inequality} établissant l'inégalité de Cheeger sur un graphe. Les notes des \Cref{sec:laplacian_of_a_graph,sec:eigenvalues_of_a_graph} proviennent de \cite[Sec. 1.2]{chung_lectures_nodate} et celles de la \Cref{sec:the_cheeger_inequality} sont issues de \cite[Sec.~2]{ji_fourth_2010}.
 
-\section{Laplacian of a graph} \label{sec:laplacian_of_a_graph}
+\section{Laplacien d'un graphe} \label{sec:laplacian_of_a_graph}
 
-In a graph $\graphe$, let $\degr(v)$ denote the degree of the vertex $v$. We define the Laplacian for graphs without loops and multiple edges. To begin, we consider the matrix $L$, defined as follows:
+Dans un graphe $\graphe$, notons $\degr(v)$ le degré du sommet $v$. Nous définissons le laplacien pour les graphes sans boucles ni arêtes multiples. Commençons par considérer la matrice $L$, définie comme suit :
 \begin{equation}
 L(u,v) \defeq \begin{cases}
-    \degr(v) &\text{if } u = v \\
-    -1 &\text{if $u$ and $v$ are adjacent}, \\
-    0 & \text{otherwise}.
+    \degr(v) &\text{si } u = v, \\
+    -1 &\text{si $u$ et $v$ sont adjacents}, \\
+    0 & \text{sinon}.
 \end{cases}
 \end{equation}
-Let $T$ denote the diagonal matrix with the $(v,v)$-th entry having value $\degr(v)$. The \defini{Laplacian} of $\graphe$ is defined to be the matrix
+Notons $T$ la matrice diagonale dont le coefficient d'indice $(v,v)$ vaut $\degr(v)$. Le \defini{laplacien} de $\graphe$ est défini par la matrice
 \begin{equation}
 \mathcal{L}(u,v) \defeq \begin{cases}
-    1 & \text{if $u = v$ and $\degr(v) \not= 0$} \\
-    - \displaystyle\frac{1}{\sqrt{\degr(u) \degr(v)}} & \text{if $u$ and $v$ are adjacent}, \\
-    0 & \text{otherwise}. 
+    1 & \text{si $u = v$ et $\degr(v) \not= 0$}, \\
+    - \displaystyle\frac{1}{\sqrt{\degr(u) \degr(v)}} & \text{si $u$ et $v$ sont adjacents}, \\
+    0 & \text{sinon}.
 \end{cases}
 \end{equation}
-We can write
+Nous pouvons écrire
 \[
 \mathcal{L} = T^{-1/2} \, L \, T^{-1/2}
 \]
-with the convention $T^{-1}(v,v) = 0$ for $\degr(v) = 0$. We say $v$ is an isolated vertex if $\degr(v) = 0$. A graph is said to be nontrivial if it contains at least one edge. The Laplacian $\mathcal{L}$ can be viewed as an operator on the space of functions $\fonctionens[g]{\vertices(\graphe)}{\R}$ which satisfies
+avec la convention $T^{-1}(v,v) = 0$ lorsque $\degr(v) = 0$. Le laplacien $\mathcal{L}$ peut être considéré comme un opérateur sur l'espace des fonctions $\fonctionens[g]{\vertices(\graphe)}{\R}$ vérifiant
 \[
-\mathcal{L}g(u) = \frac{1}{\sqrt{\degr(u)}} \sum\limits_{u \sim v} \left( \frac{g(u)}{\sqrt{\degr(u)}} - \frac{g(v)}{\sqrt{\degr(v)}} \right).
+\mathcal{L}g(u) = \frac{1}{\sqrt{\degr(u)}} \sum\limits_{u \sim v} \bigg( \frac{g(u)}{\sqrt{\degr(u)}} - \frac{g(v)}{\sqrt{\degr(v)}} \bigg).
 \]
 
-\section{Eigenvalues of a graph} \label{sec:eigenvalues_of_a_graph}
+\section{Valeurs propres d'un graphe} \label{sec:eigenvalues_of_a_graph}
 
-Since $\mathcal{L}$ is symmetric, its eigenvalues are all real and non-negative. We can use the variational characterizations of those eigenvalues in terms of the Rayleigh quotient of $\mathcal{L}$. Let $g$ denote an arbitrary function which assigns to each vertex $v$ of $\graphe$ a real value $g(v)$. We can view $g$ as a column vector. Then
+Puisque $\mathcal{L}$ est symétrique, ses valeurs propres sont toutes réelles et positives. Nous pouvons utiliser les caractérisations variationnelles de ces valeurs propres à l'aide du quotient de Rayleigh de $\mathcal{L}$. Soit $g$ une fonction arbitraire qui associe à chaque sommet $v$ de $\graphe$ une valeur réelle $g(v)$. Nous pouvons considérer $g$ comme un vecteur colonne. Alors
 \begin{align}
-    \frac{\crodua{g}{\mathcal{L}g}}{\crodua{g}{g}} &= \frac{\crodua{g}{T^{-1/2} L T^{-1/2} g}}{\crodua{g}{g}}
+    \frac{\crodua{g}{\mathcal{L}g}}{\crodua{g}{g}} &= \frac{\crodua{g}{T^{-1/2} \, L \, T^{-1/2} g}}{\crodua{g}{g}}
     = \frac{\crodua{f}{Lf}}{\crodua{T^{1/2} f}{T^{1/2} f}}
     = \frac{\sum\limits_{u \sim v} \big( f(u) - f(v) \big)^2}{\sum\limits_v f(v)^2 \, \degr(v)} \label{eq:rayleigh_quotient}
 \end{align}
-where $g = T^{1/2} f$ and $\sum\limits_{u \sim v}$ denotes the sum over all unordered pairs $\{u, v\}$ for which $u$ and $v$ are adjacent. Here $\crodua{f}{g} = \sum\limits_x f(x) \, g(x)$ denotes the standard inner product in $\R^n$. The sum $\sum\limits_{u \sim v} \big( f(u) - f(v) \big)^2$ is sometimes called the \defini{Dirichlet sum} of $\graphe$ and the ratio on the left-hand side of \ref{eq:rayleigh_quotient} is often called the \defini{Rayleigh quotient}. 
+où $g = T^{1/2} f$ et où $\sum_{u \sim v}$ désigne la somme sur toutes les paires non ordonnées $\{u, v\}$ telles que $u$ et $v$ sont adjacents. Ici, $\crodua{f}{g} = \sum_x f(x) \, g(x)$ désigne le produit scalaire usuel dans $\R^n$. La somme $\sum_{u \sim v} \big( f(u) - f(v) \big)^2$ est parfois appelée la \defini{somme de Dirichlet} de $\graphe$ et le rapport figurant au membre de gauche de \ref{eq:rayleigh_quotient} est souvent appelé le \defini{quotient de Rayleigh}.
 
-From equation \ref{eq:rayleigh_quotient}, we see that all eigenvalues are non-negative. In fact, we can easily deduce from equation \ref{eq:rayleigh_quotient} that $0$ is an eigenvalue of $\mathcal{L}$. We denote the eigenvalues of $\mathcal{L}$ by $0 = \lambda_0 \leqslant \lambda_1 \leqslant \cdots \leqslant \lambda_{n-1}$. The set of the $\lambda_i$'s is called the \defini{spectrum} of $\mathcal{L}$. Let $\indicatrice$ denote the constant function which assumes the value $1$ on each vertex. Then $T^{1/2} \indicatrice$ is an eigenfunction of $\mathcal{L}$ with eigenvalue $0$. Furthermore,
+L'\Cref{eq:rayleigh_quotient} montre que toutes les valeurs propres sont positives ou nulles. En fait, nous en déduisons aisément que $0$ est une valeur propre de $\mathcal{L}$. Notons les valeurs propres de $\mathcal{L}$ par $0 = \lambda_0 \leqslant \lambda_1 \leqslant \cdots \leqslant \lambda_{n-1}$. L'ensemble des $\lambda_i$ est appelé le \defini{spectre} de $\mathcal{L}$. Soit $\indicatrice$ la fonction constante qui vaut $1$ en chaque sommet. Alors $T^{1/2} \indicatrice$ est une fonction propre de $\mathcal{L}$ associée à la valeur propre $0$. De plus,
 \begin{equation} \label{eq:lambdaG}
     \lambda_\graphe = \lambda_1 = \inf_{f \perp T \indicatrice} \frac{\sum\limits_{u \sim v} \big( f(u) - f(v) \big)^2}{\sum\limits_v f(v)^2 \, \degr(v)}.
 \end{equation}
-($f$ ranges over functions defined on the vertices of $\graphe$ satisfying $\sum\limits_v f(v) \, \degr(v) = 0$). The corresponding eigenfunction is $g = T^{1/2} f$ as in \ref{eq:rayleigh_quotient}. The spectral gap $\lambda_\graphe$ is the least nonzero eigenvalue of $\mathcal{L}$. It is sometimes convenient to consider the nontrivial function $f$ achieving \ref{eq:lambdaG}, in which case we call $f$ a \defini{harmonic eigenfunction} of $\mathcal{L}$.
+L'infimum est pris sur les fonctions $f$ définies sur les sommets de $\graphe$ et vérifiant $\sum\limits_v f(v) \, \degr(v) = 0$. La fonction propre correspondante est $g = T^{1/2} f$, comme dans l'\Cref{eq:rayleigh_quotient}. Le \defini{trou spectral} $\lambda_\graphe$ est la plus petite valeur propre non nulle de $\mathcal{L}$. Il est parfois commode de considérer la fonction non triviale $f$ réalisant l'infimum \ref{eq:lambdaG} ; nous appelons alors $f$ une \defini{fonction propre harmonique} de $\mathcal{L}$.
 
-The above formulation for $\lambda_\graphe$ corresponds in a natural way to the eigenvalues of the Laplace--Beltrami operator for Riemannian manifolds:
+La formulation ci-dessus de $\lambda_\graphe$ correspond naturellement aux valeurs propres de l'opérateur de Laplace--Beltrami sur les variétés riemanniennes :
 \[
 \lambda_M = \inf_{\int_M f = 0} \frac{\int_M \abs{\grad f}^2}{\int_M \abs{f}^2}.
 \]
-We remark that the corresponding measure here for each edge is $1$. The measure for each vertex is the degree of the vertex.
-
-We note that \ref{eq:lambdaG} also has formulation
+Remarquons qu'ici la mesure associée à chaque arête vaut $1$. La mesure associée à chaque sommet est le degré de ce sommet. Notons que le trou spectral $\lambda_\graphe$ admet également la formulation
 \[
-\inf_f \frac{\sum\limits_{u \sim v} \big( f(u) - f(v) \big)^2}{\sum\limits_v \big( f(v) - \overline{f} \big)^2 \degr(v)}
+\lambda_\graphe = \inf_f \frac{\sum\limits_{u \sim v} \big( f(u) - f(v) \big)^2}{\sum\limits_v \big( f(v) - \overline{f} \big)^2 \degr(v)}
 \quad
-\text{where}
+\text{où}
 \quad
 \overline{f} = \displaystyle\frac{\sum\limits_v f(v) \degr(v)}{\vol(\graphe)}.
 \]
 
-\section{The Cheeger inequality} \label{sec:the_cheeger_inequality}
+\section{Inégalité de Cheeger} \label{sec:the_cheeger_inequality}
 
-One of the major tools in spectral graph theory is the Cheeger inequality. It concerns the relationship between two important graph invariants, the spectral gap and the Cheeger constant. For an (undirected) graph $\graphe = (\vertices, \edges)$, we denote by $\lambda_\graphe$ the spectral gap of the (normalized) Laplacian. Let $h(\graphe)$ denote the Cheeger constant of $\graphe$, defined as the minimum value $h$ such that any cut separating a set of volume $x$ requires at least $h \, x$ edges if $x$ is less than half of the total volume. The Cheeger inequality states that for a connected graph $\graphe$, we have
+L'inégalité de Cheeger est l'un des outils majeurs de la théorie spectrale des graphes. Elle porte sur la relation entre deux invariants importants d'un graphe : le trou spectral et la constante de Cheeger. Pour un graphe non orienté $\graphe = (\vertices, \edges)$, nous notons $\lambda_\graphe$ le trou spectral du laplacien normalisé. Notons $h(\graphe)$ la constante de Cheeger de $\graphe$, définie comme la plus petite valeur $h$ telle que toute coupe isolant un ensemble de volume $x$ nécessite au moins $h \, x$ arêtes lorsque $x$ est inférieur à la moitié du volume total. L'inégalité de Cheeger affirme que, pour tout graphe connexe $\graphe$,
 \[
 2 \, h(\graphe) \geqslant \lambda_\graphe \geqslant \frac{h(\graphe)^2}{2}.
 \]
-The proof of the above (discrete) Cheeger inequality is quite similar to the proof in the continuous case in spectral geometry due to Jeff Cheeger (see references therein).
+La démonstration de l'inégalité de Cheeger (discrète) ci-dessus est très similaire à celle du cas continu en géométrie spectrale, due à Jeff Cheeger \cite{gunning_lower_2015}.
 
-\begin{defi}[Cheeger constant]
-For a set of vertices $W \subset \vertices(\graphe)$, the \defini{Cheeger ratio} of $W$ is defined to be
+\begin{defi}[Constante de Cheeger]
+Pour un ensemble de sommets $W \subset \vertices(\graphe)$, le \defini{rapport de Cheeger} de $W$ est défini par
 \begin{equation}
 h_W \defeq \frac{\abs{\partial W}}{\min\{ \vol(W), \vol(\graphe) - \vol(W) \}},
 \end{equation}
-where the boundary of $W$ is denoted $\partial W = \ens[\big]{ \{u, v\} \in \edges(\graphe) \tq u \in W \text{ and } v \not\in W }$. Let $\comp{W}$ denote the complement of $W$. Then $h_W = h_{\comp{W}}$. The \defini{Cheeger constant} of $\graphe$ is denoted by 
+où le bord de $W$ est noté $\partial W = \ens[\big]{ \{u, v\} \in \edges(\graphe) \tq u \in W \text{ et } v \not\in W }$. Notons $\comp{W}$ le complémentaire de $W$. Alors $h_W = h_{\comp{W}}$. La \defini{constante de Cheeger} de $\graphe$ est définie par
 \begin{equation}
 h(\graphe) \defeq \min_{W \subset \vertices(\graphe)} h_W.
 \end{equation}
 \end{defi}
 
 \begin{remarque}
-Note that $\vol(\graphe) - \vol(W) = \vol(\comp{W})$.
+Remarquons que $\vol(\graphe) - \vol(W) = \vol(\comp{W})$.
 \end{remarque}
 
-\begin{theo}[Cheeger inequality]
-In a graph $\graphe$, the Cheeger constant $h(\graphe)$ and the spectral gap $\lambda_\graphe$ are related as follows:
+\begin{theo}[Inégalité de Cheeger]
+Dans un graphe $\graphe$, la constante de Cheeger $h(\graphe)$ et le trou spectral $\lambda_\graphe$ vérifient l'encadrement
 \[
 2 \, h(\graphe) \geqslant \lambda_\graphe \geqslant \frac{h(\graphe)^2}{2}.
-\]  
+\]
 \end{theo}

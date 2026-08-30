@@ -1,6 +1,6 @@
 \section{Propriétés des opérateurs discrets} \label{sec:properties_of_the_operators}
 
-Terminons ce chapitre sur la généralisation de la méthode \ddfv au cadre des surfaces fermées de $\R^3$ par les propriétés vérifiées par les opérateurs discrets que nous avons introduits dans la \Cref{sec:definitions_operateurs_discrets}. L'un des intérêts de la méthode \ddfv et de permettre la définition d'analogues discrets des opérateurs différentiels continus, comme le gradient, le rotationnel, la divergence et de permettre une conservation de toutes les propriétés continues de ces opérateurs au niveau discret.
+Terminons ce chapitre sur la généralisation de la méthode \ddfv au cadre des surfaces fermées de $\R^3$ par les propriétés vérifiées par les opérateurs discrets que nous avons introduits dans la \Cref{sec:definitions_operateurs_discrets}. L'un des intérêts de la méthode \ddfv est de permettre la définition d'analogues discrets des opérateurs différentiels continus, comme le gradient, le rotationnel, la divergence et de permettre une conservation de toutes les propriétés continues de ces opérateurs au niveau discret.
 
 \subsection{Formules de Green discrètes}
 
@@ -21,7 +21,7 @@ Pour tout $\xi^\ensdiamantplat, u^\ensddfvplat \in (\R^2)^\ensdiamantplat \times
 
 Le but de cette section est de vérifier des analogues discrets des propriétés continues suivantes : $\div \rot = 0$, $\scarot \grad = 0$ et $\scarot \rot = - \div \grad$\ .
 
-\begin{prop}
+\begin{prop} \label{prop:compo1}
 Pour tout $u^\ensddfvplat \in \R^\ensddfvplat$, on a
 \[
 \div^\ensddfvplat (\rot^\ensdiamantplat u^\ensddfvplat) = 0
@@ -33,7 +33,7 @@ Pour tout $u^\ensddfvplat \in \R^\ensddfvplat$, on a
 \end{prop}
 Ces identités découlent directement des \Cref{defi:discrete_divergence,defi:discrete_scalar_curl} des opérateurs divergence et rotationnel scalaire discrets et de l'écriture matricielle \ref{eq:rotperpgrad_mat} du \Cref{theo:rotperpgrad}.
 
-\begin{prop}
+\begin{prop} \label{prop:compo2}
 Pour tout $u^\ensddfvplat \in \R^\ensddfvplat$, l'égalité suivante est vérifiée
 \[
 \scarot^\ensddfvplat \rot^\ensdiamantplat u^\ensddfvplat = - \div^\ensddfvplat \grad^\ensdiamantplat u^\ensddfvplat.
@@ -69,7 +69,7 @@ et on en déduit le résultat.
 \subsection{Discrétisation de la décomposition de Helmholtz--Hodge}
 
 Énonçons et démontrons la décomposition de Helmholtz--Hodge discrète.
-\begin{theo}[Décomposition de Helmholtz--Hodge discrète]
+\begin{theo}[Décomposition de Helmholtz--Hodge discrète] \label{theo:dhhd}
 Soit $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$ un champ de vecteurs discret défini par ses valeurs sur les diamants plats. Il existe un unique triplet $(\phi^\ensddfvplat, \psi^\ensddfvplat, h^\ensdiamantplat) \in \Rddfvmn \times \Rddfvmn \times (\R^2)^\ensdiamantplat$ tel que
 \begin{equation} \label{eq:415}
     \xi^\ensdiamantplat = \grad^\ensdiamantplat \phi^\ensddfvplat + \rot^\ensdiamantplat \psi^\ensddfvplat + h^\ensdiamantplat,
@@ -106,4 +106,61 @@ En reprenant les notations de la \Cref{prop:carac_euler}, les dimensions des esp
 \dim((\R^2)^\ensdiamantplat) = 2 \, A.
 \]
 \end{corol}
-D'après la \Cref{remarque:fonctionsconstantesoscillations}, le noyau du gradient discret et celui du rotationnel discret sont de dimension $2$. Les potentiels $\phi^\ensddfvplat$ et $\psi^\ensddfvplat$ ne sont donc déterminés qu'à deux constantes près chacun, l'une sur le maillage primal et l'autre sur le maillage dual. Les deux conditions de moyenne nulle définissant $\Rddfvmn$ fixent ces constantes et par conséquent $\dim \Rddfvmn = S + F - 2$ (voir le \Cref{lemme:dim_sfa}). En appliquant la caractéristique d'Euler des surfaces \ref{prop:carac_euler}, les potentiels correspondent à $2(S + F - 2) = 2 \, A - 4 \, g$ inconnues. De plus, l'égalité \ref{eq:415} fournit $2 \, A$ équations d'après le \Cref{lemme:dim_sfa}. Les degrés de liberté restants correspondent à ceux de l'espace harmonique discret de dimension $\dim \mathcal{H}^\ensdiamantplat = 4\, g$. Il y a un facteur $2$ par rapport à la dimension de l'espace harmonique continue qui vaut $2 \, g$. En effet, sur une surface fermée et orientée de genre $g$, l'espace des champs harmoniques est isomorphe au premier groupe de cohomologie de De Rham et sa dimension est $b_1 = 2 \, g$. Ce facteur provient de la structure de la méthode \ddfv, qui associe des inconnues scalaires aux deux maillages, primal et dual.
+Nous pouvons à présent démontrer le résultat suivant sur la dimension de l'espace harmonique \ddfv.
+\begin{prop}
+L'espace harmonique discret $\mathcal{H}^\ensdiamantplat = \Ker(\div^\ensddfvplat) \cap \Ker(\scarot^\ensddfvplat)$ issu de la discrétisation \ddfv d'une surface fermée sans bord de $\R^3$ de genre $g$ a pour dimension 
+\[
+\dim \mathcal{H}^\ensdiamantplat = 4 \, g.
+\]
+\end{prop}
+\begin{demo}
+D'après la \Cref{remarque:fonctionsconstantesoscillations}, le noyau du gradient discret et celui du rotationnel discret sont de dimension $2$. Les potentiels $\phi^\ensddfvplat$ et $\psi^\ensddfvplat$ de la décomposition de Helmholtz--Hodge discrète \ref{eq:415} ne sont donc déterminés qu'à deux constantes près chacun, l'une sur le maillage primal et l'autre sur le maillage dual. Les deux conditions de moyenne nulle définissant $\Rddfvmn$ fixent ces constantes et par conséquent $\dim \Rddfvmn = S + F - 2$ (voir le \Cref{lemme:dim_sfa}). En appliquant la caractéristique d'Euler des surfaces \ref{prop:carac_euler}, les potentiels correspondent à $2(S + F - 2) = 2 \, A - 4 \, g$ inconnues. De plus, la décomposition \ref{eq:415} fournit $2 \, A$ équations d'après le \Cref{lemme:dim_sfa}. L'existence de la décomposition assure que les degrés de liberté restants correspondent à ceux de l'espace harmonique discret qui est donc de dimension $\dim \mathcal{H}^\ensdiamantplat = 4 \, g$.
+\end{demo}
+
+\begin{remarque}
+Il y a un facteur $2$ par rapport à la dimension de l'espace harmonique continu qui vaut $2 \, g$. En effet, sur une surface fermée et orientée de genre $g$, l'espace des champs harmoniques est isomorphe au premier groupe de cohomologie de De Rham et sa dimension est $b_1 = 2 \, g$. Ce facteur provient de la structure de la méthode \ddfv, qui associe des inconnues scalaires aux deux maillages, primal et dual.
+\end{remarque}
+
+Terminons cette section par l'écriture du schéma \ddfv pour la résolution de la décomposition de Helmholtz--Hodge. D'après le \Cref{theo:dhhd}, pour tout $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$, il existe un unique triplet $(\phi^\ensddfvplat, \psi^\ensddfvplat, h^\ensdiamantplat) \in \Rddfvmn \times \Rddfvmn \times \mathcal{H}^\ensdiamantplat$ tel que
+\begin{equation} \label{eq:1}
+\xi^\ensdiamantplat = \grad^\ensdiamantplat \phi^\ensddfvplat + \rot^\ensdiamantplat \psi^\ensddfvplat + h^\ensdiamantplat.
+\end{equation}
+La composition de l'\Cref{eq:1} par $\div^\ensddfvplat$ et par $\scarot^\ensddfvplat$ et les \Cref{prop:compo1,prop:compo2} de composition des opérateurs discrets permettent de séparer le problème \ref{eq:1} en deux problèmes de Poisson discrets indépendants :
+\begin{subequations}
+\label{eq:ddfv_scheme_strong}
+\begin{align}
+    \div^\ensddfvplat \grad^\ensdiamantplat \phi^\ensddfvplat 
+    &= \div^\ensddfvplat \xi^\ensdiamantplat,
+    \label{eq:ddfv_scheme_phi} \\
+    \div^\ensddfvplat \grad^\ensdiamantplat \psi^\ensddfvplat
+    &= - \scarot^\ensddfvplat \xi^\ensdiamantplat.
+    \label{eq:ddfv_scheme_psi}
+\end{align}
+\end{subequations}
+La composante harmonique est ensuite reconstruite par $h^\ensdiamantplat = \xi^\ensdiamantplat - \grad^\ensdiamantplat \phi^\ensddfvplat - \rot^\ensdiamantplat \psi^\ensddfvplat$. Elle vérifie bien $\div^\ensddfvplat h^\ensdiamantplat = 0$ et $\scarot^\ensddfvplat h^\ensdiamantplat = 0$. En utilisant les formules de Green discrètes du \Cref{theo:discrete_green_formulae}, le schéma \ref{eq:ddfv_scheme_strong} s'écrit de manière équivalente sous la forme variationnelle suivante : trouver $(\phi^\ensddfvplat,\psi^\ensddfvplat) \in \Rddfvmn \times \Rddfvmn$ tel que, pour tout $v^\ensddfvplat \in \Rddfvmn$,
+\begin{subequations}
+\label{eq:ddfv_scheme_weak}
+\begin{align}
+    \prodscalD{\grad^\ensdiamantplat \phi^\ensddfvplat}
+               {\grad^\ensdiamantplat v^\ensddfvplat}
+    &= \prodscalD{\xi^\ensdiamantplat}
+                    {\grad^\ensdiamantplat v^\ensddfvplat},
+    \label{eq:ddfv_scheme_weak_phi} \\
+    \prodscalD{\grad^\ensdiamantplat \psi^\ensddfvplat}
+               {\grad^\ensdiamantplat v^\ensddfvplat}
+    &= \prodscalD{\xi^\ensdiamantplat}
+                    {\rot^\ensdiamantplat v^\ensddfvplat}.
+    \label{eq:ddfv_scheme_weak_psi}
+\end{align}
+\end{subequations}
+À nouveau, la restriction à $\Rddfvmn$ fixe les constantes sur le maillage primal et sur le maillage dual. Avec les notations matricielles de la \Cref{sec:ecriture_prodscal_matricielle}, les deux systèmes \ref{eq:ddfv_scheme_weak_phi} et \ref{eq:ddfv_scheme_weak_psi} s'écrivent alors
+\[
+    \mathsf{A}_\ensddfvplat \Phi^\ensddfvplat
+    = \gradmat_\ensdiamantplat^\top \masse_\ensdiamantplat \Xi^\ensdiamantplat
+    \quad
+    \text{et}
+    \quad
+    \mathsf{A}_\ensddfvplat \Psi^\ensddfvplat
+    = \rotmat_\ensdiamantplat^\top \masse_\ensdiamantplat \Xi^\ensdiamantplat,
+\]
+avec $\mathsf{A}_\ensddfvplat \defeq \gradmat_\ensdiamantplat^\top \masse_\ensdiamantplat \gradmat_\ensdiamantplat$. Bien que la matrice $\mathsf{A}_\ensddfvplat$ soit seulement symétrique semi-définie positive (son noyau contient les fonctions constantes sur le maillage primal et sur le maillage dual), nous utiliserons la méthode du gradient conjugué initialisée avec un vecteur nul pour résoudre ces systèmes. En effet, la méthode du gradient conjugué converge à un vecteur du noyau de $\gradmat_\ensdiamantplat$ près et la composante dans le noyau de $\gradmat_\ensdiamantplat$ est préservée à chaque itération de l'algorithme.

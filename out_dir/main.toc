@@ -5,8 +5,8 @@
 \contentsline {chapter}{\numberline {I}Généralisation de la méthode \textsc {ddfv}\xspace au cadre des surfaces fermées sans bord de $\mathbb {R}^3$}{3}{chapter.1}%
 \etoc@startlocaltoc {2}
 \contentsline {section}{\numberline {I.1}Construction des maillages \textsc {ddfv}\xspace }{4}{section.1.1}%
-\contentsline {subsection}{\numberline {I.1.1}Global coordinates}{4}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {I.1.2}Approximation of a smooth surface by a polygonal surface}{5}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {I.1.1}Coordonnées globales}{4}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {I.1.2}Approximation d'une surface lisse par une surface polyédrique}{5}{subsection.1.1.2}%
 \contentsline {subsection}{\numberline {I.1.3}Maillages primaux}{5}{subsection.1.1.3}%
 \contentsline {subsection}{\numberline {I.1.4}Maillages duaux}{6}{subsection.1.1.4}%
 \contentsline {subsection}{\numberline {I.1.5}Ensemble et maillage diamants}{7}{subsection.1.1.5}%
@@ -24,15 +24,15 @@
 \contentsline {subsection}{\numberline {I.4.2}Compositions des opérateurs discrets}{15}{subsection.1.4.2}%
 \contentsline {subsection}{\numberline {I.4.3}Discrétisation de la décomposition de Helmholtz--Hodge}{16}{subsection.1.4.3}%
 \contentsline {chapter}{\numberline {II}Démonstration de l'inégalité de Poincaré \textsc {ddfv}\xspace sur une surface fermée sans bord de $\mathbb {R}^3$}{18}{chapter.2}%
-\contentsline {section}{\numberline {II.1}Une inégalité de graphe}{18}{section.2.1}%
-\contentsline {section}{\numberline {II.2}Comparaisons de constantes isopérimétriques}{22}{section.2.2}%
-\contentsline {chapter}{Conclusion et perspectives}{26}{chapter*.19}%
-\contentsline {paragraph}{Conclusion}{26}{chapter*.19}%
-\contentsline {paragraph}{Perspectives}{26}{chapter*.19}%
+\contentsline {section}{\numberline {II.1}Une inégalité de graphe}{19}{section.2.1}%
+\contentsline {section}{\numberline {II.2}Comparaisons de constantes isopérimétriques}{23}{section.2.2}%
+\contentsline {chapter}{Conclusion et perspectives}{26}{chapter*.18}%
+\contentsline {paragraph}{Conclusion}{26}{chapter*.18}%
+\contentsline {paragraph}{Perspectives}{26}{chapter*.18}%
 \contentsline {chapter}{\numberline {A}Éléments de théorie spectrale des graphes}{28}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Laplacian of a graph}{28}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Eigenvalues of a graph}{28}{section.A.2}%
-\contentsline {section}{\numberline {A.3}The Cheeger inequality}{29}{section.A.3}%
+\contentsline {section}{\numberline {A.1}Laplacien d'un graphe}{28}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Valeurs propres d'un graphe}{28}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Inégalité de Cheeger}{29}{section.A.3}%
 \contentsline {chapter}{\numberline {B}Le problème isopérimétrique et la constante de Cheeger}{30}{appendix.B}%
 \contentsline {chapter}{\numberline {C}Démonstrations des résultats d'estimations géométriques}{32}{appendix.C}%
 \contentsline {chapter}{\numberline {D}Notations}{34}{appendix.D}%

@@ -1,0 +1,187 @@
+\newcommand{\segmentlegende}[3]{%
+    \draw[
+      #1,
+      ultra thick,
+      dashed,
+      line cap=round
+    ] (-0.15,#2) -- (0.15,#2);
+    \node[#1] at (0.8,#2) {#3};
+  }
+
+\begin{tikzpicture}
+    \begin{axis}[
+        hide axis,
+        axis equal image,
+        scale=2,
+        view={70}{22},
+    ]
+
+    \addplot3[
+        patch,
+        patch type=triangle,
+        opacity=1,
+        fill=white,
+        faceted color=myblue,
+        line width=0.6pt,
+        visible on=<2->,
+    ] table[x, y, z] {figures/maillage_sphere_primal.dat};
+
+    \addplot3[
+        only marks, 
+        mark=*, 
+        myblue, 
+        mark size=2pt,
+        visible on=<2->,
+    ] table[x, y, z] {figures/maillage_sphere_primal.dat};
+
+    % \addplot3[
+    %     no markers,
+    %     thick,
+    %     cap=round,
+    %     white,
+    % ] table[x index=0, y index=1, z index=2] {figures/maillage_sphere_primal_bord.dat};
+    
+    \addplot3[
+        no markers,
+        draw=none,
+        fill=mylightred!50!white,
+        fill opacity=1,
+        visible on=<4->,
+    ] coordinates {
+        (0.8192506528861572, -0.17127476962395058, 0.5472598295470517)
+        (0.7156691736367703, -0.2546183955760218, 0.6503745894024111)
+        (0.5999318736330987, -0.3826637749991449, 0.7026024354515742)
+        (0.5691644561474455, -0.5580972484331214, 0.6038040105446151)
+        (0.5510761861484382, -0.6658904714413051, 0.5028965272337526)
+        (0.642886777705979, -0.6759675424916974, 0.36022836166598304)
+        (0.7209662867132751, -0.6529153660280351, 0.23218341505660675)
+        (0.818556179071869, -0.5382000902559372, 0.20076464965666554)
+        (0.8961907160713432, -0.3688896290624325, 0.2465007951259267)
+        (0.9426240768668833, -0.2997442521992991, 0.14701439720088372)
+        (0.9791596883794289, -0.20276519318802588, -0.01151438596375087)
+        (1.0, -2.449293598294707e-16, -7.295984817955646e-16)
+        (0.9865698492943951, 0.16332301321775772, 0.002350705576405709)
+        (0.9566871313442246, 0.2403238959363567, 0.1642989889266815)
+        (0.8919206175032741, 0.34863376847583005, 0.287979352646886)
+        (0.8618033988749975, 0.2763932022499853, 0.42532540417602704)
+        (0.7946544722917704, 0.18759247408505575, 0.5773502691896276)
+        (0.8090169943749485, -1.9815201452341857e-16, 0.5877852522924718)
+        (0.8192506528861572, -0.17127476962395058, 0.5472598295470517)
+    };
+
+    \addplot3[
+        no markers,
+        semithick,
+        myred,
+        visible on=<1-5>,
+    ] coordinates {
+        (0.8192506528861572, -0.17127476962395058, 0.5472598295470517)
+        (0.7156691736367703, -0.2546183955760218, 0.6503745894024111)
+        (0.5999318736330987, -0.3826637749991449, 0.7026024354515742)
+        (0.5691644561474455, -0.5580972484331214, 0.6038040105446151)
+        (0.5510761861484382, -0.6658904714413051, 0.5028965272337526)
+        (0.642886777705979, -0.6759675424916974, 0.36022836166598304)
+        (0.7209662867132751, -0.6529153660280351, 0.23218341505660675)
+        (0.818556179071869, -0.5382000902559372, 0.20076464965666554)
+        (0.8961907160713432, -0.3688896290624325, 0.2465007951259267)
+        (0.9426240768668833, -0.2997442521992991, 0.14701439720088372)
+        (0.9791596883794289, -0.20276519318802588, -0.01151438596375087)
+        (1.0, -2.449293598294707e-16, -7.295984817955646e-16)
+        (0.9865698492943951, 0.16332301321775772, 0.002350705576405709)
+        (0.9566871313442246, 0.2403238959363567, 0.1642989889266815)
+        (0.8919206175032741, 0.34863376847583005, 0.287979352646886)
+        (0.8618033988749975, 0.2763932022499853, 0.42532540417602704)
+        (0.7946544722917704, 0.18759247408505575, 0.5773502691896276)
+        (0.8090169943749485, -1.9815201452341857e-16, 0.5877852522924718)
+        (0.8192506528861572, -0.17127476962395058, 0.5472598295470517)
+    };
+
+    \addplot3[
+        no markers,
+        semithick,
+        myred,
+    ] table[x index=0, y index=1, z index=2] {figures/maillage_sphere_dual_courbe.dat};
+    
+    \addplot3[
+        no markers,
+        line width=2.5pt,
+        cap=round,
+        draw=mydarkgreen,
+        visible on=<7->
+    ] table[x index=0, y index=1, z index=2] {figures/maillage_sphere_dual_courbe_bord_arete.dat};
+
+    \addplot3[
+        no markers,
+        ultra thick,
+        dashed,
+        cap=round,
+        draw=myred,
+        visible on=<6->
+    ] table[x index=0, y index=1, z index=2] {figures/maillage_sphere_dual_courbe_bord.dat};
+
+    \addplot3[
+        no markers,
+        ultra thick,
+        dashed,
+        cap=round,
+        black,
+        visible on=<5->,
+    ] table[x index=0, y index=1, z index=2] {figures/maillage_sphere_primal_bord.dat};
+
+    \addplot3[only marks, mark=*, white, mark size=3pt, visible on=<3>] 
+      coordinates { (0.7674400771555199, -0.4821575551096291, 0.422563391725117) 
+                    (0.951056516295154, -2.329416636978186e-16, 0.3090169943749463)
+                  };
+    
+    \addplot3[only marks, mark=*, mylightred!50!white, mark size=3pt, visible on=<4->] 
+      coordinates { (0.7674400771555199, -0.4821575551096291, 0.422563391725117) 
+                    (0.951056516295154, -2.329416636978186e-16, 0.3090169943749463)
+                  };
+
+    \addplot3[only marks, mark=*, black, mark size=2pt, visible on=<3->] 
+      coordinates { (0.7674400771555199, -0.4821575551096291, 0.422563391725117) 
+                    (0.951056516295154, -2.329416636978186e-16, 0.3090169943749463)
+                  };
+
+    \coordinate (p1) at (axis cs:0.7674400771555199,-0.4821575551096291,0.422563391725117);
+
+    \coordinate (p2) at (axis cs:0.951056516295154,-2.329416636978186e-16,0.3090169943749463);
+
+    \coordinate (p3) at (axis cs:0.8246940075437322, -0.5646694434432182, -0.03206576933405004);
+
+    \draw[myblue, semithick, visible on=<2->] (p1) -- (p2);
+    
+    \addplot3[
+        no markers,
+        semithick,
+        myblue,
+        visible on=<2->,
+    ] table[x index=0, y index=1, z index=2] {figures/maillage_sphere_primal_bord.dat};
+
+    \path (p1) -- (p2) node[myred, midway, visible on=<4->] {\contour{mylightred!50!white}{$\variete{A}_W$}};
+
+    \node[above, yshift=2pt, visible on=<7->] at (p1) {\contour{mylightred!50!white}{$x_{\mailledualeplate{K}}$}};
+    
+    \node[myblue, below, yshift=-2pt, visible on=<7->] at (p3) {\contour{white}{$x_{\mailledualeplate{L}}$}};
+
+    \node[mydarkgreen, below left, visible on=<7->] at ($(p1)!0.5!(p3)$) {\contour{white}{$\sigmaecourbe$}};
+    
+  \end{axis}
+  
+  \node[myblue, visible on=<2->] at (1,6.8) {$\graphe^\ensdualplat$};
+  \node[myred] at (3,6.5) {\contour{white}{$\ensdual$}};
+
+\begin{scope}[shift={(-1.5,3.5)}]
+
+  \node[black, visible on=<3->] at (0.8,1.5) {$W$};
+  \node[circle, fill=black, inner sep=1.5pt, visible on=<3->] at (0,1.5) {};
+
+  \node[myblue, visible on=<3->] at (0.8,1) {$\comp{W}$};
+  \node[circle, fill=myblue, inner sep=1.5pt, visible on=<3->] at (0,1) {};
+
+  \segmentlegende{black, visible on=<5->}{0.5}{$\partial W$}
+  \segmentlegende{myred, visible on=<6->}{0}{$\partial \variete{A}_W$}
+
+\end{scope}
+
+\end{tikzpicture}   

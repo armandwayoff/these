@@ -1,6 +1,6 @@
 \subsection{Régularité du maillage} \label{sec:regularite}
 
-\noindent De la même manière que dans \cite{andreianov2009discretedualityfinitevolume}, on définit la \defini{taille} du maillage $\ensddfvplat$ par
+\noindent De la même manière que dans \cite{andreianov_discrete_2009}, on définit la \defini{taille} du maillage $\ensddfvplat$ par
 \begin{equation} \label{eq:size_ensddfvplat}
 \size(\ensddfvplat) \defeq \max_{E \in \ensprimalplat \cup \ensdualplat \cup \ensdiamantplat} \diam{E}.
 \end{equation}
@@ -47,10 +47,10 @@ Le \Cref{table:utilisation_termes_reg} donne, pour chaque terme de $\reg(\ensddf
         \displaystyle\frac{\mesure(\dual{\sigma})}{\mesure(\sigma)}
     \right]$ & \Cref{prop:majoration_energie} & \cite{krell_schemas_2010} \\
     $\displaystyle\frac{1}{\sin \angle{\ensddfvplat}}$ & \Cref{prop:majoration_energie} & \cite{krell_schemas_2010} \\
-    $\displaystyle\max_{\primalplat{K} \in \ensprimalplat} \max_{\diamantplat{D} \in \ensdiamantplat_{\primalplat{K}}} \frac{\diam{\diamantplat{D}}}{\diam{\primalplat{K}}}$, $\displaystyle\max_{\mailledualeplate{K} \in \ensdualplat} \max_{\diamantplat{D} \in \ensdiamantplat_{\mailledualeplate{K}}} \frac{\diam{\diamantplat{D}}}{\diam{\mailledualeplate{K}}}$ & \Cref{prop:mino_mesure_primal_K} & \cite{andreianov2009discretedualityfinitevolume} \\
+    $\displaystyle\max_{\primalplat{K} \in \ensprimalplat} \max_{\diamantplat{D} \in \ensdiamantplat_{\primalplat{K}}} \frac{\diam{\diamantplat{D}}}{\diam{\primalplat{K}}}$, $\displaystyle\max_{\mailledualeplate{K} \in \ensdualplat} \max_{\diamantplat{D} \in \ensdiamantplat_{\mailledualeplate{K}}} \frac{\diam{\diamantplat{D}}}{\diam{\mailledualeplate{K}}}$ & \Cref{prop:mino_mesure_primal_K} & \cite{andreianov_discrete_2009} \\
     $\max\limits_{\primalplat{K} \in \ensprimalplat} \displaystyle\frac{\diam{\primalplat{K}}}{\sqrt{\mesure(\primalplat{K})}}$, $\max\limits_{\mailledualeplate{K} \in \ensdualplat} \displaystyle\frac{\diam{\mailledualeplate{K}}}{\sqrt{\mesure(\mailledualeplate{K})}}$ & \Cref{prop:mino_mesure_primal_K} & \cite{krell_schemas_2010} \\
     $\mathcal{N}$, $\dual{\mathcal{N}}$ & \Cref{prop:inegalites_strategie_un} & \cite{krell_schemas_2010} \\
     \end{tblr}
-    \caption{Utilisation des termes de $\reg(\ensddfvplat)$}
+    \caption{Utilisation des termes de $\reg(\ensddfvplat)$.}
     \label{table:utilisation_termes_reg}
 \end{table}

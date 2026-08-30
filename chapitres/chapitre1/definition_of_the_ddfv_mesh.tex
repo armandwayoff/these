@@ -40,7 +40,7 @@ On utilisera la notation $\sigma$ lorsqu'il n'y a pas d'ambiguïté sur les mail
 \begin{figure}[H]
     \centering
     \input{figures/decoupage_dual_plat_def.tex}
-    \caption{Maille duale plate $\mailledualeplate{K}$}
+    \caption{Maille duale plate $\mailledualeplate{K}$.}
     \label{fig:decoupage_dual_plat_def}
 \end{figure}
 
@@ -63,7 +63,7 @@ Pour toutes mailles primales plates voisines $\primalplat{K}$ et $\primalplat{L}
 \begin{equation} \label{eq:dual_sigma}
 \dual{\sigma} \defeq \segment{x_{\primal{K}}}{x_{\primal{L}}}
 \end{equation}
-le segment joignant les projections sur $\surflisse$ de leurs centres (voir \Cref{fig:ddfv_3d_diamant}). On note $\ensaretedualplat$ l'ensemble de ces segments. Les arêtes des mailles duales plates barycentriques sont les segments $\segment{x_{\primalplat{K}}}{x_\sigma}$ qui seront notés $\sigma_{\primalplat{K}}$ (voir \Cref{fig:decoupage_dual_plat_def}). Pour tout $\mailledualeplate{K} \in \ensdualplat$ et $\mailledualeplate{K} \in \ensdual$, on note
+le segment joignant les projections sur $\surflisse$ de leurs centres (voir \Cref{fig:ddfv_3d_diamant}). On note $\ensaretedualplat$ l'ensemble de ces segments. Les arêtes des mailles duales plates barycentriques sont les segments $\segment{x_{\primalplat{K}}}{x_\sigma}$ qui seront notés $\sigma_{\primalplat{K}}$ (voir \Cref{fig:decoupage_dual_plat_def}). Pour tout $\mailledualeplate{K} \in \ensdualplat$ et $\mailleduale{K} \in \ensdual$, on note
 \begin{itemize}
     \item $\mesure(\mailledualeplate{K})$ la mesure de la maille plate $\mailledualeplate{K}$ et $\mesure(\mailleduale{K})$ la mesure de la maille courbe $\mailleduale{K}$;
     \item $\diam{\mailledualeplate{K}}$ (resp. $\diam{\mailleduale{K}}$) le diamètre de $\mailledualeplate{K}$ (resp. $\mailleduale{K}$);
@@ -75,16 +75,16 @@ le segment joignant les projections sur $\surflisse$ de leurs centres (voir \Cre
 \begin{subfigure}[t]{.5\textwidth}
     \centering
     \includegraphics[width=0.6\textwidth]{img/sphere_primal_dual.pdf}
-    \caption{Maillages $\ensprimalplat$ (bleu) et $\ensdualplat$ (rouge) d'une approximation polyédrique de la sphère}
+    \caption{Maillages $\ensprimalplat$ (bleu) et $\ensdualplat$ (rouge) d'une approximation polyédrique de la sphère.}
     \label{fig:sphere_primal_dual}
 \end{subfigure}%
 \begin{subfigure}[t]{.5\textwidth}
     \centering
     \includegraphics[width=0.6\textwidth]{img/sphere_primal_dual_curved.pdf}
-    \caption{Maillages $\ensprimal$ (bleu) et $\ensdual$ (rouge) de la sphère}
+    \caption{Maillages $\ensprimal$ (bleu) et $\ensdual$ (rouge) de la sphère.}
     \label{fig:sphere_primal_dual_curved}
 \end{subfigure}
-\caption{Exemple de maillages \ddfv \emph{primaux} et \emph{duaux} de la sphère}
+\caption{Exemple de maillages \ddfv \emph{primaux} et \emph{duaux} de la sphère.}
 \label{fig:sphere_primal_dual_flat_and_curved}
 \end{figure}
 
@@ -102,7 +102,7 @@ Il y a une bijection entre les diamants $\diamantplat{D} \in \ensdiamantplat$ et
 \begin{figure}[H]
     \centering
     \input{figures/ddfv_3d_diamant.tex}
-    \caption{Un \defini{diamant plat} $\diamantplat{D}_{\sigma, \dual{\sigma}}$}
+    \caption{Un \defini{diamant plat} $\diamantplat{D}_{\sigma, \dual{\sigma}}$.}
     \label{fig:ddfv_3d_diamant}
 \end{figure}
 
@@ -117,15 +117,15 @@ Contrairement aux mailles primales et duales, le diamant courbe n'est pas la pro
 \begin{subfigure}[t]{.5\textwidth}
     \centering
     \includegraphics[width=0.6\textwidth]{img/sphere_diamonds_flat.pdf}
-    \caption{Ensemble $\ensdiamantplat$}
+    \caption{Ensemble $\ensdiamantplat$.}
     \label{fig:sphere_diamonds_flat}
 \end{subfigure}%
 \begin{subfigure}[t]{.5\textwidth}
     \centering
     \includegraphics[width=0.6\textwidth]{img/sphere_diamond_curved_bis.pdf}
-    \caption{Maillage $\ensdiamant$ de la sphère}
+    \caption{Maillage $\ensdiamant$ de la sphère.}
 \end{subfigure}
-\caption{Exemple de l'ensemble des diamants plats $\ensdiamantplat$ d'une discrétisation \ddfv de la sphère et du maillage \emph{diamant courbe} $\ensdiamant$ associé}
+\caption{Exemple de l'ensemble des diamants plats $\ensdiamantplat$ d'une discrétisation \ddfv de la sphère et du maillage \emph{diamant courbe} $\ensdiamant$ associé.}
 \label{fig:sphere_diamonds_flat_and_curved}
 \end{figure}
 
@@ -184,14 +184,14 @@ La généralisation de la méthode que nous venons de proposer permet de défini
 \begin{subfigure}[t]{.5\textwidth}
     \centering
     \includegraphics[width=0.7\textwidth]{img/torus_primal_dual.pdf}
-    \caption{Tore, $g = 1$}
+    \caption{Tore, $g = 1$.}
 \end{subfigure}%
 \begin{subfigure}[t]{.5\textwidth}
     \centering
     \includegraphics[width=0.6\textwidth]{img/tanglecube_primal_dual.pdf}
-    \caption{\emph{Tanglecube}\protect\footnotemark, $g = 5$}
+    \caption{\emph{Tanglecube}\protect\footnotemark, $g = 5$.}
 \end{subfigure}
-\caption{Exemples de maillages $\ensprimalplat$ et $\ensdualplat$ sur des approximations polyédriques de surfaces fermées sans bord de $\R^3$ de genre $g > 0$}
+\caption{Exemples de maillages $\ensprimalplat$ et $\ensdualplat$ sur des approximations polyédriques de surfaces fermées sans bord de $\R^3$ de genre $g > 0$.}
 \label{fig:genre_primal_dual}
 \end{figure}
 \footnotetext{Surface de degré $4$ dans $\R^3$ définie par l'équation $x^4 - 5 \, x^2 + y^4 - 5 \, y^2 + z^4 - 5 \, z^2 + 11{,}8 = 0$ (voir \url{https://academicweb.nd.edu/~jhauenst/preprints/bhrPolyTop.pdf}).}

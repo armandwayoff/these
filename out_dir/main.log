@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.2.3)  26 AUG 2026 16:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.2.3)  30 AUG 2026 17:41
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1186,14 +1186,33 @@ File: tikzlibrarypositioning.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 File: tikzlibraryshapes.geometric.code.tex 2021/05/15 v3.1.9a (3.1.9a)
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
 File: pgflibraryshapes.geometric.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)) (/usr/share/texlive/texmf-dist/tex/latex/tikz-3dplot/tikz-3dplot.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary3d.code.tex
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryangles.code.tex
+File: tikzlibraryangles.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfolding.code.tex
+File: tikzlibraryfolding.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\tikz@lib@fold@length=\dimen382
+) (/usr/share/texlive/texmf-dist/tex/latex/tikz-3dplot/tikz-3dplot.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary3d.code.tex
 File: tikzlibrary3d.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
 File: tikzlibraryarrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
 File: pgflibraryarrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\arrowsize=\dimen382
-))) (/usr/share/texlive/texmf-dist/tex/latex/contour/contour.sty
+\arrowsize=\dimen383
+))) (/usr/share/texlive/texmf-dist/tex/latex/tikz-cd/tikz-cd.sty
+Package: tikz-cd 2021/05/04 v1.0 Commutative diagrams with TikZ
+ (/usr/share/texlive/texmf-dist/tex/generic/tikz-cd/tikzlibrarycd.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryquotes.code.tex
+File: tikzlibraryquotes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfarrowinset=\dimen384
+\pgfarrowlength=\dimen385
+\pgfarrowwidth=\dimen386
+\pgfarrowlinewidth=\dimen387
+))) (/usr/share/texlive/texmf-dist/tex/latex/xurl/xurl.sty
+Package: xurl 2022/01/09 v 0.10 modify URL breaks
+
+xurl: Set penalties for biblatex
+) (/usr/share/texlive/texmf-dist/tex/latex/contour/contour.sty
 Package: contour 2004/11/18 v2.14 Print contoured text (HH, MH)
 \con@length=\skip102
 
@@ -1210,7 +1229,7 @@ Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
 \t@pgfplots@toka=\toks45
 \t@pgfplots@tokb=\toks46
 \t@pgfplots@tokc=\toks47
-\pgfplots@tmpa=\dimen383
+\pgfplots@tmpa=\dimen388
 \c@pgfplots@coordindex=\count540
 \c@pgfplots@scanlineindex=\count541
  (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructure.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructureext.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex
@@ -1221,24 +1240,24 @@ Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.code.tex
 \c@pgfplotslibrarysurf@no=\count544
  (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex))) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen384
-\pgfdecoratedremainingdistance=\dimen385
-\pgfdecoratedinputsegmentcompleteddistance=\dimen386
-\pgfdecoratedinputsegmentremainingdistance=\dimen387
-\pgf@decorate@distancetomove=\dimen388
+\pgfdecoratedcompleteddistance=\dimen389
+\pgfdecoratedremainingdistance=\dimen390
+\pgfdecoratedinputsegmentcompleteddistance=\dimen391
+\pgfdecoratedinputsegmentremainingdistance=\dimen392
+\pgf@decorate@distancetomove=\dimen393
 \pgf@decorate@repeatstate=\count545
-\pgfdecorationsegmentamplitude=\dimen389
-\pgfdecorationsegmentlength=\dimen390
+\pgfdecorationsegmentamplitude=\dimen394
+\pgfdecorationsegmentlength=\dimen395
 )
 \tikz@lib@dec@box=\box154
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex)
 \pgfplots@numplots=\count546
-\pgfplots@xmin@reg=\dimen391
-\pgfplots@xmax@reg=\dimen392
-\pgfplots@ymin@reg=\dimen393
-\pgfplots@ymax@reg=\dimen394
-\pgfplots@zmin@reg=\dimen395
-\pgfplots@zmax@reg=\dimen396
+\pgfplots@xmin@reg=\dimen396
+\pgfplots@xmax@reg=\dimen397
+\pgfplots@ymin@reg=\dimen398
+\pgfplots@ymax@reg=\dimen399
+\pgfplots@zmin@reg=\dimen400
+\pgfplots@zmax@reg=\dimen401
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotmarks.code.tex
 File: tikzlibraryplotmarks.code.tex 2021/05/15 v3.1.9a (3.1.9a)
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
@@ -1251,9 +1270,9 @@ Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 \SOUL@buffer=\toks52
 \SOUL@token=\toks53
 \SOUL@spaceskip=\skip103
-\SOUL@ttwidth=\dimen397
-\SOUL@uldp=\dimen398
-\SOUL@ulht=\dimen399
+\SOUL@ttwidth=\dimen402
+\SOUL@uldp=\dimen403
+\SOUL@ulht=\dimen404
 )) (/home/wayoff/texmf/tex/latex/aw/aw-packages_book.sty
 Package: aw-packages_book 2026/02/14 aw-packages_book
  (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
@@ -1264,14 +1283,14 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@cnth=\count547
 \Gm@cntv=\count548
 \c@Gm@tempcnt=\count549
-\Gm@bindingoffset=\dimen400
-\Gm@wd@mp=\dimen401
-\Gm@odd@mp=\dimen402
-\Gm@even@mp=\dimen403
-\Gm@layoutwidth=\dimen404
-\Gm@layoutheight=\dimen405
-\Gm@layouthoffset=\dimen406
-\Gm@layoutvoffset=\dimen407
+\Gm@bindingoffset=\dimen405
+\Gm@wd@mp=\dimen406
+\Gm@odd@mp=\dimen407
+\Gm@even@mp=\dimen408
+\Gm@layoutwidth=\dimen409
+\Gm@layoutheight=\dimen410
+\Gm@layouthoffset=\dimen411
+\Gm@layoutvoffset=\dimen412
 \Gm@dimlist=\toks54
 ) (/usr/share/texlive/texmf-dist/tex/latex/tocloft/tocloft.sty
 Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
@@ -1317,12 +1336,12 @@ Package: titlesec 2021/07/05 v2.14 Sectioning titles
 \ttl@box=\box155
 \beforetitleunit=\skip138
 \aftertitleunit=\skip139
-\ttl@plus=\dimen408
-\ttl@minus=\dimen409
+\ttl@plus=\dimen413
+\ttl@minus=\dimen414
 \ttl@toksa=\toks55
-\titlewidth=\dimen410
-\titlewidthlast=\dimen411
-\titlewidthfirst=\dimen412
+\titlewidth=\dimen415
+\titlewidthlast=\dimen416
+\titlewidthfirst=\dimen417
 ) (/usr/share/texlive/texmf-dist/tex/latex/emptypage/emptypage.sty
 Package: emptypage 2010/05/30 v1.2 Suppress page numbers and headings on empty pages
 )) (/home/wayoff/texmf/tex/latex/aw/aw-notations_book.sty
@@ -1536,29 +1555,9 @@ Package: aw-style 2026/02/14 aw-style
 Package hyperref Info: Option `colorlinks' set `true' on input line 9.
 ) (/home/wayoff/texmf/tex/latex/aw/aw-style_book.sty
 Package: aw-style_book 2026/02/14 aw-style_book
- Excluding 'comment' comment.)) (./notations.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryangles.code.tex
-File: tikzlibraryangles.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfolding.code.tex
-File: tikzlibraryfolding.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\tikz@lib@fold@length=\dimen413
-) (/usr/share/texlive/texmf-dist/tex/latex/xurl/xurl.sty
-Package: xurl 2022/01/09 v 0.10 modify URL breaks
-
-xurl: Set penalties for biblatex
-)
+ Excluding 'comment' comment.)) (./notations.tex)
 LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
-(Font)                  U/stmry/b/n --> U/stmry/m/n on input line 21.
- (/usr/share/texlive/texmf-dist/tex/latex/tikz-cd/tikz-cd.sty
-Package: tikz-cd 2021/05/04 v1.0 Commutative diagrams with TikZ
- (/usr/share/texlive/texmf-dist/tex/generic/tikz-cd/tikzlibrarycd.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryquotes.code.tex
-File: tikzlibraryquotes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
-File: pgflibraryarrows.meta.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfarrowinset=\dimen414
-\pgfarrowlength=\dimen415
-\pgfarrowwidth=\dimen416
-\pgfarrowlinewidth=\dimen417
-)))
+(Font)                  U/stmry/b/n --> U/stmry/m/n on input line 16.
 runsystem(which pygmentize && touch main.aex)...executed.
 
 runsystem(rm main.aex)...executed.
@@ -1570,33 +1569,33 @@ Package csquotes Info: Redefining alias 'default' -> 'french'.
  (out_dir/main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Info: Redefining \degres on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Info: Redefining \degres on input line 18.
 Package french.ldf Info: Setting StandardItemizeEnv=true for
 (french.ldf)             compatibility with enumitem package,
-(french.ldf)             reported on input line 25.
+(french.ldf)             reported on input line 18.
 Package french.ldf Info: Setting StandardEnumerateEnv=true for
 (french.ldf)             compatibility with enumitem package,
-(french.ldf)             reported on input line 25.
-LaTeX Info: Redefining \up on input line 25.
-Package hyperref Info: Link coloring ON on input line 25.
+(french.ldf)             reported on input line 18.
+LaTeX Info: Redefining \up on input line 18.
+Package hyperref Info: Link coloring ON on input line 18.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1606,9 +1605,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count561
 )
-LaTeX Info: Redefining \ref on input line 25.
-LaTeX Info: Redefining \pageref on input line 25.
-LaTeX Info: Redefining \nameref on input line 25.
+LaTeX Info: Redefining \ref on input line 18.
+LaTeX Info: Redefining \pageref on input line 18.
+LaTeX Info: Redefining \nameref on input line 18.
  (out_dir/main.out) (out_dir/main.out)
 \@outlinefile=\write8
 \openout8 = `main.out'.
@@ -1648,8 +1647,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (out_dir/main.bbl)
-Package biblatex Info: Reference section=0 on input line 25.
-Package biblatex Info: Reference segment=0 on input line 25.
+Package biblatex Info: Reference section=0 on input line 18.
+Package biblatex Info: Reference segment=0 on input line 18.
  (/usr/share/texlive/texmf-dist/tex/latex/ninecolors/ninecolors.sty
 Package: ninecolors 2021/05/24 v2021C Select colors with proper color contrast
 )
@@ -1849,33 +1848,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+
+ []
+
 (./figures/dhh.tex
-<img/input.pdf, id=217, 324.21124pt x 228.855pt>
+<img/input.pdf, id=219, 324.21124pt x 228.855pt>
 File: img/input.pdf Graphic file (type pdf)
 <use img/input.pdf>
 Package pdftex.def Info: img/input.pdf  used on input line 6.
 (pdftex.def)             Requested size: 74.05081pt x 52.26888pt.
-<img/grad.pdf, id=218, 324.21124pt x 228.855pt>
+<img/grad.pdf, id=220, 324.21124pt x 228.855pt>
 File: img/grad.pdf Graphic file (type pdf)
 <use img/grad.pdf>
 Package pdftex.def Info: img/grad.pdf  used on input line 8.
 (pdftex.def)             Requested size: 74.05081pt x 52.26888pt.
-<img/rot.pdf, id=219, 324.21124pt x 228.855pt>
+<img/rot.pdf, id=221, 324.21124pt x 228.855pt>
 File: img/rot.pdf Graphic file (type pdf)
 <use img/rot.pdf>
 Package pdftex.def Info: img/rot.pdf  used on input line 10.
 (pdftex.def)             Requested size: 74.05081pt x 52.26888pt.
-<img/harmo.pdf, id=220, 324.21124pt x 228.855pt>
+<img/harmo.pdf, id=222, 324.21124pt x 228.855pt>
 File: img/harmo.pdf Graphic file (type pdf)
 <use img/harmo.pdf>
 Package pdftex.def Info: img/harmo.pdf  used on input line 12.
 (pdftex.def)             Requested size: 74.05081pt x 52.26888pt.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 20--21
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 22--23
 
  []
@@ -1893,12 +1892,12 @@ pdfTeX warning: pdflatex (file ./img/rot.pdf): PDF inclusion: multiple pdfs with
 
 pdfTeX warning: pdflatex (file ./img/harmo.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<img/sphere.pdf, id=301, 144.54pt x 144.54pt>
+<img/sphere.pdf, id=303, 144.54pt x 144.54pt>
 File: img/sphere.pdf Graphic file (type pdf)
 <use img/sphere.pdf>
 Package pdftex.def Info: img/sphere.pdf  used on input line 37.
 (pdftex.def)             Requested size: 52.89285pt x 52.89229pt.
-<img/n-tores.pdf, id=302, 599.23875pt x 132.495pt>
+<img/n-tores.pdf, id=304, 599.23875pt x 132.495pt>
 File: img/n-tores.pdf Graphic file (type pdf)
 <use img/n-tores.pdf>
 Package pdftex.def Info: img/n-tores.pdf  used on input line 42.
@@ -1946,7 +1945,7 @@ LaTeX Font Info:    Font shape `T1/cmr/bx/scit' in size <10> not available
  [4] (./figures/projection_3d_courbe.tex (./figures/ddfv_tikzstyles.tex)
 contour: Using real outline for `$\mathchoice {\scalebox {0.8}{$\mathcal {K}$}}{\scalebox {0.8}{$\mathcal {K}$}}{\scalebox {0.8}{$\scriptstyle \mathcal {K}$}}{\scalebox {0.6}{$\scriptstyle \mathcal {K}$}}$' on input line 113.
 )) (./chapitres/chapitre1/definition_of_the_ddfv_mesh.tex
-Package cleveref Info: loaded `french' language definitions on input line 17.
+Package cleveref Info: loaded `french' language definitions on input line 15.
  [5] (./figures/decoupage_dual_plat_def.tex (./figures/ddfv_tikzstyles.tex)
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1977,12 +1976,12 @@ Package mdframed Info: mdframed detected package amsthm
 Package hyperref Info: bookmark level for unknown remarque defaults to 0 on input line 52.
 Package cleveref Info: loaded `french' language definitions on input line 57.
  [6]
-<img/sphere_primal_dual.pdf, id=458, 1606.0pt x 1606.0pt>
+<img/sphere_primal_dual.pdf, id=462, 1606.0pt x 1606.0pt>
 File: img/sphere_primal_dual.pdf Graphic file (type pdf)
 <use img/sphere_primal_dual.pdf>
 Package pdftex.def Info: img/sphere_primal_dual.pdf  used on input line 77.
 (pdftex.def)             Requested size: 158.68263pt x 158.67346pt.
-<img/sphere_primal_dual_curved.pdf, id=459, 1606.0pt x 1606.0pt>
+<img/sphere_primal_dual_curved.pdf, id=463, 1606.0pt x 1606.0pt>
 File: img/sphere_primal_dual_curved.pdf Graphic file (type pdf)
 <use img/sphere_primal_dual_curved.pdf>
 Package pdftex.def Info: img/sphere_primal_dual_curved.pdf  used on input line 83.
@@ -2003,12 +2002,12 @@ Package mdframed Info: mdframed works in twoside mode on input line 110.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 110.
-<img/sphere_diamonds_flat.pdf, id=483, 1606.0pt x 1568.86125pt>
+<img/sphere_diamonds_flat.pdf, id=487, 1606.0pt x 1568.86125pt>
 File: img/sphere_diamonds_flat.pdf Graphic file (type pdf)
 <use img/sphere_diamonds_flat.pdf>
 Package pdftex.def Info: img/sphere_diamonds_flat.pdf  used on input line 119.
 (pdftex.def)             Requested size: 158.68263pt x 155.00414pt.
-<img/sphere_diamond_curved_bis.pdf, id=484, 1606.0pt x 1604.99625pt>
+<img/sphere_diamond_curved_bis.pdf, id=488, 1606.0pt x 1604.99625pt>
 File: img/sphere_diamond_curved_bis.pdf Graphic file (type pdf)
 <use img/sphere_diamond_curved_bis.pdf>
 Package pdftex.def Info: img/sphere_diamond_curved_bis.pdf  used on input line 125.
@@ -2023,12 +2022,12 @@ Package mdframed Info: mdframed works in twoside mode on input line 177.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 177.
-<img/torus_primal_dual.pdf, id=504, 1606.0pt x 1000.73875pt>
+<img/torus_primal_dual.pdf, id=508, 1606.0pt x 1000.73875pt>
 File: img/torus_primal_dual.pdf Graphic file (type pdf)
 <use img/torus_primal_dual.pdf>
 Package pdftex.def Info: img/torus_primal_dual.pdf  used on input line 186.
 (pdftex.def)             Requested size: 185.12704pt x 115.34976pt.
-<img/tanglecube_primal_dual.pdf, id=505, 1785.67125pt x 1806.75pt>
+<img/tanglecube_primal_dual.pdf, id=509, 1785.67125pt x 1806.75pt>
 File: img/tanglecube_primal_dual.pdf Graphic file (type pdf)
 <use img/tanglecube_primal_dual.pdf>
 Package pdftex.def Info: img/tanglecube_primal_dual.pdf  used on input line 191.
@@ -2072,13 +2071,13 @@ Package mdframed Info: Box was splittet wrong
 (mdframed)              on input line 38.
 Package cleveref Info: loaded `french' language definitions on input line 38.
  [11] (./figures/torus_ddfv_field.tex
-<img/torus_ddfv_field.pdf, id=654, 1606.0pt x 1003.75pt>
+<img/torus_ddfv_field.pdf, id=658, 1606.0pt x 1003.75pt>
 File: img/torus_ddfv_field.pdf Graphic file (type pdf)
 <use img/torus_ddfv_field.pdf>
 Package pdftex.def Info: img/torus_ddfv_field.pdf  used on input line 3.
 (pdftex.def)             Requested size: 211.5755pt x 132.22278pt.
 ) (./figures/torus_ddfv_gradient.tex
-<img/torus_ddfv_gradient.pdf, id=657, 1606.0pt x 971.63pt>
+<img/torus_ddfv_gradient.pdf, id=661, 1606.0pt x 971.63pt>
 File: img/torus_ddfv_gradient.pdf Graphic file (type pdf)
 <use img/torus_ddfv_gradient.pdf>
 Package pdftex.def Info: img/torus_ddfv_gradient.pdf  used on input line 3.
@@ -2126,15 +2125,15 @@ Package mdframed Info: mdframed works in twoside mode on input line 9.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 9.
-Package mdframed Info: mdframed works in twoside mode on input line 25.
+Package mdframed Info: mdframed works in twoside mode on input line 24.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 25.
-Package hyperref Info: bookmark level for unknown prop defaults to 0 on input line 25.
-Package mdframed Info: mdframed works in twoside mode on input line 37.
+(mdframed)              on input line 24.
+Package hyperref Info: bookmark level for unknown prop defaults to 0 on input line 24.
+Package mdframed Info: mdframed works in twoside mode on input line 36.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 37.
+(mdframed)              on input line 36.
 Package hyperref Info: bookmark level for unknown demo defaults to 0 on input line 44.
 Package cleveref Info: loaded `french' language definitions on input line 45.
  [15]
@@ -2155,53 +2154,85 @@ Package mdframed Info: Not enough space on this page on input line 108.
 Package cleveref Info: loaded `french' language definitions on input line 108.
  [16]
 Package mdframed Info: Not enough space on this page on input line 108.
-)) (./chapitres/chapitre2.tex
+Package mdframed Info: mdframed works in twoside mode on input line 111.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 111.
+Package mdframed Info: mdframed works in twoside mode on input line 121.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 121.
+pdfTeX warning (ext4): destination with the same identifier (name{equation.1.4.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.138 \end{align}
+                 pdfTeX warning (ext4): destination with the same identifier (name{equation.1.4.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.154 \end{align}
+                 )) (./chapitres/chapitre2.tex
 Package cleveref Info: loaded `french' language definitions on input line 1.
- [17]
+ [17pdfTeX warning (ext4): destination with the same identifier (name{equation.1.4.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1 \chapter
+            {Démonstration de l'inégalité de Poincaré \ddfv sur une surf...pdfTeX warning (ext4): destination with the same identifier (name{equation.1.4.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.1 \chapter
+            {Démonstration de l'inégalité de Poincaré \ddfv sur une surf...]
 Chapitre II.
-(./chapitres/chapitre2/demonstration_inegalite_poincare_ddfv.tex
-Underfull \hbox (badness 10000) in paragraph at lines 11--12
+(./chapitres/chapitre2/demonstration_inegalite_poincare_ddfv.tex [18
+
+pdfTeX warning (ext4): destination with the same identifier (name{equation.2.0.1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.44 }
+      pdfTeX warning (ext4): destination with the same identifier (name{equation.2.0.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.44 }
+      ]
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
  []
 
-Package mdframed Info: mdframed works in twoside mode on input line 18.
+Package mdframed Info: mdframed works in twoside mode on input line 54.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 18.
+(mdframed)              on input line 54.
 
-Underfull \hbox (badness 10000) in paragraph at lines 26--27
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
 
  []
 
-(./figures/graphe.tex (./figures/ddfv_tikzstyles.tex)) [18
-
-]
-Package mdframed Info: mdframed works in twoside mode on input line 37.
+Package mdframed Info: mdframed works in twoside mode on input line 66.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 37.
+(mdframed)              on input line 66.
 
-Underfull \hbox (badness 10000) in paragraph at lines 50--51
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
 
  []
 
-(./figures/graphe_ddfv.tex (./figures/ddfv_tikzstyles.tex))
-Package mdframed Info: mdframed works in twoside mode on input line 62.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 62.
-Package cleveref Info: loaded `french' language definitions on input line 73.
+(./figures/graphe.tex (./figures/ddfv_tikzstyles.tex)) (./figures/graphe_ddfv.tex (./figures/ddfv_tikzstyles.tex))
+Package cleveref Info: loaded `french' language definitions on input line 98.
  [19]
-Package mdframed Info: mdframed works in twoside mode on input line 74.
+Package mdframed Info: mdframed works in twoside mode on input line 101.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 74.
-Package mdframed Info: mdframed works in twoside mode on input line 123.
+(mdframed)              on input line 101.
+Package mdframed Info: mdframed works in twoside mode on input line 112.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 123.
-Package cleveref Info: loaded `french' language definitions on input line 174.
- [20] (./figures/decoupage_primal_plat.tex (./figures/ddfv_tikzstyles.tex)) (./figures/decoupage_dual_plat.tex (./figures/ddfv_tikzstyles.tex)
+(mdframed)              on input line 112.
+Package cleveref Info: loaded `french' language definitions on input line 161.
+ [20]
+Package mdframed Info: mdframed works in twoside mode on input line 161.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 161.
+ (./figures/decoupage_primal_plat.tex (./figures/ddfv_tikzstyles.tex)) (./figures/decoupage_dual_plat.tex (./figures/ddfv_tikzstyles.tex)
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -2221,67 +2252,64 @@ Missing character: There is no ; in font nullfont!
 contour: Using real outline for `$x_{\mathchoice {\scalebox {0.8}{${\mathrm {K}^\ast }$}}{\scalebox {0.8}{${\mathrm {K}^\ast }$}}{\scalebox {0.8}{${\scriptstyle \mathrm {K}^\ast }$}}{\scalebox {0.6}{${\scriptstyle \mathrm {K}^\ast }$}}}$' on input line 131.
 contour: Using real outline for `$m_i$' on input line 134.
 )
-Package mdframed Info: mdframed works in twoside mode on input line 210.
+Package mdframed Info: mdframed works in twoside mode on input line 248.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 210.
-Package mdframed Info: mdframed works in twoside mode on input line 241.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 241.
-Package cleveref Info: loaded `french' language definitions on input line 248.
+(mdframed)              on input line 248.
+Package cleveref Info: loaded `french' language definitions on input line 273.
  [21]
-Package mdframed Info: Not enough space on this page on input line 248.
-
-Underfull \hbox (badness 10000) in paragraph at lines 304--306
+Package mdframed Info: mdframed works in twoside mode on input line 279.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 279.
+Package cleveref Info: loaded `french' language definitions on input line 342.
+ [22]
+Underfull \hbox (badness 10000) in paragraph at lines 342--344
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 310--312
+Underfull \hbox (badness 10000) in paragraph at lines 348--350
 
  []
 
-Package cleveref Info: loaded `french' language definitions on input line 332.
-[22]
-Underfull \hbox (badness 10000) in paragraph at lines 340--342
+
+Underfull \hbox (badness 10000) in paragraph at lines 378--380
 
  []
 
-Package mdframed Info: mdframed works in twoside mode on input line 345.
+Package mdframed Info: mdframed works in twoside mode on input line 383.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 345.
-Package mdframed Info: mdframed works in twoside mode on input line 357.
+(mdframed)              on input line 383.
+Package mdframed Info: mdframed works in twoside mode on input line 395.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 357.
-Package mdframed Info: mdframed works in twoside mode on input line 361.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 361.
-Package mdframed Info: mdframed works in twoside mode on input line 376.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 376.
-Package cleveref Info: loaded `french' language definitions on input line 389.
+(mdframed)              on input line 395.
+Package mdframed Info: Not enough space on this page on input line 397.
+Package cleveref Info: loaded `french' language definitions on input line 397.
 [23]
-Package mdframed Info: mdframed works in twoside mode on input line 392.
+Package mdframed Info: Not enough space on this page on input line 397.
+Package mdframed Info: mdframed works in twoside mode on input line 399.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 392.
-Package mdframed Info: mdframed works in twoside mode on input line 398.
+(mdframed)              on input line 399.
+Package mdframed Info: mdframed works in twoside mode on input line 414.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 398.
-Package mdframed Info: mdframed works in twoside mode on input line 402.
+(mdframed)              on input line 414.
+Package mdframed Info: mdframed works in twoside mode on input line 430.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 402.
-Package mdframed Info: mdframed works in twoside mode on input line 425.
+(mdframed)              on input line 430.
+Package mdframed Info: mdframed works in twoside mode on input line 436.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 425.
+(mdframed)              on input line 436.
+Package mdframed Info: mdframed works in twoside mode on input line 440.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 440.
  (./figures/cheeger_bord_dual.tex
 PGFPlots: reading {figures/maillage_sphere_primal.dat}
 PGFPlots: reading {figures/maillage_sphere_primal.dat}
@@ -2401,14 +2429,17 @@ contour: Using real outline for `$x_{\mathchoice {\scalebox {0.8}{${\mathrm {K}^
 contour: Using real outline for `$x_{\mathchoice {\scalebox {0.8}{${\mathrm {L}^\ast }$}}{\scalebox {0.8}{${\mathrm {L}^\ast }$}}{\scalebox {0.8}{${\scriptstyle \mathrm {L}^\ast }$}}{\scalebox {0.6}{${\scriptstyle \mathrm {L}^\ast }$}}}$' on input line 124.
 contour: Using real outline for `${\sigma _{\mathcal {S}}^\ast }$' on input line 124.
 contour: Using real outline for `${{\bm {\mathfrak {M}}^\ast }}$' on input line 127.
-)))
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Package cleveref Info: loaded `french' language definitions on input line 46.
- [24] (./conclusiongenerale.tex
+)
+Package cleveref Info: loaded `french' language definitions on input line 464.
+ [24]
+Package mdframed Info: mdframed works in twoside mode on input line 470.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 470.
+)) (./conclusiongenerale.tex
 Package cleveref Info: loaded `french' language definitions on input line 1.
  [25] (./figures/diffraction.tex
-<img/avion.pdf, id=959, 1342.01375pt x 393.47pt>
+<img/avion.pdf, id=991, 1342.01375pt x 393.47pt>
 File: img/avion.pdf Graphic file (type pdf)
 <use img/avion.pdf>
 Package pdftex.def Info: img/avion.pdf  used on input line 14.
@@ -2422,18 +2453,18 @@ Annexe A.
 [28
 
 ]
-Package mdframed Info: mdframed works in twoside mode on input line 71.
+Package mdframed Info: mdframed works in twoside mode on input line 69.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 71.
-Package mdframed Info: mdframed works in twoside mode on input line 83.
+(mdframed)              on input line 69.
+Package mdframed Info: mdframed works in twoside mode on input line 81.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 83.
-Package mdframed Info: mdframed works in twoside mode on input line 86.
+(mdframed)              on input line 81.
+Package mdframed Info: mdframed works in twoside mode on input line 84.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 86.
+(mdframed)              on input line 84.
 ) (./backmatter/appendix/the_isoperimetric_problem_and_the_cheeger_constant.tex
 Package cleveref Info: loaded `french' language definitions on input line 2.
  [29]
@@ -2450,9 +2481,11 @@ Package mdframed Info: mdframed works in twoside mode on input line 40.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 40.
+Package mdframed Info: Not enough space on this page on input line 42.
 [30
 
 ]
+Package mdframed Info: Not enough space on this page on input line 42.
 Package mdframed Info: mdframed works in twoside mode on input line 46.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -2531,29 +2564,29 @@ Overfull \hbox (4.4841pt too wide) in paragraph at lines 160--161
 
 
 ] Excluding 'comment' comment.
-Package cleveref Info: loaded `french' language definitions on input line 87.
+Package cleveref Info: loaded `french' language definitions on input line 79.
  [37] (out_dir/main.aux
 Package cleveref Info: loaded `french' language definitions on input line 28.
 )
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: D2DE32F658CD29BA7C05C003091A7176;8096.
+(rerunfilecheck)             Checksum: 08D785734B94D3C2EA6FC1263E6F34CF;8157.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 63745 strings out of 478287
- 1419690 string characters out of 5849290
- 2931770 words of memory out of 5000000
- 80491 multiletter control sequences out of 15000+600000
- 539489 words of font info for 217 fonts, out of 8000000 for 9000
+ 63807 strings out of 478287
+ 1421192 string characters out of 5849290
+ 2938966 words of memory out of 5000000
+ 80540 multiletter control sequences out of 15000+600000
+ 539885 words of font info for 220 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 117i,18n,113p,2434b,3093s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufb10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufb7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbi1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbl1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfoc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsl1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsl1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfxc0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfxc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfxc1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfxc2488.pfb>
-Output written on out_dir/main.pdf (39 pages, 55894097 bytes).
+ 117i,18n,117p,2434b,3092s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufb10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufb7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbi1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfoc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsl1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsl1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfxc0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfxc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfxc1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfxc2488.pfb>
+Output written on out_dir/main.pdf (39 pages, 55900559 bytes).
 PDF statistics:
- 1875 PDF objects out of 2073 (max. 8388607)
- 1285 compressed objects within 13 object streams
- 291 named destinations out of 1000 (max. 500000)
+ 1909 PDF objects out of 2073 (max. 8388607)
+ 1318 compressed objects within 14 object streams
+ 304 named destinations out of 1000 (max. 500000)
  467 words of extra memory for PDF output out of 10000 (max. 10000000)
 

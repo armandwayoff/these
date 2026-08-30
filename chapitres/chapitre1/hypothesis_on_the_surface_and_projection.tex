@@ -1,10 +1,10 @@
 \section{Construction des maillages \ddfv} \label{sec:construction_of_the_ddfv_meshes}
 
-Dans la \Cref{sec:hypothesis_on_the_surface_and_projection}, nous introduisons un projecteur $\fonctionens[\projvariete]{\surfpoly}{\surflisse}$ dont le but est de permettre le passage de manière univoque des objects géométriques définis sur l'approximation polyédrique $\surfpoly$ à ceux définis sur la surface lisse $\surflisse$. Ce qu'on entend par \chevron{approximation polyédrique} sera précisé dans la \Cref{sec:triangulations}. Ceci nous permettra, dans les \Cref{sec:maillages_primaux,sec:maillages_duaux,subsec:diamond_set}, de définir les maillages \ddfv; le \defini{maillage primal plat} $\ensprimalplat$, le \defini{maillage primal courbe} $\ensprimal$, le \defini{maillage dual plat} $\ensdualplat$, le \defini{maillage dual courbe} $\ensdual$, l'\defini{ensemble des diamants plats} $\ensdiamantplat$ et le \defini{maillage diamant courbe} $\ensdiamant$. Enfin, nous introduirons la régularité du maillage \ddfv dans la \Cref{sec:regularite}.
+Dans la \Cref{sec:hypothesis_on_the_surface_and_projection}, nous introduisons un système de coordonnées global autour de la surface lisse $\surflisse$ ainsi qu'un projecteur $\fonctionens[\projvariete]{\surfpoly}{\surflisse}$ dont le but est de permettre le passage de manière univoque des objects géométriques définis sur l'approximation polyédrique $\surfpoly$ à ceux définis sur $\surflisse$. Ce qu'on entend par \chevron{approximation polyédrique} sera précisé dans la \Cref{sec:triangulations}. Ceci nous permettra, dans les \Cref{sec:maillages_primaux,sec:maillages_duaux,subsec:diamond_set}, de définir les maillages \ddfv; le \defini{maillage primal plat} $\ensprimalplat$, le \defini{maillage primal courbe} $\ensprimal$, le \defini{maillage dual plat} $\ensdualplat$, le \defini{maillage dual courbe} $\ensdual$, l'\defini{ensemble des diamants plats} $\ensdiamantplat$ et le \defini{maillage diamant courbe} $\ensdiamant$. Enfin, nous introduirons la régularité du maillage \ddfv dans la \Cref{sec:regularite}.
 
-\subsection{Global coordinates} \label{sec:hypothesis_on_the_surface_and_projection}
+\subsection{Coordonnées globales} \label{sec:hypothesis_on_the_surface_and_projection}
 
-Following \cite[Section 2.3]{dziuk_finite_2013} we introduce global coordinates in a neighbourhood of a hypersurface (see \cite[Section 2.2]{dziuk_finite_2013} for a definition of \defini{hypersurfaces}), the so-called \defini{Fermi coordinates}. This avoids working with charts and atlases when proving results and carrying out the numerical analysis. For this one introduces the \defini{oriented distance function} for $\surflisse$. Assume in the following that $\mathcal{O} \subset \R^{3}$ is bounded and open with exterior normal $\vect{n}$ and assume that $\surflisse = \partial \mathcal{O}$ is a $\Cont^k$-hypersurface ($k \geqslant 2$). The \defini{oriented distance function} for $\surflisse$ is defined by
+En suivant \cite[Section 2.3]{dziuk_finite_2013}, nous introduisons des coordonnées globales dans un voisinage d'une hypersurface (voir \cite[Section 2.2]{dziuk_finite_2013} pour une définition des \defini{hypersurfaces}), appelées \defini{coordonnées de Fermi}. Celles-ci permettent d'éviter le recours aux cartes et aux atlas. Pour ce faire, nous introduisons la \defini{fonction distance orientée} à $\surflisse$. Dans la suite, nous supposons que $\mathcal{O} \subset \R^{3}$ est un ouvert borné de normale extérieure $\vect{n}$ et que $\surflisse = \partial \mathcal{O}$ est une hypersurface de classe $\Cont^k$ ($k \geqslant 2$). La \defini{fonction distance orientée} à $\surflisse$ est définie par
 \begin{equation} \label{eq:def_oriented_distance}
 d(x) \defeq \begin{cases}
 \phantom{-} \inf\limits_{y \in \surflisse} \abs{x - y} & x \in \R^{3} \setminus \overline{\mathcal{O}} \\
@@ -12,40 +12,40 @@ d(x) \defeq \begin{cases}
 \end{cases}.
 \end{equation}
 
-\begin{lemme}[{\cite[Lemma 2.8]{dziuk_finite_2013}}] \label{lemme:fermi_coordinates}
-We define
+\begin{lemme}[{\cite[Lemme 2.8]{dziuk_finite_2013}}] \label{lemme:fermi_coordinates}
+Nous définissons la bande
 \[
 U_\delta \defeq \ens[\big]{x \in \R^{3} \tq \abs{d(x)} < \delta}.
 \]
-Then $d \in \Cont^k(U_\delta)$, and for every point $x \in U_\delta$ there exists a unique point $\projvariete(x) \in \surflisse$ such that
+Alors $d \in \Cont^k(U_\delta)$ et, pour tout point $x \in U_\delta$, il existe un unique point $\projvariete(x) \in \surflisse$ tel que
 \begin{equation} \label{eq:fermi_coordinates}
 x = \projvariete(x) + d(x) \, \vect{n}(\projvariete(x)).
 \end{equation}
-$\projvariete(x)$ is the orthogonal projection of $x$ onto $\surflisse$ and $d(x)$ the oriented distance between $x$ and $\surflisse$. Moreover, we have that
+Le point $\projvariete(x)$ est la projection orthogonale de $x$ sur $\surflisse$ et $d(x)$ la distance orientée entre $x$ et $\surflisse$. De plus, nous avons
 \[
-\grad d(x) = \vect{n}(\projvariete(x)), \quad \abs{\grad d(x)} = 1, \quad \forall x \in U_\delta. 
+\grad d(x) = \vect{n}(\projvariete(x)), \quad \abs{\grad d(x)} = 1, \quad \forall x \in U_\delta.
 \]
 \end{lemme}
-We also extend the normal constantly in the normal direction: $\vect{n}(x) = \vect{n}(\projvariete(x))$ for $x \in U_\delta$. Thus we have introduced a global coordinate system around $\surflisse$. Every point $x \in U_\delta$ can be described by its \defini{Fermi coordinates} (normal coordinates) $d(x)$ and $\projvariete(x)$ according to \Cref{eq:fermi_coordinates}. This is illustrated by \Cref{fig:strip_u_delta}.
+Nous prolongeons également la normale de manière constante dans la direction normale : $\vect{n}(x) = \vect{n}(\projvariete(x))$ pour $x \in U_\delta$. Nous avons ainsi introduit un système de coordonnées global autour de $\surflisse$. Tout point $x \in U_\delta$ peut être décrit par ses \defini{coordonnées de Fermi} (coordonnées normales) $d(x)$ et $\projvariete(x)$ conformément à l'\Cref{eq:fermi_coordinates}. Cette construction est illustrée par la \Cref{fig:strip_u_delta}.
 
 \begin{figure}[H]
     \centering
     \input{figures/strip_u_delta.tex}
-    \caption{Strip $U_\delta$ around the hypersurface $\surflisse$ and normal coordinates $x = \projvariete(x) + d(x) \, \nu(\projvariete(x))$}
+    \caption{Bande $U_\delta$ autour de l'hypersurface $\surflisse$ et coordonnées normales $x = \projvariete(x) + d(x) \, \nu(\projvariete(x))$.}
     \label{fig:strip_u_delta}
 \end{figure}
 
-\subsection{Approximation of a smooth surface by a polygonal surface} \label{sec:triangulations}
+\subsection{Approximation d'une surface lisse par une surface polyédrique} \label{sec:triangulations}
 
-Following \cite[Section 4.1]{dziuk_finite_2013}, the smooth $2$-dimensional surface $\surflisse$ ($\partial \surflisse = \varnothing$) is approximated by a surface $\surfpoly$ which lies in the strip $U_\delta$ (see \Cref{lemme:fermi_coordinates}) and which is a Lipschitz surface. We assume that the discrete triangulated surface $\surfpoly$ has the following properties. The surface $\surfpoly$ is the union of finitely many non-degenerate (closed) $2$-simplices in $\R^{3}$. We let $\ensprimalplat$ denote the set of these simplices:
+En suivant \cite[Section 4.1]{dziuk_finite_2013}, la surface lisse bidimensionnelle $\surflisse$ telle que $\partial \surflisse = \varnothing$ est approchée par une surface $\surfpoly$ contenue dans la bande $U_\delta$ (voir le \Cref{lemme:fermi_coordinates}) et qui est une surface lipschitzienne. Nous supposons que la surface triangulée discrète $\surfpoly$ possède les propriétés suivantes. La surface $\surfpoly$ est la réunion d'un nombre fini de $2$-simplexes (fermés) non dégénérés de $\R^{3}$. Nous notons $\ensprimalplat$ l'ensemble de ces simplexes :
 \begin{equation} \label{eq:surfpoly}
-\surfpoly = \bigcup_{\primalplat{K} \in \ensprimalplat} \primalplat{K}. 
+\surfpoly = \bigcup_{\primalplat{K} \in \ensprimalplat} \primalplat{K}.
 \end{equation}
-The vertices of the simplices are taken to sit on the smooth surface $\surflisse$. For $\primalplat{K}, \primalplat{L} \in \ensprimalplat$, either $\primalplat{K} \cap \primalplat{L} = \varnothing$ or $\primalplat{K} \cap \primalplat{L}$ is an $(3-k)$-dimensional side simplex ($k \in \{1, 2, 3\}$) common to both of the simplices $\primalplat{K}$ and $\primalplat{L}$. Note that, by \Cref{lemme:fermi_coordinates}, for every simplex $\primalplat{K} \subset \surfpoly$ there is a unique curved simplex denoted $\primal{K} \defeq \projvariete \primalplat{K} \subset \surflisse$ (see \Cref{fig:projection_3d_courbe}). In order to avoid global double covering, we assume that for each point $a \in \surflisse$ there is at most one point $x \in \surfpoly$ with $a = \projvariete(x)$. This implies that there is a bijective correspondence between the triangles on $\surfpoly$ and the induced curvilinear triangles on $\surflisse$.
+Les sommets des simplexes sont situés sur la surface lisse $\surflisse$. Pour $\primalplat{K}, \primalplat{L} \in \ensprimalplat$, soit $\primalplat{K} \cap \primalplat{L} = \varnothing$, soit $\primalplat{K} \cap \primalplat{L}$ est un simplexe de dimension $(3-k)$ ($k \in \{1, 2, 3\}$), commun aux deux simplexes $\primalplat{K}$ et $\primalplat{L}$. Remarquons que, d'après le \Cref{lemme:fermi_coordinates}, pour tout simplexe $\primalplat{K} \subset \surfpoly$, il existe un unique simplexe courbe, noté $\primal{K} \defeq \projvariete \primalplat{K} \subset \surflisse$ (voir la \Cref{fig:projection_3d_courbe}). Afin d'éviter tout recouvrement double global, nous supposons que, pour chaque point $a \in \surflisse$, il existe au plus un point $x \in \surfpoly$ tel que $a = \projvariete(x)$. Il existe ainsi une correspondance bijective entre les triangles de $\surfpoly$ et les triangles courbes induits sur $\surflisse$.
 
 \begin{figure}[H]
     \centering
     \input{figures/projection_3d_courbe.tex}
-    \caption{A simplex $\primalplat{K}$ and its projection $\primal{K} = \projvariete \primalplat{K}$ onto the hyperurface $\surflisse$}
+    \caption{Un simplexe $\primalplat{K}$ et sa projection $\primal{K} = \projvariete \primalplat{K}$ sur l'hypersurface $\surflisse$.}
     \label{fig:projection_3d_courbe}
 \end{figure}

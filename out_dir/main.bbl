@@ -37,6 +37,9 @@
            given={Florence},
            giveni={F\bibinitperiod}}}%
       }
+      \list{language}{1}{%
+        {en}%
+      }
       \strng{namehash}{1a48dbe1ecb2d01702ad23800d633b5d}
       \strng{fullhash}{1a48dbe1ecb2d01702ad23800d633b5d}
       \strng{bibnamehash}{1a48dbe1ecb2d01702ad23800d633b5d}
@@ -51,17 +54,14 @@
       \field{abstract}{Discrete duality ﬁnite volume schemes on general meshes, introduced by Hermeline in [24] and Domelevo \& Omne`s in [13] for the Laplace equation, are proposed for nonlinear diﬀusion problems in 2D with non homogeneous Dirichlet boundary condition.}
       \field{issn}{0749-159X, 1098-2426}
       \field{journaltitle}{Numerical Methods for Partial Differential Equations}
-      \field{langid}{english}
       \field{month}{1}
       \field{number}{1}
-      \field{shortjournal}{Numerical Methods Partial}
-      \field{title}{Discrete duality finite volume schemes for Leray-Lions-type elliptic problems on general 2D meshes}
+      \field{title}{Discrete duality finite volume schemes for {Leray}-{Lions}-type elliptic problems on general {2D} meshes}
       \field{urlday}{25}
       \field{urlmonth}{4}
       \field{urlyear}{2026}
       \field{volume}{23}
       \field{year}{2007}
-      \field{dateera}{ce}
       \field{urldateera}{ce}
       \field{pages}{145\bibrangedash 195}
       \range{pages}{51}
@@ -78,7 +78,7 @@
       \verb https://onlinelibrary.wiley.com/doi/10.1002/num.20170
       \endverb
     \endentry
-    \entry{andreianov2009discretedualityfinitevolume}{misc}{}
+    \entry{andreianov_discrete_2009}{article}{}
       \name{author}{3}{}{%
         {{hash=b4b506209516a36cb5f11fb8e75c6cd9}{%
            family={Andreianov},
@@ -90,35 +90,31 @@
            familyi={B\bibinitperiod},
            given={Mostafa},
            giveni={M\bibinitperiod}}}%
-        {{hash=70eca96aedbf0815a1774516af232aa1}{%
+        {{hash=5498ac75f066652a759f7a2f21d6bcc4}{%
            family={Karlsen},
            familyi={K\bibinitperiod},
-           given={Kenneth\bibnamedelima H.},
-           giveni={K\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+           given={Kenneth},
+           giveni={K\bibinitperiod}}}%
       }
-      \strng{namehash}{94187f7bbd8aaa78948ea7d5a94be69d}
-      \strng{fullhash}{94187f7bbd8aaa78948ea7d5a94be69d}
-      \strng{bibnamehash}{94187f7bbd8aaa78948ea7d5a94be69d}
-      \strng{authorbibnamehash}{94187f7bbd8aaa78948ea7d5a94be69d}
-      \strng{authornamehash}{94187f7bbd8aaa78948ea7d5a94be69d}
-      \strng{authorfullhash}{94187f7bbd8aaa78948ea7d5a94be69d}
+      \strng{namehash}{3330e363ac132e1ba1777b508b04f812}
+      \strng{fullhash}{3330e363ac132e1ba1777b508b04f812}
+      \strng{bibnamehash}{3330e363ac132e1ba1777b508b04f812}
+      \strng{authorbibnamehash}{3330e363ac132e1ba1777b508b04f812}
+      \strng{authornamehash}{3330e363ac132e1ba1777b508b04f812}
+      \strng{authorfullhash}{3330e363ac132e1ba1777b508b04f812}
       \field{labelalpha}{ABK09}
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{eprintclass}{math.AP}
-      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Journal of Hyperbolic Differential Equations}
+      \field{month}{1}
       \field{title}{Discrete duality finite volume schemes for doubly nonlinear degenerate hyperbolic-parabolic equations}
       \field{year}{2009}
-      \verb{eprint}
-      \verb 0901.0816
-      \endverb
-      \verb{urlraw}
-      \verb https://arxiv.org/abs/0901.0816
-      \endverb
-      \verb{url}
-      \verb https://arxiv.org/abs/0901.0816
+      \field{pages}{1\bibrangedash 67}
+      \range{pages}{67}
+      \verb{file}
+      \verb Full Text PDF:/home/wayoff/Zotero/storage/VPM5XRR6/Andreianov et al. - 2009 - Discrete duality finite volume schemes for doubly nonlinear degenerate hyperbolic-parabolic equation.pdf:application/pdf
       \endverb
     \endentry
     \entry{andriulli_multiplicative_2008}{article}{}
@@ -262,6 +258,9 @@
            given={Brian},
            giveni={B\bibinitperiod}}}%
       }
+      \list{language}{1}{%
+        {en}%
+      }
       \list{publisher}{1}{%
         {arXiv}%
       }
@@ -276,24 +275,18 @@
       \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{We give a brief literature review of the isoperimetric problem and discuss its relationship with the Cheeger constant of Riemannian n-manifolds. For some noncompact, ﬁnite area 2-manifolds, we prove the existence and regularity of subsets whose isoperimetric ratio is equal to the Cheeger constant. To do this, we use results of {HassMorgan} for the isoperimetric problem of these manifolds. We also give an example of a ﬁnite area 2-manifold where no such subset exists. Using work of Adams-Morgan, we classify all such subsets of geometrically ﬁnite, ﬁnite area hyperbolic surfaces where such subsets always exist. From this, we provide an algorithm for ﬁnding these sets given information about the topology, length spectrum, and distances between the simple closed geodesics of the surface. Finding such a subset allows one to directly compute the Cheeger constant of the surface. As an application of this work suggested by Agol, we give a test for Selberg’s eigenvalue conjecture. We do this by comparing a quantitative improvement of Buser’s inequality resulting from works of both Agol and the author to an upper bound on the Cheeger constant of these surfaces, the latter given by {BrooksZuk}. As expected, our test does not contradict Selberg’s conjecture.}
-      \field{day}{6}
-      \field{eprinttype}{arxiv}
-      \field{langid}{english}
+      \field{abstract}{We give a brief literature review of the isoperimetric problem and discuss its relationship with the Cheeger constant of Riemannian n-manifolds. For some noncompact, ﬁnite area 2-manifolds, we prove the existence and regularity of subsets whose isoperimetric ratio is equal to the Cheeger constant. To do this, we use results of HassMorgan for the isoperimetric problem of these manifolds. We also give an example of a ﬁnite area 2-manifold where no such subset exists. Using work of Adams-Morgan, we classify all such subsets of geometrically ﬁnite, ﬁnite area hyperbolic surfaces where such subsets always exist. From this, we provide an algorithm for ﬁnding these sets given information about the topology, length spectrum, and distances between the simple closed geodesics of the surface. Finding such a subset allows one to directly compute the Cheeger constant of the surface. As an application of this work suggested by Agol, we give a test for Selberg’s eigenvalue conjecture. We do this by comparing a quantitative improvement of Buser’s inequality resulting from works of both Agol and the author to an upper bound on the Cheeger constant of these surfaces, the latter given by BrooksZuk. As expected, our test does not contradict Selberg’s conjecture.}
+      \field{annotation}{Comment: 38 pages, 4 figures. Changes from v1 to v2: Added statement of a theorem we attribute to Hass-Morgan resulting in change of Theorem indices in Section 4. Several corrections and clarifications were made to the algorithm in Section 6.2. References added}
       \field{month}{1}
-      \field{number}{{arXiv}:1509.08993}
-      \field{title}{The Cheeger Constant, Isoperimetric Problems, and Hyperbolic Surfaces}
+      \field{note}{arXiv:1509.08993 [math.DG]}
+      \field{title}{The {Cheeger} {Constant}, {Isoperimetric} {Problems}, and {Hyperbolic} {Surfaces}}
       \field{urlday}{16}
       \field{urlmonth}{6}
       \field{urlyear}{2026}
       \field{year}{2016}
-      \field{dateera}{ce}
       \field{urldateera}{ce}
       \verb{doi}
       \verb 10.48550/arXiv.1509.08993
-      \endverb
-      \verb{eprint}
-      \verb 1509.08993 [math.DG]
       \endverb
       \verb{file}
       \verb PDF:/home/wayoff/Zotero/storage/EYFQJ36R/Benson - 2016 - The Cheeger Constant, Isoperimetric Problems, and Hyperbolic Surfaces.pdf:application/pdf
@@ -333,7 +326,7 @@
       \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{abstract}{In this paper we propose a “Discrete Duality Finite Volume” method (DDFV for short) for the diﬀuse interface modelling of incompressible two-phase ﬂows. This numerical method is, conservative, robust and is able to handle general geometries and meshes. The model we study couples the Cahn-Hilliard equation and the unsteady Stokes equation and is endowed with particular nonlinear boundary conditions called dynamic boundary conditions. To implement the scheme for this model we have to derive new discrete consistent DDFV operators that allows an energy stable coupling between both discrete equations. We are thus able to obtain the existence of a family of solutions satisfying a suitable energy inequality, even in the case where a ﬁrst order time-splitting method between the two subsystems is used. We illustrate various properties of such a model with some numerical results.}
+      \field{abstract}{In this paper we propose a “Discrete Duality Finite Volume” method (DDFV for short) for the diﬀuse interface modelling of incompressible two-phase ﬂows. This numerical method is, conservative, robust and is able to handle general geometries and meshes. The model we study couples the Cahn−Hilliard equation and the unsteady Stokes equation and is endowed with particular nonlinear boundary conditions called dynamic boundary conditions. To implement the scheme for this model we have to derive new discrete consistent DDFV operators that allows an energy stable coupling between both discrete equations. We are thus able to obtain the existence of a family of solutions satisfying a suitable energy inequality, even in the case where a ﬁrst order time-splitting method between the two subsystems is used. We illustrate various properties of such a model with some numerical results.}
       \field{issn}{0764-583X, 1290-3841}
       \field{journaltitle}{ESAIM: Mathematical Modelling and Numerical Analysis}
       \field{month}{9}
@@ -368,6 +361,9 @@
            given={Peter},
            giveni={P\bibinitperiod}}}%
       }
+      \list{language}{1}{%
+        {en}%
+      }
       \strng{namehash}{2e5945fba963875d724cb521f0694b8a}
       \strng{fullhash}{2e5945fba963875d724cb521f0694b8a}
       \strng{bibnamehash}{2e5945fba963875d724cb521f0694b8a}
@@ -381,16 +377,13 @@
       \field{labeltitlesource}{title}
       \field{issn}{0012-9593, 1873-2151}
       \field{journaltitle}{Annales scientifiques de l'École normale supérieure}
-      \field{langid}{english}
       \field{number}{2}
-      \field{shortjournal}{Ann. Sci. École Norm. Sup.}
       \field{title}{A note on the isoperimetric constant}
       \field{urlday}{16}
       \field{urlmonth}{6}
       \field{urlyear}{2026}
       \field{volume}{15}
       \field{year}{1982}
-      \field{dateera}{ce}
       \field{urldateera}{ce}
       \field{pages}{213\bibrangedash 230}
       \range{pages}{18}
@@ -419,18 +412,18 @@
            familyi={D\bibinitperiod},
            given={Komla},
            giveni={K\bibinitperiod}}}%
-        {{hash=5e4192c59fb38a400780f5dc4ba4647e}{%
-           family={Omnès},
+        {{hash=f8c8e61e359308f533647ff7bd34b0ca}{%
+           family={Omnes},
            familyi={O\bibinitperiod},
            given={Pascal},
            giveni={P\bibinitperiod}}}%
       }
-      \strng{namehash}{bfbe70c0b6660606457a9fce33fd2d4d}
-      \strng{fullhash}{bfbe70c0b6660606457a9fce33fd2d4d}
-      \strng{bibnamehash}{bfbe70c0b6660606457a9fce33fd2d4d}
-      \strng{authorbibnamehash}{bfbe70c0b6660606457a9fce33fd2d4d}
-      \strng{authornamehash}{bfbe70c0b6660606457a9fce33fd2d4d}
-      \strng{authorfullhash}{bfbe70c0b6660606457a9fce33fd2d4d}
+      \strng{namehash}{7939b1a5651fb2f821c91673364b7588}
+      \strng{fullhash}{7939b1a5651fb2f821c91673364b7588}
+      \strng{bibnamehash}{7939b1a5651fb2f821c91673364b7588}
+      \strng{authorbibnamehash}{7939b1a5651fb2f821c91673364b7588}
+      \strng{authornamehash}{7939b1a5651fb2f821c91673364b7588}
+      \strng{authorfullhash}{7939b1a5651fb2f821c91673364b7588}
       \field{labelalpha}{CDO10}
       \field{sortinit}{C}
       \field{sortinithash}{4d103a86280481745c9c897c925753c0}
@@ -442,6 +435,59 @@
       \field{pages}{995\bibrangedash 1020}
       \range{pages}{26}
     \endentry
+    \entry{gunning_lower_2015}{incollection}{}
+      \name{author}{1}{}{%
+        {{hash=9d4dec812f0a7bc29f16736af5d41024}{%
+           family={Cheeger},
+           familyi={C\bibinitperiod},
+           given={Jeff},
+           giveni={J\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=bc3c1ab2a50252876e62e5de311ae336}{%
+           family={Gunning},
+           familyi={G\bibinitperiod},
+           given={Robert\bibnamedelima C.},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Princeton University Press}%
+      }
+      \strng{namehash}{9d4dec812f0a7bc29f16736af5d41024}
+      \strng{fullhash}{9d4dec812f0a7bc29f16736af5d41024}
+      \strng{bibnamehash}{9d4dec812f0a7bc29f16736af5d41024}
+      \strng{authorbibnamehash}{9d4dec812f0a7bc29f16736af5d41024}
+      \strng{authornamehash}{9d4dec812f0a7bc29f16736af5d41024}
+      \strng{authorfullhash}{9d4dec812f0a7bc29f16736af5d41024}
+      \strng{editorbibnamehash}{bc3c1ab2a50252876e62e5de311ae336}
+      \strng{editornamehash}{bc3c1ab2a50252876e62e5de311ae336}
+      \strng{editorfullhash}{bc3c1ab2a50252876e62e5de311ae336}
+      \field{labelalpha}{Che15}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Problems in {Analysis}: {A} {Symposium} in {Honor} of {Salomon} {Bochner} ({PMS}-31)}
+      \field{isbn}{978-1-4008-6931-2}
+      \field{month}{12}
+      \field{title}{A {Lower} {Bound} for the {Smallest} {Eigenvalue} of the {Laplacian}}
+      \field{urlday}{28}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{year}{2015}
+      \field{urldateera}{ce}
+      \field{pages}{195\bibrangedash 200}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1515/9781400869312-013
+      \endverb
+      \verb{urlraw}
+      \verb https://www.degruyter.com/document/doi/10.1515/9781400869312-013/html
+      \endverb
+      \verb{url}
+      \verb https://www.degruyter.com/document/doi/10.1515/9781400869312-013/html
+      \endverb
+    \endentry
     \entry{chung_lectures_nodate}{article}{}
       \name{author}{1}{}{%
         {{hash=ce1756c17f1256e62cd8740ce5e05805}{%
@@ -449,6 +495,9 @@
            familyi={C\bibinitperiod},
            given={Fan\bibnamedelimb R\bibnamedelima K},
            giveni={F\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
       }
       \strng{namehash}{ce1756c17f1256e62cd8740ce5e05805}
       \strng{fullhash}{ce1756c17f1256e62cd8740ce5e05805}
@@ -461,8 +510,7 @@
       \field{sortinithash}{4d103a86280481745c9c897c925753c0}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{langid}{english}
-      \field{title}{Lectures on Spectral Graph Theory}
+      \field{title}{Lectures on {Spectral} {Graph} {Theory}}
       \verb{file}
       \verb PDF:/home/wayoff/Zotero/storage/7QT5HFPY/Chung - Lectures on Spectral Graph Theory.pdf:application/pdf
       \endverb
@@ -527,6 +575,9 @@
            given={Philippe},
            giveni={P\bibinitperiod}}}%
       }
+      \list{language}{1}{%
+        {en}%
+      }
       \strng{namehash}{c8e5877f4b662515e1dd2a5ededf0e3b}
       \strng{fullhash}{c8e5877f4b662515e1dd2a5ededf0e3b}
       \strng{bibnamehash}{c8e5877f4b662515e1dd2a5ededf0e3b}
@@ -540,18 +591,15 @@
       \field{labeltitlesource}{title}
       \field{abstract}{In this paper, a class of cell centered finite volume schemes, on gênerai unstructured meshes, for a linear convection-diffusion problem, is studied. The convection andthediffusion are respectively approximated by means of an upwind scheme and the socalled diamond cell method [4]. Our main resuit is an error estimât e of order h, assuming only the W2iV (for p {>} 2) regularity of the continuous solution, ona mesh of quadrangles. The proof is based on an extension of the ideas developed in [12]. Some new difficultés arise hère, due tothe weak regularity ofthe solution, and the necessity to approximate the entire gradient, and not only itsnormal component, asin [12].}
       \field{issn}{0764-583X, 1290-3841}
-      \field{journaltitle}{{ESAIM}: Mathematical Modelling and Numerical Analysis}
-      \field{langid}{english}
+      \field{journaltitle}{ESAIM: Mathematical Modelling and Numerical Analysis}
       \field{month}{5}
       \field{number}{3}
-      \field{shortjournal}{{ESAIM}: M2AN}
       \field{title}{Convergence rate of a finite volume scheme for a two dimensional convection-diffusion problem}
       \field{urlday}{23}
       \field{urlmonth}{6}
       \field{urlyear}{2026}
       \field{volume}{33}
       \field{year}{1999}
-      \field{dateera}{ce}
       \field{urldateera}{ce}
       \field{pages}{493\bibrangedash 516}
       \range{pages}{24}
@@ -599,12 +647,10 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{This paper deals with applications of the "Discrete-Duality Finite Volume" approach to a variety of elliptic problems. This is a new finite volume method, based on the derivation of discrete operators obeying a Discrete-Duality principle. An appropriate choice of the degrees of freedom allows one to use arbitrary meshes. We show that the method is naturally related to finite and mixed finite element methods.}
-      \field{day}{22}
       \field{isbn}{978-1-905209-48-4}
       \field{month}{7}
-      \field{title}{Discrete-Duality Finite Volume Method for Second Order Elliptic Problems}
+      \field{title}{Discrete-{Duality} {Finite} {Volume} {Method} for {Second} {Order} {Elliptic} {Problems}}
       \field{year}{2005}
-      \field{dateera}{ce}
       \field{pages}{447\bibrangedash 458}
       \range{pages}{12}
       \verb{file}
@@ -629,6 +675,9 @@
            given={Pascal},
            giveni={P\bibinitperiod}}}%
       }
+      \list{language}{1}{%
+        {en}%
+      }
       \strng{namehash}{5c7a0d6e029ca1aa4792e459ec7c2a5f}
       \strng{fullhash}{5c7a0d6e029ca1aa4792e459ec7c2a5f}
       \strng{bibnamehash}{5c7a0d6e029ca1aa4792e459ec7c2a5f}
@@ -643,18 +692,15 @@
       \field{labeltitlesource}{title}
       \field{abstract}{We deﬁne discrete diﬀerential operators such as grad, div and curl, on general two-dimensional non-orthogonal meshes. These discrete operators verify discrete analogues of usual continuous theorems: discrete Green formulae, discrete Hodge decomposition of vector ﬁelds, vector curls have a vanishing divergence and gradients have a vanishing curl. We apply these ideas to discretize div-curl systems. We give error estimates based on the reformulation of these systems into equivalent equations for the potentials. Numerical results illustrate the use of the method on several types of meshes, among which degenerating triangular meshes and non-conforming locally reﬁned meshes.}
       \field{issn}{0036-1429, 1095-7170}
-      \field{journaltitle}{{SIAM} Journal on Numerical Analysis}
-      \field{langid}{english}
+      \field{journaltitle}{SIAM Journal on Numerical Analysis}
       \field{month}{1}
       \field{number}{3}
-      \field{shortjournal}{{SIAM} J. Numer. Anal.}
-      \field{title}{A Discrete Duality Finite Volume Approach to Hodge Decomposition and div‐curl Problems on Almost Arbitrary Two‐Dimensional Meshes}
+      \field{title}{A {Discrete} {Duality} {Finite} {Volume} {Approach} to {Hodge} {Decomposition} and div‐curl {Problems} on {Almost} {Arbitrary} {Two}‐{Dimensional} {Meshes}}
       \field{urlday}{25}
       \field{urlmonth}{4}
       \field{urlyear}{2026}
       \field{volume}{45}
       \field{year}{2007}
-      \field{dateera}{ce}
       \field{urldateera}{ce}
       \field{pages}{1142\bibrangedash 1174}
       \range{pages}{33}
@@ -685,6 +731,9 @@
            given={Charles\bibnamedelima M.},
            giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
       }
+      \list{language}{1}{%
+        {en}%
+      }
       \strng{namehash}{9b1ebd4855c9e29849e924a84b30961d}
       \strng{fullhash}{9b1ebd4855c9e29849e924a84b30961d}
       \strng{bibnamehash}{9b1ebd4855c9e29849e924a84b30961d}
@@ -699,16 +748,13 @@
       \field{abstract}{In this article we consider finite element methods for approximating the solution of partial differential equations on surfaces. We focus on surface finite elements on triangulated surfaces, implicit surface methods using level set descriptions of the surface, unfitted finite element methods and diffuse interface methods. In order to formulate the methods we present the necessary geometric analysis and, in the context of evolving surfaces, the necessary transport formulae. A wide variety of equations and applications are covered. Some ideas of the numerical analysis are presented along with illustrative numerical examples.}
       \field{issn}{0962-4929, 1474-0508}
       \field{journaltitle}{Acta Numerica}
-      \field{langid}{english}
       \field{month}{5}
-      \field{shortjournal}{Acta Numerica}
       \field{title}{Finite element methods for surface {PDEs}}
       \field{urlday}{11}
       \field{urlmonth}{6}
       \field{urlyear}{2026}
       \field{volume}{22}
       \field{year}{2013}
-      \field{dateera}{ce}
       \field{urldateera}{ce}
       \field{pages}{289\bibrangedash 396}
       \range{pages}{108}
@@ -725,6 +771,38 @@
       \verb https://www.cambridge.org/core/product/identifier/S0962492913000056/type/journal_article
       \endverb
     \endentry
+    \entry{delcourte_developpement_2007}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=73be8615d67486655044d08732b75579}{%
+           family={Delcourte},
+           familyi={D\bibinitperiod},
+           given={Sarah},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Université Toulouse III - Paul Sabatier}%
+      }
+      \list{language}{1}{%
+        {fr}%
+      }
+      \strng{namehash}{73be8615d67486655044d08732b75579}
+      \strng{fullhash}{73be8615d67486655044d08732b75579}
+      \strng{bibnamehash}{73be8615d67486655044d08732b75579}
+      \strng{authorbibnamehash}{73be8615d67486655044d08732b75579}
+      \strng{authornamehash}{73be8615d67486655044d08732b75579}
+      \strng{authorfullhash}{73be8615d67486655044d08732b75579}
+      \field{labelalpha}{Del07}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Développement de méthodes de volumes finis pour la mécanique des fluides}
+      \field{type}{phdthesis}
+      \field{year}{2007}
+      \verb{file}
+      \verb PDF:/home/wayoff/Zotero/storage/IS57X4BM/Delcourte - 2007 - Développement de méthodes de volumes finis pour la mécanique des fluides.pdf:application/pdf
+      \endverb
+    \endentry
     \entry{domelevo_finite_2005}{article}{}
       \name{author}{2}{}{%
         {{hash=3bf757ce5310973b33388ede082c2a5e}{%
@@ -737,6 +815,9 @@
            familyi={O\bibinitperiod},
            given={Pascal},
            giveni={P\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
       }
       \strng{namehash}{c16287ffa2f1d61657bbed036b32679a}
       \strng{fullhash}{c16287ffa2f1d61657bbed036b32679a}
@@ -751,18 +832,15 @@
       \field{labeltitlesource}{title}
       \field{abstract}{We present a ﬁnite volume method based on the integration of the Laplace equation on both the cells of a primal almost arbitrary two-dimensional mesh and those of a dual mesh obtained by joining the centers of the cells of the primal mesh. The key ingredient is the deﬁnition of discrete gradient and divergence operators verifying a discrete Green formula. This method generalizes an existing ﬁnite volume method that requires “Voronoi-type” meshes. We show the equivalence of this ﬁnite volume method with a non-conforming ﬁnite element method with basis functions being P 1 on the cells, generally called “diamond-cells”, of a third mesh. Under geometrical conditions on these diamondcells, we prove a ﬁrst-order convergence both in the H10 norm and in the L2 norm. Superconvergence results are obtained on certain types of homothetically reﬁned grids. Finally, numerical experiments conﬁrm these results and also show second-order convergence in the L2 norm on general grids. They also indicate that this method performs particularly well for the approximation of the gradient of the solution, and may be used on degenerating triangular grids. An example of application on nonconforming locally reﬁned grids is given.}
       \field{issn}{0764-583X, 1290-3841}
-      \field{journaltitle}{{ESAIM}: Mathematical Modelling and Numerical Analysis}
-      \field{langid}{english}
+      \field{journaltitle}{ESAIM: Mathematical Modelling and Numerical Analysis}
       \field{month}{11}
       \field{number}{6}
-      \field{shortjournal}{{ESAIM}: M2AN}
-      \field{title}{A finite volume method for the Laplace equation on almost arbitrary two-dimensional grids}
+      \field{title}{A finite volume method for the {Laplace} equation on almost arbitrary two-dimensional grids}
       \field{urlday}{25}
       \field{urlmonth}{4}
       \field{urlyear}{2026}
       \field{volume}{39}
       \field{year}{2005}
-      \field{dateera}{ce}
       \field{urldateera}{ce}
       \field{pages}{1203\bibrangedash 1249}
       \range{pages}{47}
@@ -857,7 +935,7 @@
            giveni={R\bibinitperiod}}}%
       }
       \list{institution}{1}{%
-        {Centre Borelli - {ENS} Paris-Saclay}%
+        {Centre Borelli - ENS Paris-Saclay}%
       }
       \strng{namehash}{20749d36e04c7be1c5b7f10a024e75cc}
       \strng{fullhash}{20749d36e04c7be1c5b7f10a024e75cc}
@@ -870,9 +948,9 @@
       \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Décomposition de Helmholtz-Hodge sur une surface fermée}
+      \field{title}{Décomposition de {Helmholtz}-{Hodge} sur une surface fermée}
+      \field{type}{techreport}
       \field{year}{2025}
-      \field{dateera}{ce}
       \verb{file}
       \verb PDF:/home/wayoff/Zotero/storage/PLFF4R53/Grégoire et al. - 2025 - Décomposition de Helmholtz-Hodge sur une surface fermée.pdf:application/pdf
       \endverb
@@ -884,6 +962,9 @@
            familyi={H\bibinitperiod},
            given={F.},
            giveni={F\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
       }
       \strng{namehash}{fc475c1b289e7ec365626fedd8f3539b}
       \strng{fullhash}{fc475c1b289e7ec365626fedd8f3539b}
@@ -898,17 +979,14 @@
       \field{labeltitlesource}{title}
       \field{issn}{00219991}
       \field{journaltitle}{Journal of Computational Physics}
-      \field{langid}{english}
       \field{month}{5}
       \field{number}{2}
-      \field{shortjournal}{Journal of Computational Physics}
-      \field{title}{A Finite Volume Method for the Approximation of Diffusion Operators on Distorted Meshes}
+      \field{title}{A {Finite} {Volume} {Method} for the {Approximation} of {Diffusion} {Operators} on {Distorted} {Meshes}}
       \field{urlday}{23}
       \field{urlmonth}{6}
       \field{urlyear}{2026}
       \field{volume}{160}
       \field{year}{2000}
-      \field{dateera}{ce}
       \field{urldateera}{ce}
       \field{pages}{481\bibrangedash 499}
       \range{pages}{19}
@@ -925,7 +1003,7 @@
       \verb https://linkinghub.elsevier.com/retrieve/pii/S0021999100964660
       \endverb
     \endentry
-    \entry{ji_fourth_2010}{collection}{}
+    \entry{ji_fourth_2010}{book}{}
       \name{editor}{4}{}{%
         {{hash=03ec295a2def32200fa423cac79c9156}{%
            family={Ji},
@@ -948,6 +1026,9 @@
            given={Shing-Tung},
            giveni={S\bibinithyphendelim T\bibinitperiod}}}%
       }
+      \list{language}{1}{%
+        {en}%
+      }
       \list{location}{1}{%
         {Providence, Rhode Island}%
       }
@@ -965,19 +1046,16 @@
       \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
       \field{labelnamesource}{editor}
       \field{labeltitlesource}{title}
-      \field{abstract}{We will give four proofs of the Cheeger inequality which relates the eigenvalues of a graph with various isoperimetric variations of the Cheeger constant. The ﬁrst is a simpliﬁed proof of the classical Cheeger inequality using eigenvectors. The second is based on a rapid mixing result for random walks by Lova´sz and Simonovits. The third uses {PageRank}, a quantitative ranking of the vertices introduced by Brin and Page. The fourth proof is by an improved notion of the heat kernel pagerank. The four proofs lead to further improvements of graph partition algorithms and in particular the local partition algorithms with cost proportional to its output instead of in terms of the total size of the graph.}
-      \field{day}{27}
+      \field{abstract}{We will give four proofs of the Cheeger inequality which relates the eigenvalues of a graph with various isoperimetric variations of the Cheeger constant. The ﬁrst is a simpliﬁed proof of the classical Cheeger inequality using eigenvectors. The second is based on a rapid mixing result for random walks by Lova´sz and Simonovits. The third uses PageRank, a quantitative ranking of the vertices introduced by Brin and Page. The fourth proof is by an improved notion of the heat kernel pagerank. The four proofs lead to further improvements of graph partition algorithms and in particular the local partition algorithms with cost proportional to its output instead of in terms of the total size of the graph.}
       \field{isbn}{978-0-8218-5021-3 978-0-8218-8851-3 978-1-4704-1751-2}
-      \field{langid}{english}
       \field{month}{8}
-      \field{series}{{AMS}/{IP} Studies in Advanced Mathematics}
-      \field{title}{Fourth International Congress of Chinese Mathematicians}
+      \field{series}{{AMS}/{IP} {Studies} in {Advanced} {Mathematics}}
+      \field{title}{Fourth {International} {Congress} of {Chinese} {Mathematicians}}
       \field{urlday}{10}
       \field{urlmonth}{6}
       \field{urlyear}{2026}
       \field{volume}{48}
       \field{year}{2010}
-      \field{dateera}{ce}
       \field{urldateera}{ce}
       \verb{doi}
       \verb 10.1090/amsip/048
@@ -1003,6 +1081,9 @@
       \list{institution}{1}{%
         {Université de Provence}%
       }
+      \list{language}{1}{%
+        {fr}%
+      }
       \strng{namehash}{af55e3835f555094fe3b2aafeba5bdd5}
       \strng{fullhash}{af55e3835f555094fe3b2aafeba5bdd5}
       \strng{bibnamehash}{af55e3835f555094fe3b2aafeba5bdd5}
@@ -1015,11 +1096,9 @@
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{langid}{french}
-      \field{title}{Schémas Volumes Finis en mécanique des fluides complexes}
+      \field{title}{Schémas {Volumes} {Finis} en mécanique des fluides complexes}
       \field{type}{phdthesis}
       \field{year}{2010}
-      \field{dateera}{ce}
       \verb{file}
       \verb PDF:/home/wayoff/Zotero/storage/XFFP8PDT/Krell - Schémas Volumes Finis en mécanique des fluides complexes.pdf:application/pdf
       \endverb
@@ -1053,6 +1132,35 @@
       \verb PDF:/home/wayoff/Zotero/storage/D43H2CGP/Krell - 2021 - Développement et analyse de schémas Volumes Finis en mécanique des fluides complexes.pdf:application/pdf
       \endverb
     \endentry
+    \entry{omnes_developpement_2010}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=f8c8e61e359308f533647ff7bd34b0ca}{%
+           family={Omnes},
+           familyi={O\bibinitperiod},
+           given={Pascal},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Université Paris-Nord - Paris XIII}%
+      }
+      \strng{namehash}{f8c8e61e359308f533647ff7bd34b0ca}
+      \strng{fullhash}{f8c8e61e359308f533647ff7bd34b0ca}
+      \strng{bibnamehash}{f8c8e61e359308f533647ff7bd34b0ca}
+      \strng{authorbibnamehash}{f8c8e61e359308f533647ff7bd34b0ca}
+      \strng{authornamehash}{f8c8e61e359308f533647ff7bd34b0ca}
+      \strng{authorfullhash}{f8c8e61e359308f533647ff7bd34b0ca}
+      \field{labelalpha}{Omn10}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Développement et analyse de méthodes de volumes finis}
+      \field{type}{Habilitation à diriger des recherches}
+      \field{year}{2010}
+      \verb{file}
+      \verb PDF:/home/wayoff/Zotero/storage/Z5Y5UILX/Omnes - 2010 - Développement et analyse de méthodes de volumes finis.pdf:application/pdf
+      \endverb
+    \endentry
     \entry{ros_isoperimetric_2005}{article}{}
       \name{author}{1}{}{%
         {{hash=99ec486a960ab4749b65614416eb53ec}{%
@@ -1079,7 +1187,6 @@
       \field{title}{The isoperimetric problem}
       \field{volume}{2}
       \field{year}{2005}
-      \field{dateera}{ce}
       \field{pages}{175\bibrangedash 209}
       \range{pages}{35}
       \verb{file}
@@ -1099,6 +1206,9 @@
            given={Karol},
            giveni={K\bibinitperiod}}}%
       }
+      \list{language}{1}{%
+        {en}%
+      }
       \strng{namehash}{96e8504243be9d9950e9c928c7ff83ab}
       \strng{fullhash}{96e8504243be9d9950e9c928c7ff83ab}
       \strng{bibnamehash}{96e8504243be9d9950e9c928c7ff83ab}
@@ -1111,8 +1221,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{2804-7214}
-      \field{journaltitle}{{ESAIM}: Mathematical Modelling and Numerical Analysis}
-      \field{langid}{english}
+      \field{journaltitle}{ESAIM: Mathematical Modelling and Numerical Analysis}
       \field{number}{6}
       \field{title}{Discrete duality finite volume method with tangential redistribution of points for surfaces evolving by mean curvature}
       \field{urlday}{21}
@@ -1120,7 +1229,6 @@
       \field{urlyear}{2026}
       \field{volume}{53}
       \field{year}{2019}
-      \field{dateera}{ce}
       \field{urldateera}{ce}
       \field{pages}{1797\bibrangedash 1840}
       \range{pages}{44}
@@ -1155,6 +1263,9 @@
            given={M},
            giveni={M\bibinitperiod}}}%
       }
+      \list{language}{1}{%
+        {en}%
+      }
       \strng{namehash}{68ef868e4a443990ae83ff93616479e7}
       \strng{fullhash}{68ef868e4a443990ae83ff93616479e7}
       \strng{bibnamehash}{68ef868e4a443990ae83ff93616479e7}
@@ -1167,10 +1278,8 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{In this paper we propose a new numerical method for solving the mean curvature ﬂow of surfaces. Two-dimensional surface is usualy approximated by a triangular mesh. Widely used discretization of Laplace-Beltrami operator over triangulated surfaces is the so-called cotangent scheme [7, 8]. In the cotangent scheme the unknowns are the vertices of the triangulation. The basic idea of our new approach is to include a representative point of each triangle (vertex of the dual mesh) in the scheme as a supplementary unknown and generalize the discrete duality ﬁnite volume method [3] from R2 to 2D surfaces embedded in R3. We derive the numerical scheme and present numerical experiments illustrating the basic properties of the method.}
-      \field{langid}{english}
-      \field{title}{Discrete Duality Finite Volume methof for mean curvature flow of surfaces}
+      \field{title}{Discrete {Duality} {Finite} {Volume} methof for mean curvature flow of surfaces}
       \field{year}{2016}
-      \field{dateera}{ce}
       \verb{file}
       \verb PDF:/home/wayoff/Zotero/storage/MRRI7BTE/Tomek et al. - 2016 - Discrete Duality Finite Volume methof for mean curvature flow of surfaces.pdf:application/pdf
       \endverb

@@ -1,0 +1,170 @@
+\begin{tikzpicture}[
+    scale=1.4,
+    bluept/.style={circle, fill=myblue, inner sep=1.5pt},
+    redpt/.style={circle, fill=myred, inner sep=1.5pt}
+]
+
+% paramètres
+\def\n{3}
+\def\a{0.7}
+
+\clip (-0.45,-0.45) rectangle (2.45,2.45);
+
+% grille bleue
+\foreach \i in {0,1,2} {
+    \draw[myblue, thick] (\i,0) -- (\i,2);
+    \draw[myblue, thick] (0,\i) -- (2,\i);
+}
+
+% prolongements pointillés bleus
+\foreach \i in {0,1,2} {
+    \draw[myblue, thick] (\i,-0.5) -- (\i,0);
+    \draw[myblue, thick] (\i,2) -- (\i,2.5);
+    \draw[myblue, thick] (-0.5,\i) -- (0,\i);
+    \draw[myblue, thick] (2,\i) -- (2.5,\i);
+}
+
+% diagonales bleues
+\foreach \x in {-0.5,0.5,1.5} {
+    \draw[myblue, thick] (\x,-0.5) -- (\x+1,0.5);
+}
+\foreach \x in {-0.5,0.5,1.5} {
+    \draw[myblue, thick] (\x,1.5) -- (\x+1,2.5);
+}
+\foreach \x in {-0.5,0.5,1.5} {
+    \draw[myblue, thick] (\x,0.5) -- (\x+1,1.5);
+}
+\draw[myblue, thick] (0,0) -- (2,2);
+\draw[myblue, thick] (0,1) -- (1,2);
+\draw[myblue, thick] (1,0) -- (2,1);
+
+% points bleus
+\foreach \x in {0,1,2} {
+    \foreach \y in {0,1,2} {
+        \node[bluept] at (\x,\y) {};
+    }
+}
+
+\onslide<2->{
+
+\coordinate (D11) at (0.35,0.65);
+\coordinate (D12) at (0.65,0.35);
+\coordinate (D21) at (1.35,0.65);
+\coordinate (D22) at (1.65,0.35);
+\coordinate (D31) at (0.35,1.65);
+\coordinate (D32) at (0.65,1.35);
+\coordinate (D41) at (1.35,1.65);
+\coordinate (D42) at (1.65,1.35);
+
+\coordinate (D11b) at ($(D12)+(-1,0)$);
+\coordinate (D12b) at ($(D11)+(0,-1)$);
+\coordinate (D22b) at ($(D21)+(1,0)$);
+\coordinate (D22bb) at ($(D21)+(0,-1)$);
+\coordinate (D31b) at ($(D32)+(-1,0)$);
+\coordinate (D31bb) at ($(D32)+(0,1)$);
+\coordinate (D41b) at ($(D42)+(0,1)$);
+\coordinate (D42b) at ($(D41)+(1,0)$);
+
+\coordinate (coin1) at ($(D32)+(-1,1)$);
+\coordinate (coin2) at ($(D22b)+(0,-1)$);
+
+\foreach \p in {(D11),(D12),(D21),(D22),(D31),(D32),(D41),(D42),(D11b),(D12b),(D22b),(D22bb),(D31b),(D31bb),(D41b),(D42b),(coin1),(coin2)} {
+    \node[redpt] at \p {};
+}
+
+
+}
+\onslide<2->{
+
+\draw[myred, thick] (D11) -- (D11b) -- ($(D11)+(-1,-1)$);
+\draw[myred, thick] (D11b) -- ($(D11)+(-1,0)$);
+\draw[myred, thick] (D11) -- (D32);
+\draw[myred, thick] (D11) -- (D12);
+
+\draw[myred, thick] (D12) -- (D12b) -- ($(D12)+(-1,-1)$);
+\draw[myred, thick] (D12b) -- ($(D12)+(0,-1)$);
+\draw[myred, thick] (D12) -- (D21);
+
+\draw[myred, thick] (D21) -- (D42);
+\draw[myred, thick] (D21) -- (D22);
+
+\draw[myred, thick] (D22) -- (D22b) -- ($(D22)+(1,1)$);
+\draw[myred, thick] (D22b) -- ($(D22)+(1,0)$);
+\draw[myred, thick] (D22) -- (D22bb);
+
+\draw[myred, thick] (D22bb) -- ($(D12)+(0,-1)$);
+\draw[myred, thick] (D22bb) -- ($(D22)+(0,-1)$);
+
+\draw[myred, thick] (D31) -- (D31b);
+\draw[myred, thick] (D31b) -- ($(D31)+(-1,-1)$);
+\draw[myred, thick] (D31b) -- ($(D31)+(-1,0)$);
+
+\draw[myred, thick] (D31) -- (D31bb);
+\draw[myred, thick] (D31bb) -- ($(D31)+(0,1)$);
+\draw[myred, thick] (D31bb) -- ($(D31)+(1,1)$);
+
+\draw[myred, thick] (D31) -- (D32);
+
+\draw[myred, thick] (D32) -- (D41);
+
+\draw[myred, thick] (D41) -- (D42);
+
+\draw[myred, thick] (D41) -- (D41b);
+\draw[myred, thick] (D41b) -- ($(D41)+(0,1)$);
+\draw[myred, thick] (D41b) -- ($(D41)+(1,1)$);
+
+\draw[myred, thick] (D42) -- (D42b);
+\draw[myred, thick] (D42b) -- ($(D42)+(1,0)$);
+\draw[myred, thick] (D42b) -- ($(D42)+(1,1)$);
+
+\draw[myred, thick] (coin1) -- ($(D31)+(-1,0)$);
+\draw[myred, thick] (coin1) -- ($(D31)+(0,1)$);
+\draw[myred, thick] (coin1) -- ($(D31)+(-1,1)$);
+
+\draw[myred, thick] (coin2) -- ($(D22)+(1,0)$);
+\draw[myred, thick] (coin2) -- ($(D22)+(0,-1)$);
+\draw[myred, thick] (coin2) -- ($(D22)+(1,-1)$);
+
+}
+
+\onslide<3->{
+\fill[mygreen] (0,0) -- (D11) -- (1,1) -- (D12) -- cycle;
+\fill[mygreen] (1,1) -- (D32) -- (1,2) -- (D41) -- cycle;
+
+\node[bluept] at (0,0) {};
+
+\node[redpt] at (D11) {};
+\node[redpt] at (D12) {};
+
+\draw[myblue, thick] (0,0) -- (1,1);
+\draw[myred, thick] (D11) -- (D12);
+
+\node[bluept] at (1,1) {};
+\node[bluept] at (1,2) {};
+
+\node[redpt] at (D32) {};
+\node[redpt] at (D41) {};
+
+\draw[myblue, thick] (1,1) -- (1,2);
+\draw[myred, thick] (D32) -- (D41);
+}
+
+\onslide<3->{
+
+\fill[white, opacity=0.7] (-0.45,-0.45) rectangle (2.45,2.45);
+
+\fill[mygreen] (1,1) -- (D32) -- (1,2) -- (D41) -- cycle;
+
+\node[bluept] at (1,1) {};
+\node[bluept] at (1,2) {};
+
+\node[redpt] at (D32) {};
+\node[redpt] at (D41) {};
+
+\draw[myblue, thick] (1,1) -- (1,2);
+\draw[myred, thick] (D32) -- (D41);
+
+\draw[black, very thick, ->, cap=round] (1,1.5) -- (0.5,1.7) node[above] {\contour{white}{$\grad f$}};
+}
+
+\end{tikzpicture}

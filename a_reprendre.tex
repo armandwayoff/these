@@ -160,3 +160,27 @@ La décomposition se ramène donc à un système carré, comportant autant d'éq
 \]
 Le deuxième terme est nul par le \Cref{theo:rotperpgrad}, ainsi que le troisième en appliquant une formule de Green discrète (voir le \Cref{theo:discrete_green_formulae}) et en utilisant le fait que $h^\ensdiamantplat \in \ker(\div^\ensddfvplat)$. Ainsi, $\grad^\ensdiamantplat \phi^\ensddfvplat = 0$ et comme $\phi^\ensddfvplat \in \Rddfvmn$, on en déduit que $\phi^\ensddfvplat = 0$. De la même manière, en prenant le produit scalaire de \ref{eq:415} avec $\rot^\ensdiamantplat \psi^\ensddfvplat$ et en utilisant que $h^\ensdiamantplat \in \ker(\scarot^\ensddfvplat)$ et que $\psi^\ensddfvplat \in \Rddfvmn$, on obtient que $\psi^\ensddfvplat = 0$. Finalement on obtient $h^\ensdiamantplat = 0$ ce qui fournit l'injectivité et donc l'existence et l'unicité de la décomposition de Helmholtz--Hodge discrète dans le cadre \ddfv.
 \end{demo}
+
+
+Enfin, concernant la proposition précédente $\dim\mathcal H^\ensdiamantplat=4g$, le résultat découle bien du théorème de somme orthogonale, mais la preuve gagnerait à éviter le simple comptage \og inconnues--équations \fg{}. La justification rigoureuse est directement
+\[
+2A
+=
+\dim\Image(\grad^\ensdiamantplat)
++\dim\Image(\rot^\ensdiamantplat)
++\dim\mathcal H^\ensdiamantplat,
+\]
+puis
+\[
+\dim\Image(\grad^\ensdiamantplat)
+=
+\dim\Image(\rot^\ensdiamantplat)
+=
+S+F-2,
+\]
+d'où
+\[
+\dim\mathcal H^\ensdiamantplat
+=2A-2(S+F-2)=4g.
+\]
+Il faudrait aussi expliciter que la surface est connexe et orientable, hypothèses utilisées par la formule $\chi=2-2g$.

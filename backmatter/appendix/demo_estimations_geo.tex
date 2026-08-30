@@ -1,20 +1,20 @@
 \chapter{Démonstrations des résultats d'estimations géométriques} \label{chap:demo_estimations_geo}
 
-Cette annexe est consacrée aux démonstrations des résultats d'estimations géométriques énoncés dans les \Cref{prop:estimations_tailles_plat_vs_courbe,prop:mesure_sigmacourbe}. Following \cite[Sec. 4.2]{dziuk_finite_2013}, we consider a piecewise linear approximation of a smooth surface $\surflisse \in \Cont^2$ and its geometry. We collect estimates for the geometric error which is produced by approximating the smooth surface $\surflisse$ by a discrete surface $\surfpoly$. A curved simplex $\primal{K} = \projvariete \primalplat{K}$ is parametrized over a planar one as shown on \Cref{fig:estimation_projection}.
+Cette annexe est consacrée aux démonstrations des résultats d'estimations géométriques énoncés dans les \Cref{prop:estimations_tailles_plat_vs_courbe,prop:mesure_sigmacourbe}. En suivant \cite[Sec. 4.2]{dziuk_finite_2013}, nous considérons une approximation affine par morceaux d'une surface lisse $\surflisse \in \Cont^2$. Nous donnons des estimations de l'erreur géométrique produite par l'approximation de la surface lisse $\surflisse$ par une surface polyédrique $\surfpoly$. Un simplexe courbe $\primal{K} = \projvariete \primalplat{K}$ est paramétré sur un simplexe plan, comme illustré dans la \Cref{fig:estimation_projection}.
 
 \begin{figure}[H]
     \centering
     \input{figures/estimation_projection.tex}
-    \caption{Orthogonal projection onto the smooth surface $\surflisse$}
+    \caption{Projection orthogonale sur la surface lisse $\surflisse$.}
     \label{fig:estimation_projection}
 \end{figure}
 
-\begin{lemme}[{\cite[Lemma 4.1]{dziuk_finite_2013}}] \label{lemme:projection_dziuk}
-Assume $\surflisse$ and $\surfpoly$ are as described in \Cref{sec:triangulations}. The map $\fonctionens[\projvariete]{\surfpoly}{\surflisse}$ is bijective (see \Cref{lemme:fermi_coordinates}). For the oriented distance function to $\surflisse$ defined by \ref{eq:def_oriented_distance}, we have the estimate
+\begin{lemme}[{\cite[Lemme 4.1]{dziuk_finite_2013}}] \label{lemme:projection_dziuk}
+Supposons que $\surflisse$ et $\surfpoly$ soient telles que décrites dans la \Cref{sec:triangulations}. L'application $\fonctionens[\projvariete]{\surfpoly}{\surflisse}$ est bijective (voir le \Cref{lemme:fermi_coordinates}). Pour la fonction distance orientée à $\surflisse$, définie par la \Cref{eq:def_oriented_distance}, nous avons l'estimation
 \[
 \norme{d}_{\L^\infty(\surfpoly)} \leqslant c \size(\ensprimalplat)^2.
 \]
-For subscript notation, we denote $h = \size(\ensprimalplat)$. The quotient $\delta_h$ between the smooth and discrete surface measures $\d A$ and $\d A_h$, defined by $\delta_h \d A_h = \d A$, satisfies
+Afin d'alléger les notations, nous posons $h = \size(\ensprimalplat)$. Le quotient $\delta_h$ entre les mesures surfaciques lisse et discrète $\d A$ et $\d A_h$, défini par $\delta_h \d A_h = \d A$, vérifie
 \[
 \norme{1 - \delta_h}_{\L^\infty(\surfpoly)} \leqslant c \size(\ensprimalplat)^2.
 \]
