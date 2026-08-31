@@ -4,7 +4,7 @@ Dans cette section, on définit des opérateurs discrets : un gradient discret e
 
 \subsection{Opérateurs gradient discret et rotationnel vectoriel discret}
 
-On considère le gradient discret introduit par Coudière \emph{et al.} dans \cite{coudiere_convergence_1999} et appliqué par Hermeline dans \cite{hermeline_finite_2000} et Domelevo et Omnès dans \cite{domelevo_finite_2005} au cadre des méthodes \ddfv.
+On considère le gradient discret introduit par Coudière \emph{et al.} dans \cite{coudiere_convergence_1999} et appliqué par Hermeline dans \cite{hermeline_finite_2000} et Domelevo et Omnes dans \cite{domelevo_finite_2005} au cadre des méthodes \ddfv.
 
 \begin{defi}[Gradient discret] \label{defi:discrete_gradient}
     L'\defini{opérateur gradient discret} $\fonctionens[\grad^\ensdiamantplat]{\R^\ensddfvplat}{(\R^2)^\ensdiamantplat}$ est défini de la manière suivante~: pour tout $u^\ensddfvplat \in \R^\ensddfvplat$, $\grad^\ensdiamantplat u^\ensddfvplat = (\grad^{\diamantplat{D}} u^\ensddfvplat)_{\diamantplat{D} \in \ensdiamantplat}$ est la fonction, constante par diamants plats $\diamantplat{D}_{\sigma, \dual{\sigma}}$, donnée par
@@ -70,7 +70,7 @@ Le fait que $c^\ensprimalplat$ et $c^\ensdualplat$ puissent être différentes s
 
 \subsection{Produits scalaires} \label{sec:produits_scalaires}
 
-La \Cref{sec:unknowns} nous amène à définir les produits scalaires discrets suivants. On note $\prodscalddfv{}{}$ le produit scalaire $\L^2$ dans $\R^\ensddfvplat$ défini par
+La \Cref{sec:unknowns} nous amène à définir les produits scalaires discrets suivants, dont la forme est introduite par exemple dans \cite[Section 2.5]{delcourte_discrete_2007}. On note $\prodscalddfv{}{}$ le produit scalaire $\L^2$ dans $\R^\ensddfvplat$ défini par
 \begin{equation} \label{eq:prodscalddfv}
 \forall u^\ensddfvplat, v^\ensddfvplat \in \R^\ensddfvplat,
 \quad
@@ -82,7 +82,7 @@ De la même manière, on définit un produit scalaire discret sur l'ensemble des
 \quad
 \prodscalD{\xi^\ensdiamantplat}{\phi^\ensdiamantplat} \defeq \sum_{\diamantplat{D} \in \ensdiamantplat} \poids{\diamantplat{D}} \, \xi^{\diamantplat{D}} \cdot \phi^{\diamantplat{D}}.
 \end{equation}
-Les deux normes correspondantes sont notées par $\normeddfvT{}$ et $\normeddfvD{}$ respectivement. Dans les sections suivantes, nous précisons les valeurs des poids $\poids{\primalplat{K}}$, $\poids{\mailledualeplate{K}}$ et $\poids{\diamantplat{D}}$.
+Les deux normes correspondantes sont notées $\normeddfvT{}$ et $\normeddfvD{}$ respectivement. Ces produits scalaires sont pour l'instant plus généraux que ceux introduits dans la littérature. Nous allons préciser les valeurs à donner aux poids $\poids{\primalplat{K}}$, $\poids{\mailledualeplate{K}}$ et $\poids{\diamantplat{D}}$ dans les sections suivantes.
 
 \subsubsection{Valeurs des poids \texorpdfstring{$\poids{\primalplat{K}}$ et $\poids{\mailledualeplate{K}}$}{muK et muK*}}
 
@@ -98,7 +98,7 @@ de manière à avoir une symétrie des rôles du maillage primal et du maillage 
 
 \subsubsection{Calcul des poids \texorpdfstring{$\poids{\diamantplat{D}}$}{muD}}
 
-Nous allons déterminer les poids $(\poids{\diamantplat{D}})_{\diamantplat{D} \in \ensdiamantplat}$ du produit scalaire \ref{eq:prodscalD}. On souhaite que ce produit scalaire soit tel qu'on ait un analogue discret de $\rot \perp \grad$. Ceci nous permettra d'obtenir naturellement des propriétés de composition des opérateurs discrets (voir \Cref{sec:compositions_discrete_operators}). En effet, dans le cas continu, par intégration par parties sur la surface sans bord $\surflisse$ on a
+Nous allons déterminer les poids $(\poids{\diamantplat{D}})_{\diamantplat{D} \in \ensdiamantplat}$ du produit scalaire \ref{eq:prodscalD}. On souhaite que ce produit scalaire soit tel qu'on ait un analogue discret de $\rot \perp \grad$. Ceci nous permettra d'obtenir naturellement des propriétés de composition des opérateurs discrets (voir la \Cref{sec:compositions_discrete_operators}). En effet, dans le cas continu, par intégration par parties sur la surface sans bord $\surflisse$ on a
 \[
 \forall u, v \in \H^1(\surflisse), 
 \quad
@@ -141,7 +141,7 @@ L'expression de la mesure d'un diamant plat est donnée par \ref{eq:mesure_diama
     \caption{Notations de deux diamants voisins.}
     \label{fig:diamants_voisins}
 \end{figure}
-\noindent Nous avons donc construit le produit scalaire \ref{eq:prodscalD} de sorte à ce qu'on ait le résultat suivant.
+\noindent Nous avons donc construit le produit scalaire \ref{eq:prodscalD} de sorte à avoir le résultat suivant.
 \begin{theo} \label{theo:rotperpgrad}
 Pour tout $u^\ensddfvplat, v^\ensddfvplat \in \R^\ensddfvplat$, on a $\prodscalD{\rot^\ensdiamantplat u^\ensddfvplat}{\grad^\ensdiamantplat v^\ensddfvplat} = 0$.
 \end{theo}
@@ -166,12 +166,12 @@ et les normes sur la surface lisse $\surflisse$ ont pour expression
 \end{align*}
 
 \begin{remarque}
-Nous venons de montrer que les expressions des poids $\poids{\primalplat{K}}$, $\poids{\mailledualeplate{K}}$ et $\poids{\diamantplat{D}}$ (\ref{eq:poidsprimaldual} et \ref{eq:poidsdiamant}) sont proportionnelles à la mesure des mailles plates. Aussi, d'un point de vue de l'implémentation numérique, calculer la mesure des mailles plates est préférable à calculer la mesure des mailles courbes. Comme le montre l'expression des normes, les poids associés aux normes discrètes $\normeddfvT{}$ et $\normeddfvD{}$ sont les mesures des mailles plates et les poids associés aux normes sur la surface lisse $\norme{\projddfvvar \,\cdot\,}^2_{\L^2(\surflisse)}$ et $\norme{\projdiamantvar \,\cdot\,}^2_{\L^2(\surflisse)^2}$ sont les mesures des mailles courbes.
+Nous venons de montrer que les expressions des poids $\poids{\primalplat{K}}$, $\poids{\mailledualeplate{K}}$ et $\poids{\diamantplat{D}}$ (\ref{eq:poidsprimaldual} et \ref{eq:poidsdiamant}) sont proportionnelles à la mesure des mailles plates. Ceci est satisfaisant car, du point de vue de l'implémentation numérique, nous ne pouvons pas, d'une manière générale, calculer les mesures des objets courbes. Comme le montre l'expression des normes, les poids associés aux normes discrètes $\normeddfvT{}$ et $\normeddfvD{}$ sont les mesures des mailles plates et les poids associés aux normes sur la surface lisse $\norme{\projddfvvar \,\cdot\,}^2_{\L^2(\surflisse)}$ et $\norme{\projdiamantvar \,\cdot\,}^2_{\L^2(\surflisse)^2}$ sont les mesures des mailles courbes.
 \end{remarque}
 
 \subsection{Écriture des produits scalaires sous forme matricielle} \label{sec:ecriture_prodscal_matricielle}
 
-Dans cette section, nous allons réécrire les produits scalaires \ref{eq:prodscalddfv} et \ref{eq:prodscalD} introduits dans la section précédente sous forme matricielle de manière à pouvoir définir de manière plus explicite les opérateurs de divergence discrète et de rotationnel scalaire discret (voir \Cref{sec:discrete_divergence_and_scalar_curl_operators}) . Soient $u^\ensddfvplat \in \R^\ensddfvplat$ et $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$. On note $m = \# \ensprimalplat$, $\dual{m} = \# \ensdualplat$ et $d = \# \ensdiamantplat$ et on désigne par
+Dans cette section, nous allons réécrire les produits scalaires \ref{eq:prodscalddfv} et \ref{eq:prodscalD} introduits dans la section précédente sous forme matricielle de manière à pouvoir définir de manière plus explicite les opérateurs de divergence discrète et de rotationnel scalaire discret (voir la \Cref{sec:discrete_divergence_and_scalar_curl_operators}) . Soient $u^\ensddfvplat \in \R^\ensddfvplat$ et $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$. On note $m = \# \ensprimalplat$, $\dual{m} = \# \ensdualplat$ et $d = \# \ensdiamantplat$ et on désigne par
 \[
 U^\ensddfvplat \defeq \big( u_{\primalplat{K}_1} \quad \cdots \quad u_{\primalplat{K}_m} \quad u_{\mailledualeplate{K}_1} \quad \cdots \quad u_{\mailledualeplate{K}_{\dual{m}}} \big)^\top
 \quad

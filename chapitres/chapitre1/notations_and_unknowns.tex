@@ -12,18 +12,18 @@ u^\ensprimalplat = (u_{\primalplat{K}})_{\primalplat{K} \in \ensprimalplat},
 \quad
 u^\ensdualplat = (u_{\mailledualeplate{K}})_{\mailledualeplate{K} \in \ensdualplat}.
 \end{equation}
-On a environ deux fois plus d'inconnues que dans la méthode VF4 mais cela permet de définir une approximation complète du gradient et pas uniquement dans la direction normale. Ceci rend la méthode beaucoup plus robuste. Les espaces d'approximation des fonctions discrètes $u^\ensprimalplat$ et $u^\ensdualplat$ respectivement dans le sens de la définition \ref{eq:ddfv_unknown} est noté $\R^\ensprimalplat$ et $\R^\ensdualplat$ respectivement. En introduisant le projecteur
+On a environ deux fois plus d'inconnues que dans la méthode VF4 mais cela permet de définir une approximation complète du gradient et pas uniquement dans la direction normale. Ceci rend la méthode beaucoup plus robuste. Les espaces d'approximation des fonctions discrètes $u^\ensprimalplat$ et $u^\ensdualplat$ dans le sens de la définition \ref{eq:ddfv_unknown} sont notés $\R^\ensprimalplat$ et $\R^\ensdualplat$ respectivement. En introduisant le projecteur
 \begin{equation} \label{eq:projddfvvar}
 \fonction[\projddfvvar]{\R^\ensddfvplat}{\L^2(\surflisse)}{u^\ensddfvplat}{\frac{1}{2} \sum_{\primal{K} \in \ensprimal} \indicatrice_{\primal{K}} \, u_{\primalplat{K}} + \frac{1}{2} \sum_{\mailleduale{K} \in \ensdual} \indicatrice_{\mailleduale{K}} \, u_{\mailledualeplate{K}}},
 \end{equation}
-on associe à la fonction discrète $u^\ensddfvplat$ la fonction constante par morceaux $\projddfvvar u^\ensddfvplat$. On utilise implicitement la correspondance entre une maille primale plate $\primalplat{K}$ et la maille primale courbe $\primal{K}$, et de même pour les mailles duales. Avec cette définition, nous utilisons simultanément deux reconstructions différentes basées soit sur les valeurs primales soit sur les valeurs duales. L'espace des solutions approchées introduit dans \cite{krell_developpement_2021} est dénoté par $\H_\ensddfvplat$:
+on associe à la fonction discrète $u^\ensddfvplat$ la fonction constante par morceaux $\projddfvvar u^\ensddfvplat$. On utilise implicitement la correspondance entre une maille primale plate $\primalplat{K}$ et la maille primale courbe $\primal{K}$, et de même pour les mailles duales. Avec cette définition, nous utilisons simultanément deux reconstructions différentes basées soit sur les valeurs primales soit sur les valeurs duales. L'espace des solutions approchées introduit dans \cite{krell_developpement_2021} est dénoté par $\H_\ensddfvplat$ :
 \[
 \H_\ensddfvplat = \ens[\Big]{u \in \L^1(\surflisse) \tq \exists u^\ensddfvplat \in \R^\ensddfvplat \text{ tel que } u = \projddfvvar u^\ensddfvplat}.
 \]
-Nous pouvons ainsi définir la norme $\L^r$ de $\projddfvvar u^\ensddfvplat$ pour tout $r \in \intervalleff{1}{+\infty}$. 
+Nous pouvons ainsi définir la norme $\L^r$ de la fonction $\projddfvvar u^\ensddfvplat$ pour tout $r \in \intervalleff{1}{+\infty}$. 
 
-On définit également $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$ par $\xi^\ensdiamantplat = (\xi^{\diamantplat{D}})_{\diamantplat{D} \in \ensdiamantplat}$, avec $\xi^{\diamantplat{D}} \in \R^2$. De la même manière que précédemment, en introduisant le projecteur
+On définit également la fonction vectorielle discrète $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$ par $\xi^\ensdiamantplat = (\xi^{\diamantplat{D}})_{\diamantplat{D} \in \ensdiamantplat}$, avec $\xi^{\diamantplat{D}} \in \R^2$. De la même manière que précédemment, en introduisant le projecteur
 \begin{equation} \label{eq:projdiamantvar}
-\fonction[\projdiamantvar]{(\R^2)^\ensdiamantplat}{\L^2(\surflisse)^2}{\xi^\ensdiamantplat}{\sum_{\diamant{D} \in \ensdiamant} \indicatrice_{\diamant{D}} \, \xi^{\diamantplat{D}}},
+\fonction[\projdiamantvar]{(\R^2)^\ensdiamantplat}{(\L^2(\surflisse))^2}{\xi^\ensdiamantplat}{\sum_{\diamant{D} \in \ensdiamant} \indicatrice_{\diamant{D}} \, \xi^{\diamantplat{D}}},
 \end{equation}
 on associe à la fonction discrète $\xi^\ensdiamantplat$ la fonction constante par diamants courbes $\projdiamantvar \xi^\ensdiamantplat$. À nouveau, on utilise implicitement la correspondance entre un diamant plat $\diamantplat{D}$ et le diamant courbe $\diamant{D}$.

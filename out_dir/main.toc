@@ -1,38 +1,38 @@
 \@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
 \babel@toc {french}{}\relax 
 \contentsline {chapter}{Introduction générale}{1}{chapter*.2}%
-\contentsline {paragraph}{Précisions sur la nature des surfaces considérées}{2}{figure.caption.3}%
-\contentsline {chapter}{\numberline {I}Généralisation de la méthode \textsc {ddfv}\xspace au cadre des surfaces fermées sans bord de $\mathbb {R}^3$}{3}{chapter.1}%
+\contentsline {paragraph}{Précisions sur la nature des surfaces considérées}{2}{figure.caption.4}%
+\contentsline {chapter}{\numberline {I}Généralisation de la méthode \textsc {ddfv}\xspace au cadre des surfaces fermées sans bord de $\mathbb {R}^3$}{4}{chapter.1}%
 \etoc@startlocaltoc {2}
-\contentsline {section}{\numberline {I.1}Construction des maillages \textsc {ddfv}\xspace }{4}{section.1.1}%
-\contentsline {subsection}{\numberline {I.1.1}Coordonnées globales}{4}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {I.1.2}Approximation d'une surface lisse par une surface polyédrique}{5}{subsection.1.1.2}%
-\contentsline {subsection}{\numberline {I.1.3}Maillages primaux}{5}{subsection.1.1.3}%
-\contentsline {subsection}{\numberline {I.1.4}Maillages duaux}{6}{subsection.1.1.4}%
-\contentsline {subsection}{\numberline {I.1.5}Ensemble et maillage diamants}{7}{subsection.1.1.5}%
-\contentsline {subsection}{\numberline {I.1.6}Régularité du maillage}{10}{subsection.1.1.6}%
-\contentsline {section}{\numberline {I.2}Espaces d’approximation sur les maillages \textsc {ddfv}\xspace }{10}{section.1.2}%
-\contentsline {section}{\numberline {I.3}Définitions des opérateurs discrets}{11}{section.1.3}%
-\contentsline {subsection}{\numberline {I.3.1}Opérateurs gradient discret et rotationnel vectoriel discret}{11}{subsection.1.3.1}%
-\contentsline {subsection}{\numberline {I.3.2}Produits scalaires}{12}{subsection.1.3.2}%
-\contentsline {subsubsection}{Valeurs des poids $\mu _{\mathchoice {\scalebox {0.8}{$\mathrm {K}$}}{\scalebox {0.8}{$\mathrm {K}$}}{\scalebox {0.8}{$\scriptstyle \mathrm {K}$}}{\scalebox {0.6}{$\scriptstyle \mathrm {K}$}}}$ et $\mu _{\mathchoice {\scalebox {0.8}{${\mathrm {K}^\ast }$}}{\scalebox {0.8}{${\mathrm {K}^\ast }$}}{\scalebox {0.8}{${\scriptstyle \mathrm {K}^\ast }$}}{\scalebox {0.6}{${\scriptstyle \mathrm {K}^\ast }$}}}$}{12}{equation.1.3.6}%
-\contentsline {subsubsection}{Calcul des poids $\mu _{\mathchoice {\scalebox {0.8}{$\mathrm {D}$}}{\scalebox {0.8}{$\mathrm {D}$}}{\scalebox {0.8}{$\scriptstyle \mathrm {D}$}}{\scalebox {0.6}{$\scriptstyle \mathrm {D}$}}}$}{13}{equation.1.3.8}%
-\contentsline {subsection}{\numberline {I.3.3}Écriture des produits scalaires sous forme matricielle}{14}{subsection.1.3.3}%
-\contentsline {subsection}{\numberline {I.3.4}Opérateurs divergence discrète et rotationnel scalaire discret}{15}{subsection.1.3.4}%
-\contentsline {section}{\numberline {I.4}Propriétés des opérateurs discrets}{15}{section.1.4}%
-\contentsline {subsection}{\numberline {I.4.1}Formules de Green discrètes}{15}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {I.4.2}Compositions des opérateurs discrets}{15}{subsection.1.4.2}%
-\contentsline {subsection}{\numberline {I.4.3}Discrétisation de la décomposition de Helmholtz--Hodge}{16}{subsection.1.4.3}%
-\contentsline {chapter}{\numberline {II}Démonstration de l'inégalité de Poincaré \textsc {ddfv}\xspace sur une surface fermée sans bord de $\mathbb {R}^3$}{18}{chapter.2}%
-\contentsline {section}{\numberline {II.1}Une inégalité de graphe}{19}{section.2.1}%
-\contentsline {section}{\numberline {II.2}Comparaisons de constantes isopérimétriques}{23}{section.2.2}%
-\contentsline {chapter}{Conclusion et perspectives}{26}{chapter*.18}%
-\contentsline {paragraph}{Conclusion}{26}{chapter*.18}%
-\contentsline {paragraph}{Perspectives}{26}{chapter*.18}%
-\contentsline {chapter}{\numberline {A}Éléments de théorie spectrale des graphes}{28}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Laplacien d'un graphe}{28}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Valeurs propres d'un graphe}{28}{section.A.2}%
-\contentsline {section}{\numberline {A.3}Inégalité de Cheeger}{29}{section.A.3}%
-\contentsline {chapter}{\numberline {B}Le problème isopérimétrique et la constante de Cheeger}{30}{appendix.B}%
-\contentsline {chapter}{\numberline {C}Démonstrations des résultats d'estimations géométriques}{32}{appendix.C}%
-\contentsline {chapter}{\numberline {D}Notations}{34}{appendix.D}%
+\contentsline {section}{\numberline {I.1}Construction des maillages \textsc {ddfv}\xspace }{5}{section.1.1}%
+\contentsline {subsection}{\numberline {I.1.1}Coordonnées globales}{5}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {I.1.2}Approximation d'une surface lisse par une surface polyédrique}{6}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {I.1.3}Maillages primaux}{6}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {I.1.4}Maillages duaux}{7}{subsection.1.1.4}%
+\contentsline {subsection}{\numberline {I.1.5}Ensemble et maillage diamants}{8}{subsection.1.1.5}%
+\contentsline {subsection}{\numberline {I.1.6}Régularité du maillage}{11}{subsection.1.1.6}%
+\contentsline {section}{\numberline {I.2}Espaces d’approximation sur les maillages \textsc {ddfv}\xspace }{11}{section.1.2}%
+\contentsline {section}{\numberline {I.3}Définitions des opérateurs discrets}{12}{section.1.3}%
+\contentsline {subsection}{\numberline {I.3.1}Opérateurs gradient discret et rotationnel vectoriel discret}{12}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {I.3.2}Produits scalaires}{13}{subsection.1.3.2}%
+\contentsline {subsubsection}{Valeurs des poids $\mu _{\mathchoice {\scalebox {0.8}{$\mathrm {K}$}}{\scalebox {0.8}{$\mathrm {K}$}}{\scalebox {0.8}{$\scriptstyle \mathrm {K}$}}{\scalebox {0.6}{$\scriptstyle \mathrm {K}$}}}$ et $\mu _{\mathchoice {\scalebox {0.8}{${\mathrm {K}^\ast }$}}{\scalebox {0.8}{${\mathrm {K}^\ast }$}}{\scalebox {0.8}{${\scriptstyle \mathrm {K}^\ast }$}}{\scalebox {0.6}{${\scriptstyle \mathrm {K}^\ast }$}}}$}{13}{equation.1.3.6}%
+\contentsline {subsubsection}{Calcul des poids $\mu _{\mathchoice {\scalebox {0.8}{$\mathrm {D}$}}{\scalebox {0.8}{$\mathrm {D}$}}{\scalebox {0.8}{$\scriptstyle \mathrm {D}$}}{\scalebox {0.6}{$\scriptstyle \mathrm {D}$}}}$}{14}{equation.1.3.8}%
+\contentsline {subsection}{\numberline {I.3.3}Écriture des produits scalaires sous forme matricielle}{15}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {I.3.4}Opérateurs divergence discrète et rotationnel scalaire discret}{16}{subsection.1.3.4}%
+\contentsline {section}{\numberline {I.4}Propriétés des opérateurs discrets}{16}{section.1.4}%
+\contentsline {subsection}{\numberline {I.4.1}Formules de Green discrètes}{16}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {I.4.2}Compositions des opérateurs discrets}{16}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {I.4.3}Discrétisation de la décomposition de Helmholtz--Hodge}{17}{subsection.1.4.3}%
+\contentsline {chapter}{\numberline {II}Démonstration de l'inégalité de Poincaré \textsc {ddfv}\xspace sur une surface fermée sans bord de $\mathbb {R}^3$}{19}{chapter.2}%
+\contentsline {section}{\numberline {II.1}Une inégalité de graphe}{20}{section.2.1}%
+\contentsline {section}{\numberline {II.2}Comparaisons de constantes isopérimétriques}{24}{section.2.2}%
+\contentsline {chapter}{Conclusion et perspectives}{27}{chapter*.19}%
+\contentsline {paragraph}{Conclusion}{27}{chapter*.19}%
+\contentsline {paragraph}{Perspectives}{27}{chapter*.19}%
+\contentsline {chapter}{\numberline {A}Éléments de théorie spectrale des graphes}{29}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Laplacien d'un graphe}{29}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Valeurs propres d'un graphe}{29}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Inégalité de Cheeger}{30}{section.A.3}%
+\contentsline {chapter}{\numberline {B}Le problème isopérimétrique et la constante de Cheeger}{31}{appendix.B}%
+\contentsline {chapter}{\numberline {C}Démonstrations des résultats d'estimations géométriques}{33}{appendix.C}%
+\contentsline {chapter}{\numberline {D}Notations}{35}{appendix.D}%

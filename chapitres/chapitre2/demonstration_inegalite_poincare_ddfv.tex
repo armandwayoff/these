@@ -1,4 +1,4 @@
-Ce chapitre est consacré à la démonstration de l'inégalité de Poincaré \ddfv sur une surface fermée sans bord de $\R^3$. Précisons d'abord le programme dans lequel s'incrit ce résultat. 
+Ce chapitre est consacré à la démonstration de l'inégalité de Poincaré \ddfv sur une surface fermée sans bord de $\R^3$. Précisons d'abord le programme dans lequel s'inscrit ce résultat. Ce programme suit le schéma classique de preuve de convergence des méthodes de volumes finis présenté dans \cite{eymard_finite_2000-1}.
 
 Dans le \Cref{chap:generalisation_ddfv}, nous avons introduit une adaptation de la méthode \ddfv au cadre des surfaces fermées sans bord de $\R^3$. La suite naturelle est de démontrer la convergence de la méthode numérique dans ce nouveau cadre. Plus précisément, nous considérons le problème de la décomposition de Helmholtz--Hodge écrit ci-dessous dans le cas continu :
 \begin{quote}
@@ -16,7 +16,7 @@ L'objectif du programme est d'obtenir un théorème d'approximation de la forme 
 \begin{align}
     \Pi^\surflisse_{\ensddfvplat_n} \phi^{\ensddfvplat_n} &\xrightarrow[n \to \infty]{\L^2(\surflisse)} \phi\ , \\
     \Pi^\surflisse_{\ensddfvplat_n} \psi^{\ensddfvplat_n} &\xrightarrow[n \to \infty]{\L^2(\surflisse)} \psi\ , \\
-    \Pi^\surflisse_{\ensdiamantplat_n} h^{\ensdiamantplat_n} &\xrightarrow[n \to \infty]{(\L^2(\surflisse))^2} h\ ,
+    \Pi^\surflisse_{\ensdiamantplat_n} h^{\ensdiamantplat_n} &\xrightarrow[n \to \infty]{(\L^2(\surflisse))^2} \vect{h}\ ,
 \end{align}
 \end{subequations}
 où $\Pi^\surflisse_{\ensddfvplat_n}$ et $\Pi^\surflisse_{\ensdiamantplat_n}$ sont les opérateurs de projection définis respectivement par \ref{eq:projddfvvar} et \ref{eq:projdiamantvar}.
@@ -32,9 +32,7 @@ La démonstration de ce théorème d'approximation repose essentiellement sur un
 \end{quote}
 Ce résultat de compacité discrète repose lui-même sur une inégalité de Poincaré discrète et sur un théorème de type Riesz--Fréchet--Kolmogorov. Ce dernier fournit un critère effectif pour déterminer si un ensemble de fonctions dans $\L^p$ est relativement compact dans $\L^p$. 
 
-Dans ce chapitre, nous accomplissons la première partie du programme en proposant une démonstration de l'inégalité de Poincaré \ddfv sur une surface fermée sans bord de $\R^3$. La suite du travail sera consacrée à la démonstration du théorème de type Riesz--Fréchet--Kolmogorov dans notre cadre et à la finalisation de la démonstration de la convergence de la méthode.
-
-L'inégalité de Poincaré \ddfv que nous allons démontrer est énoncée informellement de la manière suivante :
+Dans ce chapitre, nous accomplissons la première partie du programme en proposant une démonstration de l'inégalité de Poincaré \ddfv sur une surface fermée sans bord de $\R^3$. La suite du travail sera consacrée à la démonstration du théorème de type Riesz--Fréchet--Kolmogorov dans notre cadre et à la finalisation de la démonstration de la convergence de la méthode. L'inégalité de Poincaré que nous allons démontrer est énoncée informellement de la manière suivante :
 \begin{quote}
 \textsl{soit $\ensddfvplat$ un maillage \ddfv de la surface polyédrique $\surfpoly$. Il existe une constante $C$, indépendante de la taille du maillage $\size(\ensddfvplat)$, telle que pour tout $u^\ensddfvplat \in \Rddfvmn$, on a
 \begin{equation*}
@@ -59,7 +57,7 @@ h(\graphe) \defeq \min_{W \subset \vertices(\graphe)}
 \end{equation}
 Cette constante est aussi appelée \defini{nombre isopérimétrique}.
 \end{defi}
-La constante de Cheeger d'un graphe mesure la présence de \chevron{goulots d'étranglement} dans celui-ci. Intuitivement, si un graphe est bien \chevron{connecté}, il n'est pas être possible d'en isoler une grande partie en supprimant un petit nombre d'arêtes. On peut, par exemple, interpréter la \chevron{taille} de cette partie comme son nombre d'arêtes. Ce point de vue correspond aux valeurs propres du laplacien normalisé. Pour plus de détails, voir l'\Cref{chap:graphs}. \\
+La constante de Cheeger d'un graphe mesure la présence de \chevron{goulots d'étranglement} dans celui-ci. Intuitivement, si un graphe est bien \chevron{connecté}, il n'est pas possible d'en isoler une grande partie en supprimant un petit nombre d'arêtes. On peut, par exemple, interpréter la \chevron{taille} de cette partie comme son nombre d'arêtes. Ce point de vue correspond aux valeurs propres du laplacien normalisé. Pour plus de détails, voir l'\Cref{chap:graphs}. \\
 
 \noindent Énonçons le \Cref{theo:cheeger_inequality} qui sera la clé pour obtenir l'inégalité de type Poincaré \chevron{intermédiaire} \ref{eq:inegalite_poincare_inter}. 
 
@@ -78,7 +76,7 @@ L'infimum est pris sur l'ensemble des fonctions à valeurs réelles définies en
 \end{theo}
 Pour une démonstration de ce théorème, voir \cite[Section 3]{ji_fourth_2010} et pour plus de détails sur ce résultat de théorie spectrale des graphes, voir l'\Cref{chap:graphs}. \\
 
-Définissons maintenant les graphes sur lesquels nous allons appliquer l'inégalité de Cheeger. À un maillage \ddfv plat $\ensddfvplat = (\ensprimalplat, \ensdualplat)$, on associe deux graphes: le \defini{graphe du maillage primal} noté $\graphe^\ensprimalplat$ avec $\vertices(\graphe^\ensprimalplat) = \enssomdualplat$ et $\edges(\graphe^\ensprimalplat) = \ensaretedualplat$, et le \defini{graphe du maillage dual} noté $\graphe^\ensdualplat$ avec $\vertices(\graphe^\ensdualplat) = \enssomprimplat$ et $\edges(\graphe^\ensdualplat) = \ensareteprimplat$. On rappelle que $\enssomdualplat$ est l'ensemble des sommets de $\ensdualplat$, que $\ensaretedualplat$ est l'ensemble des arêtes de $\ensdualplat$, que $\enssomprimplat$ est l'ensemble des sommets de $\ensprimalplat$ et que $\ensareteprimplat$ est l'ensemble des arêtes de $\ensprimalplat$. La \Cref{fig:graphe_ddfv} illustre un maillage primal $\ensprimalplat$ et son graphe associé $\graphe^\ensprimalplat$.
+Définissons maintenant les graphes sur lesquels nous allons appliquer l'inégalité de Cheeger. À un maillage \ddfv plat $\ensddfvplat = (\ensprimalplat, \ensdualplat)$, on associe deux graphes: le \defini{graphe du maillage primal} noté $\graphe^\ensprimalplat$ avec $\vertices(\graphe^\ensprimalplat) = \enssomdualplat$ et $\edges(\graphe^\ensprimalplat) = \ensaretedualplat$, et le \defini{graphe du maillage dual} noté $\graphe^\ensdualplat$ avec $\vertices(\graphe^\ensdualplat) = \enssomprimplat$ et $\edges(\graphe^\ensdualplat) = \ensareteprimplat$. On rappelle que $\enssomdualplat$ est l'ensemble des barycentres de $\ensprimalplat$, que $\ensaretedualplat$ est l'ensemble des segments $\dual{\sigma}$, que $\enssomprimplat$ est l'ensemble des sommets de $\ensprimalplat$ et que $\ensareteprimplat$ est l'ensemble des arêtes de $\ensprimalplat$. La \Cref{fig:graphe_ddfv} illustre un maillage primal $\ensprimalplat$ et son graphe associé $\graphe^\ensprimalplat$.
 
 \begin{figure}[H]
 \centering
@@ -98,7 +96,7 @@ Définissons maintenant les graphes sur lesquels nous allons appliquer l'inégal
 \end{figure}
 
 \begin{remarque}
-    Comme le montre la \Cref{fig:graphe_ddfv}, le graphe $\graphe^\ensprimalplat$ a exactement la structure du maillage dual de $\ensprimalplat$. Il en est de même pour $\graphe^\ensdualplat$ qui a la structure de $\ensprimalplat$.
+    Comme le montre la \Cref{fig:graphe_ddfv}, le graphe $\graphe^\ensprimalplat$ a la structure d'un maillage dual direct de $\ensprimalplat$. Il en est de même pour $\graphe^\ensdualplat$ qui a la structure de $\ensprimalplat$.
 \end{remarque}
 
 Dans la suite, nous allons être amenés à considérer des fonctions scalaires définies sur l'ensemble des sommets d'un graphe. Soit $u^\ensddfvplat = \big( u^\ensprimalplat, u^\ensdualplat \big) \in \R^\ensddfvplat$. On considère la fonction $u^\ensprimalplat$ comme une fonction sur le graphe $\graphe^\ensprimalplat$ et pour $x_{\primalplat{K}} \in \vertices(\graphe^\ensprimalplat)$, on note $u_{\primalplat{K}} = u^\ensprimalplat(x_{\primalplat{K}})$. De la même manière, on considère la fonction $u^\ensdualplat$ comme une fonction sur le graphe $\graphe^\ensdualplat$ et pour $x_{\mailledualeplate{K}} \in \vertices(\graphe^\ensdualplat)$, on note $u_{\mailledualeplate{K}} = u^\ensdualplat(x_{\mailledualeplate{K}})$. Enfin, pour tout $u^\ensddfvplat \in \R^\ensddfvplat$, on pose
@@ -141,14 +139,14 @@ La constante $h(\graphe^\ensprimalplat)$ (resp. $h(\graphe^\ensdualplat)$) est l
 \end{lemme}
 
 \begin{demo}
-Soit $u^\ensddfvplat \in \R^\ensddfvplat$. On considère cette fonction comme une fonction sur les graphes $\graphe^\ensprimalplat$ et $\graphe^\ensdualplat$ comme expliqué précedemment. Il suffit alors d'appliquer le \Cref{theo:cheeger_inequality} établissant l'inégalité de Cheeger, d'une part au graphe $\graphe^\ensprimalplat$: 
+Soit $u^\ensddfvplat \in \R^\ensddfvplat$. On considère cette fonction comme une fonction sur les graphes $\graphe^\ensprimalplat$ et $\graphe^\ensdualplat$ comme expliqué précedemment. Il suffit alors d'appliquer le \Cref{theo:cheeger_inequality} établissant l'inégalité de Cheeger, d'une part au graphe $\graphe^\ensprimalplat$ :
 \begin{equation} \label{eq:ineg_de_graphe_primal}
 \sum_{\primalplat{K} \sim \primalplat{L}} ( u_{\primalplat{K}} - u_{\primalplat{L}} )^2
 \geqslant 
 \frac{h(\graphe^\ensprimalplat)^2}{2}
 \sum_{\primalplat{K} \in \ensprimalplat} \big( u_{\primalplat{K}} - \overline{u}^\ensprimalplat \big)^2 \degr(x_{\primalplat{K}}),
 \end{equation}
-et d'autre part au graphe $\graphe^\ensdualplat$:
+et d'autre part au graphe $\graphe^\ensdualplat$ :
 \begin{equation} \label{eq:ineg_de_graphe_dual}
 \sum_{\mailledualeplate{K} \sim \mailledualeplate{L}} ( u_{\mailledualeplate{K}} - u_{\mailledualeplate{L}} )^2
 \geqslant 
@@ -159,7 +157,7 @@ La somme des inégalités \ref{eq:ineg_de_graphe_primal} et \ref{eq:ineg_de_grap
 \end{demo}
 Le lemme suivant permet d'obtenir une minoration des degrés des sommets des graphes en fonction de quantités géométriques.
 \begin{lemme} \label{lemme:minoration_degre}
-Soient $\primalplat{K} \in \ensprimalplat$ et $\mailledualeplate{K} \in \ensdualplat$. Alors
+Soient $\primalplat{K} \in \ensprimalplat$ et $\mailledualeplate{K} \in \ensdualplat$. On a
 \[
 \degr(x_{\primalplat{K}}) \geqslant \frac{\mesure(\primalplat{K})}{\reg(\ensddfvplat)^2 \size(\ensddfvplat)^2}
 \quad
@@ -436,7 +434,7 @@ Pour $\size(\ensddfvplat)$ suffisamment petit, il existe $C > 0$ indépendante d
 \begin{remarque} \label{remarque:size_ensddfvplat_suffisamment_petit}
 En particulier, pour $\size(\ensddfvplat)$ suffisamment petit, on a $\mesure(\projvariete \ell) \leqslant 2 \mesure(\ell)$.
 \end{remarque}
-La démonstration de \Cref{prop:mesure_sigmacourbe} est également donnée dans \Cref{chap:demo_estimations_geo}. Nous sommes maintenant en mesure de démontrer la proposition suivante fournissant la deuxième inégalité de \ref{eq:inegalites_strategie}.
+La démonstration de \Cref{prop:mesure_sigmacourbe} est également donnée dans l'\Cref{chap:demo_estimations_geo}. Nous sommes maintenant en mesure de démontrer la proposition suivante fournissant la deuxième inégalité de \ref{eq:inegalites_strategie}.
 \begin{prop} \label{prop:inegalites_strategie_deux}
 Pour tout $W \subset \vertices(\graphe^\ensprimalplat)$ et pour $\size(\ensddfvplat)$ suffisamment petit, on a
 \[
@@ -468,7 +466,7 @@ h(\graphe^\ensddfvplat) \geqslant \frac{\vartheta^2 \, h(\surflisse)}{8 \reg(\en
 
 \noindent Finalement, nous pouvons énoncer l'inégalité de Poincaré \ddfv sur une surface fermée sans bord de $\R^3$.
 \begin{theo} \label{theo:main}
-    Soit $\surflisse$ une surface $\Cont^2$, compacte, connexe et sans bord de $\R^3$ et soit $\surfpoly$ une approximation polyédrique de $\surflisse$ au sens de la \Cref{sec:triangulations}. Soit $\ensddfvplat$ un maillage \ddfv de la surface polyédrique $\surfpoly$ tel que $\size(\ensddfvplat)$ est suffisamment petit, $\ensddfvplat$ est quasi-uniforme au sens de \ref{eq:quasi_uniformite} et $\reg(\ensddfvplat)$ est uniformément bornée en $\size(\ensddfvplat)$. Alors pour tout $u^\ensddfvplat \in \Rddfvmn$, on a
+    Soit $\surflisse$ une surface $\Cont^2$, compacte, connexe, sans bord et orientable de $\R^3$ et soit $\surfpoly$ une approximation polyédrique de $\surflisse$ au sens de la \Cref{sec:triangulations}. Soit $\ensddfvplat$ un maillage \ddfv de la surface polyédrique $\surfpoly$ tel que $\size(\ensddfvplat)$ est suffisamment petit, $\ensddfvplat$ est quasi-uniforme au sens de \ref{eq:quasi_uniformite} et $\reg(\ensddfvplat)$ est uniformément bornée en $\size(\ensddfvplat)$. Alors pour tout $u^\ensddfvplat \in \Rddfvmn$, on a
     \begin{equation*}
     \normeddfvT{u^\ensddfvplat} \leqslant \frac{16 \reg(\ensddfvplat)^5}{\vartheta^2 \, h(\surflisse)} \normeddfvD{\grad^\ensdiamantplat u^\ensddfvplat},
     \end{equation*}

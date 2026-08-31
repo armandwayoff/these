@@ -11,6 +11,12 @@ openany,
 
 \addbibresource{../biblio/PFE.bib}
 
+\AtEveryBibitem{%
+  \clearfield{urlyear}%
+  \clearfield{urlmonth}%
+  \clearfield{urlday}%
+}
+
 \input{notations.tex}
 
 \SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n} % https://tex.stackexchange.com/questions/106714/stmaryrd-and-boldsymbol-avoid-warnings

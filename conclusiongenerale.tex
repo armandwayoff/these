@@ -4,7 +4,7 @@
 
 \paragraph{Conclusion} Dans le \Cref{chap:generalisation_ddfv}, nous avons introduit une adaptation de la méthode \ddfv au cadre des surfaces fermées sans bord de $\R^3$. Nous avons défini la régularité du maillage, les espaces d'approximation, les opérateurs discrets, les produits scalaires et avons démontré des propriétés de dualité des opérateurs ainsi qu'une discrétisation de la décomposition de Helmholtz--Hodge.
 
-La démonstration de la convergence de la méthode numérique repose essentiellement sur un résultat de compacité discrète qui lui-même repose sur une inégalité de Poincaré discrète, que nous avons démontrée dans le \Cref{chap:demo_ineg_poincare}, et sur un théorème de type Riesz--Fréchet--Kolmogorov. Ce dernier fournit un critère effectif pour déterminer si un ensemble de fonctions dans $\L^p$ est relativement compact dans $\L^p$. Un premier travail à venir sera de finaliser la démonstration de la convergence de la méthode.
+La démonstration de la convergence de la méthode numérique repose essentiellement sur un résultat de compacité discrète qui lui-même repose sur une inégalité de Poincaré discrète, que nous avons démontrée dans le \Cref{chap:demo_ineg_poincare}, et sur un théorème de type Riesz--Fréchet--Kolmogorov qu'il faudra adapter à notre cadre. Ce dernier fournit un critère effectif pour déterminer si un ensemble de fonctions dans $\L^p$ est relativement compact dans $\L^p$. Un premier travail à venir sera de finaliser la démonstration de la convergence de la méthode.
 
 \paragraph{Perspectives} Les propriétés intrinsèques des opérateurs \ddfv, que ce soit en terme d’identités vérifiées au niveau discret ou bien de dimension des espaces présentent un intérêt notamment dans les méthodes de préconditionnement utilisées en électromagnétisme pour l’\efie (Electric Field Integration Equation).
 
@@ -29,7 +29,7 @@ aboutit après discrétisation à des matrices très mal conditionnées. Une mé
 \begin{equation} \label{eq:eq2}
 \div(\vect{n} \times \grad \varphi) = 0
 \end{equation}
-pour tout fonction $\varphi$ scalaire, définie sur $\surflisse$, qui est l'analogue surfacique de $\div(\rot \psi) = 0$ pour les champs tridimensionnels. La méthode de discrétisation doit donc à tout le moins respecter deux propriétés importantes:
+pour tout fonction $\varphi$ scalaire, définie sur $\surflisse$, qui est l'analogue surfacique de $\div(\rot \psi) = 0$ pour les champs tridimensionnels. La méthode de discrétisation doit donc à tout le moins respecter deux propriétés importantes :
 \begin{itemize}
     \item Avoir un analogue de \ref{eq:eq2} au niveau discret.
     \item Faire en sorte que $\vect{u} \mapsto \vect{n} \times \vect{u}$ où $\vect{u}$ est un champ de vecteurs sur $\surflisse$ soit inversible dans l'espace discret (afin que $\vect{n} \times T$ ait une chance d'être inversible aussi). Ce point qui paraît anodin est en fait un des principaux obstacles \cite{buffa_dual_2005}.

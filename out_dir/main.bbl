@@ -116,6 +116,12 @@
       \verb{file}
       \verb Full Text PDF:/home/wayoff/Zotero/storage/VPM5XRR6/Andreianov et al. - 2009 - Discrete duality finite volume schemes for doubly nonlinear degenerate hyperbolic-parabolic equation.pdf:application/pdf
       \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/0901.0816
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/0901.0816
+      \endverb
     \endentry
     \entry{andriulli_multiplicative_2008}{article}{}
       \name{author}{7}{}{%
@@ -488,12 +494,12 @@
       \verb https://www.degruyter.com/document/doi/10.1515/9781400869312-013/html
       \endverb
     \endentry
-    \entry{chung_lectures_nodate}{article}{}
+    \entry{chung_lectures_1997}{article}{}
       \name{author}{1}{}{%
         {{hash=ce1756c17f1256e62cd8740ce5e05805}{%
            family={Chung},
            familyi={C\bibinitperiod},
-           given={Fan\bibnamedelimb R\bibnamedelima K},
+           given={Fan\bibnamedelimb R.\bibnamedelimi K.},
            giveni={F\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
       }
       \list{language}{1}{%
@@ -505,14 +511,16 @@
       \strng{authorbibnamehash}{ce1756c17f1256e62cd8740ce5e05805}
       \strng{authornamehash}{ce1756c17f1256e62cd8740ce5e05805}
       \strng{authorfullhash}{ce1756c17f1256e62cd8740ce5e05805}
-      \field{labelalpha}{Chu}
+      \field{labelalpha}{Chu97}
       \field{sortinit}{C}
       \field{sortinithash}{4d103a86280481745c9c897c925753c0}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{journaltitle}{American Mathematical Society}
       \field{title}{Lectures on {Spectral} {Graph} {Theory}}
+      \field{year}{1997}
       \verb{file}
-      \verb PDF:/home/wayoff/Zotero/storage/7QT5HFPY/Chung - Lectures on Spectral Graph Theory.pdf:application/pdf
+      \verb PDF:/home/wayoff/Zotero/storage/7QT5HFPY/Chung - 1997 - Lectures on Spectral Graph Theory.pdf:application/pdf
       \endverb
     \endentry
     \entry{christiansen_preconditioner_2002}{article}{}
@@ -857,6 +865,79 @@
       \verb http://www.esaim-m2an.org/10.1051/m2an:2005047
       \endverb
     \endentry
+    \entry{eymard_finite_2000-1}{incollection}{}
+      \name{author}{3}{}{%
+        {{hash=fd541e738566091fb5652a5d456e6af2}{%
+           family={Eymard},
+           familyi={E\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=f95c256b1fd0dc9363e718d8db829deb}{%
+           family={Gallouët},
+           familyi={G\bibinitperiod},
+           given={Thierry},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c37c6d7e5cc990999acf92e244a7abf5}{%
+           family={Herbin},
+           familyi={H\bibinitperiod},
+           given={Raphaèle},
+           giveni={R\bibinitperiod}}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=3d634b87094a1e0bc0aa9938624ff26d}{%
+           family={Lions},
+           familyi={L\bibinitperiod},
+           given={J.\bibnamedelimi L.},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=bd12ca049591b7984da35b6a92901578}{%
+           family={Ciarlet},
+           familyi={C\bibinitperiod},
+           given={Philippe},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{e26f2cae69bdf6061d64e69cde69f8f8}
+      \strng{fullhash}{e26f2cae69bdf6061d64e69cde69f8f8}
+      \strng{bibnamehash}{e26f2cae69bdf6061d64e69cde69f8f8}
+      \strng{authorbibnamehash}{e26f2cae69bdf6061d64e69cde69f8f8}
+      \strng{authornamehash}{e26f2cae69bdf6061d64e69cde69f8f8}
+      \strng{authorfullhash}{e26f2cae69bdf6061d64e69cde69f8f8}
+      \strng{editorbibnamehash}{543e81108252051e003f70281fbae094}
+      \strng{editornamehash}{543e81108252051e003f70281fbae094}
+      \strng{editorfullhash}{543e81108252051e003f70281fbae094}
+      \field{labelalpha}{EGH00}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This chapter focuses on finite volume methods. The finite volume method is a discretization method that is well suited for the numerical simulation of various types (for instance, elliptic, parabolic, or hyperbolic) of conservation laws; it has been extensively used in several engineering fields, such as fluid mechanics, heat and mass transfer, or petroleum engineering. Some of the important features of the finite volume method are similar to those of the finite element method: it may be used on arbitrary geometries, using structured or unstructured meshes, and it leads to robust schemes. The finite volume method is locally conservative because it is based on a “balance" approach: a local balance is written on each discretization cell that is often called “control volume;” by the divergence formula, an integral formulation of the fluxes over the boundary of the control volume is then obtained. The fluxes on the boundary are discretized with respect to the discrete unknowns.}
+      \field{booktitle}{Solution of {Equation} in {Rn} ({Part} 3), {Techniques} of {Scientific} {Computing} ({Part} 3)}
+      \field{series}{Handbook of {Numerical} {Analysis}}
+      \field{title}{Finite {Volume} {Methods}}
+      \field{urlday}{31}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{volume}{7}
+      \field{year}{2000}
+      \field{urldateera}{ce}
+      \field{pages}{713\bibrangedash 1020}
+      \range{pages}{308}
+      \verb{doi}
+      \verb 10.1016/S1570-8659(00)07005-8
+      \endverb
+      \verb{file}
+      \verb HAL PDF Full Text:/home/wayoff/Zotero/storage/T9SISP92/Eymard et al. - 2000 - Finite Volume Methods.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://hal.science/hal-02100732
+      \endverb
+      \verb{url}
+      \verb https://hal.science/hal-02100732
+      \endverb
+      \keyw{elliptic equations,finite volume,hyperbolic equations,parabolic equations}
+    \endentry
     \entry{goudon_ddfv_2019}{article}{}
       \name{author}{3}{}{%
         {{hash=774bf8e9e53c69e999bbd800f9f6bdc3}{%
@@ -957,21 +1038,21 @@
     \endentry
     \entry{hermeline_finite_2000}{article}{}
       \name{author}{1}{}{%
-        {{hash=fc475c1b289e7ec365626fedd8f3539b}{%
+        {{hash=50079e98014ed0dc9898d00c99a01841}{%
            family={Hermeline},
            familyi={H\bibinitperiod},
-           given={F.},
+           given={François},
            giveni={F\bibinitperiod}}}%
       }
       \list{language}{1}{%
         {en}%
       }
-      \strng{namehash}{fc475c1b289e7ec365626fedd8f3539b}
-      \strng{fullhash}{fc475c1b289e7ec365626fedd8f3539b}
-      \strng{bibnamehash}{fc475c1b289e7ec365626fedd8f3539b}
-      \strng{authorbibnamehash}{fc475c1b289e7ec365626fedd8f3539b}
-      \strng{authornamehash}{fc475c1b289e7ec365626fedd8f3539b}
-      \strng{authorfullhash}{fc475c1b289e7ec365626fedd8f3539b}
+      \strng{namehash}{50079e98014ed0dc9898d00c99a01841}
+      \strng{fullhash}{50079e98014ed0dc9898d00c99a01841}
+      \strng{bibnamehash}{50079e98014ed0dc9898d00c99a01841}
+      \strng{authorbibnamehash}{50079e98014ed0dc9898d00c99a01841}
+      \strng{authornamehash}{50079e98014ed0dc9898d00c99a01841}
+      \strng{authorfullhash}{50079e98014ed0dc9898d00c99a01841}
       \field{labelalpha}{Her00}
       \field{sortinit}{H}
       \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
@@ -1103,7 +1184,7 @@
       \verb PDF:/home/wayoff/Zotero/storage/XFFP8PDT/Krell - Schémas Volumes Finis en mécanique des fluides complexes.pdf:application/pdf
       \endverb
     \endentry
-    \entry{krell_developpement_2021}{article}{}
+    \entry{krell_developpement_2021}{thesis}{}
       \name{author}{1}{}{%
         {{hash=af55e3835f555094fe3b2aafeba5bdd5}{%
            family={Krell},
@@ -1127,6 +1208,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Développement et analyse de schémas {Volumes} {Finis} en mécanique des fluides complexes}
+      \field{type}{Habilitation à diriger des recherches}
       \field{year}{2021}
       \verb{file}
       \verb PDF:/home/wayoff/Zotero/storage/D43H2CGP/Krell - 2021 - Développement et analyse de schémas Volumes Finis en mécanique des fluides complexes.pdf:application/pdf
@@ -1247,31 +1329,31 @@
     \endentry
     \entry{tomek_discrete_2016}{article}{}
       \name{author}{3}{}{%
-        {{hash=ff90ed81c1533ab75bcdb9bd17514e6b}{%
+        {{hash=1833364e794368037b87476c739ee968}{%
            family={Tomek},
            familyi={T\bibinitperiod},
-           given={L},
+           given={Lukáš},
            giveni={L\bibinitperiod}}}%
-        {{hash=dbbc847ea7bc2152931dabf1a6fba773}{%
+        {{hash=1d3fb71697e7ef51c9fb6df3cc2abdd1}{%
            family={Mikula},
            familyi={M\bibinitperiod},
-           given={K},
+           given={Karol},
            giveni={K\bibinitperiod}}}%
-        {{hash=d3f3a16799e61842de46977c986511c4}{%
+        {{hash=0bc1568f4fce8c4d481b814db775f637}{%
            family={Remešíková},
            familyi={R\bibinitperiod},
-           given={M},
+           given={Mariana},
            giveni={M\bibinitperiod}}}%
       }
       \list{language}{1}{%
         {en}%
       }
-      \strng{namehash}{68ef868e4a443990ae83ff93616479e7}
-      \strng{fullhash}{68ef868e4a443990ae83ff93616479e7}
-      \strng{bibnamehash}{68ef868e4a443990ae83ff93616479e7}
-      \strng{authorbibnamehash}{68ef868e4a443990ae83ff93616479e7}
-      \strng{authornamehash}{68ef868e4a443990ae83ff93616479e7}
-      \strng{authorfullhash}{68ef868e4a443990ae83ff93616479e7}
+      \strng{namehash}{368ca2353df8751c3f6e5253ea476a0c}
+      \strng{fullhash}{368ca2353df8751c3f6e5253ea476a0c}
+      \strng{bibnamehash}{368ca2353df8751c3f6e5253ea476a0c}
+      \strng{authorbibnamehash}{368ca2353df8751c3f6e5253ea476a0c}
+      \strng{authornamehash}{368ca2353df8751c3f6e5253ea476a0c}
+      \strng{authorfullhash}{368ca2353df8751c3f6e5253ea476a0c}
       \field{labelalpha}{TMR16}
       \field{sortinit}{T}
       \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
