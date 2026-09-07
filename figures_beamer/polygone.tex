@@ -1,0 +1,64 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\begin{tikzpicture}[
+    ddfv,
+    scale=1/1.5,
+    every path/.style={thick,line join=round, cap=round},
+]
+    
+\def\len{0.8}
+\coordinate (O) at (0,0);
+
+\node[below left] {$\R^2$};
+
+\draw[->] (O) -- (\len,0);
+\draw[->] (O) -- (0,\len);
+
+\begin{scope}[shift={(1.5,-0.5)}]
+
+\coordinate (B1) at (0,0);
+\coordinate (B2) at (-0.5,0.5);
+\coordinate (B3) at (0.5,2);
+\coordinate (B4) at (2.5,1.5);
+\coordinate (B5) at (2,0);
+
+\coordinate (S1) at (0,1.25);
+\coordinate (S2) at (1.5,1.75);
+\coordinate (S3) at (2.25,0.75);
+\coordinate (S4) at (1,0);
+
+\coordinate (S5) at (1,1);
+\coordinate (S6) at (0.2,0.5);
+
+\draw[myblue,fill=mylightblue] (B1) -- (B2) -- (B3) -- (B4) -- (B5) -- cycle;
+
+\onslide<2>{
+\foreach \i in {1,...,5}
+{
+    \node[ptcl={black}{}] at (B\i) {};
+}
+
+\foreach \i in {1,...,6}
+{
+    \node[ptcl={black}{}] at (S\i) {};
+}
+
+\draw (B1) -- (B2) -- (B3) -- (B4) -- (B5) -- cycle;
+
+\draw (S1) -- (S2);
+\draw (S2) -- (S3);
+\draw (S2) -- (S5);
+\draw (S3) -- (S5);
+\draw (S1) -- (S5);
+\draw (S1) -- (S6);
+\draw (S5) -- (S6);
+\draw (B2) -- (S6);
+\draw (B1) -- (S6);
+\draw (S4) -- (S6);
+\draw (S4) -- (S5);
+\draw (S4) -- (S3);
+}
+
+\end{scope}
+
+\end{tikzpicture}

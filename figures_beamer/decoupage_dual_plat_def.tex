@@ -1,0 +1,158 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\def\Rayon{2}
+\def\xzero{0}
+\def\yzero{0}
+\def\zzero{0}
+
+\makeatletter
+
+\newcommand{\PointXYZ}[4]{%
+    \pgfmathsetmacro{\px}{#2}%
+    \pgfmathsetmacro{\py}{#3}%
+    \pgfmathsetmacro{\pz}{#4}%
+    \coordinate (#1) at (\px,\py,\pz);
+    \expandafter\xdef\csname pt@#1@x\endcsname{\px}%
+    \expandafter\xdef\csname pt@#1@y\endcsname{\py}%
+    \expandafter\xdef\csname pt@#1@z\endcsname{\pz}%
+}
+
+\newcommand{\GetX}[1]{\csname pt@#1@x\endcsname}
+\newcommand{\GetY}[1]{\csname pt@#1@y\endcsname}
+\newcommand{\GetZ}[1]{\csname pt@#1@z\endcsname}
+
+\newcommand{\MidPointXYZ}[3]{%
+    \pgfmathsetmacro{\mx}{0.5*(\GetX{#2}+\GetX{#3})}%
+    \pgfmathsetmacro{\my}{0.5*(\GetY{#2}+\GetY{#3})}%
+    \pgfmathsetmacro{\mz}{0.5*(\GetZ{#2}+\GetZ{#3})}%
+    \PointXYZ{#1}{\mx}{\my}{\mz}%
+}
+
+\makeatother
+
+\pgfmathdeclarefunction{f}{2}{%
+  \pgfmathparse{\zzero + sqrt(max(0,\Rayon^2-(#1-\xzero)^2-(#2-\yzero)^2))}%
+}
+
+\tdplotsetmaincoords{45}{55}
+
+\begin{tikzpicture}[
+    scale=1.5,
+    node distance=0.6cm,
+    every node/.style={inner sep=0pt},
+    ddfv,
+    tdplot_main_coords,
+    angle eccentricity=1.35,
+    angle radius=7mm,
+]
+
+\coordinate (O) at (0,0,0);
+\PointXYZ{fO}{0}{0}{f(0,0)};
+
+\def\Rpenta{1.5}
+
+\foreach \i/\j/\angleA/\angleB in {
+    1/2/13/17,
+    2/3/17/21,
+    3/4/21/5,
+    4/5/5/9,
+    5/1/9/13
+}
+{
+    % Point F_i
+    \pgfmathsetmacro{\xA}{\Rpenta*cos((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\yA}{\Rpenta*sin((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\zA}{f(\xA,\yA)}
+
+    \PointXYZ{F\i}{\xA}{\yA}{0};
+    % \coordinate (fF\i) at ({\xA},{\yA},{\zA});
+    \PointXYZ{fF\i}{\xA}{\yA}{\zA};
+
+    % \node[ptsq={myblue}{}] at (F\i) {};
+    % \node[ptsq={myblue}{}] at (fF\i) {};
+
+    % Point F_j
+    \pgfmathsetmacro{\xB}{\Rpenta*cos((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\yB}{\Rpenta*sin((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\zB}{f(\xB,\yB)}
+
+    \coordinate (F\j)  at ({\xB},{\yB},0);
+    \coordinate (fF\j) at ({\xB},{\yB},{\zB});
+
+    % Barycentre euclidien du triangle fO, fF_i, fF_j
+    \pgfmathsetmacro{\xG}{(\xzero+\xA+\xB)/3}
+    \pgfmathsetmacro{\yG}{(\yzero+\yA+\yB)/3}
+    \pgfmathsetmacro{\zG}{(f(0,0)+f(\xA,\yA)+f(\xB,\yB))/3}
+
+    % Projection radiale sur la sphère de centre (xzero,yzero,zzero)
+    \pgfmathsetmacro{\normG}{
+        sqrt((\xG-\xzero)^2 + (\yG-\yzero)^2 + (\zG-\zzero)^2)
+    }
+
+    \pgfmathsetmacro{\xProjG}{\xzero + 1.2*\Rayon*(\xG-\xzero)/\normG}
+    \pgfmathsetmacro{\yProjG}{\yzero + 1.2*\Rayon*(\yG-\yzero)/\normG}
+    \pgfmathsetmacro{\zProjG}{\zzero + 1.2*\Rayon*(\zG-\zzero)/\normG}
+
+    % \coordinate (fG\i) at ({\xProjG},{\yProjG},{\zProjG});
+    \PointXYZ{fG\i}{\xProjG}{\yProjG}{\zProjG};
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \pgfmathsetmacro{\xG}{(\xA+\xB)/3}
+    \pgfmathsetmacro{\yG}{(\yA+\yB)/3}
+    \pgfmathsetmacro{\zG}{(f(0,0)+f(\xA,\yA)+f(\xB,\yB))/3}
+
+    \coordinate (G\i) at ({\xG},{\yG},{\zG});
+
+    \MidPointXYZ{M\i}{fO}{fF\i}
+}
+    
+\draw[myblue] (fF1) -- (fF2) -- (fF3) -- (fF4) -- (fF5) -- cycle;
+\draw[mailledualeint] (M1) -- (G1) -- (M2) -- (G2) -- (M3) -- (G3) -- (M4) -- (G4) -- (M5) -- (G5) -- cycle;
+
+\foreach \i in {1,...,5} {
+    \draw[myblue] (fO) -- (fF\i);
+}
+
+\foreach \i in {1,2,3,4,5}
+{
+    % \draw (G\i) -- (fO);
+    \draw[dashed, thin, visible on=<2->] (G\i) -- (fG\i);
+    \node[ptcl={myred}{}] at (G\i) {};
+    \node[ptcl={myred}{}, visible on=<2->] at (fG\i) {};
+    \node[ptsq={black}{}] at (M\i) {};
+}
+
+\node[ptsq={myblue}{}] at (fO) {};
+
+\foreach \i in {1,2,3,4,5}
+{
+    \node[ptsq={myblue}{}] at (fF\i) {};
+}
+
+\node[myblue, above=6pt] at (fO) {\contour{mylightred!50!white}{$x_{\mailledualeplate{K}}$}};
+\node[above=5pt] at (M2) {\contour{mylightred!50!white}{$x_\sigma$}};
+\node[myblue] at ($(fO)!0.8!(fF2)$) {\contour{white}{$\sigma_{\primalplat{K},\primalplat{L}}$}};
+\node[myred, below=5pt] at (G1) {$x_{\primalplat{L}}$};
+\node[myred, above=5pt, visible on=<2->] at (fG1) {\contour{white}{$x_{\primal{L}}$}};
+\node[myred, below=5pt] at (G2) {$x_{\primalplat{K}}$};
+\node[myred, above=5pt, visible on=<2->] at (fG2) {$x_{\primal{K}}$};
+\node[myblue, left=5pt] at ($(fF1)!0.5!(fF2)$) {$\primalplat{L}$};
+\node[myblue, below=5pt] at ($(fF2)!0.5!(fF3)$) {$\primalplat{K}$};
+\node[myred, below=5pt] at ($(G2)!0.5!(M2)$) {$\mailledualeplate{K}$};
+
+\begin{comment}
+\pic[
+    draw,
+    ->,
+    "$\theta_i$"
+] {angle=G1--fO--M2};
+
+\pic[
+    draw,
+    ->,
+    "$\theta'_i$"
+] {angle=M2--fO--G2};
+\end{comment}
+
+\end{tikzpicture}

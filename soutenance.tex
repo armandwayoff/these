@@ -1,24 +1,94 @@
-\documentclass{beamer}
+\documentclass[aspectratio=1610]{beamer} % 169 1610
 
-% \input{preambule.tex}
+% \usefonttheme{structurebold}
+
+\makeatletter
+\setbeamertemplate{footline}{%
+    \leavevmode
+    \hbox to \paperwidth{%
+        \hfill
+        \begin{beamercolorbox}[
+            wd=\beamer@sidebarwidth,
+            ht=2.5ex,
+            dp=1.5ex,
+            center
+        ]{page number in head/foot}
+            \usebeamerfont{page number in head/foot}%
+            \insertframenumber\,/\,\inserttotalframenumber
+        \end{beamercolorbox}%
+    }%
+}
+\makeatother
+
+\setbeamerfont{subsection in sidebar}{size=\tiny}
+\setbeamerfont{subsection in sidebar shaded}{size=\tiny}
+
+\setbeamercolor{title}{fg=mydarkblue,bg=mylightblue}
+
+\let\beamertableofcontents\tableofcontents
+
 \usepackage[beamer,french]{aw}
-% \graphicspath{{../rapport/}}
 \input{notations.tex}
 
-\usetikzlibrary{overlay-beamer-styles}
+\setbeamertemplate{enumerate items}[circle]
 
-% \makeatletter
-% \edef\input@path{{../rapport}}
-% \makeatother
-\captionsetup[figure]{labelformat=empty}
-\captionsetup[subfigure]{labelformat=empty}
+\renewcommand{\surflisse}{\mathscr{S}}
 
+\newcommand{\sftxt}[2][1-]{{\color<#1>{myblue}#2}}
+\newcommand{\stxt}[2][1-]{\textbf<#1>{\sftxt[#1]{#2}}}
+\newcommand{\smath}[1]{{\color{myred}#1}}
+\newcommand{\param}[1]{{\color{mydarkgreen}#1}}
+\newcommand{\cit}[1]{\texttt{\small $[$#1$]$}}
 
-\newcommand{\imgw}{0.18\textwidth}
-\newcommand{\sep}{1.5cm}
+% https://tex.stackexchange.com/questions/118410/highlight-terms-in-equation-mode
+\newcommand{\highlight}[1]{%
+  \colorbox{blue!20}{$\displaystyle#1$}}
+\newcommand{\highlightrouge}[1]{%
+  \colorbox{myred!40}{$\displaystyle#1$}}
+\newcommand{\fauxhighlight}[1]{%
+  \colorbox{white}{$\displaystyle#1$}}
 
-\title[Soutenance de M2]{{\normalsize\color{black}Soutenance de stage -- M2 AMS} \\[10pt]    
-Décomposition de \nompropre{Hodge}--\nompropre{de Rham} sur une surface fermée de $\R^3$: discrétisation \textsc{ddfv}}
+\newcommand{\highlighttxt}[1]{%
+  \colorbox{blue!20}{#1}}
+\newcommand{\fauxhighlighttxt}[1]{%
+  \colorbox{white}{#1}}
+
+\renewcommand{\normeddfvT}[1]{%
+    \bigl\lVert #1 \bigr\rVert_{2,\ensddfvplat}
+}
+\renewcommand{\normeddfvD}[1]{%
+    \bigl\lVert #1 \bigr\rVert_{2,\ensdiamantplat}
+}
+
+\let\degr\relax
+\DeclareMathOperator{\degr}{d}
+
+% pour supprimer les numéros des équations
+\makeatletter
+\renewcommand{\tagform@}[1]{}
+\makeatother
+
+\usetikzlibrary{overlay-beamer-styles,calc}
+
+\captionsetup[figure]{
+    labelformat=empty,
+    justification=centering,
+    singlelinecheck=false
+}
+\captionsetup[subfigure]{
+    labelformat=empty,
+    justification=centering,
+    singlelinecheck=false
+}
+
+\addtobeamertemplate{title page}{%
+    \vfill
+    \centering
+    {\normalsize\color{black}Soutenance de stage -- M2 AMS\par}
+    \vspace{5pt}
+}{}
+
+\title[Soutenance \\ M2 AMS]{Décomposition de \nompropre{Hodge}--\nompropre{de Rham} sur une \\ surface fermée de $\R^3$: discrétisation \textsc{ddfv}}
 
 \author[Armand \nompropre{Wayoff}]{Armand \nompropre{Wayoff} \\[7pt]
 {\small Tuteurs : François \nompropre{Alouges} et Rémi \nompropre{Tesson}}
@@ -36,319 +106,58 @@ Décomposition de \nompropre{Hodge}--\nompropre{de Rham} sur une surface fermée
 
 \begin{document}
 
+% https://github.com/josephwright/beamer/issues/274
+\begingroup
+\makeatletter
+\hoffset=-\beamer@leftsidebar
+\advance\textwidth\beamer@sidebarwidth
+\hsize\textwidth
+\columnwidth\textwidth
+\makeatother
 \begin{frame}[plain]
 \addtocounter{framenumber}{-1}
 \maketitle
 \end{frame}
+\endgroup
+
+\input{chapitres_soutenance/intro.tex}
 
 \begin{frame}{Plan}
-% \tableofcontents
+\beamertableofcontents[
+    sections={2-3},
+    hideallsubsections
+]
 \end{frame}
 
-\begin{frame}{Contexte de la thèse}
-
-\begin{itemize}
-    \item Diffraction électromagnétique par un objet
-    \begin{figure}
-        \centering
-        \input{figures/diffraction.tex}
-    \end{figure}
-    \item Équations de Maxwell en régime harmonique
-    \item Méthode des équations intégrales : \emph{Electric Field Integral Equation} (EFIE) sur {\color{mydarkgreen}$\Sigma$}
-    \[
-    \gamma^\mathrm{tan} \mathopen{}\left( \mathrm{i} \, \omega \mu_0 G \vec{J} + \frac{\mathrm{i}}{\omega \varepsilon_0} \grad G \, \mathrm{div} \vec{J} \right) = E^\mathrm{tan}_\mathrm{inc}
-    % \gamma^\text{tan} T = \gamma^\text{tan} \left( \mathrm{i}\, \omega \mu_0 G + \frac{\mathrm{i}}{\omega \varepsilon_0} \grad G\, \text{div} \right)
-    \]
-    \item Matrices \textbf{pleines} et très \textbf{mal conditionnées} % $\implies$ méthodes très lentes
-\end{itemize}
-\begin{boite}{myblue}
-\begin{center}
-Méthode de \textbf{préconditionnement} : \\
-identité de Calder\'on + $\text{div} (n \times \grad \varphi) = 0$ 
-\end{center}
-\end{boite}
-
-\end{frame}
-
-\begin{frame}{Problématique}
-
-\begin{itemize}
-    \item L'identité de Calder\'on fournit un moyen élégant de trouver un préconditionneur 
-    % une paramétrix de 
-    l'opérateur intégral de l'EFIE.
-    \item Malheureusement, cette identité ne passe pas bien au niveau discret.
-\end{itemize}
-
-\begin{exampleblock}{Enjeu principal}
-Proposer une méthodologie plus efficace et naturelle via la méthode DDFV
-\end{exampleblock}
-
-\begin{block}{État de l'art}
-\begin{itemize}
-    \item DDFV pour des domaines à bord dans $\R^2$ (P. Omnes \emph{et al.})
-    \item Convergence numérique de la méthode DDFV sur la sphère
-    \item Éléments de Whitney sur les surfaces : sans identité de Calder\'on
-    \item Éléments finis de Buffa--Christiansen : difficiles à mettre en \oe uvre
-\end{itemize}
-\end{block}
-
-\end{frame}
-
-\begin{frame}{Méthode \emph{Discrete Duality Finite Volume} (DDFV)}
-\framesubtitle{Classe des méthodes Volumes Finis à \textbf{grilles décalées}}
-
-\begin{figure}
-    \centering
-    \input{figures_beamer/ddfv.tex}
-\end{figure}
-
-\begin{columns}[c]
-\begin{column}{0.33\textwidth}
-\begin{itemize}
-    \item<1-> {\color{myblue} Maillage primal}
-    \item<2-> {\color{myred} Maillage dual}
-    \item<3-> {\color{mydarkgreen} Cellules diamant}
-\end{itemize}
-\end{column}
-\begin{column}{0.16\textwidth}
-\onslide<3->{\vspace{-5pt}
-$\quad \Longrightarrow$}
-\end{column}
-\begin{column}{0.49\textwidth}
-\onslide<3->{\centering Discrétisation des gradients dans \textbf{toutes les directions} \\[5pt]
-Conservation des propriétés des opérateurs au \textbf{niveau discret}
-}
-\end{column}
-\end{columns}
-
-\end{frame}
-
-\begin{frame}{Décomposition de Helmholtz--Hodge}
-\framesubtitle{Cas plus simple pour commencer}
-
-\begin{figure}[H]
-    \centering
-    \input{figures/dhh.tex}
-    \caption{Exemple de la décomposition de Helmoltz--Hodge sur une surface fermée sans bord de $\R^3$ (crédit K. Crane)}
-    \label{fig:dhh}
-\end{figure}
-
-\end{frame}
-
-\begin{frame}{Objectifs de la thèse}
-
-\begin{exampleblock}{Résultats attendus}
-\begin{itemize}
-    \item Une théorie de l'approximation des champs de vecteurs sur les surfaces de $\R^3$ en DDFV
-    \item Une nouvelle méthode de preconditionnement \chevron{à la Calder\'on} de l'EFIE
-\end{itemize}
-\end{exampleblock}
-
-\begin{overlayarea}{\textwidth}{4.2cm}
-
-\only<1>{
-\begin{block}{Thèmes mathématiques}
-\begin{itemize}
-    \item Discrétisation par volumes finis
-    \item Équations intégrales
-    \item Décomposition de Helmholtz--Hodge
-    \item Implémentation numérique et preuve de convergence
-\end{itemize}
-\end{block}
+\AtBeginSection[]
+{
+    \begin{frame}{Plan}
+        \addtocounter{framenumber}{-1}
+        \beamertableofcontents[
+            currentsection,
+            sections={2-3},
+            hideallsubsections,
+            sectionstyle=show/shaded
+        ]
+    \end{frame}
 }
 
-\only<2>{
-\begin{block}{Techniques de preuve}
-\begin{itemize}
-    \item Adaptation des schémas de preuves classiques au cadre des variétés différentielles 
-    \item Résultats de compacité
-    \item Inégalités discrètes de type Poincaré adaptées à la géométrie
-    \item Lien avec l'homologie
-\end{itemize}
-\end{block}
-}
-
-\only<3>{
-\begin{block}{Stage de fin d'études}
-\begin{itemize}
-    \item Familiarisation avec la méthode DDFV
-    \item Généralisation rigoureuse aux surfaces triangulées de $\R^3$
-    \item Discrétisation de la décomposition de Helmholtz--Hodge
-    \item Démonstration de la convergence lorsque $h \to 0$
-\end{itemize}
-\end{block}
-}
-\end{overlayarea}
-
-\end{frame}
-
-\begin{frame}
-\begin{figure}[H]
-    \centering
-    \input{figures/decoupage_dual_plat_def.tex}
-    \caption{Maille duale plate $\mailledualeplate{K}$}
-    \label{fig:decoupage_dual_plat_def}
-\end{figure}
-\end{frame}
-
-
-\begin{frame}
-\begin{figure}[H]
-\centering
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \includegraphics[width=0.6\textwidth]{img/sphere_primal_dual.pdf}
-    \caption{Maillages $\ensprimalplat$ (bleu) et $\ensdualplat$ (rouge) d'une approximation polyédrique de la sphère}
-    \label{fig:sphere_primal_dual}
-\end{subfigure}%
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \includegraphics[width=0.6\textwidth]{img/sphere_primal_dual_curved.pdf}
-    \caption{Maillages $\ensprimal$ (bleu) et $\ensdual$ (rouge) de la sphère}
-    \label{fig:sphere_primal_dual_curved}
-\end{subfigure}
-\caption{Exemple de maillages \ddfv \emph{primaux} et \emph{duaux} de la sphère}
-\label{fig:sphere_primal_dual_flat_and_curved}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\begin{figure}[H]
-\centering
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \includegraphics[width=0.7\textwidth]{img/torus_primal_dual.pdf}
-    \caption{Tore, $g = 1$}
-\end{subfigure}%
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \includegraphics[width=0.6\textwidth]{img/tanglecube_primal_dual.pdf}
-    \caption{\emph{Tanglecube}\protect\footnotemark, $g = 5$}
-\end{subfigure}
-\caption{Exemples de maillages $\ensprimalplat$ et $\ensdualplat$ sur des approximations polyédriques de surfaces fermées sans bord de $\R^3$ de genre $g > 0$}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\begin{figure}[H]
-    \centering
-    \input{figures/ddfv_3d_diamant.tex}
-    \caption{Un \defini{diamant plat} $\diamantplat{D}_{\sigma, \dual{\sigma}}$}
-    \label{fig:ddfv_3d_diamant}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\begin{figure}[H]
-\centering
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \includegraphics[width=0.6\textwidth]{img/sphere_diamonds_flat.pdf}
-    \caption{Ensemble $\ensdiamantplat$}
-    \label{fig:sphere_diamonds_flat}
-\end{subfigure}%
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \includegraphics[width=0.6\textwidth]{img/sphere_diamond_curved_bis.pdf}
-    \caption{Maillage $\ensdiamant$ de la sphère}
-\end{subfigure}
-\caption{Exemple de l'ensemble des diamants plats $\ensdiamantplat$ d'une discrétisation \ddfv de la sphère et du maillage \emph{diamant courbe} $\ensdiamant$ associé}
-\label{fig:sphere_diamonds_flat_and_curved}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\begin{figure}[H]
-\centering
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \input{figures/torus_ddfv_field.tex}
-    \caption{Champ scalaire $u(\theta, \phi) = \frac{7}{10} \sin(3 \, \theta) \cos(2 \, \phi) + \frac{3}{10} \sin(\theta + 3 \, \phi)$}
-\end{subfigure}%
-\begin{subfigure}[t]{.5\textwidth}
-    \centering
-    \input{figures/torus_ddfv_gradient.tex}
-    \caption{Champ vectoriel discret $\grad^\ensdiamantplat u^\ensddfvplat$. La direction de chaque vecteur correspond à celle du gradient \ddfv $\grad^{\diamantplat{D}} u^\ensddfvplat$ calculé sur le diamant $\diamantplat{D}$. Sa longueur est proportionnelle à la norme de ce gradient. La couleur de chaque diamant représente l’erreur entre le gradient \ddfv et le gradient surfacique exact évalué au centre projeté du diamant.}
-\end{subfigure}
-\caption{Exemple de calcul du gradient \ddfv d'un champ scalaire sur le tore}
-\label{fig:torus_ddfv}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\begin{theo}[Formules de Green discrètes] \label{theo:discrete_green_formulae}
-Pour tout $\xi^\ensdiamantplat, u^\ensddfvplat \in (\R^2)^\ensdiamantplat \times \R^\ensddfvplat$, on a
-\[
-\prodscalddfv{\div^\ensddfvplat \xi^\ensdiamantplat}{u^\ensddfvplat} = - \prodscalD{\xi^\ensdiamantplat}{\grad^\ensdiamantplat u^\ensddfvplat}
-\]
-et
-\[
-\prodscalddfv{\scarot^\ensddfvplat \xi^\ensdiamantplat}{u^\ensddfvplat} = \prodscalD{\xi^\ensdiamantplat}{\rot^\ensdiamantplat u^\ensddfvplat}.
-\]
-\end{theo}
-\end{frame}
-
-\begin{frame}
-\begin{theo}[Décomposition de Helmholtz--Hodge discrète]
-Soit $\xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat$ un champ de vecteurs discret défini par ses valeurs sur les diamants plats. Il existe un unique triplet $(\phi^\ensddfvplat, \psi^\ensddfvplat, h^\ensdiamantplat) \in \Rddfvmn \times \Rddfvmn \times (\R^2)^\ensdiamantplat$ tel que
-\begin{equation} \label{eq:415}
-    \xi^\ensdiamantplat = \grad^\ensdiamantplat \phi^\ensddfvplat + \rot^\ensdiamantplat \psi^\ensddfvplat + h^\ensdiamantplat,
-\end{equation}
-avec $h^\ensdiamantplat \in \mathcal{H}^\ensdiamantplat \defeq \Ker(\div^\ensddfvplat) \cap \Ker(\scarot^\ensddfvplat)$. L'ensemble $\Rddfvmn$ défini par \ref{eq:moyenne_nulle} est l'ensemble des fonctions scalaires \ddfv à moyenne nulle. De plus, la décomposition \ref{eq:415} est orthogonale.
-\end{theo}
-\end{frame}
-
-\section{Démonstration de l'inégalité de Poincaré \textsc{ddfv} sur une surface fermée sans bord de $\R^3$}
-
-\begin{frame}{\secname}
-\begin{figure}[H]
-    \centering
-    \input{figures_beamer/cheeger_bord_dual.tex}
-    \caption{Un sous-ensemble $W \subset \vertices(\graphe^\ensdualplat)$ et la sous-région $\variete{A}_W \subset \surflisse$ associée}
-    \label{fig:cheeger_bord_dual}
-\end{figure}
-\end{frame}
-
-\begin{frame}{\secname}
-\begin{equation} \label{eq:ineg_GM}
-h(\graphe^\ensddfvplat) \gtrsim \size(\ensddfvplat) \, h(\surflisse).
-\end{equation}
-\end{frame}
+\input{chapitres_soutenance/generalisation.tex}
+\input{chapitres_soutenance/poincare.tex}
+\input{chapitres_soutenance/perspectives.tex}
 
 \begin{frame}
 \addtocounter{framenumber}{-1}
-
 \begin{center}
-
-{\huge Merci pour votre attention}
-
+{\huge \stxt{Merci pour votre attention}}
 \end{center}
 
-\end{frame}
-
-\begin{comment}
-\appendix 
-
-\begin{frame}
-
-\begin{center}
-
-{\huge Annexes}
-
-\end{center}
+% \begin{boite}
+% \begin{center}
+%     {\color{myred}{\Large \textbf{Thank you for your attention!}}}
+% \end{center}
+% \end{boite}
 
 \end{frame}
-
-\begin{frame}
-
-{\color{red}
-\begin{itemize}
-\item qualité de l’exposé lors de l’audition (voie « concours ») ou de l’entretien (voie « hors concours ») ; en particulier, la compréhension du projet de thèse par le candidat sera évaluée.
-\item  Lors des entretiens, que ce soit en mode concours (auditions) ou mode hors concours, les étudiants devront se présenter brièvement (de manière à justifier leur aptitude à résoudre le sujet de thèse), présenter brièvement leur sujet, son originalité et la démarche scientifique à mettre en œuvre, ainsi que les financements auxquels ils candidatent, et exposer brièvement leur projet professionnel pour l'après-thèse.
-\end{itemize}
-}
-\end{frame}
-
-\end{comment}
 
 \end{document}

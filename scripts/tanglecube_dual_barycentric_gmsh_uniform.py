@@ -121,6 +121,27 @@ def parse_arguments() -> argparse.Namespace:
         help="Épaisseur des arêtes duales rouges.",
     )
     parser.add_argument(
+        "--no-primal",
+        action="store_true",
+        help="Masque le maillage primal dans le rendu PyVista.",
+    )
+    parser.add_argument(
+        "--no-dual",
+        action="store_true",
+        help="Masque le maillage dual dans le rendu PyVista.",
+    )
+    parser.add_argument(
+        "--smooth-surface",
+        action="store_true",
+        help="Superpose la surface lisse de la tanglecube en transparence.",
+    )
+    parser.add_argument(
+        "--smooth-surface-opacity",
+        type=float,
+        default=0.25,
+        help="Opacité de la surface lisse, entre 0 et 1 (défaut : 0.25).",
+    )
+    parser.add_argument(
         "--camera-azimuth",
         type=float,
         default=45.0,
@@ -331,7 +352,17 @@ def create_implicit_surface(
         f"CV(arêtes)={statistics['edge_cv']:.3f}"
     )
 
-    return surface
+    # L'isosurface fine sert de représentation visuelle de la surface lisse,
+    # tandis que ``surface`` est le maillage primal uniforme.
+    smooth_surface = raw.compute_normals(
+        point_normals=True,
+        cell_normals=False,
+        consistent_normals=True,
+        auto_orient_normals=True,
+        inplace=False,
+    )
+
+    return surface, smooth_surface
 
 
 def import_surface_into_gmsh(
@@ -411,15 +442,16 @@ def create_primal_mesh(
     lc: float,
     acvd_subdivisions: int,
     output_file: Path,
-) -> Tuple[Dict[int, Point], List[Triangle]]:
-    surface = create_implicit_surface(
+) -> Tuple[Dict[int, Point], List[Triangle], object]:
+    surface, smooth_surface = create_implicit_surface(
         constant,
         extent,
         resolution,
         lc,
         acvd_subdivisions,
     )
-    return import_surface_into_gmsh(surface, output_file)
+    points, triangles = import_surface_into_gmsh(surface, output_file)
+    return points, triangles, smooth_surface
 
 def create_barycentric_dual(
     primal_points: Dict[int, Point],
@@ -552,11 +584,16 @@ def create_barycentric_dual(
 def render_primal_and_dual(
     primal_points: Dict[int, Point],
     triangles: Sequence[Triangle],
+    smooth_surface,
     extent: float,
     screenshot_file: Path,
     off_screen: bool,
     primal_width: float,
     dual_width: float,
+    show_primal: bool,
+    show_dual: bool,
+    show_smooth_surface: bool,
+    smooth_surface_opacity: float,
     camera_azimuth: float,
     camera_elevation: float,
 ) -> None:
@@ -683,28 +720,39 @@ def render_primal_and_dual(
     )
     plotter.set_background("white")
 
-    plotter.add_mesh(
-        surface,
-        color="white",
-        opacity=1.0,
-        smooth_shading=True,
-        show_edges=False,
-        lighting=True,
-    )
-    plotter.add_mesh(
-        primal_wire,
-        color="blue",
-        line_width=primal_width,
-        render_lines_as_tubes=False,
-        lighting=False,
-    )
-    plotter.add_mesh(
-        dual_wire,
-        color="red",
-        line_width=dual_width,
-        render_lines_as_tubes=False,
-        lighting=False,
-    )
+    if show_smooth_surface:
+        plotter.add_mesh(
+            smooth_surface,
+            color="orange",
+            opacity=smooth_surface_opacity,
+            smooth_shading=True,
+            show_edges=False,
+            lighting=True,
+        )
+    if show_primal:
+        plotter.add_mesh(
+            surface,
+            color="white",
+            opacity=1.0,
+            smooth_shading=True,
+            show_edges=False,
+            lighting=True,
+        )
+        plotter.add_mesh(
+            primal_wire,
+            color="blue",
+            line_width=primal_width,
+            render_lines_as_tubes=False,
+            lighting=False,
+        )
+    if show_dual:
+        plotter.add_mesh(
+            dual_wire,
+            color="red",
+            line_width=dual_width,
+            render_lines_as_tubes=False,
+            lighting=False,
+        )
 
     # Position sphérique explicite de la caméra.
     azimuth = math.radians(camera_azimuth)
@@ -833,6 +881,12 @@ def main() -> int:
         raise ValueError(
             "--camera-elevation doit être comprise entre -89 et 89 degrés."
         )
+    if not math.isfinite(args.smooth_surface_opacity) or not (
+        0.0 <= args.smooth_surface_opacity <= 1.0
+    ):
+        raise ValueError(
+            "--smooth-surface-opacity doit être comprise entre 0 et 1."
+        )
 
     args.outdir.mkdir(
         parents=True,
@@ -852,7 +906,7 @@ def main() -> int:
     try:
         gmsh.option.setNumber("General.Terminal", 1)
 
-        primal_points, triangles = create_primal_mesh(
+        primal_points, triangles, smooth_surface = create_primal_mesh(
             args.constant,
             args.extent,
             args.resolution,
@@ -895,11 +949,16 @@ def main() -> int:
             render_primal_and_dual(
                 primal_points,
                 triangles,
+                smooth_surface,
                 args.extent,
                 screenshot_file,
                 args.off_screen,
                 args.primal_width,
                 args.dual_width,
+                not args.no_primal,
+                not args.no_dual,
+                args.smooth_surface,
+                args.smooth_surface_opacity,
                 args.camera_azimuth,
                 args.camera_elevation,
             )
@@ -919,6 +978,7 @@ if __name__ == "__main__":
 
 # python3 tanglecube_dual_barycentric_gmsh_uniform.py --constant 11.8 --extent 2.30 --resolution 180 --lc 0.15 --acvd-subdivisions 1 --outdir outputs
 
+# --off-screen \
 """
 python3 tanglecube_dual_barycentric_gmsh_uniform.py \
   --constant 11.8 \
@@ -927,10 +987,14 @@ python3 tanglecube_dual_barycentric_gmsh_uniform.py \
   --lc 0.4 \
   --primal-width 8 \
   --dual-width 8 \
+  --smooth-surface \
+  --smooth-surface-opacity 1 \
+  --no-primal \
+  --no-dual \
+  --off-screen \
   --acvd-subdivisions 1 \
   --camera-azimuth 120 \
   --camera-elevation 20 \
-  --off-screen \
   --outdir outputs \
   --screenshot outputs/tanglecube_primal_dual.pdf
 """

@@ -1,0 +1,738 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\def\Rayon{2}
+\pgfmathsetmacro{\Rdomaine}{0.9*\Rayon}
+\def\xzero{0}
+\def\yzero{0}
+\def\zzero{0}
+
+\def\eps{0.15}
+\def\epsperp{0.05}
+
+\def\exan{1.2}
+
+\newcommand{\MilieuProjete}[2]{%
+    % #1 = sommet (A, B, C, ...)
+    % #2 = indice
+
+    % Milieu de l'arête primale
+    \pgfmathsetmacro{\xM}{(\xzero+\csname x#1\endcsname)/2}
+    \pgfmathsetmacro{\yM}{(\yzero+\csname y#1\endcsname)/2}
+    \pgfmathsetmacro{\zM}{(f(0,0)+f(\csname x#1\endcsname,\csname y#1\endcsname))/2}
+
+    % Projection radiale sur la sphère de centre (xzero,yzero,zzero)
+    \pgfmathsetmacro{\normM}{
+        sqrt((\xM-\xzero)^2 + (\yM-\yzero)^2 + (\zM-\zzero)^2)
+    }
+
+    \expandafter\pgfmathsetmacro\csname xProjM#1\endcsname
+        {\xzero + \Rayon*(\xM-\xzero)/\normM}
+
+    \expandafter\pgfmathsetmacro\csname yProjM#1\endcsname
+        {\yzero + \Rayon*(\yM-\yzero)/\normM}
+
+    \expandafter\pgfmathsetmacro\csname zProjM#1\endcsname
+        {\zzero + \Rayon*(\zM-\zzero)/\normM}
+
+    \coordinate (fM#1) at (
+        {\csname xProjM#1\endcsname},
+        {\csname yProjM#1\endcsname},
+        {\csname zProjM#1\endcsname}
+    );
+}
+
+\makeatletter
+
+\newcommand{\PointXYZ}[4]{%
+    \pgfmathsetmacro{\px}{#2}%
+    \pgfmathsetmacro{\py}{#3}%
+    \pgfmathsetmacro{\pz}{#4}%
+    \coordinate (#1) at (\px,\py,\pz);
+    \expandafter\xdef\csname pt@#1@x\endcsname{\px}%
+    \expandafter\xdef\csname pt@#1@y\endcsname{\py}%
+    \expandafter\xdef\csname pt@#1@z\endcsname{\pz}%
+}
+
+\newcommand{\GetX}[1]{\csname pt@#1@x\endcsname}
+\newcommand{\GetY}[1]{\csname pt@#1@y\endcsname}
+\newcommand{\GetZ}[1]{\csname pt@#1@z\endcsname}
+
+\newcommand{\CrossPointsFrom}[7]{%
+  % #1 = nom du point de départ E (déjà défini)
+  % #2 = nom du nouveau point F à créer
+  % #3,#4 = A,B   #5,#6 = C,D   #7 = longueur de [E,F]
+  \pgfmathsetmacro{\ABx}{\GetX{#4}-\GetX{#3}}%
+  \pgfmathsetmacro{\ABy}{\GetY{#4}-\GetY{#3}}%
+  \pgfmathsetmacro{\ABz}{\GetZ{#4}-\GetZ{#3}}%
+  \pgfmathsetmacro{\CDx}{\GetX{#6}-\GetX{#5}}%
+  \pgfmathsetmacro{\CDy}{\GetY{#6}-\GetY{#5}}%
+  \pgfmathsetmacro{\CDz}{\GetZ{#6}-\GetZ{#5}}%
+  \pgfmathsetmacro{\Nx}{\ABy*\CDz-\ABz*\CDy}%
+  \pgfmathsetmacro{\Ny}{\ABz*\CDx-\ABx*\CDz}%
+  \pgfmathsetmacro{\Nz}{\ABx*\CDy-\ABy*\CDx}%
+  \pgfmathsetmacro{\Nnorm}{sqrt(\Nx*\Nx+\Ny*\Ny+\Nz*\Nz)}%
+  \pgfmathsetmacro{\nx}{\Nx/\Nnorm}%
+  \pgfmathsetmacro{\ny}{\Ny/\Nnorm}%
+  \pgfmathsetmacro{\nz}{\Nz/\Nnorm}%
+  \pgfmathsetmacro{\Fx}{\GetX{#1}+#7*\nx}%
+  \pgfmathsetmacro{\Fy}{\GetY{#1}+#7*\ny}%
+  \pgfmathsetmacro{\Fz}{\GetZ{#1}+#7*\nz}%
+  \PointXYZ{#2}{\Fx}{\Fy}{\Fz}%
+}
+
+\newcommand{\MidPointXYZ}[3]{%
+    \pgfmathsetmacro{\mx}{0.5*(\GetX{#2}+\GetX{#3})}%
+    \pgfmathsetmacro{\my}{0.5*(\GetY{#2}+\GetY{#3})}%
+    \pgfmathsetmacro{\mz}{0.5*(\GetZ{#2}+\GetZ{#3})}%
+    \PointXYZ{#1}{\mx}{\my}{\mz}%
+}
+
+\newcommand{\LinePlaneIntersection}[6]{%
+    \pgfmathsetmacro{\ux}{\GetX{#5}-\GetX{#4}}%
+    \pgfmathsetmacro{\uy}{\GetY{#5}-\GetY{#4}}%
+    \pgfmathsetmacro{\uz}{\GetZ{#5}-\GetZ{#4}}%
+
+    \pgfmathsetmacro{\vx}{\GetX{#6}-\GetX{#4}}%
+    \pgfmathsetmacro{\vy}{\GetY{#6}-\GetY{#4}}%
+    \pgfmathsetmacro{\vz}{\GetZ{#6}-\GetZ{#4}}%
+
+    \pgfmathsetmacro{\nx}{\uy*\vz-\uz*\vy}%
+    \pgfmathsetmacro{\ny}{\uz*\vx-\ux*\vz}%
+    \pgfmathsetmacro{\nz}{\ux*\vy-\uy*\vx}%
+
+    \pgfmathsetmacro{\dx}{\GetX{#3}-\GetX{#2}}%
+    \pgfmathsetmacro{\dy}{\GetY{#3}-\GetY{#2}}%
+    \pgfmathsetmacro{\dz}{\GetZ{#3}-\GetZ{#2}}%
+
+    \pgfmathsetmacro{\den}{\nx*\dx+\ny*\dy+\nz*\dz}%
+    \pgfmathsetmacro{\num}{\nx*(\GetX{#4}-\GetX{#2})+\ny*(\GetY{#4}-\GetY{#2})+\nz*(\GetZ{#4}-\GetZ{#2})}%
+
+    \pgfmathsetmacro{\tt}{\num/\den}%
+
+    \pgfmathsetmacro{\ix}{\GetX{#2}+\tt*\dx}%
+    \pgfmathsetmacro{\iy}{\GetY{#2}+\tt*\dy}%
+    \pgfmathsetmacro{\iz}{\GetZ{#2}+\tt*\dz}%
+
+    \PointXYZ{#1}{\ix}{\iy}{\iz}%
+}
+
+\makeatother
+
+\pgfmathdeclarefunction{f}{2}{%
+  \pgfmathparse{\zzero + sqrt(max(0,\Rayon^2-(#1-\xzero)^2-(#2-\yzero)^2))}%
+}
+
+\def\FigureScale{1.8}
+\pgfmathsetlengthmacro{\SyncedThickWidth}{0.8pt/\FigureScale}
+\tikzset{
+    synced thick arrow/.style={
+        line width=\SyncedThickWidth,
+        -{>[scale={1/\FigureScale}]}
+    }
+}
+
+\begin{tikzpicture}[
+  ddfv,
+  scale=\FigureScale,
+  node distance=0.6cm,
+  every node/.style={inner sep=0pt}
+]
+
+
+\tdplotsetmaincoords{45}{55}
+% \tdplotsetmaincoords{15}{-35}
+
+\begin{scope}[
+    local bounding box=mainP,
+    tdplot_main_coords
+]
+
+\coordinate (O) at (0,0,0);
+\PointXYZ{fO}{0}{0}{f(0,0)};
+
+\def\Rpenta{1.5}
+\def\lengthbasis{4pt}
+\def\lengthsq{1pt}
+
+\foreach \i/\j/\angleA/\angleB in {
+    1/2/13/17,
+    2/3/17/21,
+    3/4/21/5,
+    4/5/5/9,
+    5/1/9/13
+}
+{
+    % Point F_i
+    \pgfmathsetmacro{\xA}{\Rpenta*cos((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\yA}{\Rpenta*sin((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\zA}{f(\xA,\yA)}
+
+    \coordinate (F\i)  at ({\xA},{\yA},0);
+    % \coordinate (fF\i) at ({\xA},{\yA},{\zA});
+    \PointXYZ{fF\i}{\xA}{\yA}{\zA};
+
+    % \node[ptsq={myblue}{}] at (F\i) {};
+    % \node[ptsq={myblue}{}] at (fF\i) {};
+
+    % Point F_j
+    \pgfmathsetmacro{\xB}{\Rpenta*cos((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\yB}{\Rpenta*sin((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\zB}{f(\xB,\yB)}
+
+    \coordinate (F\j)  at ({\xB},{\yB},0);
+    \coordinate (fF\j) at ({\xB},{\yB},{\zB});
+
+    % Barycentre euclidien du triangle fO, fF_i, fF_j
+    \pgfmathsetmacro{\xG}{(\xzero+\xA+\xB)/3}
+    \pgfmathsetmacro{\yG}{(\yzero+\yA+\yB)/3}
+    \pgfmathsetmacro{\zG}{(f(0,0)+f(\xA,\yA)+f(\xB,\yB))/3}
+
+    % Projection radiale sur la sphère de centre (xzero,yzero,zzero)
+    \pgfmathsetmacro{\normG}{
+        sqrt((\xG-\xzero)^2 + (\yG-\yzero)^2 + (\zG-\zzero)^2)
+    }
+
+    \pgfmathsetmacro{\xProjG}{\xzero +  \exan*\Rayon*(\xG-\xzero)/\normG}
+    \pgfmathsetmacro{\yProjG}{\yzero +  \exan*\Rayon*(\yG-\yzero)/\normG}
+    \pgfmathsetmacro{\zProjG}{\zzero +  \exan*\Rayon*(\zG-\zzero)/\normG}
+
+    % \coordinate (fG\i) at ({\xProjG},{\yProjG},{\zProjG});
+    \PointXYZ{fG\i}{\xProjG}{\yProjG}{\zProjG};
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \pgfmathsetmacro{\xG}{(\xA+\xB)/3}
+    \pgfmathsetmacro{\yG}{(\yA+\yB)/3}
+    \pgfmathsetmacro{\zG}{(f(0,0)+f(\xA,\yA)+f(\xB,\yB))/3}
+
+    \PointXYZ{G\i}{\xG}{\yG}{\zG}
+
+    \MidPointXYZ{M\i}{fO}{fF\i}
+}
+
+% \fill[mylightblue,opacity=0.5] (fO) -- (fF2) -- (fF3) -- cycle;
+\draw[mailledualeint] (M1) -- (G1) -- (M2) -- (G2) -- (M3) -- (G3) -- (M4) -- (G4) -- (M5) -- (G5) -- cycle;
+
+\foreach \i in {1,2,3,4,5}
+{
+    \node[ptcl={myred}{}] at (G\i) {};
+}
+
+\foreach \i/\j/\angleA/\angleB in {
+    1/2/13/17,
+    2/3/17/21,
+    3/4/21/5,
+    4/5/5/9,
+    5/1/9/13
+}
+{
+     % Point F_i
+    \pgfmathsetmacro{\xA}{\Rpenta*cos((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\yA}{\Rpenta*sin((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\zA}{f(\xA,\yA)}
+
+    % Point F_j
+    \pgfmathsetmacro{\xB}{\Rpenta*cos((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\yB}{\Rpenta*sin((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\zB}{f(\xB,\yB)}
+
+    % Barycentre euclidien du triangle fO, fF_i, fF_j
+    \pgfmathsetmacro{\xG}{(\xzero+\xA+\xB)/3}
+    \pgfmathsetmacro{\yG}{(\yzero+\yA+\yB)/3}
+    \pgfmathsetmacro{\zG}{(f(0,0)+f(\xA,\yA)+f(\xB,\yB))/3}
+
+    % Projection radiale sur la sphère de centre (xzero,yzero,zzero)
+    \pgfmathsetmacro{\normG}{
+        sqrt((\xG-\xzero)^2 + (\yG-\yzero)^2 + (\zG-\zzero)^2)
+    }
+
+    \pgfmathsetmacro{\xProjG}{\xzero + \exan*\Rayon*(\xG-\xzero)/\normG}
+    \pgfmathsetmacro{\yProjG}{\yzero + \exan*\Rayon*(\yG-\yzero)/\normG}
+    \pgfmathsetmacro{\zProjG}{\zzero + \exan*\Rayon*(\zG-\zzero)/\normG}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \pgfmathsetmacro{\xG}{(\xA+\xB)/3}
+    \pgfmathsetmacro{\yG}{(\yA+\yB)/3}
+    \pgfmathsetmacro{\zG}{(f(0,0)+f(\xA,\yA)+f(\xB,\yB))/3}
+
+    \PointXYZ{G\i}{\xG}{\yG}{\zG}
+
+    % \node[ptcl={myred}{}] at (G\i) {};
+    % \draw[myred,dotted] (fG\i) -- (G\i);
+
+    % Normale radiale unitaire en G_i
+    \pgfmathsetmacro{\nx}{(\xProjG-\xzero)/\Rayon}
+    \pgfmathsetmacro{\ny}{(\yProjG-\yzero)/\Rayon}
+    \pgfmathsetmacro{\nz}{(\zProjG-\zzero)/\Rayon}
+
+    % Première direction tangente : e_theta = (-ny,nx,0)
+    \pgfmathsetmacro{\nt}{sqrt(\nx*\nx+\ny*\ny)}
+    \pgfmathsetmacro{\tx}{-\ny/\nt}
+    \pgfmathsetmacro{\ty}{ \nx/\nt}
+    \pgfmathsetmacro{\tz}{0}
+
+    % Deuxième direction tangente : s = n x t
+    \pgfmathsetmacro{\sx}{-\nz*\ty}
+    \pgfmathsetmacro{\sy}{ \nz*\tx}
+    \pgfmathsetmacro{\sz}{ \nx*\ty-\ny*\tx}
+
+
+    \onslide<2->{
+    % Équerre dans le plan (n,t)
+    \draw[semithick]
+    (G\i)
+    -- ++({\epsperp*\tx},{\epsperp*\ty},{\epsperp*\tz})
+    -- ++({\epsperp*\nx},{\epsperp*\ny},{\epsperp*\nz})
+    -- ++({-\epsperp*\tx},{-\epsperp*\ty},{-\epsperp*\tz})
+    -- cycle;
+
+    % Équerre dans le plan (n,s)
+    \draw[semithick]
+    (G\i)
+    -- ++({\epsperp*\sx},{\epsperp*\sy},{\epsperp*\sz})
+    -- ++({\epsperp*\nx},{\epsperp*\ny},{\epsperp*\nz})
+    -- ++({-\epsperp*\sx},{-\epsperp*\sy},{-\epsperp*\sz})
+    -- cycle;
+    }
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    % \draw[myorange] (fO) -- (G\i) -- (fF\i);
+    % \draw[myorange] (G\i) -- (fF\j);
+}
+
+% \ruledsurface{fO}{fG2}{fF3}{fG3}
+    
+% \node[myblue, above=6pt] at (fO) {\contour{mylightred!50!white}{$x_{\mailledualeplate{K}}$}};
+% \node[above=5pt] at (M2) {\contour{mylightred!50!white}{$x_\sigma$}};
+% \node[myblue] at ($(fO)!0.8!(fF2)$) {\contour{white}{$\sigma_{\primalplat{K},\primalplat{L}}$}};
+% \node[myred, below=5pt] at (G1) {$x_{\primalplat{L}}$};
+% \node[myred, above=5pt, visible on=<2->] at (fG1) {\contour{white}{$x_{\primal{L}}$}};
+% \node[myred, below=5pt] at (G2) {$x_{\primalplat{K}}$};
+% \node[myred, above=5pt, visible on=<2->] at (fG2) {$x_{\primal{K}}$};
+% \node[myblue, left=5pt] at ($(fF1)!0.5!(fF2)$) {$\primalplat{L}$};
+% \node[myblue, below=5pt] at ($(fF2)!0.5!(fF3)$) {$\primalplat{K}$};
+% \node[myred, below=5pt] at ($(G2)!0.5!(M2)$) {$\mailledualeplate{K}$};
+
+\CrossPointsFrom{fF1}{fF1v}{fF1}{fO}{fG5}{fG1}{1.5}
+\CrossPointsFrom{fO}{fOv}{fF1}{fO}{fG5}{fG1}{1.5}
+\CrossPointsFrom{fG5}{fG5v}{fF1}{fO}{fG5}{fG1}{1.5}
+\CrossPointsFrom{fG1}{fG1v}{fF1}{fO}{fG5}{fG1}{1.5}
+
+\CrossPointsFrom{fF2}{fF2v}{fF2}{fO}{fG1}{fG2}{1.5}
+\CrossPointsFrom{fO}{fOv}{fF2}{fO}{fG1}{fG2}{1.5}
+\CrossPointsFrom{fG1}{fG1v}{fF2}{fO}{fG1}{fG2}{1.5}
+\CrossPointsFrom{fG2}{fG2v}{fF2}{fO}{fG1}{fG2}{1.5}
+
+\MidPointXYZ{fF1G1}{fF1}{fG1}
+\MidPointXYZ{fOG1}{fO}{fG1}
+\MidPointXYZ{fOG5}{fO}{fG5}
+\MidPointXYZ{fF1G5}{fF1}{fG5}
+
+% Plan du premier diamant : il passe par le barycentre des quatre
+% sommets et contient les directions fO--fF1 et fG5--fG1.
+\PointXYZ{DiamondFirstO}
+    {(\GetX{fO}+\GetX{fF1}+\GetX{fG5}+\GetX{fG1})/4}
+    {(\GetY{fO}+\GetY{fF1}+\GetY{fG5}+\GetY{fG1})/4}
+    {(\GetZ{fO}+\GetZ{fF1}+\GetZ{fG5}+\GetZ{fG1})/4}
+\PointXYZ{DiamondFirstU}
+    {\GetX{DiamondFirstO}+\GetX{fF1}-\GetX{fO}}
+    {\GetY{DiamondFirstO}+\GetY{fF1}-\GetY{fO}}
+    {\GetZ{DiamondFirstO}+\GetZ{fF1}-\GetZ{fO}}
+\PointXYZ{DiamondFirstV}
+    {\GetX{DiamondFirstO}+\GetX{fG1}-\GetX{fG5}}
+    {\GetY{DiamondFirstO}+\GetY{fG1}-\GetY{fG5}}
+    {\GetZ{DiamondFirstO}+\GetZ{fG1}-\GetZ{fG5}}
+
+\MidPointXYZ{fF2G2}{fF2}{fG2}
+\MidPointXYZ{fOG2}{fO}{fG2}
+\MidPointXYZ{fOG1}{fO}{fG1}
+\MidPointXYZ{fF2G1}{fF2}{fG1}
+
+% \node[ptsq={black}{}] at (fF1G1) {};
+% \node[ptsq={black}{}] at (fOG1) {};
+% \node[ptsq={black}{}] at (fOG5) {};
+% \node[ptsq={black}{}] at (fF1G5) {};
+
+\LinePlaneIntersection{I}{fF1}{fF1v}{DiamondFirstO}{DiamondFirstU}{DiamondFirstV}
+\LinePlaneIntersection{K}{fG5}{fG5v}{DiamondFirstO}{DiamondFirstU}{DiamondFirstV}
+
+% I et K fixent la position du plan. J et L sont ensuite obtenus par
+% translation afin de conserver exactement les deux directions voulues.
+\PointXYZ{J}
+    {\GetX{I}+\GetX{fO}-\GetX{fF1}}
+    {\GetY{I}+\GetY{fO}-\GetY{fF1}}
+    {\GetZ{I}+\GetZ{fO}-\GetZ{fF1}}
+\PointXYZ{L}
+    {\GetX{K}+\GetX{fG1}-\GetX{fG5}}
+    {\GetY{K}+\GetY{fG1}-\GetY{fG5}}
+    {\GetZ{K}+\GetZ{fG1}-\GetZ{fG5}}
+
+\LinePlaneIntersection{Ib}{fF2}{fF2v}{fF2G1}{fOG1}{fOG2}
+\LinePlaneIntersection{Jb}{fO}{fOv}{fF2G1}{fOG1}{fOG2}
+\LinePlaneIntersection{Kb}{fG1}{fG1v}{fF2G2}{fOG1}{fOG2}
+\LinePlaneIntersection{Lb}{fG2}{fG2v}{fF2G1}{fOG1}{fOG2}
+
+\draw[myblue] (fF1) -- (fF2) -- (fF3) -- (fF4) -- (fF5) -- cycle;
+
+\LinePlaneIntersection{InterG5}{G5}{fG5}{J}{K}{I}
+\LinePlaneIntersection{InterG1}{G1}{fG1}{J}{K}{I}
+
+\foreach \i in {1,2,3,4,5}
+{
+    % \draw (G\i) -- (fO);
+    \draw[myblue] (fO) -- (fF\i);
+    \draw[dashed, thin, visible on=<2->] (G\i) -- (fG\i);
+    \node[ptsq={black}{}] at (M\i) {};
+}
+
+\onslide<3->{
+\foreach \i/\j in {
+    1/2/,
+    2/3/,
+    3/4/,
+    4/5/,
+    5/1/
+}{
+    \draw[gray] (fO) -- (fG\i) -- (fF\i);
+    \draw[gray] (fG\i) -- (fF\j);
+}
+}
+
+\node[ptsq={myblue}{}] at (fO) {};
+
+\foreach \i in {1,2,3,4,5}
+{
+    \node[ptsq={myblue}{}] at (fF\i) {};
+}
+
+\filldraw[mygreen, draw=mydarkgreen, opacity=0.8, visible on=<4->] (J) -- (K) -- (I) -- (L) -- cycle;
+% \draw[maillediamantint, opacity=0.8, thin, visible on=<4->] (Jb) -- (Kb) -- (Ib) -- (Lb) -- cycle;
+
+\onslide<4->{
+% Repère affine du plan du diamant :
+%   origine Jb,
+%   axe x porté par Jb--Ib,
+%   axe y parallèle à Kb--Lb.
+\PointXYZ{DiamondPlaneY}
+    {\GetX{Jb}+\GetX{Lb}-\GetX{Kb}}
+    {\GetY{Jb}+\GetY{Lb}-\GetY{Kb}}
+    {\GetZ{Jb}+\GetZ{Lb}-\GetZ{Kb}}
+
+% Coordonnées de Kb dans la base non nécessairement orthogonale
+% u = Ib-Jb et v = Lb-Kb.
+\pgfmathsetmacro{\dux}{\GetX{Ib}-\GetX{Jb}}
+\pgfmathsetmacro{\duy}{\GetY{Ib}-\GetY{Jb}}
+\pgfmathsetmacro{\duz}{\GetZ{Ib}-\GetZ{Jb}}
+\pgfmathsetmacro{\dvx}{\GetX{Lb}-\GetX{Kb}}
+\pgfmathsetmacro{\dvy}{\GetY{Lb}-\GetY{Kb}}
+\pgfmathsetmacro{\dvz}{\GetZ{Lb}-\GetZ{Kb}}
+\pgfmathsetmacro{\dwx}{\GetX{Kb}-\GetX{Jb}}
+\pgfmathsetmacro{\dwy}{\GetY{Kb}-\GetY{Jb}}
+\pgfmathsetmacro{\dwz}{\GetZ{Kb}-\GetZ{Jb}}
+
+\pgfmathsetmacro{\duu}{\dux*\dux+\duy*\duy+\duz*\duz}
+\pgfmathsetmacro{\duv}{\dux*\dvx+\duy*\dvy+\duz*\dvz}
+\pgfmathsetmacro{\dvv}{\dvx*\dvx+\dvy*\dvy+\dvz*\dvz}
+\pgfmathsetmacro{\dwu}{\dwx*\dux+\dwy*\duy+\dwz*\duz}
+\pgfmathsetmacro{\dwv}{\dwx*\dvx+\dwy*\dvy+\dwz*\dvz}
+\pgfmathsetmacro{\ddet}{\duu*\dvv-\duv*\duv}
+\pgfmathsetmacro{\Klocalx}{(\dwu*\dvv-\dwv*\duv)/\ddet}
+\pgfmathsetmacro{\Klocaly}{(\dwv*\duu-\dwu*\duv)/\ddet}
+
+\begin{scope}[
+    plane origin={(Jb)},
+    plane x={(Ib)},
+    plane y={(DiamondPlaneY)},
+    canvas is plane,
+]
+
+\coordinate (xle2D) at (0,0);                % Jb
+\coordinate (xke2D) at (1,0);                % Ib
+\coordinate (xk2D)  at (\Klocalx,\Klocaly); % Kb
+\coordinate (xl2D)  at (\Klocalx,{\Klocaly+1}); % Lb
+
+% \fill[mylightgreen,opacity=0.8] (xle2D) -- (xk2D) -- (xke2D) -- (xl2D) -- cycle;
+
+% \draw[maillediamantint, opacity=0.8, thin, visible on=<4->] (Jb) -- (Kb) -- (Ib) -- (Lb) -- cycle;
+
+\path[name path=sigma]  (xle2D) -- (xke2D);
+\path[name path=sigmae] (xk2D) -- (xl2D);
+
+\path[name intersections={of=sigma and sigmae, by=Inter}];
+
+\iffalse
+\def\rayonangle{0.08}
+
+\path let
+    \p0 = (Inter),
+    \p1 = (xke2D),
+    \p2 = (xl2D)
+in
+    \pgfextra{
+        \pgfmathsetmacro{\angA}{atan2(-\y1+\y0,\x1-\x0)}
+        \pgfmathsetmacro{\angB}{atan2(\y2-\y0,\x2-\x0)}
+        \global\let\angA\angA
+        \global\let\angB\angB
+    };
+
+\draw[black]
+    ($(Inter)+(\angA:\rayonangle)$)
+    arc[
+        start angle=\angA,
+        end angle=\angB,
+        radius=\rayonangle
+    ];
+
+\node at ($(Inter)+({0.5*(\angA+\angB)}:{2*\rayonangle})$) {$\angle{\diamantplat{D}}$};
+
+\draw ($(xke2D)!0.2!(xle2D)$) rectangle ++(\lengthsq,-\lengthsq);
+\coordinate (P) at ($(xk2D)!0.2!(xl2D)$);
+\draw
+    (P)
+    -- ($(P)!\lengthsq!(xl2D)$)
+    -- ($(P)!\lengthsq!(xl2D)!\lengthsq!-90:(xl2D)$)
+    -- ($(P)!\lengthsq!-90:(xl2D)$)
+    -- cycle;
+
+
+\coordinate (Pbase) at ($(xke2D)!0.2!(xle2D)$);
+\coordinate (Pbasedual) at ($(xk2D)!0.2!(xl2D)$);
+
+\node[myblue, above left] at ($(Pbase)+(0,{-\lengthbasis})$) {$\vect{\tau}_{\mailledualeplate{K},\mailledualeplate{L}}$};
+\node[myblue, right] at ($(Pbase)+({\lengthbasis},0)$) {$\vect{\nu}_{\sigma \primalplat{K}}$};
+    
+\node[myred, above] at ($(Pbasedual)!\lengthbasis!(xl2D)$) {$\vect{\tau}_{\primalplat{K},\primalplat{L}}$};
+\node[myred, below] at ($(Pbasedual)!\lengthbasis!-90:(xl2D)$) {$\vect{\nu}_{\dual{\sigma}\mailledualeplate{K}}$};
+\fi
+
+\end{scope}
+
+% \draw[myblue, dashed] (Ib) -- (Jb);
+% \draw[myred, dashed] (Kb) -- (Lb);
+
+\draw[myblue, dashed] (I) -- (J);
+\draw[myred, dashed] (K) -- (L);
+}
+
+\onslide<4->{
+
+\draw[mygreen!80!white, thin] (InterG1) -- (fG1);
+\draw[dashed, thin] (InterG1) -- (fG1);
+
+\draw[white, thin] (InterG5) -- (fG5);
+\draw[dashed, thin] (InterG5) -- (fG5);
+
+\draw[gray] (fOG2) -- (fG2);
+\draw[gray] (fF2G2) -- (fG2);
+\draw[gray] (fOG1) -- (fG1);
+\draw[gray] (fF2G1) -- (fG1);
+\draw[gray] (fF1G1) -- (fG1);
+
+% \node[mydarkgreen] at ($(Inter)+(120:8pt)$) {$\diamantplat{D}$};
+\node[mydarkgreen] at ($(fF1G5)+(180:6pt)$) {$\diamantplat{D}$};
+}
+
+\onslide<3->{
+    \draw[myred] (fG1) -- (fG5);
+}
+
+
+\onslide<5->{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                    Diamant courbe
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\foreach \i/\j/\k/\angleA/\angleB/\angleC in {
+    3/4/2/21/5/17 % 1/2/5/13/17/9
+}
+{
+    % Point F_i
+    \pgfmathsetmacro{\xA}{\Rpenta*cos((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\yA}{\Rpenta*sin((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\zA}{f(\xA,\yA)}
+
+    % Point F_j
+    \pgfmathsetmacro{\xB}{\Rpenta*cos((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\yB}{\Rpenta*sin((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\zB}{f(\xB,\yB)}
+
+    % Point F_k
+    \pgfmathsetmacro{\xC}{\Rpenta*cos((\angleC*pi/10)r)}
+    \pgfmathsetmacro{\yC}{\Rpenta*sin((\angleC*pi/10)r)}
+    \pgfmathsetmacro{\zC}{f(\xC,\yC)}
+
+    % Barycentre euclidien du triangle fO, fF_i, fF_j
+    \pgfmathsetmacro{\xG}{(\xzero+\xA+\xB)/3}
+    \pgfmathsetmacro{\yG}{(\yzero+\yA+\yB)/3}
+    \pgfmathsetmacro{\zG}{(f(0,0)+f(\xA,\yA)+f(\xB,\yB))/3}
+
+    % Projection radiale sur la sphère de centre (xzero,yzero,zzero)
+    \pgfmathsetmacro{\normG}{
+        sqrt((\xG-\xzero)^2 + (\yG-\yzero)^2 + (\zG-\zzero)^2)
+    }
+
+    \pgfmathsetmacro{\xProjG}{\xzero + \exan*\Rayon*(\xG-\xzero)/\normG}
+    \pgfmathsetmacro{\yProjG}{\yzero + \exan*\Rayon*(\yG-\yzero)/\normG}
+    \pgfmathsetmacro{\zProjG}{\zzero + \exan*\Rayon*(\zG-\zzero)/\normG}
+
+    
+    % Barycentre euclidien du triangle fO, fF_i, fF_k
+    \pgfmathsetmacro{\xGb}{(\xzero+\xA+\xC)/3}
+    \pgfmathsetmacro{\yGb}{(\yzero+\yA+\yC)/3}
+    \pgfmathsetmacro{\zGb}{(f(0,0)+f(\xA,\yA)+f(\xC,\yC))/3}
+
+    % Projection radiale sur la sphère de centre (xzero,yzero,zzero)
+    \pgfmathsetmacro{\normGb}{
+        sqrt((\xGb-\xzero)^2 + (\yGb-\yzero)^2 + (\zGb-\zzero)^2)
+    }
+
+    \pgfmathsetmacro{\xProjGb}{\xzero + \exan*\Rayon*(\xGb-\xzero)/\normGb}
+    \pgfmathsetmacro{\yProjGb}{\yzero + \exan*\Rayon*(\yGb-\yzero)/\normGb}
+    \pgfmathsetmacro{\zProjGb}{\zzero + \exan*\Rayon*(\zGb-\zzero)/\normGb}
+
+    % Écarts entre les points fG imposés et la sphère de référence.
+    % La correction est maximale au sommet rouge et s'annule aux
+    % extrémités bleues du diamant.
+    \pgfmathsetmacro{\DeltaZG}{\zProjG-f(\xProjG,\yProjG)}
+    \pgfmathsetmacro{\DeltaZGb}{\zProjGb-f(\xProjGb,\yProjGb)}
+
+    \fill[mylightgreen, opacity=0.8]
+    plot[variable=\t, domain=1:0, samples=20]
+    (
+        {\t*\xProjG},
+        {\t*\yProjG},
+        {f(\t*\xProjG, \t*\yProjG)+\t*\DeltaZG}
+    )
+    --
+    plot[variable=\t, domain=1:0, samples=20]
+    (
+        {(1-\t)*\xProjG + \t*\xA},
+        {(1-\t)*\yProjG + \t*\yA},
+        {f((1-\t)*\xProjG + \t*\xA, (1-\t)*\yProjG + \t*\yA)
+            +(1-\t)*\DeltaZG}
+    ) 
+    --
+    plot[variable=\t, domain=0:1, samples=20]
+    (
+        {\t*\xProjGb},
+        {\t*\yProjGb},
+        {f(\t*\xProjGb, \t*\yProjGb)+\t*\DeltaZGb}
+    )
+    --
+    plot[variable=\t, domain=0:1, samples=20]
+    (
+        {(1-\t)*\xProjGb + \t*\xA},
+        {(1-\t)*\yProjGb + \t*\yA},
+        {f((1-\t)*\xProjGb + \t*\xA, (1-\t)*\yProjGb + \t*\yA)
+            +(1-\t)*\DeltaZGb}
+    )
+    --cycle;
+
+    % Les quatre bords sont tracés comme des courbes ouvertes : les
+    % fermetures droites nécessaires au remplissage restent invisibles.
+    \draw[mydarkgreen, thick]
+    plot[variable=\t, domain=0:1, samples=20]
+    (
+        {\t*\xProjG},
+        {\t*\yProjG},
+        {f(\t*\xProjG, \t*\yProjG)+\t*\DeltaZG}
+    );
+
+    \draw[mydarkgreen, thick]
+    plot[variable=\t, domain=0:1, samples=20]
+    (
+        {(1-\t)*\xProjG + \t*\xA},
+        {(1-\t)*\yProjG + \t*\yA},
+        {f((1-\t)*\xProjG + \t*\xA, (1-\t)*\yProjG + \t*\yA)
+            +(1-\t)*\DeltaZG}
+    );
+
+    \draw[mydarkgreen, thick]
+    plot[variable=\t, domain=1:0, samples=20]
+    (
+        {\t*\xProjGb},
+        {\t*\yProjGb},
+        {f(\t*\xProjGb, \t*\yProjGb)+\t*\DeltaZGb}
+    );
+
+    \draw[mydarkgreen, thick]
+    plot[variable=\t, domain=1:0, samples=20]
+    (
+        {(1-\t)*\xProjGb + \t*\xA},
+        {(1-\t)*\yProjGb + \t*\yA},
+        {f((1-\t)*\xProjGb + \t*\xA, (1-\t)*\yProjGb + \t*\yA)
+            +(1-\t)*\DeltaZGb}
+    );
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                    fin Diamant courbe
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+
+% \begin{scope}[canvas is xz plane at y=0]
+% \path  (0,1) node[anchor=south]{$z$}; 
+% \pgflowlevelsynccm
+% \draw[thick,-latex] (0,0) -- (0,1); 
+% \end{scope}
+
+% Repère affine du premier diamant : axe x porté par J--I et
+% axe y parallèle à K--L.
+\PointXYZ{DiamondPlaneYFirst}
+    {\GetX{Jb}+\GetX{Lb}-\GetX{Kb}}
+    {\GetY{Jb}+\GetY{Lb}-\GetY{Kb}}
+    {\GetZ{Jb}+\GetZ{Lb}-\GetZ{Kb}}
+
+\pgfmathsetmacro{\fdux}{\GetX{Ib}-\GetX{Jb}}
+\pgfmathsetmacro{\fduy}{\GetY{Ib}-\GetY{Jb}}
+\pgfmathsetmacro{\fduz}{\GetZ{Ib}-\GetZ{Jb}}
+\pgfmathsetmacro{\fdvx}{\GetX{Lb}-\GetX{Kb}}
+\pgfmathsetmacro{\fdvy}{\GetY{Lb}-\GetY{Kb}}
+\pgfmathsetmacro{\fdvz}{\GetZ{Lb}-\GetZ{Kb}}
+\pgfmathsetmacro{\fdwx}{\GetX{Kb}-\GetX{Jb}}
+\pgfmathsetmacro{\fdwy}{\GetY{Kb}-\GetY{Jb}}
+\pgfmathsetmacro{\fdwz}{\GetZ{Kb}-\GetZ{Jb}}
+
+\pgfmathsetmacro{\fduu}{\fdux*\fdux+\fduy*\fduy+\fduz*\fduz}
+\pgfmathsetmacro{\fduv}{\fdux*\fdvx+\fduy*\fdvy+\fduz*\fdvz}
+\pgfmathsetmacro{\fdvv}{\fdvx*\fdvx+\fdvy*\fdvy+\fdvz*\fdvz}
+\pgfmathsetmacro{\fdwu}{\fdwx*\fdux+\fdwy*\fduy+\fdwz*\fduz}
+\pgfmathsetmacro{\fdwv}{\fdwx*\fdvx+\fdwy*\fdvy+\fdwz*\fdvz}
+\pgfmathsetmacro{\fddet}{\fduu*\fdvv-\fduv*\fduv}
+\pgfmathsetmacro{\FirstKlocalx}{(\fdwu*\fdvv-\fdwv*\fduv)/\fddet}
+\pgfmathsetmacro{\FirstKlocaly}{(\fdwv*\fduu-\fdwu*\fduv)/\fddet}
+
+\iffalse
+\begin{scope}[
+    plane origin={(Jb)},
+    plane x={(Ib)},
+    plane y={(DiamondPlaneYFirst)},
+    canvas is plane,
+]
+    \pgflowlevelsynccm
+
+    \coordinate (xleZero) at (0,0); % Jb
+    \coordinate (xkeZero) at (1,0); % Ib
+    \coordinate (xkZero) at (\FirstKlocalx,\FirstKlocaly); % Kb
+    \coordinate (xlZero) at (\FirstKlocalx,{\FirstKlocaly+1}); % Lb
+
+    \coordinate (Pbase) at ($(xkeZero)!0.2!(xleZero)$);
+    \coordinate (Pbasedual) at ($(xkZero)!0.2!(xlZero)$);
+
+    \draw[myblue, synced thick arrow] (Pbase) -- ++(0,-\lengthbasis); % node[above=5pt] {$\vect{\tau}_{\mailleduale{K},\mailleduale{L}}$};
+    \draw[myblue, synced thick arrow] (Pbase) -- ++(\lengthbasis,0); % node[above] {$\vect{\nu}_{\sigma \primal{K}}$};
+
+    \draw[myred, synced thick arrow] (Pbasedual) -- ($(Pbasedual)!\lengthbasis!(xlZero)$);
+    \draw[myred, synced thick arrow] (Pbasedual) -- ($(Pbasedual)!\lengthbasis!-90:(xlZero)$); % node[below] {$\vect{\nu}_{\dual{\sigma}\mailleduale{K}}$};
+
+\end{scope}
+\fi
+
+\foreach \i in {1,2,3,4,5}
+{
+    \node[ptcl={myred}{}, visible on=<2->] at (fG\i) {};
+}
+
+\end{scope}
+
+\end{tikzpicture}

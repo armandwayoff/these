@@ -1,0 +1,10 @@
+\def\imgw{0.9\textwidth}
+
+\begin{tikzpicture}
+
+\node (courbe) at (0,0) {\includegraphics[width=\imgw]{img/sphere_diamond_curved_bis.pdf}};
+
+\node[mydarkgreen] at ($(courbe.center)+(135:2.1)$) {$\ensdiamant$};
+
+\node[below] at (courbe.south) {surface lisse $\surflisse$};
+\end{tikzpicture}

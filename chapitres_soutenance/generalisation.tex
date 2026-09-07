@@ -1,0 +1,206 @@
+\section[Généralisation de la méthode \ddfv]{Généralisation de la méthode \ddfv aux surfaces fermées sans bord de $\R^3$}
+
+\begin{frame}{Généralisation de la méthode \ddfv aux surfaces fermées de $\R^3$}
+\bigskip
+\stxt{Cadre nouveau}
+\begin{itemize}
+    \item Espaces d’approximation
+    \item Opérateurs discrets (gradient, divergence, rotationnel vectoriel et scalaire)
+    \item Produits scalaires
+    \item Propriétés de dualité des opérateurs
+    \item Discrétisation de la décomposition de Helmholtz–Hodge
+\end{itemize}
+\bigskip
+\[
+\highlight{\text{$\surflisse \subset \R^3$ compacte, connexe, $\Cont^2$, sans bord et orientable}}
+\]
+\begin{figure}
+\centering
+\begin{subfigure}[t]{.33\textwidth}
+    \centering
+    \parbox[c][3.4cm][c]{\textwidth}{\centering
+        \includegraphics[width=0.8\textwidth]{img/sphere_lisse_orange.pdf}}
+    \caption{Sphère}
+\end{subfigure}%
+\begin{subfigure}[t]{.33\textwidth}
+    \centering
+    \parbox[c][3.4cm][c]{\textwidth}{\centering
+        \includegraphics[width=0.8\textwidth]{img/torus_lisse_orange.pdf}}
+    \caption{Tore}
+\end{subfigure}
+\begin{subfigure}[t]{.33\textwidth}
+    \centering
+    \parbox[c][3.4cm][c]{\textwidth}{\centering
+        \includegraphics[width=0.8\textwidth]{img/tanglecube_lisse_orange.pdf}}
+    \caption{\defini{Tanglecube}}
+\end{subfigure}
+\end{figure}
+\end{frame}
+
+\subsection{Maillages primal et dual}
+
+\begin{frame}{Maillages primal et dual sur $\surfpoly$}
+\begin{figure}[H]
+\centering
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \input{figures_beamer/maillages_primal_dual.tex}
+\end{subfigure}%
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \input{figures_beamer/decoupage_dual_plat_def_bis.tex}
+\end{subfigure}
+\end{figure}
+
+\onslide<5>{
+\begin{itemize}
+    \item Inconnue scalaire discrète sur $\ensddfvplat = ({\color{myblue}\ensprimalplat}, {\color{myred}\ensdualplat})$
+\begin{equation} \label{eq:ddfv_unknown}
+\highlight{u^\ensddfvplat \in \R^\ensddfvplat}
+\iff
+u^\ensddfvplat \defeq \big( 
+    ({\color{myred}u_{\primalplat{K}}})_{\primalplat{K} \in {\color{myblue}\ensprimalplat}},
+    ({\color{myblue}u_{\mailledualeplate{K}}})_{\mailledualeplate{K} \in {\color{myred}\ensdualplat}}
+    \big)
+\end{equation}
+\end{itemize}
+}
+\end{frame}
+
+\subsection{Projection orthogonale}
+
+\begin{frame}{Projection orthogonale $\fonctionens[\projvariete]{\surfpoly}{\surflisse$}}
+\begin{figure}[H]
+    \centering
+    \input{figures_beamer/estimation_projection.tex}
+\end{figure}
+
+\onslide<3>{
+\begin{figure}
+    \centering
+    \input{figures_beamer/plat_vers_courbe.tex}
+\end{figure}
+}
+\end{frame}
+
+\subsection{Diamants}
+
+\begin{frame}{Diamants}
+
+\begin{columns}[c]
+\begin{column}{0.7\textwidth}
+\begin{figure}
+    \centering
+    \input{figures_beamer/ddfv_3d_diamant_construc.tex}
+\end{figure}
+\onslide<4->{
+\begin{itemize}
+    \item Inconnue vectorielle discrète sur ${\color{mydarkgreen}\ensdiamantplat}$
+\begin{equation}
+\highlight{\xi^{\color{mydarkgreen}\ensdiamantplat} \in (\R^2)^{\color{mydarkgreen}\ensdiamantplat}}
+\iff
+\xi^{\color{mydarkgreen}\ensdiamantplat} \defeq (\xi^{\diamantplat{D}})_{\diamantplat{D} \in {\color{mydarkgreen}\ensdiamantplat}},
+\quad
+\xi^{\diamantplat{D}} \in \R^2
+\end{equation}
+\end{itemize}
+}
+\end{column}
+\begin{column}{0.3\textwidth}
+    \centering
+    \onslide<4->{\input{figures_beamer/ensdiamantplat.tex}}
+    \onslide<5->{\input{figures_beamer/ensdiamant.tex}}
+\end{column}
+\end{columns}
+\end{frame}
+
+\subsection{Opérateurs discrets}
+
+\begin{frame}{Gradient et rotationnel vectoriel discrets}
+
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+\[
+\fonctionens[\grad^{\color{mydarkgreen}\ensdiamantplat}, \rot^{\color{mydarkgreen}\ensdiamantplat}]{\R^\ensddfvplat}{(\R^2)^{\color{mydarkgreen}\ensdiamantplat}}
+\]
+\begin{align} \label{eq:discrete_gradient}
+    \prodscal{\grad^{{\color{mydarkgreen}\diamantplat{D}_{\sigma,\dual{\sigma}}}} u^\ensddfvplat}{{\color{myred}\vect{\tau}_{\primalplat{K},\primalplat{L}}}} &= \phantom{-} \frac{{\color{myred}u_{\primalplat{L}}} - {\color{myred}u_{\primalplat{K}}}}{\mesure({\color{myred}\dual{\sigma}})} \\
+    \prodscal{\grad^{{\color{mydarkgreen}\diamantplat{D}_{\sigma,\dual{\sigma}}}} u^\ensddfvplat}{{\color{myblue}\vect{\tau}_{\mailledualeplate{K},\mailledualeplate{L}}}} &= \phantom{-} \frac{{\color{myblue}u_{\mailledualeplate{L}}} - {\color{myblue}u_{\mailledualeplate{K}}}}{\mesure({\color{myblue}\sigma})} \\[5pt]
+    \prodscal{\rot^{{\color{mydarkgreen}\diamantplat{D}_{\sigma,\dual{\sigma}}}} u^\ensddfvplat}{{\color{myred}\vect{\nu}_{\dual{\sigma} \mailledualeplate{K}}}} &= -\frac{{\color{myred}u_{\primalplat{L}}} - {\color{myred}u_{\primalplat{K}}}}{\mesure({\color{myred}\dual{\sigma}})} \\
+    \prodscal{\rot^{{\color{mydarkgreen}\diamantplat{D}_{\sigma,\dual{\sigma}}}} u^\ensddfvplat}{{\color{myblue}\vect{\nu}_{\sigma \primalplat{K}}}} &= -\frac{{\color{myblue}u_{\mailledualeplate{L}}} - {\color{myblue}u_{\mailledualeplate{K}}}}{\mesure({\color{myblue}\sigma})}
+\end{align}
+\end{column}
+\begin{column}{0.5\textwidth}
+    \centering
+    \input{figures_beamer/ddfv_3d_diamant.tex}
+\end{column}
+\end{columns}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+    \centering
+    \input{figures_beamer/torus_ddfv_field.tex}
+\end{column}
+\begin{column}{.5\textwidth}
+    \centering
+    \input{figures_beamer/torus_ddfv_gradient.tex}
+\end{column}
+\end{columns}
+\end{frame}
+
+\subsection{Propriétés des opérateurs discrets}
+
+\begin{frame}{Propriétés des opérateurs discrets}
+\begin{theo}[Formules de Green discrètes] \label{theo:discrete_green_formulae}
+$\forall \xi^\ensdiamantplat, u^\ensddfvplat \in (\R^2)^\ensdiamantplat \times \R^\ensddfvplat$,
+\begin{align}
+\prodscalddfv{\div^\ensddfvplat \xi^\ensdiamantplat}{u^\ensddfvplat} &= - \prodscalD{\xi^\ensdiamantplat}{\grad^\ensdiamantplat u^\ensddfvplat} \\
+\prodscalddfv{\scarot^\ensddfvplat \xi^\ensdiamantplat}{u^\ensddfvplat} &= \phantom{-} \prodscalD{\xi^\ensdiamantplat}{\rot^\ensdiamantplat u^\ensddfvplat}.
+\end{align}
+\end{theo}
+\begin{align}
+    \forall u^\ensddfvplat, v^\ensddfvplat \in \R^\ensddfvplat \\
+    \prodscalD{\rot^\ensdiamantplat u^\ensddfvplat}{\grad^\ensdiamantplat v^\ensddfvplat} &= 0 \\
+    \div^\ensddfvplat (\rot^\ensdiamantplat u^\ensddfvplat) &= 0 \\
+    \scarot^\ensddfvplat (\grad^\ensdiamantplat u^\ensddfvplat) &= 0 \\
+    \scarot^\ensddfvplat \rot^\ensdiamantplat u^\ensddfvplat &= - \div^\ensddfvplat \grad^\ensdiamantplat u^\ensddfvplat
+\end{align}
+\end{frame}
+
+\begin{frame}
+\begin{theo}[Décomposition de Helmholtz--Hodge discrète]
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\begin{gather}
+    \forall \xi^\ensdiamantplat \in (\R^2)^\ensdiamantplat,
+    \quad
+    \exists ! \ (\phi^\ensddfvplat, \psi^\ensddfvplat, h^\ensdiamantplat) \in \Rddfvmn \times \Rddfvmn \times (\R^2)^\ensdiamantplat
+    \quad
+    \text{t.q.} \\
+    \highlightrouge{\xi^\ensdiamantplat = \grad^\ensdiamantplat \phi^\ensddfvplat + \rot^\ensdiamantplat \psi^\ensddfvplat + h^\ensdiamantplat}, \\
+    \text{avec $h^\ensdiamantplat \in \param{\mathcal{H}^\ensdiamantplat} \defeq \Ker(\div^\ensddfvplat) \cap \Ker(\scarot^\ensddfvplat)$}
+\end{gather}
+\end{theo}
+
+\begin{prop}
+\[
+\dim \param{\mathcal{H}^\ensdiamantplat} = 4 \, g \quad \text{où $g$ est le genre de } \surflisse
+\]
+\end{prop}
+\begin{itemize}
+    \item Caractéristique d'Euler : $\chi = S - A + F = 2 - 2 \, g$
+    \item $\dim(\R^\ensddfvplat) = S + F$ et $\dim((\R^2)^\ensdiamantplat) = 2 \, A$
+\end{itemize}
+\begin{figure}[H]
+\centering
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/torus_harmonic_longitudinal.pdf}
+\end{subfigure}%
+\begin{subfigure}[t]{.5\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/torus_harmonic_meridional.pdf}
+\end{subfigure}
+\caption{Champs harmoniques sur le tore}
+\end{figure}
+
+\end{frame}

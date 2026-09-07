@@ -1,0 +1,21 @@
+\def\imgw{0.2\textwidth}
+\def\sep{1.7cm}
+\def\buf{1.3cm}
+
+\begin{tikzpicture}
+\node at (0*\sep,0) {\includegraphics[width=\imgw]{img/input.pdf}};
+\node at (1*\sep,0) {\Large $=$};
+\node at (2*\sep,0) {\includegraphics[width=\imgw]{img/grad.pdf}};
+\node at (3*\sep,0) {\Large $+$};
+\node at (4*\sep,0) {\includegraphics[width=\imgw]{img/rot.pdf}};
+\node at (5*\sep,0) {\Large $+$};
+\node at (6*\sep,0) {\includegraphics[width=\imgw]{img/harmo.pdf}};
+
+\node at (0*\sep,\buf) {$\vect{\xi}$};
+\node at (2*\sep,\buf) {$\grad \phi$};
+\node at (2*\sep,-\buf) {irrotationnel};
+\node at (4*\sep,\buf) {$\rot \psi$};
+\node at (4*\sep,-\buf) {solénoïdal};
+\node at (6*\sep,\buf) {$\vect{h}$};
+\node at (6*\sep,-\buf) {harmonique};
+\end{tikzpicture}

@@ -579,7 +579,7 @@ if __name__ == "__main__":
 """
 python3 sphere_dual_barycentric_gmsh.py \
   --radius 1 \
-  --lc 0.4 \
+  --lc 0.5 \
   --primal-width 12 \
   --dual-width 12 \
   --camera-azimuth 135 \

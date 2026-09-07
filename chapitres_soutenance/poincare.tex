@@ -1,0 +1,179 @@
+\section[Démonstration de l'inégalité de Poincaré \ddfv]{Démonstration de l'inégalité de Poincaré \textsc{ddfv} sur une surface fermée sans bord de $\R^3$}
+
+\begin{frame}{Plan de la démonstration de l'inégalité de Poincaré \ddfv}
+
+\begin{envide}[Objectif]
+\begin{center}
+\textsl{Soit $\ensddfvplat$ un maillage \ddfv de la surface polyédrique $\surfpoly$,
+\begin{equation*}
+    \exists C > 0 \text{ \sftxt{indép. de} } \sftxt{\size(\ensddfvplat)} \text{ t.q. }
+    \smath{
+    \forall u^\ensddfvplat \in \Rddfvmn
+    \quad
+    \normeddfvT{u^\ensddfvplat} \leqslant C \normeddfvD{\grad^\ensdiamantplat u^\ensddfvplat}
+    }
+\end{equation*}
+où $\Rddfvmn$ est l'ensemble des fonctions scalaires \ddfv à \sftxt{moyenne nulle}.
+}
+\end{center}
+\end{envide}
+
+\onslide<2->{
+\begin{block}{Plan}
+
+\begin{columns}[t]
+\begin{column}{0.66\textwidth}
+
+\begin{enumerate}
+\item<4-> Une inégalité de graphe : $\forall u^\ensddfvplat \in \Rddfvmn$
+\begin{equation*}
+\highlight{
+  \frac{1}{2\reg(\ensddfvplat)^2}
+  \frac{\param{h(\graphe^\ensddfvplat)}}{\size(\ensddfvplat)}
+  \normeddfvT{u^\ensddfvplat}
+  \leqslant
+  \normeddfvD{\grad^\ensdiamantplat u^\ensddfvplat}
+}
+\end{equation*}
+\item<5-> Comparaisons de constantes isopérimétriques
+\[
+\highlight{
+  \param{h(\graphe^\ensddfvplat)}
+  \gtrsim
+  \size(\ensddfvplat) \, \param{h(\surflisse)}
+}
+\]
+\end{enumerate}
+\end{column}
+\begin{column}{0.33\textwidth}
+    \centering
+    \input{figures_beamer/graphe_ddfv.tex}
+\end{column}
+\end{columns}
+\end{block}
+}
+\end{frame}
+
+\subsection{Une inégalité de graphe}
+
+\begin{frame}{Une inégalité de graphe}
+\[
+\text{Énergie}
+\quad 
+\param{\mathcal{E}(u^\ensddfvplat)} = \sum_{\primalplat{K} \sim \primalplat{L}} ( u_{\primalplat{K}} - u_{\primalplat{L}} )^2
++
+\sum_{\mailledualeplate{K} \sim \mailledualeplate{L}} ( u_{\mailledualeplate{K}} - u_{\mailledualeplate{L}} )^2
+\]
+\[
+\forall u^\ensddfvplat \in \Rddfvmn,
+\quad
+\begin{tikzpicture}[baseline=(energie.base)]
+    \node[inner sep=0pt, anchor=base west] (gauche) at (0,0)
+    {$\displaystyle
+    \frac{h(\graphe^\ensddfvplat)^2}{\reg(\ensddfvplat)^2 \size(\ensddfvplat)^2}
+    \normeddfvT{u^\ensddfvplat}^2 \leqslant {}$};
+    \node[inner sep=0pt, anchor=base west] (energie) at (gauche.base east)
+    {$\displaystyle \param{\mathcal{E}(u^\ensddfvplat)}$};
+    \node[inner sep=0pt, anchor=base west] (droite) at (energie.base east)
+    {$\displaystyle {} \leqslant
+    4 \reg(\ensddfvplat)^2
+    \normeddfvD{\grad^\ensdiamantplat u^\ensddfvplat}^2$};
+    \draw[myred, thick, rounded corners=1pt, visible on=<3->]
+    ([xshift=-2pt,yshift=-2pt]gauche.south west)
+    rectangle ($(energie.east |- gauche.north)+(2pt,2pt)$);
+    \node[myred, above=3pt, visible on=<3->] at ($(gauche.north west)!0.5!(energie.north east)$) {inégalité de graphe};
+    \draw[mydarkgreen, thick, rounded corners=1pt, visible on=<2->]
+    ($(energie.west |- droite.south)+(-2pt,-2pt)$)
+    rectangle ([xshift=2pt,yshift=2pt]droite.north east);
+    \node[mydarkgreen, above=3pt, visible on=<2->] at ($(energie.north west)!0.5!(droite.north east)$) {facile (appli. déf. $\grad^\ensdiamantplat$ et $\reg(\ensddfvplat)$)};
+\end{tikzpicture}
+\]
+\onslide<3->{
+\begin{theo}[Inégalité de Cheeger] \label{theo:cheeger_inequality}
+\begin{columns}[c]
+\begin{column}{0.75\textwidth}
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\[
+\inf_f \frac{\sum\limits_{u \sim v} \big( f(u) - f(v) \big)^2}{\sum\limits_v \big( f(v) - \overline{f} \big)^2 \degr(v)}
+\geqslant
+\frac{\param{h(\graphe)}^2}{2}
+\quad
+\text{où}
+\quad
+\overline{f} = \displaystyle\frac{\sum\limits_v f(v) \degr(v)}{\sum\limits_v \degr(v)}
+\]
+\begin{equation} \label{eq:cheeger_constant}
+\param{h(\graphe)} \defeq \min_{{\color{myred}W} \subset \vertices(\graphe)}
+\frac{\abs{{\color{myblue}\partial W}}}{\min\{ \vol({\color{myred}W}), \vol(\comp{W}) \}}
+\end{equation}
+\end{column}
+\begin{column}{0.25\textwidth}
+\begin{figure}
+    \centering
+    \input{figures_beamer/graphe.tex}
+\end{figure}
+\end{column}
+\end{columns}
+\end{theo}
+}
+\end{frame}
+
+\subsection{Comparaisons de constantes isopérimétriques}
+ 
+\begin{frame}{Comparaisons de const. isopérimétriques $h(\graphe^\ensddfvplat) \gtrsim \size(\ensddfvplat) \, h(\surflisse)$}
+ 
+\begin{columns}[c]
+\begin{column}{0.65\textwidth}
+\begin{itemize}
+    \item $\displaystyle h(\surflisse) \defeq \inf_{\variete{A} \subset \surflisse} \frac{\vol_{n - 1}(\partial \variete{A})}{\min\{\vol_n(\variete{A}), \vol_n(\surflisse \setminus \variete{A})\}} > 0$
+    \item ${\color{myred}\variete{A}_W} \defeq \displaystyle \bigcup_{x_{\primalplat{K}} \in W} \primal{K} \subset \surflisse$, $\variete{A}_W = \displaystyle \bigcup_{x_{\mailledualeplate{K}} \in W} \mailleduale{K}$
+    \item \defini{Quasi-uniformité} de $\ensddfvplat$ : $\exists \vartheta > 0$ t.q. $\vartheta \size(\ensddfvplat) \leqslant \mathrm{diam}(E) \quad \forall E \in {\color{myblue}\ensprimalplat} \cup {\color{myred}\ensdualplat} \cup {\color{mydarkgreen}\ensdiamantplat}$
+\end{itemize}
+\end{column}
+\begin{column}{0.35\textwidth}
+    \centering
+    \input{figures_beamer/cheeger_bord_dual.tex}
+\end{column}
+\end{columns}
+\onslide<2->{
+\begin{block}{Deux inégalités à montrer}
+\begin{enumerate}
+    \item $\forall {\color{myred}W} \subset \vertices(\graphe^\ensprimalplat), \vertices(\graphe^\ensdualplat)$, 
+    $\highlight{\displaystyle \min\{ \vol({\color{myred}W}), \vol(\comp{W}) \} 
+    \lesssim \frac{1}{\size(\ensddfvplat)^2} \min\{ \vol_n({\color{myred}\variete{A}_W}), \vol_n(\surflisse \setminus {\color{myred}\variete{A}_W}) \}}$
+    \item $\highlight{\displaystyle \abs{{\color{myblue}\partial W}} \gtrsim \frac{1}{\size(\ensddfvplat)} \vol_{n-1}({\color{myred}\partial \variete{A}_W})}$
+\end{enumerate}
+\end{block}
+}
+\end{frame}
+
+\begin{frame}
+\begin{theo}[Inégalité de Poincaré \ddfv] \label{theo:main}
+    Soit $\surflisse$ une surface $\Cont^2$, compacte, connexe, sans bord et orientable de $\R^3$ et soit $\surfpoly$ une approximation polyédrique de $\surflisse$. Soit $\ensddfvplat$ un maillage \ddfv de la surface polyédrique $\surfpoly$ tel que 
+    {
+    \setbeamercolor{itemize item}{fg=myred}
+
+    \begin{itemize}
+        \item $\size(\ensddfvplat)$ est suffisamment petit, 
+        \item $\ensddfvplat$ est quasi-uniforme,
+        \item $\reg(\ensddfvplat)$ est uniformément bornée en $\size(\ensddfvplat)$. 
+    \end{itemize}
+    }
+    Alors
+    \begin{equation*}
+    \highlightrouge{\forall u^\ensddfvplat \in \Rddfvmn, \quad
+    \normeddfvT{u^\ensddfvplat} \leqslant \frac{16 \reg(\ensddfvplat)^5}{\vartheta^2 \, h(\surflisse)} \normeddfvD{\grad^\ensdiamantplat u^\ensddfvplat}},
+    \end{equation*}
+    où 
+    {
+    \setbeamercolor{itemize item}{fg=myred}
+
+    \begin{itemize}
+        \item $\vartheta$ : constante de quasi-uniformité,
+        \item $h(\surflisse)$ : constante de Cheeger de la surface $\surflisse$,
+        \item $\Rddfvmn$ : ensemble des fonctions scalaires \ddfv à moyenne nulle. 
+    \end{itemize}
+    }
+\end{theo}
+\end{frame}

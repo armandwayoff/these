@@ -1,0 +1,111 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\def\sca{4}
+
+\begin{tikzpicture}[
+  ddfv,
+  scale=\sca
+]
+
+\def\largeur{2.8}
+\def\xL{1}
+
+\def\f(#1){0.2*sin(pi*#1 r)}
+\def\fp(#1){0.2*pi*cos(pi*#1 r)}
+
+% \def\f(#1){0.2*sin(pi*#1^3 r)}
+% \def\fp(#1){0.2*3*pi*#1^2*cos(pi*#1^3 r)}
+
+\draw[
+  line width=\largeur cm,
+  line cap=butt,
+  line join=round,
+  draw=mylightblue,
+  visible on=<1->,
+]
+plot[domain=-0.1:{\xL+0.1},samples=20,smooth] ({\x},{\f(\x)});
+
+\draw[myblue, visible on=<2->] (0.5,0.2) -- (0.5,{\f(\xL)+0.2}) node[midway, above] {$\projvariete \primalplat{K}$};
+
+\draw[dashed] (0,0) -- (\xL,{\f(\xL)});
+\draw[dashed] (0,0) -- ++(60:-3pt);
+\draw[dashed] (\xL,{\f(\xL)}) -- ++(-60:3pt) node[below left] {$\surfpoly$};
+
+\draw plot[domain=-0.1:{\xL+0.1},samples=20,smooth] ({\x},{\f(\x)}) node[above right] {$\surflisse$};
+
+\draw[myblue, ultra thick, visible on=<2->] (0,0) -- (\xL,{\f(\xL)}) node[midway, below] {$\primalplat{K}$};
+
+\node[ptsq={myblue}{}] at (0,0) {};
+\node[ptsq={myblue}{}] at (\xL,{\f(\xL)}) {};
+
+\onslide<2->{
+\foreach \ta in {0.1,0.2,...,0.9}
+{
+\pgfmathsetmacro{\ya}{\f(\ta)}
+\pgfmathsetmacro{\slopea}{\fp(\ta)}
+\pgfmathsetmacro{\txa}{1/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\tya}{\slopea/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\nxa}{-\slopea/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\nya}{1/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\xx}{\ta-\ya*\nxa/\nya}
+
+\coordinate (P) at (\ta,\ya);
+
+\draw[semithick] (P) -- (\xx, 0);
+
+\def\eps{0.02}
+
+\draw[semithick]
+  (P)
+  --
+  ($(P)!\eps cm!({\ta+\txa},{\ya+\tya})$)
+  --
+  ($($(P)!\eps cm!({\ta+\txa},{\ya+\tya})$)!\eps cm!90:(P)$)
+  --
+  ($(P)!\eps cm!-90:({\ta+\txa},{\ya+\tya})$)
+  --
+  cycle;
+}
+}
+
+
+\def\ta{0.3}
+
+\pgfmathsetmacro{\ya}{\f(\ta)}
+\pgfmathsetmacro{\slopea}{\fp(\ta)}
+\pgfmathsetmacro{\txa}{1/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\tya}{\slopea/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\nxa}{-\slopea/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\nya}{1/sqrt(1+\slopea^2)}
+\pgfmathsetmacro{\xx}{\ta-\ya*\nxa/\nya}
+
+\coordinate (P) at (\ta,\ya);
+
+\draw[myblue, ultra thick, visible on=<2->] plot[domain=0:\xL,samples=20,smooth] ({\x},{\f(\x)});
+
+\draw[myred, visible on=<2->] (P) -- (\xx, 0) node[midway, right] {\contour{mylightblue}{$d(x)$}};
+\only<2->{
+\node[ptcl={myred}{above:{$\projvariete(x)$}}] at (P) {};
+\node[ptcl={myred}{below:{$x$}}] at (\xx, 0) {};
+}
+
+\def\sfleche{-0.1}
+
+\pgfmathsetmacro{\yO}{\f(\sfleche)}
+\pgfmathsetmacro{\slopeO}{\fp(\sfleche)}
+\pgfmathsetmacro{\nxO}{-\slopeO/sqrt(1+\slopeO^2)}
+\pgfmathsetmacro{\nyO}{1/sqrt(1+\slopeO^2)}
+
+\pgfmathsetmacro{\distd}{{\largeur/(\sca*3)}}
+
+\pgfmathsetmacro{\xd}{\sfleche + \distd*\nxO}
+\pgfmathsetmacro{\yd}{\yO+\distd*\nyO}
+\pgfmathsetmacro{\xdb}{\sfleche - \distd*\nxO}
+\pgfmathsetmacro{\ydb}{\yO-\distd*\nyO}
+
+\draw[<->, semithick] (\sfleche,\yO) -- (\xd,\yd) node[midway, left] {$\delta$};
+\draw[<->, semithick] (\sfleche,\yO) -- (\xdb,\ydb) node[midway, left] {$\delta$};
+
+\node[myblue, above=10pt] at (0,{\f(0)}) {$U_\delta$};
+
+\end{tikzpicture}

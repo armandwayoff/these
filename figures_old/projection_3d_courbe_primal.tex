@@ -1,0 +1,118 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\def\Rayon{2}
+\pgfmathsetmacro{\Rdomaine}{0.9*\Rayon}
+\def\xzero{0}
+\def\yzero{0}
+\def\zzero{0}
+
+\def\eps{0.15}
+\def\epsperp{0.05}
+
+\pgfmathdeclarefunction{f}{2}{%
+  \pgfmathparse{\zzero + sqrt(max(0,\Rayon^2-(#1-\xzero)^2-(#2-\yzero)^2))}%
+}
+
+\begin{tikzpicture}[
+    ddfv,
+    scale=1.5
+]
+
+\tdplotsetmaincoords{85}{15}
+
+\begin{scope}[
+    local bounding box=mainL,
+    tdplot_main_coords
+]
+
+\coordinate (O) at (0,0,0);
+\coordinate (fO) at (0,0,{f(0,0)});
+
+\def\Rpenta{1.5}
+
+\foreach \i/\j/\angleA/\angleB in {
+    2/3/17/21
+}
+{
+    % Point F_i
+    \pgfmathsetmacro{\xA}{\Rpenta*cos((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\yA}{\Rpenta*sin((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\zA}{f(\xA,\yA)}
+
+    \coordinate (fF\i) at ({\xA},{\yA},{\zA});
+
+    % Point F_j
+    \pgfmathsetmacro{\xB}{\Rpenta*cos((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\yB}{\Rpenta*sin((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\zB}{f(\xB,\yB)}
+
+    \coordinate (fF\j) at ({\xB},{\yB},{\zB});
+
+    % Barycentre euclidien du triangle fO, fF_i, fF_j
+    \pgfmathsetmacro{\xG}{(\xzero+\xA+\xB)/3}
+    \pgfmathsetmacro{\yG}{(\yzero+\yA+\yB)/3}
+    \pgfmathsetmacro{\zG}{(f(0,0)+f(\xA,\yA)+f(\xB,\yB))/3}
+
+    \coordinate (G\i) at ({\xG},{\yG},{\zG});
+
+    % Projection radiale sur la sphère de centre (xzero,yzero,zzero)
+    \pgfmathsetmacro{\normG}{
+        sqrt((\xG-\xzero)^2 + (\yG-\yzero)^2 + (\zG-\zzero)^2)
+    }
+
+    \pgfmathsetmacro{\xProjG}{\xzero + \Rayon*(\xG-\xzero)/\normG}
+    \pgfmathsetmacro{\yProjG}{\yzero + \Rayon*(\yG-\yzero)/\normG}
+    \pgfmathsetmacro{\zProjG}{\zzero + \Rayon*(\zG-\zzero)/\normG}
+
+    \coordinate (fG\i) at ({\xProjG},{\yProjG},{\zProjG});
+}
+
+\draw[myblue] (fO) -- (fF2) -- (fF3) -- cycle;
+
+\foreach \i/\j/\angleA/\angleB in {
+    2/3/17/21
+}
+{
+    % Point F_i
+    \pgfmathsetmacro{\xA}{\Rpenta*cos((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\yA}{\Rpenta*sin((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\zA}{f(\xA,\yA)}
+
+    % Point F_j
+    \pgfmathsetmacro{\xB}{\Rpenta*cos((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\yB}{\Rpenta*sin((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\zB}{f(\xB,\yB)}
+
+    \draw[myblue, fill=mylightblue,opacity=0.8]
+    plot[variable=\t, domain=0:1, samples=20]
+    (
+        {\t*\xA},
+        {\t*\yA},
+        {f(\t*\xA, \t*\yA)}
+    )
+    --
+    plot[variable=\t, domain=0:1, samples=20]
+    (
+        {(1-\t)*\xA + \t*\xB},
+        {(1-\t)*\yA + \t*\yB},
+        {f((1-\t)*\xA + \t*\xB, (1-\t)*\yA + \t*\yB)}
+    )
+    --
+    plot[variable=\t, domain=1:0, samples=20]
+    (
+        {\t*\xB},
+        {\t*\yB},
+        {f(\t*\xB, \t*\yB)}
+    );
+}
+
+\node[ptsq={myblue}{}] at (fO) {};
+\node[ptsq={myblue}{}] at (fF2) {};
+\node[ptsq={myblue}{}] at (fF3) {};
+
+\node[myblue, shift={(-5pt,-5pt)}] at (fG2) {\contour{mylightblue!80!white}{$\primal{K}$}};
+\node[myblue, shift={(20pt,-10pt)}] at (G2) {$\primalplat{K}$};
+
+\end{scope}
+
+\end{tikzpicture}

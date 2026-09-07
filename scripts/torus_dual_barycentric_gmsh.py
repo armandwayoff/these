@@ -101,6 +101,27 @@ def parse_arguments() -> argparse.Namespace:
         help="Épaisseur des arêtes duales rouges.",
     )
     parser.add_argument(
+        "--no-primal",
+        action="store_true",
+        help="Masque le maillage primal dans le rendu PyVista.",
+    )
+    parser.add_argument(
+        "--no-dual",
+        action="store_true",
+        help="Masque le maillage dual dans le rendu PyVista.",
+    )
+    parser.add_argument(
+        "--smooth-torus",
+        action="store_true",
+        help="Superpose le tore lisse en transparence au maillage.",
+    )
+    parser.add_argument(
+        "--smooth-torus-opacity",
+        type=float,
+        default=0.25,
+        help="Opacité du tore lisse, entre 0 et 1 (défaut : 0.25).",
+    )
+    parser.add_argument(
         "--camera-azimuth",
         type=float,
         default=-45.0,
@@ -409,6 +430,10 @@ def render_primal_and_dual(
     off_screen: bool,
     primal_width: float,
     dual_width: float,
+    show_primal: bool,
+    show_dual: bool,
+    show_smooth_torus: bool,
+    smooth_torus_opacity: float,
     camera_azimuth: float,
     camera_elevation: float,
 ) -> None:
@@ -445,6 +470,37 @@ def render_primal_and_dual(
     )
 
     surface = pv.PolyData(xyz, faces=faces)
+
+    smooth_torus = None
+    if show_smooth_torus:
+        # Un maillage paramétrique fin représente la surface analytique du
+        # tore, indépendamment de la triangulation primale.
+        resolution = 160
+        smooth_points = []
+        smooth_faces = []
+        for i in range(resolution):
+            theta = 2.0 * math.pi * i / resolution
+            for j in range(resolution):
+                phi = 2.0 * math.pi * j / resolution
+                smooth_points.append(
+                    (
+                        (major_radius + minor_radius * math.cos(phi))
+                        * math.cos(theta),
+                        (major_radius + minor_radius * math.cos(phi))
+                        * math.sin(theta),
+                        minor_radius * math.sin(phi),
+                    )
+                )
+                a = i * resolution + j
+                b = ((i + 1) % resolution) * resolution + j
+                c = ((i + 1) % resolution) * resolution + (j + 1) % resolution
+                d = i * resolution + (j + 1) % resolution
+                smooth_faces.extend((4, a, b, c, d))
+
+        smooth_torus = pv.PolyData(
+            np.asarray(smooth_points),
+            faces=np.asarray(smooth_faces, dtype=np.int64),
+        )
 
     primal_edges = sorted(
         {
@@ -520,28 +576,41 @@ def render_primal_and_dual(
     )
     plotter.set_background("white")
 
-    plotter.add_mesh(
-        surface,
-        color="white",
-        opacity=1.0,
-        smooth_shading=False,
-        show_edges=False,
-        lighting=True,
-    )
-    plotter.add_mesh(
-        primal_wire,
-        color="blue",
-        line_width=primal_width,
-        render_lines_as_tubes=True,
-        lighting=False,
-    )
-    plotter.add_mesh(
-        dual_wire,
-        color="red",
-        line_width=dual_width,
-        render_lines_as_tubes=True,
-        lighting=False,
-    )
+    if smooth_torus is not None:
+        plotter.add_mesh(
+            smooth_torus,
+            color="orange", # lightgray
+            opacity=smooth_torus_opacity,
+            smooth_shading=True,
+            show_edges=False,
+            lighting=True,
+        )
+
+    if show_primal:
+        plotter.add_mesh(
+            surface,
+            color="cornflower_blue", # white
+            opacity=1.0,
+            smooth_shading=False,
+            show_edges=False,
+            lighting=True,
+        )
+    if show_primal:
+        plotter.add_mesh(
+            primal_wire,
+            color="cornflower_blue",
+            line_width=primal_width,
+            render_lines_as_tubes=True,
+            lighting=False,
+        )
+    if show_dual:
+        plotter.add_mesh(
+            dual_wire,
+            color="red",
+            line_width=dual_width,
+            render_lines_as_tubes=True,
+            lighting=False,
+        )
 
     # Position sphérique explicite de la caméra. Les valeurs par défaut
     # reproduisent approximativement l'ancienne position (3.4, -3.4, 2.7).
@@ -571,13 +640,12 @@ def render_primal_and_dual(
     view_up /= np.linalg.norm(view_up)
     plotter.camera.up = tuple(view_up)
 
-    rendered_points = np.vstack(
-        (
-            xyz,
-            np.asarray(primal_line_points),
-            np.asarray(dual_line_points),
-        )
-    )
+    rendered_point_sets = [xyz]
+    if show_primal:
+        rendered_point_sets.append(np.asarray(primal_line_points))
+    if show_dual:
+        rendered_point_sets.append(np.asarray(dual_line_points))
+    rendered_points = np.vstack(rendered_point_sets)
     relative_points = rendered_points - np.asarray(plotter.camera.focal_point)
     half_width = float(np.max(np.abs(relative_points @ camera_right)))
     half_height = float(np.max(np.abs(relative_points @ view_up)))
@@ -673,6 +741,12 @@ def main() -> int:
         raise ValueError(
             "--camera-elevation doit être comprise entre -89 et 89 degrés."
         )
+    if not math.isfinite(args.smooth_torus_opacity) or not (
+        0.0 <= args.smooth_torus_opacity <= 1.0
+    ):
+        raise ValueError(
+            "--smooth-torus-opacity doit être comprise entre 0 et 1."
+        )
 
     args.outdir.mkdir(
         parents=True,
@@ -727,6 +801,10 @@ def main() -> int:
                 args.off_screen,
                 args.primal_width,
                 args.dual_width,
+                not args.no_primal,
+                not args.no_dual,
+                args.smooth_torus,
+                args.smooth_torus_opacity,
                 args.camera_azimuth,
                 args.camera_elevation,
             )
@@ -746,16 +824,22 @@ if __name__ == "__main__":
 
 # python3 torus_dual_barycentric_gmsh.py --major-radius 1.5 --minor-radius 0.5 --lc 0.16 --primal-width 4 --dual-width 4 --outdir outputs
 
+# --off-screen \
+# --no-primal \
 """
 python3 torus_dual_barycentric_gmsh.py \
   --major-radius 1.5 \
   --minor-radius 0.5 \
-  --lc 0.4 \
+  --lc 1 \
   --primal-width 8 \
   --dual-width 8 \
   --camera-azimuth 120 \
   --camera-elevation 30 \
+  --smooth-torus \
   --off-screen \
+  --no-primal \
+  --no-dual \
+  --smooth-torus-opacity 1 \
   --outdir outputs \
   --screenshot outputs/torus_primal_dual.pdf
 """

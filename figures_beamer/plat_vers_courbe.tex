@@ -1,0 +1,17 @@
+\def\imgw{0.25\textwidth}
+\def\sep{5cm}
+
+\begin{tikzpicture}[
+    every path/.style={thick,line join=round, cap=round},
+]
+\node (plat) at (0*\sep,0) {\includegraphics[width=\imgw]{img/sphere_primal_dual.pdf}};
+\node (courbe) at (1*\sep,0) {\includegraphics[width=\imgw]{img/sphere_primal_dual_curved.pdf}};
+
+\draw[->, very thick] (plat.east) -- (courbe.west) node[above, midway] {$\projvariete$};
+
+\node[below] at (plat.north west) {{\color{myblue}$\ensprimalplat$}, {\color{myred}$\ensdualplat$}};
+\node[below] at (courbe.north east) {{\color{myblue}$\ensprimal$}, {\color{myred}$\ensdual$}};
+
+\node[below] at (plat.south) {surface polyédrique $\surfpoly$};
+\node[below] at (courbe.south) {surface lisse $\surflisse$};
+\end{tikzpicture}

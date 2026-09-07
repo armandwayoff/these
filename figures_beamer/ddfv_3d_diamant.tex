@@ -1,0 +1,233 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\makeatletter
+
+\newcommand{\PointXYZ}[4]{%
+    \pgfmathsetmacro{\px}{#2}%
+    \pgfmathsetmacro{\py}{#3}%
+    \pgfmathsetmacro{\pz}{#4}%
+    \coordinate (#1) at (\px,\py,\pz);
+    \expandafter\xdef\csname pt@#1@x\endcsname{\px}%
+    \expandafter\xdef\csname pt@#1@y\endcsname{\py}%
+    \expandafter\xdef\csname pt@#1@z\endcsname{\pz}%
+}
+
+\newcommand{\GetX}[1]{\csname pt@#1@x\endcsname}
+\newcommand{\GetY}[1]{\csname pt@#1@y\endcsname}
+\newcommand{\GetZ}[1]{\csname pt@#1@z\endcsname}
+
+\newcommand{\MidPointXYZ}[3]{%
+    \pgfmathsetmacro{\mx}{0.5*(\GetX{#2}+\GetX{#3})}%
+    \pgfmathsetmacro{\my}{0.5*(\GetY{#2}+\GetY{#3})}%
+    \pgfmathsetmacro{\mz}{0.5*(\GetZ{#2}+\GetZ{#3})}%
+    \PointXYZ{#1}{\mx}{\my}{\mz}%
+}
+
+\newcommand{\LinePlaneIntersection}[6]{%
+    \pgfmathsetmacro{\ux}{\GetX{#5}-\GetX{#4}}%
+    \pgfmathsetmacro{\uy}{\GetY{#5}-\GetY{#4}}%
+    \pgfmathsetmacro{\uz}{\GetZ{#5}-\GetZ{#4}}%
+
+    \pgfmathsetmacro{\vx}{\GetX{#6}-\GetX{#4}}%
+    \pgfmathsetmacro{\vy}{\GetY{#6}-\GetY{#4}}%
+    \pgfmathsetmacro{\vz}{\GetZ{#6}-\GetZ{#4}}%
+
+    \pgfmathsetmacro{\nx}{\uy*\vz-\uz*\vy}%
+    \pgfmathsetmacro{\ny}{\uz*\vx-\ux*\vz}%
+    \pgfmathsetmacro{\nz}{\ux*\vy-\uy*\vx}%
+
+    \pgfmathsetmacro{\dx}{\GetX{#3}-\GetX{#2}}%
+    \pgfmathsetmacro{\dy}{\GetY{#3}-\GetY{#2}}%
+    \pgfmathsetmacro{\dz}{\GetZ{#3}-\GetZ{#2}}%
+
+    \pgfmathsetmacro{\den}{\nx*\dx+\ny*\dy+\nz*\dz}%
+    \pgfmathsetmacro{\num}{\nx*(\GetX{#4}-\GetX{#2})+\ny*(\GetY{#4}-\GetY{#2})+\nz*(\GetZ{#4}-\GetZ{#2})}%
+
+    \pgfmathsetmacro{\tt}{\num/\den}%
+
+    \pgfmathsetmacro{\ix}{\GetX{#2}+\tt*\dx}%
+    \pgfmathsetmacro{\iy}{\GetY{#2}+\tt*\dy}%
+    \pgfmathsetmacro{\iz}{\GetZ{#2}+\tt*\dz}%
+
+    \PointXYZ{#1}{\ix}{\iy}{\iz}%
+}
+
+\makeatother
+
+% \tdplotsetmaincoords{0}{0}
+
+\def\ViewTheta{60}
+\def\ViewPhi{35}
+
+\tdplotsetmaincoords{\ViewTheta}{\ViewPhi}
+
+\def\FigureScale{4.5}
+\pgfmathsetlengthmacro{\SyncedThickWidth}{2*0.8pt/\FigureScale}
+
+\tikzset{
+    synced thick arrow/.style={
+        line width=\SyncedThickWidth,
+        -{>[scale={1.8/\FigureScale}]}
+    }
+}
+
+\begin{tikzpicture}[
+    ddfv,
+    tdplot_main_coords,
+    scale=\FigureScale,
+    scale=0.75,
+]
+
+\def\a{0.2}
+\def\lengthbasis{4pt}
+\def\lengthsq{1pt}
+
+
+\PointXYZ{xke}{0}{0.5}{0}
+\PointXYZ{xle}{0}{-0.5}{0}
+\PointXYZ{xk}{-0.4}{-0.2}{0}
+\PointXYZ{xl}{0.4}{0.2}{0}
+
+\PointXYZ{xkez}{\GetX{xke}}{\GetY{xke}}{0.5} 
+\PointXYZ{xlez}{\GetX{xle}}{\GetY{xle}}{0.5} 
+\PointXYZ{xkz}{\GetX{xk}}{\GetY{xk}}{1.2}
+\PointXYZ{xlz}{\GetX{xl}}{\GetY{xl}}{1.2}
+
+\MidPointXYZ{xlezxkz}{xlez}{xkz}
+\MidPointXYZ{xlezxlz}{xlez}{xlz}
+\MidPointXYZ{xkezxkz}{xkez}{xkz}
+\MidPointXYZ{xkezxlz}{xkez}{xlz}
+
+\LinePlaneIntersection{I}{xle}{xlez}{xlezxkz}{xlezxlz}{xkezxlz}
+\LinePlaneIntersection{J}{xl}{xlz}{xlezxkz}{xlezxlz}{xkezxlz}
+\LinePlaneIntersection{K}{xke}{xkez}{xlezxkz}{xlezxlz}{xkezxlz}
+\LinePlaneIntersection{L}{xk}{xkz}{xlezxkz}{xlezxlz}{xkezxlz}
+
+\onslide<1->{
+\draw[myblue] (xlez) -- (xkez) node[midway, below] {$\sigma$};
+
+\draw[semithick, gray] (xlezxkz) -- (xlez);
+\draw[semithick, gray] (xkezxlz) -- (xkez);
+\draw[semithick, gray] (xkezxkz) -- (xkez);
+\draw[semithick, gray] (xlezxlz) -- (xlez);
+
+\draw[semithick, gray] (xkezxlz) -- (xlz);
+\draw[semithick, gray] (xkezxkz) -- (xkz);
+
+\draw[myred] (xlz) -- (xkz) node[midway, above] {$\dual{\sigma}$};
+
+\node[ptsq={myblue}{below:{\contour{white}{$x_{\mailleduale{L}}$}}}] at (xlez) {};
+\node[ptsq={myblue}{right:{\contour{white}{$x_{\mailleduale{K}}$}}}] at (xkez) {};
+}
+
+\onslide<1->{
+\MidPointXYZ{Mid}{I}{K}
+
+\pgfmathsetmacro{\Zplane}{\GetZ{Mid}}
+
+\begin{scope}[
+    canvas is xy plane at z=\Zplane,
+    % every path/.style={}
+]
+
+\coordinate (xle2D) at (\GetX{xle},\GetY{xle});
+\coordinate (xke2D) at (\GetX{xke},\GetY{xke});
+\coordinate (xk2D)  at (\GetX{xk}, \GetY{xk});
+\coordinate (xl2D)  at (\GetX{xl}, \GetY{xl});
+
+\fill[mylightgreen,opacity=0.8] (xle2D) -- (xk2D) -- (xke2D) -- (xl2D) -- cycle;
+
+\path[name path=sigma]  (xle2D) -- (xke2D);
+\path[name path=sigmae] (xk2D) -- (xl2D);
+
+\path[name intersections={of=sigma and sigmae, by=Inter}];
+
+\def\rayonangle{0.08}
+
+\path let
+    \p0 = (Inter),
+    \p1 = (xke2D),
+    \p2 = (xl2D)
+in
+    \pgfextra{
+        \pgfmathsetmacro{\angA}{atan2(-\y1+\y0,\x1-\x0)}
+        \pgfmathsetmacro{\angB}{atan2(\y2-\y0,\x2-\x0)}
+        \global\let\angA\angA
+        \global\let\angB\angB
+    };
+
+\draw[black]
+    ($(Inter)+(\angA:\rayonangle)$)
+    arc[
+        start angle=\angA,
+        end angle=\angB,
+        radius=\rayonangle
+    ];
+
+\node[below] at ($(Inter)+({0.5*(\angA+\angB)}:\rayonangle)$) {$\angle{\diamantplat{D}}$};
+
+\draw ($(xke2D)!0.2!(xle2D)$) rectangle ++(\lengthsq,-\lengthsq);
+\coordinate (P) at ($(xk2D)!0.2!(xl2D)$);
+\draw
+    (P)
+    -- ($(P)!\lengthsq!(xl2D)$)
+    -- ($(P)!\lengthsq!(xl2D)!\lengthsq!-90:(xl2D)$)
+    -- ($(P)!\lengthsq!-90:(xl2D)$)
+    -- cycle;
+
+
+\coordinate (Pbase) at ($(xke2D)!0.2!(xle2D)$);
+\coordinate (Pbasedual) at ($(xk2D)!0.2!(xl2D)$);
+
+\node[myblue, above left] at ($(Pbase)+(0,{-\lengthbasis})$) {$\vect{\tau}_{\mailledualeplate{K},\mailledualeplate{L}}$};
+\node[myblue, right] at ($(Pbase)+({\lengthbasis},0)$) {$\vect{\nu}_{\sigma \primalplat{K}}$};
+    
+\node[myred, above] at ($(Pbasedual)!\lengthbasis!(xl2D)$) {$\vect{\tau}_{\primalplat{K},\primalplat{L}}$};
+\node[myred, below] at ($(Pbasedual)!\lengthbasis!-90:(xl2D)$) {$\vect{\nu}_{\dual{\sigma}\mailledualeplate{K}}$};
+
+\end{scope}
+
+
+\draw[myblue, dashed] (I) -- (K);
+\draw[myred, dashed] (J) -- (L);
+}
+
+\onslide<1->{
+\node[mydarkgreen, left] at (xlezxkz) {$\diamantplat{D}_{\sigma, \dual{\sigma}}$};
+
+% \begin{scope}[canvas is xz plane at y=0]
+% \path  (0,1) node[anchor=south]{$z$}; 
+% \pgflowlevelsynccm
+% \draw[thick,-latex] (0,0) -- (0,1); 
+% \end{scope}
+
+\begin{scope}[canvas is xy plane at z=\Zplane]
+    \pgflowlevelsynccm
+
+    \coordinate (xkeZero) at (\GetX{xke},\GetY{xke});
+    \coordinate (xleZero) at (\GetX{xle},\GetY{xle});
+
+    \coordinate (xkZero) at (\GetX{xk},\GetY{xk});
+    \coordinate (xlZero) at (\GetX{xl},\GetY{xl});
+
+    \coordinate (Pbase) at ($(xkeZero)!0.2!(xleZero)$);
+    \coordinate (Pbasedual) at ($(xkZero)!0.2!(xlZero)$);
+
+    \draw[myblue, synced thick arrow] (Pbase) -- ++(0,-\lengthbasis); % node[above=5pt] {$\vect{\tau}_{\mailleduale{K},\mailleduale{L}}$};
+    \draw[myblue, synced thick arrow] (Pbase) -- ++(\lengthbasis,0); % node[above] {$\vect{\nu}_{\sigma \primal{K}}$};
+
+    \draw[myred, synced thick arrow] (Pbasedual) -- ($(Pbasedual)!\lengthbasis!(xlZero)$);
+    \draw[myred, synced thick arrow] (Pbasedual) -- ($(Pbasedual)!\lengthbasis!-90:(xlZero)$); % node[below] {$\vect{\nu}_{\dual{\sigma}\mailleduale{K}}$};
+
+\end{scope}
+}
+
+\onslide<1->{
+\draw[semithick, gray] (xlezxlz) -- (xlz);
+\draw[semithick, gray] (xlezxkz) -- (xkz);
+
+\node[ptcl={myred}{above:{\contour{white}{$x_{\primal{K}}$}}}] at (xkz) {};
+\node[ptcl={myred}{above:{\contour{white}{$x_{\primal{L}}$}}}] at (xlz) {};
+}
+
+\end{tikzpicture}

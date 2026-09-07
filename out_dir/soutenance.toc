@@ -1,3 +1,13 @@
 \@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
 \babel@toc {french}{}\relax 
-\beamer@sectionintoc {1}{Démonstration de l'inégalité de Poincaré \textsc {ddfv} sur une surface fermée sans bord de $\mathbb {R}^3$}{20}{0}{1}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Généralisation de la méthode \textsc {ddfv}\xspace aux surfaces fermées sans bord de $\mathbb {R}^3$}{14}{0}{2}
+\beamer@subsectionintoc {2}{1}{Maillages primal et dual}{16}{0}{2}
+\beamer@subsectionintoc {2}{2}{Projection orthogonale}{21}{0}{2}
+\beamer@subsectionintoc {2}{3}{Diamants}{24}{0}{2}
+\beamer@subsectionintoc {2}{4}{Opérateurs discrets}{29}{0}{2}
+\beamer@subsectionintoc {2}{5}{Propriétés des opérateurs discrets}{30}{0}{2}
+\beamer@sectionintoc {3}{Démonstration de l'inégalité de Poincaré \textsc {ddfv} sur une surface fermée sans bord de $\mathbb {R}^3$}{32}{0}{3}
+\beamer@subsectionintoc {3}{1}{Une inégalité de graphe}{38}{0}{3}
+\beamer@subsectionintoc {3}{2}{Comparaisons de constantes isopérimétriques}{41}{0}{3}
+\beamer@sectionintoc {4}{Perspectives}{44}{0}{4}

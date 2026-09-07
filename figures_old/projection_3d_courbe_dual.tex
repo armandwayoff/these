@@ -1,0 +1,331 @@
+\input{figures/ddfv_tikzstyles.tex}
+
+\def\Rayon{2}
+\pgfmathsetmacro{\Rdomaine}{0.9*\Rayon}
+\def\xzero{0}
+\def\yzero{0}
+\def\zzero{0}
+
+\def\eps{0.15}
+\def\epsperp{0.05}
+
+\newcommand{\MilieuProjete}[2]{%
+    % #1 = sommet (A, B, C, ...)
+    % #2 = indice
+
+    % Milieu de l'arête primale
+    \pgfmathsetmacro{\xM}{(\xzero+\csname x#1\endcsname)/2}
+    \pgfmathsetmacro{\yM}{(\yzero+\csname y#1\endcsname)/2}
+    \pgfmathsetmacro{\zM}{(f(0,0)+f(\csname x#1\endcsname,\csname y#1\endcsname))/2}
+
+    % Projection radiale sur la sphère de centre (xzero,yzero,zzero)
+    \pgfmathsetmacro{\normM}{
+        sqrt((\xM-\xzero)^2 + (\yM-\yzero)^2 + (\zM-\zzero)^2)
+    }
+
+    \expandafter\pgfmathsetmacro\csname xProjM#1\endcsname
+        {\xzero + \Rayon*(\xM-\xzero)/\normM}
+
+    \expandafter\pgfmathsetmacro\csname yProjM#1\endcsname
+        {\yzero + \Rayon*(\yM-\yzero)/\normM}
+
+    \expandafter\pgfmathsetmacro\csname zProjM#1\endcsname
+        {\zzero + \Rayon*(\zM-\zzero)/\normM}
+
+    \coordinate (fM#1) at (
+        {\csname xProjM#1\endcsname},
+        {\csname yProjM#1\endcsname},
+        {\csname zProjM#1\endcsname}
+    );
+}
+
+\makeatletter
+
+\newcommand{\PointXYZ}[4]{%
+    \pgfmathsetmacro{\px}{#2}%
+    \pgfmathsetmacro{\py}{#3}%
+    \pgfmathsetmacro{\pz}{#4}%
+    \coordinate (#1) at (\px,\py,\pz);
+    \expandafter\xdef\csname pt@#1@x\endcsname{\px}%
+    \expandafter\xdef\csname pt@#1@y\endcsname{\py}%
+    \expandafter\xdef\csname pt@#1@z\endcsname{\pz}%
+}
+
+\newcommand{\GetX}[1]{\csname pt@#1@x\endcsname}
+\newcommand{\GetY}[1]{\csname pt@#1@y\endcsname}
+\newcommand{\GetZ}[1]{\csname pt@#1@z\endcsname}
+
+\newcommand{\CrossPointsFrom}[7]{%
+  % #1 = nom du point de départ E (déjà défini)
+  % #2 = nom du nouveau point F à créer
+  % #3,#4 = A,B   #5,#6 = C,D   #7 = longueur de [E,F]
+  \pgfmathsetmacro{\ABx}{\GetX{#4}-\GetX{#3}}%
+  \pgfmathsetmacro{\ABy}{\GetY{#4}-\GetY{#3}}%
+  \pgfmathsetmacro{\ABz}{\GetZ{#4}-\GetZ{#3}}%
+  \pgfmathsetmacro{\CDx}{\GetX{#6}-\GetX{#5}}%
+  \pgfmathsetmacro{\CDy}{\GetY{#6}-\GetY{#5}}%
+  \pgfmathsetmacro{\CDz}{\GetZ{#6}-\GetZ{#5}}%
+  \pgfmathsetmacro{\Nx}{\ABy*\CDz-\ABz*\CDy}%
+  \pgfmathsetmacro{\Ny}{\ABz*\CDx-\ABx*\CDz}%
+  \pgfmathsetmacro{\Nz}{\ABx*\CDy-\ABy*\CDx}%
+  \pgfmathsetmacro{\Nnorm}{sqrt(\Nx*\Nx+\Ny*\Ny+\Nz*\Nz)}%
+  \pgfmathsetmacro{\nx}{\Nx/\Nnorm}%
+  \pgfmathsetmacro{\ny}{\Ny/\Nnorm}%
+  \pgfmathsetmacro{\nz}{\Nz/\Nnorm}%
+  \pgfmathsetmacro{\Fx}{\GetX{#1}+#7*\nx}%
+  \pgfmathsetmacro{\Fy}{\GetY{#1}+#7*\ny}%
+  \pgfmathsetmacro{\Fz}{\GetZ{#1}+#7*\nz}%
+  \PointXYZ{#2}{\Fx}{\Fy}{\Fz}%
+}
+
+\newcommand{\MidPointXYZ}[3]{%
+    \pgfmathsetmacro{\mx}{0.5*(\GetX{#2}+\GetX{#3})}%
+    \pgfmathsetmacro{\my}{0.5*(\GetY{#2}+\GetY{#3})}%
+    \pgfmathsetmacro{\mz}{0.5*(\GetZ{#2}+\GetZ{#3})}%
+    \PointXYZ{#1}{\mx}{\my}{\mz}%
+}
+
+\newcommand{\LinePlaneIntersection}[6]{%
+    \pgfmathsetmacro{\ux}{\GetX{#5}-\GetX{#4}}%
+    \pgfmathsetmacro{\uy}{\GetY{#5}-\GetY{#4}}%
+    \pgfmathsetmacro{\uz}{\GetZ{#5}-\GetZ{#4}}%
+
+    \pgfmathsetmacro{\vx}{\GetX{#6}-\GetX{#4}}%
+    \pgfmathsetmacro{\vy}{\GetY{#6}-\GetY{#4}}%
+    \pgfmathsetmacro{\vz}{\GetZ{#6}-\GetZ{#4}}%
+
+    \pgfmathsetmacro{\nx}{\uy*\vz-\uz*\vy}%
+    \pgfmathsetmacro{\ny}{\uz*\vx-\ux*\vz}%
+    \pgfmathsetmacro{\nz}{\ux*\vy-\uy*\vx}%
+
+    \pgfmathsetmacro{\dx}{\GetX{#3}-\GetX{#2}}%
+    \pgfmathsetmacro{\dy}{\GetY{#3}-\GetY{#2}}%
+    \pgfmathsetmacro{\dz}{\GetZ{#3}-\GetZ{#2}}%
+
+    \pgfmathsetmacro{\den}{\nx*\dx+\ny*\dy+\nz*\dz}%
+    \pgfmathsetmacro{\num}{\nx*(\GetX{#4}-\GetX{#2})+\ny*(\GetY{#4}-\GetY{#2})+\nz*(\GetZ{#4}-\GetZ{#2})}%
+
+    \pgfmathsetmacro{\tt}{\num/\den}%
+
+    \pgfmathsetmacro{\ix}{\GetX{#2}+\tt*\dx}%
+    \pgfmathsetmacro{\iy}{\GetY{#2}+\tt*\dy}%
+    \pgfmathsetmacro{\iz}{\GetZ{#2}+\tt*\dz}%
+
+    \PointXYZ{#1}{\ix}{\iy}{\iz}%
+}
+
+\makeatother
+
+\pgfmathdeclarefunction{f}{2}{%
+  \pgfmathparse{\zzero + sqrt(max(0,\Rayon^2-(#1-\xzero)^2-(#2-\yzero)^2))}%
+}
+
+\begin{tikzpicture}[
+  node distance=0.6cm,
+  every node/.style={inner sep=0pt},
+  ddfv,
+  scale=0.9,
+  baseline=(current bounding box.center),
+]
+
+\tdplotsetmaincoords{45}{55}
+
+\begin{scope}[
+    local bounding box=mainL,
+    tdplot_main_coords
+]
+
+\coordinate (O) at (0,0,0);
+\coordinate (fO) at (0,0,{f(0,0)});
+
+\def\Rpenta{1.5}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                    Triangle courbe
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\foreach \i/\j/\angleA/\angleB in {
+    2/3/17/21
+}
+{
+    % Point F_i
+    \pgfmathsetmacro{\xA}{\Rpenta*cos((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\yA}{\Rpenta*sin((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\zA}{f(\xA,\yA)}
+
+    % Point F_j
+    \pgfmathsetmacro{\xB}{\Rpenta*cos((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\yB}{\Rpenta*sin((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\zB}{f(\xB,\yB)}
+
+    \fill[mylightblue,opacity=0.5]
+    plot[variable=\t, domain=0:1, samples=20]
+    (
+        {\t*\xA},
+        {\t*\yA},
+        {f(\t*\xA, \t*\yA)}
+    )
+    --
+    plot[variable=\t, domain=0:1, samples=20]
+    (
+        {(1-\t)*\xA + \t*\xB},
+        {(1-\t)*\yA + \t*\yB},
+        {f((1-\t)*\xA + \t*\xB, (1-\t)*\yA + \t*\yB)}
+    )
+    --
+    plot[variable=\t, domain=0:1, samples=20]
+    (
+        {\t*\xB},
+        {\t*\yB},
+        {f(\t*\xB, \t*\yB)}
+    ) --cycle;
+}
+
+\foreach \i/\j/\angleA/\angleB in {
+    1/2/13/17,
+    2/3/17/21,
+    3/4/21/5,
+    4/5/5/9,
+    5/1/9/13
+}
+{
+    % Point F_i
+    \pgfmathsetmacro{\xA}{\Rpenta*cos((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\yA}{\Rpenta*sin((\angleA*pi/10)r)}
+    \pgfmathsetmacro{\zA}{f(\xA,\yA)}
+
+    \coordinate (F\i)  at ({\xA},{\yA},0);
+    \coordinate (fF\i) at ({\xA},{\yA},{\zA});
+
+    \draw[myblue, dashed] (fO) -- (fF\i);
+
+    % \node[ptsq={myblue}{}] at (F\i) {};
+
+    % Point F_j
+    \pgfmathsetmacro{\xB}{\Rpenta*cos((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\yB}{\Rpenta*sin((\angleB*pi/10)r)}
+    \pgfmathsetmacro{\zB}{f(\xB,\yB)}
+
+    \coordinate (F\j)  at ({\xB},{\yB},0);
+    \coordinate (fF\j) at ({\xB},{\yB},{\zB});
+
+    % Image du segment F_i F_j sur la surface
+    \draw[myblue, thick]
+    plot[variable=\t, domain=0:1, samples=20]
+    (
+        {(1-\t)*\xA + \t*\xB},
+        {(1-\t)*\yA + \t*\yB},
+        {f((1-\t)*\xA + \t*\xB, (1-\t)*\yA + \t*\yB)}
+    );
+
+    % Image du segment O F_i sur la surface
+    \draw[myblue, thick]
+    plot[variable=\t, domain=0:1, samples=20]
+    (
+        {\t*\xA},
+        {\t*\yA},
+        {f(\t*\xA, \t*\yA)}
+    );
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \MilieuProjete{A}{\i}
+    \MilieuProjete{B}{\j}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+    % Barycentre euclidien du triangle fO, fF_i, fF_j
+    \pgfmathsetmacro{\xG}{(\xzero+\xA+\xB)/3}
+    \pgfmathsetmacro{\yG}{(\yzero+\yA+\yB)/3}
+    \pgfmathsetmacro{\zG}{(f(0,0)+f(\xA,\yA)+f(\xB,\yB))/3}
+
+    % Projection radiale sur la sphère de centre (xzero,yzero,zzero)
+    \pgfmathsetmacro{\normG}{
+        sqrt((\xG-\xzero)^2 + (\yG-\yzero)^2 + (\zG-\zzero)^2)
+    }
+
+    \pgfmathsetmacro{\xProjG}{\xzero + \Rayon*(\xG-\xzero)/\normG}
+    \pgfmathsetmacro{\yProjG}{\yzero + \Rayon*(\yG-\yzero)/\normG}
+    \pgfmathsetmacro{\zProjG}{\zzero + \Rayon*(\zG-\zzero)/\normG}
+
+    \coordinate (G\i) at ({\xG},{\yG},{\zG});
+    \coordinate (fG\i) at ({\xProjG},{\yProjG},{\zProjG});
+
+    \MidPointXYZ{M\i}{fO}{fF\i}
+
+    \draw[mygreen, thick]
+    plot[variable=\t, domain=0:1, samples=20]
+    (
+        {\t*\xProjG},
+        {\t*\yProjG},
+        {f(\t*\xProjG, \t*\yProjG)}
+    );
+    \draw[mygreen, thick]
+    plot[variable=\t, domain=0:1, samples=20]
+    (
+        {(1-\t)*\xProjG + \t*\xA},
+        {(1-\t)*\yProjG + \t*\yA},
+        {f((1-\t)*\xProjG + \t*\xA, (1-\t)*\yProjG + \t*\yA)}
+    );
+    \draw[mygreen, thick]
+    plot[variable=\t, domain=0:1, samples=20]
+    (
+        {(1-\t)*\xProjG + \t*\xB},
+        {(1-\t)*\yProjG + \t*\yB},
+        {f((1-\t)*\xProjG + \t*\xB, (1-\t)*\yProjG + \t*\yB)}
+    );
+
+    \node[ptcl={myred}{}] at (fG\i) {};
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \draw[myred, thick]
+    plot[variable=\t, domain=0:1, samples=20]
+    (
+        {(1-\t)*\xProjG + \t*\xProjMA},
+        {(1-\t)*\yProjG + \t*\yProjMA},
+        {f((1-\t)*\xProjG + \t*\xProjMA, (1-\t)*\yProjG + \t*\yProjMA)}
+    );
+
+    \draw[myred, thick]
+    plot[variable=\t, domain=0:1, samples=20]
+    (
+        {(1-\t)*\xProjG + \t*\xProjMB},
+        {(1-\t)*\yProjG + \t*\yProjMB},
+        {f((1-\t)*\xProjG + \t*\xProjMB, (1-\t)*\yProjG + \t*\yProjMB)}
+    );
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    % \draw[mygreen, dashed] (fO) -- (fG\i) -- (fF\i);
+    % \draw[mygreen, dashed] (fG\i) -- (fF\j);
+
+    \node[ptsq={black}{}] at (fMA) {};
+    \node[ptsq={myblue}{}] at (fF\i) {};
+}
+
+\draw[myblue,dashed] (fF1) -- (fF2) -- (fF3) -- (fF4) -- (fF5) -- cycle;
+
+\pgfmathsetmacro{\xA}{\Rpenta*cos((13*pi/10)r)}
+\pgfmathsetmacro{\yA}{\Rpenta*sin((13*pi/10)r)}
+\pgfmathsetmacro{\zA}{f(\xA,\yA)}
+\MilieuProjete{A}{1}
+\node[ptsq={black}{}] at (fMA) {};
+\node[ptsq={myblue}{}] at (fF1) {};
+
+
+% \fill[mylightblue,opacity=0.5] (fO) -- (fF2) -- (fF3) -- cycle;
+% \node[myblue,left=15pt] at (fG2) {$\primal{K}$};
+
+% \ruledsurface{fO}{fG2}{fF3}{fG3} 
+\node[ptsq={myblue}{}] at (fO) {};
+
+\draw[mailledualeint] (M1) -- (G1) -- (M2) -- (G2) -- (M3) -- (G3) -- (M4) -- (G4) -- (M5) -- (G5) -- cycle;
+
+\end{scope}
+
+\end{tikzpicture}

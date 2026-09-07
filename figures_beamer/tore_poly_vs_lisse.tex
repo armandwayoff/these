@@ -1,0 +1,15 @@
+\begin{tikzpicture}[
+    every path/.style={thick,line join=round, cap=round},
+]
+
+\tdplotsetmaincoords{45}{55}
+
+\node[visible on=<1>] at (3,1.5) {\includegraphics[width=0.9\textwidth]{img/torus_lisse.pdf}};
+\node[visible on=<1->] (torepoly) at (3,1.5) {%
+    \includegraphics[width=0.9\textwidth]
+    {img/torus_lisse_et_primal.pdf}%
+};
+
+% \node[visible on=<1->, above] at (torepoly.north) {\highlight{\surfpoly \not\subset \surflisse}};
+
+\end{tikzpicture}

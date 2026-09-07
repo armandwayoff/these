@@ -1,0 +1,33 @@
+\section{Perspectives}
+
+\begin{frame}{Perspectives en thèse}
+
+\begin{itemize}
+    \item Diffraction électromagnétique par un objet
+    \begin{figure}
+        \centering
+        \input{figures/diffraction.tex}
+    \end{figure}
+    \item Équations de Maxwell en régime harmonique
+    \item Méthode des équations intégrales : \emph{Electric Field Integral Equation} sur {\color{mydarkgreen}$\surflisse$}
+    \[
+    \gamma^\mathrm{tan} \mathopen{}\left( \mathrm{i} \, \omega \mu_0 G \vec{J} + \frac{\mathrm{i}}{\omega \varepsilon_0} \grad G \, \mathrm{div} \vec{J} \right) = E^\mathrm{tan}_\mathrm{inc}
+    % \gamma^\text{tan} T = \gamma^\text{tan} \left( \mathrm{i}\, \omega \mu_0 G + \frac{\mathrm{i}}{\omega \varepsilon_0} \grad G\, \text{div} \right)
+    \]
+    \item Matrices \textbf{pleines} et très \textbf{mal conditionnées} % $\implies$ méthodes très lentes
+\end{itemize}
+\begin{center}
+\highlighttxt{\sftxt{Méthode de \textbf{préconditionnement} : identité de Calder\'on + $\text{div} (n \times \grad \varphi) = 0$}}
+\end{center}
+
+\begin{itemize}
+    \item Malheureusement, cette identité ne passe pas bien au niveau discret
+\end{itemize}
+
+\begin{exampleblock}{Enjeu principal de la thèse}
+\begin{itemize}
+    \item Proposer une méthodologie efficace et naturelle via la méthode \ddfv
+\end{itemize}
+\end{exampleblock}
+
+\end{frame}

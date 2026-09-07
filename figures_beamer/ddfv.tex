@@ -1,15 +1,19 @@
 \begin{tikzpicture}[
     scale=1.4,
     bluept/.style={circle, fill=myblue, inner sep=1.5pt},
-    redpt/.style={circle, fill=myred, inner sep=1.5pt}
+    redpt/.style={circle, fill=myred, inner sep=1.5pt},
+    every path/.style={},
 ]
 
 % paramètres
 \def\n{3}
 \def\a{0.7}
 
+\begin{scope}
+
 \clip (-0.45,-0.45) rectangle (2.45,2.45);
 
+\begin{scope}[every path/.style={thick}]
 % grille bleue
 \foreach \i in {0,1,2} {
     \draw[myblue, thick] (\i,0) -- (\i,2);
@@ -38,14 +42,6 @@
 \draw[myblue, thick] (0,1) -- (1,2);
 \draw[myblue, thick] (1,0) -- (2,1);
 
-% points bleus
-\foreach \x in {0,1,2} {
-    \foreach \y in {0,1,2} {
-        \node[bluept] at (\x,\y) {};
-    }
-}
-
-\onslide<2->{
 
 \coordinate (D11) at (0.35,0.65);
 \coordinate (D12) at (0.65,0.35);
@@ -68,12 +64,7 @@
 \coordinate (coin1) at ($(D32)+(-1,1)$);
 \coordinate (coin2) at ($(D22b)+(0,-1)$);
 
-\foreach \p in {(D11),(D12),(D21),(D22),(D31),(D32),(D41),(D42),(D11b),(D12b),(D22b),(D22bb),(D31b),(D31bb),(D41b),(D42b),(coin1),(coin2)} {
-    \node[redpt] at \p {};
-}
 
-
-}
 \onslide<2->{
 
 \draw[myred, thick] (D11) -- (D11b) -- ($(D11)+(-1,-1)$);
@@ -128,32 +119,77 @@
 }
 
 \onslide<3->{
-\fill[mygreen] (0,0) -- (D11) -- (1,1) -- (D12) -- cycle;
-\fill[mygreen] (1,1) -- (D32) -- (1,2) -- (D41) -- cycle;
-
-\node[bluept] at (0,0) {};
-
-\node[redpt] at (D11) {};
-\node[redpt] at (D12) {};
-
-\draw[myblue, thick] (0,0) -- (1,1);
-\draw[myred, thick] (D11) -- (D12);
-
-\node[bluept] at (1,1) {};
-\node[bluept] at (1,2) {};
-
-\node[redpt] at (D32) {};
-\node[redpt] at (D41) {};
-
-\draw[myblue, thick] (1,1) -- (1,2);
-\draw[myred, thick] (D32) -- (D41);
+% maillage diamant : chaque centre de triangle primal est relié à ses sommets
+\foreach \D/\xA/\yA/\xB/\yB/\xC/\yC in {
+    D11/0/0/0/1/1/1,
+    D12/0/0/1/0/1/1,
+    D21/1/0/1/1/2/1,
+    D22/1/0/2/0/2/1,
+    D31/0/1/0/2/1/2,
+    D32/0/1/1/1/1/2,
+    D41/1/1/1/2/2/2,
+    D42/1/1/2/1/2/2
+} {
+    \draw[mydarkgreen, thick] (\D) -- (\xA,\yA);
+    \draw[mydarkgreen, thick] (\D) -- (\xB,\yB);
+    \draw[mydarkgreen, thick] (\D) -- (\xC,\yC);
 }
 
-\onslide<3->{
+% diamants de bord et prolongement du maillage hors de la fenêtre
+\foreach \D/\xA/\yA/\xB/\yB/\xC/\yC in {
+    D11b/0/0/0/1/-1/0,
+    D31b/0/1/0/2/-1/1,
+    D12b/0/0/1/0/0/-1,
+    D22bb/1/0/2/0/1/-1,
+    D22b/2/0/2/1/3/1,
+    D42b/2/1/2/2/3/2,
+    D31bb/0/2/1/2/1/3,
+    D41b/1/2/2/2/2/3,
+    coin1/-1/2/0/2/0/3,
+    coin2/2/-1/2/0/3/0
+} {
+    \draw[mydarkgreen, thick] (\D) -- (\xA,\yA);
+    \draw[mydarkgreen, thick] (\D) -- (\xB,\yB);
+    \draw[mydarkgreen, thick] (\D) -- (\xC,\yC);
+}
+
+% demi-arêtes issues des sommets bleus du bord
+\draw[mydarkgreen, thick] (0,0) -- ($(D11)+(-1,-1)$);
+\draw[mydarkgreen, thick] (0,0) -- ($(D11b)+(0,-1)$);
+
+\draw[mydarkgreen, thick] (0,2) -- ($(D31)+(0,1)$);
+\draw[mydarkgreen, thick] (0,2) -- ($(D31)+(-1,0)$);
+
+\draw[mydarkgreen, thick] (2,0) -- ($(D22)+(0,-1)$);
+\draw[mydarkgreen, thick] (2,0) -- ($(D22)+(1,0)$);
+
+\draw[mydarkgreen, thick] (2,2) -- ($(D42)+(1,1)$);
+\draw[mydarkgreen, thick] (2,2) -- ($(D41)+(1,1)$);
+
+\draw[mydarkgreen, thick] (0,1) -- ($(D11)+(-1,0)$);
+\draw[mydarkgreen, thick] (1,0) -- ($(D12)+(0,-1)$);
+\draw[mydarkgreen, thick] (2,1) -- ($(D42)+(1,0)$);
+\draw[mydarkgreen, thick] (1,2) -- ($(D41)+(0,1)$);
+}
+
+% points bleus
+\foreach \x in {0,1,2} {
+    \foreach \y in {0,1,2} {
+        \node[bluept] at (\x,\y) {};
+    }
+}
+
+\onslide<2->{
+\foreach \p in {(D11),(D12),(D21),(D22),(D31),(D32),(D41),(D42),(D11b),(D12b),(D22b),(D22bb),(D31b),(D31bb),(D41b),(D42b),(coin1),(coin2)} {
+    \node[redpt] at \p {};
+}
+}
+
+\onslide<4->{
 
 \fill[white, opacity=0.7] (-0.45,-0.45) rectangle (2.45,2.45);
 
-\fill[mygreen] (1,1) -- (D32) -- (1,2) -- (D41) -- cycle;
+\fill[mydarkgreen] (1,1) -- (D32) -- (1,2) -- (D41) -- cycle;
 
 \node[bluept] at (1,1) {};
 \node[bluept] at (1,2) {};
@@ -166,5 +202,13 @@
 
 \draw[black, very thick, ->, cap=round] (1,1.5) -- (0.5,1.7) node[above] {\contour{white}{$\grad f$}};
 }
+
+\end{scope}
+
+\end{scope}
+
+\node[myblue,left] at (-0.5,2.25) {$\ensprimalplat$};
+\node[myred,left, visible on=<2->] at (-0.5,1) {$\ensdualplat$};
+\node[mydarkgreen,left, visible on=<3->] at (-0.5,-0.25) {$\ensdiamantplat$};
 
 \end{tikzpicture}
