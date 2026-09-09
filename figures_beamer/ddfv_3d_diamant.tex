@@ -135,7 +135,10 @@
 \coordinate (xk2D)  at (\GetX{xk}, \GetY{xk});
 \coordinate (xl2D)  at (\GetX{xl}, \GetY{xl});
 
-\fill[mylightgreen,opacity=0.8] (xle2D) -- (xk2D) -- (xke2D) -- (xl2D) -- cycle;
+\definecolor{diamondPythonGreen}{HTML}{008000}
+\definecolor{diamondPythonLimeGreen}{HTML}{32CD32}
+
+\filldraw[fill=diamondPythonGreen, draw=diamondPythonLimeGreen, opacity=0.8] (xle2D) -- (xk2D) -- (xke2D) -- (xl2D) -- cycle;
 
 \path[name path=sigma]  (xle2D) -- (xke2D);
 \path[name path=sigmae] (xk2D) -- (xl2D);

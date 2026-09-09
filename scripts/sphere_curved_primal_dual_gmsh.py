@@ -417,7 +417,7 @@ def render_curved_primal_and_dual(
     plotter.set_background("white")
     plotter.add_mesh(
         sphere,
-        color="orange", # cornflower_blue
+        color="light_viridian", # cornflower_blue
         opacity=1.0,
         smooth_shading=True,
         show_edges=False,
@@ -438,14 +438,14 @@ def render_curved_primal_and_dual(
         render_lines_as_tubes=False,
         lighting=True,
     )
+    """
     plotter.add_mesh(
         diamond_wire,
-        color="mediumseagreen",
+        color="green",
         line_width=diamond_width,
         render_lines_as_tubes=False,
         lighting=True,
     )
-    """
     # Position sphérique explicite de la caméra.
     azimuth = math.radians(camera_azimuth)
     elevation = math.radians(camera_elevation)

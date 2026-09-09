@@ -1,4 +1,4 @@
 [0] Config.pm:307> INFO - This is Biber 2.17
-[1] Config.pm:310> INFO - Logfile is 'out_dir/soutenance.blg'
-[113] biber:340> INFO - === dim. sept.  6, 2026, 22:52:06
-[129] Biber.pm:418> INFO - Reading 'out_dir/soutenance.bcf'
+[0] Config.pm:310> INFO - Logfile is 'out_dir/soutenance.blg'
+[76] biber:340> INFO - === mer. sept.  9, 2026, 19:45:33
+[89] Biber.pm:418> INFO - Reading 'out_dir/soutenance.bcf'

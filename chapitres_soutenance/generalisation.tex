@@ -1,12 +1,11 @@
-\section[Généralisation de la méthode \ddfv]{Généralisation de la méthode \ddfv aux surfaces fermées sans bord de $\R^3$}
+\section[Généralisation  et formalisation de la méthode \ddfv]{Généralisation et formalisation de la méthode \ddfv aux surfaces fermées sans bord de $\R^3$}
 
-\begin{frame}{Généralisation de la méthode \ddfv aux surfaces fermées de $\R^3$}
+\begin{frame}{Généralisation et formalisation de la méthode \ddfv aux surfaces fermées de $\R^3$}
 \bigskip
 \stxt{Cadre nouveau}
 \begin{itemize}
     \item Espaces d’approximation
     \item Opérateurs discrets (gradient, divergence, rotationnel vectoriel et scalaire)
-    \item Produits scalaires
     \item Propriétés de dualité des opérateurs
     \item Discrétisation de la décomposition de Helmholtz–Hodge
 \end{itemize}
@@ -93,7 +92,7 @@ u^\ensddfvplat \defeq \big(
     \centering
     \input{figures_beamer/ddfv_3d_diamant_construc.tex}
 \end{figure}
-\onslide<4->{
+\onslide<3->{
 \begin{itemize}
     \item Inconnue vectorielle discrète sur ${\color{mydarkgreen}\ensdiamantplat}$
 \begin{equation}
@@ -108,7 +107,7 @@ u^\ensddfvplat \defeq \big(
 \end{column}
 \begin{column}{0.3\textwidth}
     \centering
-    \onslide<4->{\input{figures_beamer/ensdiamantplat.tex}}
+    \onslide<3->{\input{figures_beamer/ensdiamantplat.tex}}
     \onslide<5->{\input{figures_beamer/ensdiamant.tex}}
 \end{column}
 \end{columns}
@@ -150,20 +149,40 @@ u^\ensddfvplat \defeq \big(
 \subsection{Propriétés des opérateurs discrets}
 
 \begin{frame}{Propriétés des opérateurs discrets}
-\begin{theo}[Formules de Green discrètes] \label{theo:discrete_green_formulae}
-$\forall \xi^\ensdiamantplat, u^\ensddfvplat \in (\R^2)^\ensdiamantplat \times \R^\ensddfvplat$,
+
+\begin{defis}[Produits scalaires \& Formules de Green discrètes]
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\abovedisplayshortskip}{0pt}
 \begin{align}
-\prodscalddfv{\div^\ensddfvplat \xi^\ensdiamantplat}{u^\ensddfvplat} &= - \prodscalD{\xi^\ensdiamantplat}{\grad^\ensdiamantplat u^\ensddfvplat} \\
-\prodscalddfv{\scarot^\ensddfvplat \xi^\ensdiamantplat}{u^\ensddfvplat} &= \phantom{-} \prodscalD{\xi^\ensdiamantplat}{\rot^\ensdiamantplat u^\ensddfvplat}.
+\forall u^\ensddfvplat, v^\ensddfvplat \in \R^\ensddfvplat,
+\quad
+\prodscalddfv{u^\ensddfvplat}{v^\ensddfvplat} &\defeq \sum_{\primalplat{K} \in \ensprimalplat} \poids{\primalplat{K}} \, u_{\primalplat{K}} \, v_{\primalplat{K}} + \sum_{\mailledualeplate{K} \in \ensdualplat} \poids{\mailledualeplate{K}} \, u_{\mailledualeplate{K}} \, v_{\mailledualeplate{K}} \\
+\forall \xi^\ensdiamantplat, \phi^\ensdiamantplat \in (\R^2)^\ensdiamantplat,
+\quad
+\prodscalD{\xi^\ensdiamantplat}{\phi^\ensdiamantplat} &\defeq \sum_{\diamantplat{D} \in \ensdiamantplat} \poids{\diamantplat{D}} \, \xi^{\diamantplat{D}} \cdot \phi^{\diamantplat{D}}
 \end{align}
+\begin{align}
+\highlight{\prodscalddfv{\div^\ensddfvplat \xi^\ensdiamantplat}{u^\ensddfvplat} \defeq - \prodscalD{\xi^\ensdiamantplat}{\grad^\ensdiamantplat u^\ensddfvplat}} \
+\highlight{\prodscalddfv{\scarot^\ensddfvplat \xi^\ensdiamantplat}{u^\ensddfvplat} \defeq \prodscalD{\xi^\ensdiamantplat}{\rot^\ensdiamantplat u^\ensddfvplat}}
+\end{align}
+\end{defis}
+\begin{theo}[Orthogonalité]
+\[
+\forall u^\ensddfvplat, v^\ensddfvplat \in \R^\ensddfvplat, 
+\quad
+\prodscalD{\rot^\ensdiamantplat u^\ensddfvplat}{\grad^\ensdiamantplat v^\ensddfvplat} = 0
+\]
 \end{theo}
+\begin{corol}[Conservation des identités classiques]
+$\forall u^\ensddfvplat, v^\ensddfvplat \in \R^\ensddfvplat$,
 \begin{align}
-    \forall u^\ensddfvplat, v^\ensddfvplat \in \R^\ensddfvplat \\
-    \prodscalD{\rot^\ensdiamantplat u^\ensddfvplat}{\grad^\ensdiamantplat v^\ensddfvplat} &= 0 \\
-    \div^\ensddfvplat (\rot^\ensdiamantplat u^\ensddfvplat) &= 0 \\
-    \scarot^\ensddfvplat (\grad^\ensdiamantplat u^\ensddfvplat) &= 0 \\
-    \scarot^\ensddfvplat \rot^\ensdiamantplat u^\ensddfvplat &= - \div^\ensddfvplat \grad^\ensdiamantplat u^\ensddfvplat
+    \div^\ensddfvplat (\rot^\ensdiamantplat u^\ensddfvplat) = 0,
+    \quad
+    \scarot^\ensddfvplat (\grad^\ensdiamantplat u^\ensddfvplat) = 0,
+    \quad
+    \scarot^\ensddfvplat \rot^\ensdiamantplat u^\ensddfvplat = - \div^\ensddfvplat \grad^\ensdiamantplat u^\ensddfvplat
 \end{align}
+\end{corol}
 \end{frame}
 
 \begin{frame}
@@ -183,7 +202,7 @@ $\forall \xi^\ensdiamantplat, u^\ensddfvplat \in (\R^2)^\ensdiamantplat \times \
 
 \begin{prop}
 \[
-\dim \param{\mathcal{H}^\ensdiamantplat} = 4 \, g \quad \text{où $g$ est le genre de } \surflisse
+\dim \param{\mathcal{H}^\ensdiamantplat} = \highlight{4} \, g \quad \text{où $g$ est le genre de } \surflisse
 \]
 \end{prop}
 \begin{itemize}
@@ -200,7 +219,7 @@ $\forall \xi^\ensdiamantplat, u^\ensddfvplat \in (\R^2)^\ensdiamantplat \times \
     \centering
     \includegraphics[width=0.7\textwidth]{img/torus_harmonic_meridional.pdf}
 \end{subfigure}
-\caption{Champs harmoniques sur le tore}
+\caption{Champs harmoniques sur le tore, $\dim \mathcal{H} = 2 \, g$}
 \end{figure}
 
 \end{frame}

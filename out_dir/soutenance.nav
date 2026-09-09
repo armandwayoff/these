@@ -1,26 +1,26 @@
 \headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
 \headcommand {\beamer@framepages {1}{1}}
-\headcommand {\beamer@sectionpages {1}{1}}
-\headcommand {\beamer@subsectionpages {1}{1}}
-\headcommand {\sectionentry {1}{Introduction}{2}{Introduction}{0}}
-\headcommand {\slideentry {1}{0}{1}{2/2}{}{0}}
+\headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
 \headcommand {\beamer@framepages {2}{2}}
-\headcommand {\slideentry {1}{0}{2}{3/3}{}{0}}
+\headcommand {\beamer@sectionpages {1}{2}}
+\headcommand {\beamer@subsectionpages {1}{2}}
+\headcommand {\sectionentry {1}{Introduction}{3}{Introduction}{0}}
+\headcommand {\slideentry {1}{0}{1}{3/3}{}{0}}
 \headcommand {\beamer@framepages {3}{3}}
-\headcommand {\slideentry {1}{0}{3}{4/8}{}{0}}
-\headcommand {\beamer@framepages {4}{8}}
-\headcommand {\slideentry {1}{0}{4}{9/12}{}{0}}
-\headcommand {\beamer@framepages {9}{12}}
-\headcommand {\slideentry {1}{0}{5}{13/13}{}{0}}
-\headcommand {\beamer@framepages {13}{13}}
-\headcommand {\beamer@sectionpages {2}{13}}
-\headcommand {\beamer@subsectionpages {2}{13}}
-\headcommand {\sectionentry {2}{Généralisation de la méthode \textsc {ddfv}\xspace }{14}{Généralisation de la méthode \textsc {ddfv}\xspace aux surfaces fermées sans bord de $\mathbb {R}^3$}{0}}
-\headcommand {\slideentry {2}{0}{1}{14/14}{}{0}}
+\headcommand {\slideentry {1}{0}{2}{4/4}{}{0}}
+\headcommand {\beamer@framepages {4}{4}}
+\headcommand {\slideentry {1}{0}{3}{5/9}{}{0}}
+\headcommand {\beamer@framepages {5}{9}}
+\headcommand {\slideentry {1}{0}{4}{10/13}{}{0}}
+\headcommand {\beamer@framepages {10}{13}}
+\headcommand {\slideentry {1}{0}{5}{14/14}{}{0}}
 \headcommand {\beamer@framepages {14}{14}}
-\headcommand {\slideentry {2}{0}{2}{15/15}{}{0}}
+\headcommand {\beamer@sectionpages {3}{14}}
+\headcommand {\beamer@subsectionpages {3}{14}}
+\headcommand {\sectionentry {2}{Généralisation et formalisation de la méthode \textsc {ddfv}\xspace }{15}{Généralisation et formalisation de la méthode \textsc {ddfv}\xspace aux surfaces fermées sans bord de $\mathbb {R}^3$}{0}}
+\headcommand {\slideentry {2}{0}{1}{15/15}{}{0}}
 \headcommand {\beamer@framepages {15}{15}}
-\headcommand {\beamer@subsectionpages {14}{15}}
+\headcommand {\beamer@subsectionpages {15}{15}}
 \headcommand {\beamer@subsectionentry {0}{2}{1}{16}{Maillages primal et dual}}
 \headcommand {\slideentry {2}{1}{1}{16/20}{Maillages primal et dual}{0}}
 \headcommand {\beamer@framepages {16}{20}}
@@ -42,7 +42,7 @@
 \headcommand {\beamer@framepages {30}{30}}
 \headcommand {\slideentry {2}{5}{2}{31/31}{Propriétés des opérateurs discrets}{0}}
 \headcommand {\beamer@framepages {31}{31}}
-\headcommand {\beamer@sectionpages {14}{31}}
+\headcommand {\beamer@sectionpages {15}{31}}
 \headcommand {\beamer@subsectionpages {30}{31}}
 \headcommand {\sectionentry {3}{Démonstration de l'inégalité de Poincaré \textsc {ddfv}\xspace }{32}{Démonstration de l'inégalité de Poincaré \textsc {ddfv} sur une surface fermée sans bord de $\mathbb {R}^3$}{0}}
 \headcommand {\slideentry {3}{0}{1}{32/32}{}{0}}
@@ -66,10 +66,8 @@
 \headcommand {\beamer@framepages {44}{44}}
 \headcommand {\slideentry {4}{0}{2}{45/45}{}{0}}
 \headcommand {\beamer@framepages {45}{45}}
-\headcommand {\slideentry {4}{0}{3}{46/46}{}{0}}
-\headcommand {\beamer@framepages {46}{46}}
-\headcommand {\beamer@partpages {1}{46}}
-\headcommand {\beamer@subsectionpages {44}{46}}
-\headcommand {\beamer@sectionpages {44}{46}}
-\headcommand {\beamer@documentpages {46}}
+\headcommand {\beamer@partpages {1}{45}}
+\headcommand {\beamer@subsectionpages {44}{45}}
+\headcommand {\beamer@sectionpages {44}{45}}
+\headcommand {\beamer@documentpages {45}}
 \headcommand {\gdef \inserttotalframenumber {17}}

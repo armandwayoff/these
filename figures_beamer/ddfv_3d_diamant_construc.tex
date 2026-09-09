@@ -210,7 +210,9 @@
     \MidPointXYZ{M\i}{fO}{fF\i}
 }
 
-% \fill[mylightblue,opacity=0.5] (fO) -- (fF2) -- (fF3) -- cycle;
+\fill[mylightblue] (fO) -- (fF5) -- (fF1) -- cycle;
+\fill[mylightblue] (fO) -- (fF1) -- (fF2) -- cycle;
+
 \draw[mailledualeint] (M1) -- (G1) -- (M2) -- (G2) -- (M3) -- (G3) -- (M4) -- (G4) -- (M5) -- (G5) -- cycle;
 
 \foreach \i in {1,2,3,4,5}
@@ -387,17 +389,11 @@
     \node[ptsq={black}{}] at (M\i) {};
 }
 
-\onslide<3->{
-\foreach \i/\j in {
-    1/2/,
-    2/3/,
-    3/4/,
-    4/5/,
-    5/1/
-}{
-    \draw[gray] (fO) -- (fG\i) -- (fF\i);
-    \draw[gray] (fG\i) -- (fF\j);
-}
+\onslide<4->{
+
+\draw[black] (fO) -- (fG2) -- (fF3);
+\draw[black] (fO) -- (fG3) -- (fF3);
+
 }
 
 \node[ptsq={myblue}{}] at (fO) {};
@@ -407,10 +403,17 @@
     \node[ptsq={myblue}{}] at (fF\i) {};
 }
 
-\filldraw[mygreen, draw=mydarkgreen, opacity=0.8, visible on=<4->] (J) -- (K) -- (I) -- (L) -- cycle;
+% Couleurs de sphere_diamond_barycentric_gmsh.py (noms CSS/PyVista).
+\definecolor{diamondPythonGreen}{HTML}{008000}
+\definecolor{diamondPythonLimeGreen}{HTML}{32CD32}
+\filldraw[fill=diamondPythonGreen, draw=diamondPythonLimeGreen, opacity=0.8, visible on=<3->] (J) -- (K) -- (I) -- (L) -- cycle;
+
+\node[diamondPythonGreen, align=center, font=\footnotesize, visible on=<3->] at ($(fF1G5)+(180:8pt)$) {diamant\\plat};
+
+% \filldraw[mygreen, draw=mydarkgreen, opacity=0.8, visible on=< 3->] (J) -- (K) -- (I) -- (L) -- cycle;
 % \draw[maillediamantint, opacity=0.8, thin, visible on=<4->] (Jb) -- (Kb) -- (Ib) -- (Lb) -- cycle;
 
-\onslide<4->{
+\onslide<3->{
 % Repère affine du plan du diamant :
 %   origine Jb,
 %   axe x porté par Jb--Ib,
@@ -461,6 +464,12 @@
 \path[name path=sigmae] (xk2D) -- (xl2D);
 
 \path[name intersections={of=sigma and sigmae, by=Inter}];
+
+% \draw[mygreen!80!white, thin] (InterG1) -- (fG1);
+\draw[dashed, thin] (InterG1) -- (fG1);
+
+\draw[white, thin] (InterG5) -- (fG5);
+\draw[dashed, thin] (InterG5) -- (fG5);
 
 \iffalse
 \def\rayonangle{0.08}
@@ -516,6 +525,7 @@ in
 \draw[myred, dashed] (K) -- (L);
 }
 
+\iffalse
 \onslide<4->{
 
 \draw[mygreen!80!white, thin] (InterG1) -- (fG1);
@@ -531,10 +541,10 @@ in
 \draw[gray] (fF1G1) -- (fG1);
 
 % \node[mydarkgreen] at ($(Inter)+(120:8pt)$) {$\diamantplat{D}$};
-\node[mydarkgreen] at ($(fF1G5)+(180:6pt)$) {$\diamantplat{D}$};
 }
+\fi
 
-\onslide<3->{
+\onslide<2->{
     \draw[myred] (fG1) -- (fG5);
 }
 
@@ -597,7 +607,8 @@ in
     \pgfmathsetmacro{\DeltaZG}{\zProjG-f(\xProjG,\yProjG)}
     \pgfmathsetmacro{\DeltaZGb}{\zProjGb-f(\xProjGb,\yProjGb)}
 
-    \fill[mylightgreen, opacity=0.8]
+    \definecolor{light_viridian}{HTML}{6EFF70}
+    \fill[light_viridian, opacity=0.8]
     plot[variable=\t, domain=1:0, samples=20]
     (
         {\t*\xProjG},
@@ -631,7 +642,7 @@ in
 
     % Les quatre bords sont tracés comme des courbes ouvertes : les
     % fermetures droites nécessaires au remplissage restent invisibles.
-    \draw[mydarkgreen, thick]
+    \draw[diamondPythonGreen, thick]
     plot[variable=\t, domain=0:1, samples=20]
     (
         {\t*\xProjG},
@@ -639,7 +650,7 @@ in
         {f(\t*\xProjG, \t*\yProjG)+\t*\DeltaZG}
     );
 
-    \draw[mydarkgreen, thick]
+    \draw[diamondPythonGreen, thick]
     plot[variable=\t, domain=0:1, samples=20]
     (
         {(1-\t)*\xProjG + \t*\xA},
@@ -648,7 +659,7 @@ in
             +(1-\t)*\DeltaZG}
     );
 
-    \draw[mydarkgreen, thick]
+    \draw[diamondPythonGreen, thick]
     plot[variable=\t, domain=1:0, samples=20]
     (
         {\t*\xProjGb},
@@ -656,7 +667,7 @@ in
         {f(\t*\xProjGb, \t*\yProjGb)+\t*\DeltaZGb}
     );
 
-    \draw[mydarkgreen, thick]
+    \draw[diamondPythonGreen, thick]
     plot[variable=\t, domain=1:0, samples=20]
     (
         {(1-\t)*\xProjGb + \t*\xA},
@@ -669,6 +680,8 @@ in
 %                    fin Diamant courbe
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 }
+
+\node[light_viridian!70!black, align=center, font=\footnotesize, visible on=<5->] at ($(G2)+(-25:8pt)$) {diamant\\courbe};
 
 % \begin{scope}[canvas is xz plane at y=0]
 % \path  (0,1) node[anchor=south]{$z$}; 

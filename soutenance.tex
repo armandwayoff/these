@@ -50,6 +50,8 @@
 
 \newcommand{\highlighttxt}[1]{%
   \colorbox{blue!20}{#1}}
+\newcommand{\highlightrougetxt}[1]{%
+  \colorbox{myred!40}{#1}}
 \newcommand{\fauxhighlighttxt}[1]{%
   \colorbox{white}{#1}}
 
@@ -88,7 +90,7 @@
     \vspace{5pt}
 }{}
 
-\title[Soutenance \\ M2 AMS]{Décomposition de \nompropre{Hodge}--\nompropre{de Rham} sur une \\ surface fermée de $\R^3$: discrétisation \textsc{ddfv}}
+\title[Soutenance \\ M2 AMS]{Décomposition de \nompropre{Hodge}--\nompropre{de Rham} sur une \\ surface fermée de $\R^3$ : discrétisation \textsc{ddfv}}
 
 \author[Armand \nompropre{Wayoff}]{Armand \nompropre{Wayoff} \\[7pt]
 {\small Tuteurs : François \nompropre{Alouges} et Rémi \nompropre{Tesson}}
@@ -99,9 +101,9 @@
 \date{10 septembre 2026}
 
 \titlegraphic{
-    \includegraphics[height=1cm]{img/logo_ens-ps.png}
+    \includegraphics[height=1.3cm]{img/logo_ens-ps.png}
     \quad
-    \includegraphics[height=1.5cm]{img/logo-centre_borelli.png}
+    \includegraphics[height=2cm]{img/logo-centre_borelli.png}
 }
 
 \begin{document}
@@ -118,31 +120,36 @@
 \addtocounter{framenumber}{-1}
 \maketitle
 \end{frame}
+
+\begin{frame}[plain]{Plan}
+    \addtocounter{framenumber}{-1}
+    \beamertableofcontents[hideallsubsections]
+\end{frame}
 \endgroup
 
 \input{chapitres_soutenance/intro.tex}
 
-\begin{frame}{Plan}
+\begin{frame}{Contributions du stage}
 \beamertableofcontents[
     sections={2-3},
     hideallsubsections
 ]
 \end{frame}
 
-\AtBeginSection[]
-{
-    \begin{frame}{Plan}
-        \addtocounter{framenumber}{-1}
-        \beamertableofcontents[
-            currentsection,
-            sections={2-3},
-            hideallsubsections,
-            sectionstyle=show/shaded
-        ]
-    \end{frame}
-}
-
 \input{chapitres_soutenance/generalisation.tex}
+
+\section[Démonstration de l'inégalité de Poincaré \ddfv]{Démonstration de l'inégalité de Poincaré \textsc{ddfv} sur une surface fermée sans bord de $\R^3$}
+
+\begin{frame}{Contributions du stage}
+    \addtocounter{framenumber}{-1}
+    \beamertableofcontents[
+        currentsection,
+        sections={2-3},
+        hideallsubsections,
+        sectionstyle=show/shaded
+    ]
+\end{frame}
+
 \input{chapitres_soutenance/poincare.tex}
 \input{chapitres_soutenance/perspectives.tex}
 
@@ -151,12 +158,6 @@
 \begin{center}
 {\huge \stxt{Merci pour votre attention}}
 \end{center}
-
-% \begin{boite}
-% \begin{center}
-%     {\color{myred}{\Large \textbf{Thank you for your attention!}}}
-% \end{center}
-% \end{boite}
 
 \end{frame}
 
